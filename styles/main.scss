@@ -1,0 +1,32 @@
+@use 'normalize';
+@use 'fonts';
+@use 'variables';
+@use 'utils';
+@use 'globals';
+
+@use 'blocks/header';
+@use 'blocks/buttons';
+@use 'blocks/icons';
+@use 'blocks/burger-button';
+
+@use 'blocks/hero';
+
+@use 'blocks/footer';
+
+@use 'blocks/registered';
+@use 'blocks/fild';
+@use 'blocks/checkbox';
+
+@use 'blocks/section';
+@use 'blocks/about';
+@use 'blocks/courses';
+@use 'blocks/card';
+@use 'blocks/benefits';
+@use 'blocks/tabs';
+@use 'blocks/events';
+@use 'blocks/certificate';
+@use 'blocks/carousel';
+@use 'blocks/team';
+@use 'blocks/testimonials';
+@use 'blocks/blog';
+@use 'blocks/subscribe';

@@ -1,0 +1,137 @@
+@use '../helpers' as *;
+
+.header{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: rem(20);
+  z-index: 1000;
+
+  @include laptop{
+    padding-top: 0;
+    padding-right: rem(10);
+    padding-left: rem(10);
+  }
+
+  &__body{
+    padding-block: rem(13);
+
+    &-inner{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      column-gap: rem(1);
+    }
+  }
+
+
+  &__overlay{
+    display: flex;
+    width: rem(1040);
+    justify-content: space-between;
+    align-items: center;
+
+    &.is-active{
+      pointer-events: auto;
+      user-select: auto;
+      filter: none !important;
+    }
+
+    @include mobile{
+      position: fixed;
+      width: rem(360);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      padding: 0;
+      padding-top: rem(55);
+      border-top: rem(3) solid var(--color-accent);
+      border-left: rem(3) solid var(--color-accent);
+      background-color: var(--color-light);
+      transition-duration: var(--transition-duration);
+
+      &:not(.is-active) {
+        @include hide;
+
+        translate: 100%;
+      }
+    }
+
+    @include mobile-s{
+      width: rem(200);
+    }
+  }
+
+  &__menu{
+    padding-block: rem(13);
+
+    @include tablet{
+      padding-left: rem(20);
+    }
+
+    @include mobile{
+      padding: 0;
+    }
+
+    &-list{
+      display: flex;
+      font-weight: 700;
+      align-items: center;
+      column-gap: rem(40);
+      padding-block: rem(13);
+
+      @include tablet{
+        column-gap: rem(25)
+      }
+
+      @include mobile{
+        flex-direction: column;
+        row-gap: rem(8);
+      }
+    }
+
+    &-linck{
+      &.is-active{
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  &__action{
+    display: flex;
+    font-weight: 700;
+    column-gap: rem(36);
+    padding-block: rem(13);
+
+    @include tablet{
+      column-gap: rem(15);
+    }
+
+    @include mobile{
+      flex-direction: column;
+      padding: 0;
+    }
+  }
+
+  .action{
+    @include mobile{
+      row-gap: rem(15);
+    }
+
+    &__authorization{
+      display: flex;
+      align-items: center;
+      column-gap: rem(3);
+      padding-block: rem(13);
+
+      @include mobile{
+        padding: 0;
+        justify-content: center;
+      }
+    }
+  }
+}

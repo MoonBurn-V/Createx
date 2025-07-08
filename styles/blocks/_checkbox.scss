@@ -1,0 +1,54 @@
+@use '../helpers' as *;
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  column-gap: rem(10);
+  color: var(--color-gray-800);
+
+  @include laptop {
+    column-gap: rem(12);
+  }
+
+  &__lable{
+    font-size: rem(14);
+    font-weight: 400;
+  }
+
+  &__input {
+    --size: #{rem(16)};
+
+    @include square(var(--size));
+    @include flex-center;
+
+    appearance: none;
+    margin: 0;
+    border: rem(1) solid var(--color-gray-800);
+    border-radius: rem(4);
+
+    &:not(:checked) {
+      &::after {
+        @include hide;
+      }
+    }
+
+    &:checked {
+      border-color: var(--color-accent);
+      background-color: var(--color-accent);
+    }
+
+    &:user-invalid {
+      border-color: var(--color-red);
+    }
+
+    &::after {
+      display: flex;
+      place-content: center;
+      content: '✔';
+      font-size: rem(10);
+      color: var(--color-light);
+      transition-duration: var(--transition-duration);
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@use '../helpers' as *;
+
+.button{
+    @include fluid-text(16, 12);
+
+    display: inline-flex;
+    align-items: center;
+    border: rem(1) solid var(--color-accent);
+    border-radius: rem(4);
+    background: none;
+    padding: rem(0) fluid(40, 18);
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 325%;
+    letter-spacing: 0.03em;
+    //text-align: center;
+    justify-content: center;
+    white-space: nowrap;
+
+    @include hover {
+        color: var(--color-light);
+        background-image: var(--color-btn-gradient);
+    }
+
+    &--accent{
+        border-radius: rem(4);
+        color: var(--color-light);
+        background-image: var(--color-btn-gradient);
+        transition-duration: var(--transition-duration);
+
+        @include hover {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+            background-image: none;
+        }
+    }
+}

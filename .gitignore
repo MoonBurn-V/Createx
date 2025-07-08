@@ -1,0 +1,7 @@
+node_modules/
+.vscode/
+*.log
+main.css.map
+*.swp
+*~
+#config.js

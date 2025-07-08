@@ -1,0 +1,46 @@
+@use '../helpers' as *;
+
+.courses{
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(60, 30);
+    place-items: center;
+
+    @include laptop{
+        padding-inline: rem(10);
+    }
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        @include tablet{
+            flex-direction: column;
+        }
+    }
+
+    &__title-wrapper{
+        @include tablet{
+            text-align: center;
+        }
+    }
+
+    &__subtitle{
+        font-weight: 700;
+    }
+
+    &__title{
+        white-space: nowrap;
+    }
+
+    &__button{
+        max-height: rem(52);
+        margin-top: rem(25);
+
+        @include tablet{
+            margin-top: rem(10);
+        }
+    }
+}

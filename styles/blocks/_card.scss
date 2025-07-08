@@ -1,0 +1,143 @@
+@use '../helpers' as *;
+
+.card{
+    &__list{
+        display: grid;
+        grid-template-columns: repeat(2, rem(600));
+        gap: rem(30);
+
+        @include laptop{
+            grid-template-columns: repeat(2, rem(500));
+            gap: rem(15);
+        }
+
+        @include tablet{
+            display: flex;
+            flex-direction: column;
+            row-gap: rem(15);
+        }
+
+    }
+
+    &.horisontal{
+        display: flex;
+    }
+
+    &__body{
+        &-inner{
+            display: flex;
+            flex-direction: column;
+            row-gap: rem(20);
+            padding-block: fluid(32, 15);
+            padding-right: fluid(32, 15);
+
+            @include mobile-s{
+                row-gap: fluid(10, 5);
+                padding-block: rem(15);
+                padding-right: rem(5);
+            }
+        }
+
+        &.horisontal{
+            display: flex;
+            column-gap: fluid(32, 10);
+        }
+
+        &.vertical{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__image{
+        @include mobile{
+            width: rem(190);
+        }
+
+        @include mobile-s{
+            width: rem(150);
+        }
+    }
+
+    &__item{
+        border: rem(1) solid var(--color-gray-300);
+        border-radius: rem(4);
+        cursor: pointer;
+        box-shadow: 
+        0 4px 4px -4px rgba(30, 33, 44, 0.03), 
+        0 12px 10px -6px rgba(154, 156, 165, 0.04), 
+        0 30px 24px -10px rgba(154, 156, 165, 0.05), 
+        0 80px 80px -20px rgba(154, 156, 165, 0.08);
+
+        &:hover{
+            box-shadow:
+            4px 4px 4px -4px rgba(30, 33, 44, 0.05),
+            16px 12px 10px -6px rgba(154, 156, 165, 0.08),
+            40px 30px 24px -10px rgba(154, 156, 165, 0.1),
+            100px 80px 80px -20px rgba(154, 156, 165, 0.16);
+        }
+    }
+
+    &__title{
+        @include mobile-s{
+            font-size: rem(14);
+        }
+    }
+
+    &__subtitle{
+        @include fluid-text(16, 12);
+
+        display: inline-flex;
+        border-radius: rem(4);
+        padding: rem(0) rem(8);
+        color: var(--color-light);
+        align-self: flex-start;
+        white-space: nowrap;
+
+        &.green{
+            background-color: var(--color-green);
+        }
+
+        &.orange{
+            background-color: var(--color-orange);
+        }
+
+        &.blue{
+            background-color: var(--color-blue);
+        }
+
+        &.pink{
+            background-color: var(--color-pink);
+        }
+    }
+
+    &__info{
+        display: flex;
+        column-gap: rem(8);
+
+        @include mobile-s{
+            flex-direction: column;
+        }
+    }
+
+    &__price{
+        color: var(--color-light-red);
+    }
+
+    &__separator{
+        color: var(--color-gray-700);
+
+        @include mobile-s{
+            display: none;
+        }
+    }
+
+    &__speaker{
+        color: var(--color-gray-700);
+        font-weight: 400;
+
+        @include mobile-s{
+            border-top: rem(1) solid var(--color-gray-700);
+        }
+    }
+}

@@ -1,0 +1,141 @@
+@use '../helpers' as *;
+
+.testimonials{
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(60, 30);
+    padding-bottom: fluid(180, 40);
+    place-items: center;
+
+
+    &__header{
+        text-align: center;
+    }
+
+    &__button{
+        border: none;
+        background: none;
+
+        &:hover path[fill]{
+            fill: white;
+        }
+
+        &:hover circle{
+            opacity: 1;
+        }
+
+        &.mobile{
+            @include mobile-s{
+                position: absolute;
+                right: rem(20);
+                top: 0;
+                margin: 0;
+            }
+        }
+
+        @include mobile-s{
+            margin-right: rem(210);
+        }
+    }
+
+    &__body{
+        display: flex;
+        column-gap: fluid(50, 10);
+        position: relative;
+
+        &-inner{
+            display: flex;
+            column-gap: rem(106);
+            align-items: start;
+            background: var(--color-light);
+            padding: fluid(64, 5) fluid(105, 10);
+            width: fluid(1010, 300);
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+
+            &::-webkit-scrollbar{
+                display: none;
+            }
+        }
+
+        @include mobile-s{
+            flex-direction: column;
+            row-gap: rem(10);
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__card{
+        display: flex;
+        flex-shrink: 0;
+        width: fluid(800, 300);
+        align-items: start;
+
+        &-brace{
+            @include mobile{
+                width: rem(15);
+                height: rem(15);
+            }
+        }
+    }
+
+    &__review{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(24);
+        padding-left: fluid(34, 19);
+        font-size: fluid(20, 16);
+
+        @include mobile-s{
+            padding-left: rem(5);
+            padding-right: rem(15);
+        }
+    }
+
+    &__profile{
+        display: flex;
+        column-gap: rem(20);
+        align-items: center;
+
+        &-icon {
+            @include mobile{
+                width: rem(50);
+            }
+        }
+    }
+
+    &__name{
+        font-weight: 700;
+
+        @include mobile{
+            font-size: rem(14);
+        }
+    }
+
+    &__position{
+        font-size: rem(14);
+        font-weight: 400;
+    }
+
+    &__lines{
+        width: rem(198);
+        display: flex;
+        column-gap: rem(12);
+    }
+
+    &__line{
+        width: rem(30);
+        height: rem(2);
+        background-color: var(--color-gray-800);
+        border-radius: 1rem;
+        transition-duration: var(--transition-duration);
+
+        &:not(.active){
+            background-color: var(--color-gray-500);
+        }
+    }
+
+}

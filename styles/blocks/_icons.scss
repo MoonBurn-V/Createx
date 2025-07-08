@@ -1,0 +1,152 @@
+@use '../helpers' as *;
+
+.icon{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: rem(3);
+
+    &__user [fill]{
+        fill: currentColor;
+    }
+
+    &__play svg{
+        width: fluid(84, 55);
+    }
+
+    &__iPhone [fill]{
+        fill: currentColor;
+    }
+
+    &__mail [fill]{
+        fill: currentColor;
+    }
+
+    &__facebook:hover g{
+        opacity: 1;
+        transition-duration: var(--transition-duration);
+    }
+
+    &__twitter:hover g{
+        opacity: 1;
+        transition-duration: var(--transition-duration);
+    }
+
+    &__YouTube:hover g{
+        opacity: 1;
+        transition-duration: var(--transition-duration);
+    }
+
+    &__telegram:hover g{
+        opacity: 1;
+        transition-duration: var(--transition-duration);
+    }
+
+    &__linked-In:hover g{
+        opacity: 1;
+        transition-duration: var(--transition-duration);
+    }
+
+    &__instagram:hover g{
+        opacity: 1;
+        transition-duration: var(--transition-duration);
+    }
+
+    &__sign{
+        &-cross [fill]{
+            fill: currentColor;
+        }
+
+        &-google [fill]{
+            fill: currentColor;
+        }
+
+        &-facebook [fill]{
+            fill: currentColor;
+        }
+
+        &-twitter [fill]{
+            fill: currentColor;
+        }
+
+        &-linked-In [fill]{
+            fill: currentColor;
+        }
+    }
+
+    &__eye [fill]{
+        fill: currentColor;
+    }
+
+    &__footer-right{
+        position: absolute;
+        right: rem(9);
+        top: 55%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: var(--color-light);
+        opacity: 0.6;
+    }
+
+    &__heart{
+        display: inline-block;
+        position: relative;
+        top: rem(3); 
+    }
+
+    &__star [fill]{
+        fill: currentColor;
+    }
+
+    &__like [fill]{
+        fill: currentColor;
+    }
+
+    &__layout [fill]{
+        fill: currentColor;
+    }
+
+    &__chat [fill]{
+        fill: currentColor;
+    }
+
+    &__card{
+        &-facebook:hover g{
+            opacity: 1;
+            transition-duration: var(--transition-duration);
+        }
+
+        &-instagram:hover g{
+            opacity: 1;
+            transition-duration: var(--transition-duration);
+        }
+
+        &-linked-In:hover g{
+            opacity: 1;
+            transition-duration: var(--transition-duration);
+        }
+    }
+
+
+    // &::before {
+    //     --size: #{rem(20)};
+
+    //     @include square(var(--size));
+
+    //     content: '';
+    //     flex-shrink: 0;
+    //     background-position: center;
+    //     background-size: contain;
+    //     background-repeat: no-repeat;
+
+    //     @include laptop {
+    //         --size: #{rem(18)};
+    //     }
+    // }
+
+    // &--p{
+    //     &::before{
+    //         background-image: url('../../icons/user.svg');
+    //     }
+    // }
+}

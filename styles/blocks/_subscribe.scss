@@ -1,0 +1,29 @@
+@use '../helpers' as *;
+
+.subscribe{
+    padding-top: fluid(120, 60);
+    place-items: center;
+
+    &__header{
+        width: fluid(820, 300);
+        text-align: center;
+        padding-bottom: fluid(60, 45);
+    }
+
+    &__subtitle{
+        padding-bottom: rem(8);
+    }
+
+    &__body{
+        display: flex;
+        column-gap: rem(24);
+        place-items: center;
+        width: fluid(600, 290);
+        padding-bottom: fluid(180, 60);
+
+        @include mobile{
+            flex-direction: column;
+            row-gap: rem(30);
+        }
+    }
+}

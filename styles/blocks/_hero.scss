@@ -1,0 +1,148 @@
+@use '../helpers' as *;
+
+.hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+
+    background: url("../../img/hero-background.jpg") center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    
+    &__container{
+        display: flex;
+        flex-direction: column;
+        row-gap: fluid(190, 50);
+        padding-top: fluid(200, 80);
+        // align-items: center;
+
+        @include laptop{
+            padding-left: rem(20);
+            padding-right: rem(20);
+        }
+
+        @include mobile-s{
+            width: rem(300);
+            padding-left: rem(10);
+            padding-right: rem(10);
+        }
+    }
+
+    &__main{
+        display: flex;
+        // column-gap: fluid(180, 8);
+        align-items: start;
+        justify-content: space-between;
+
+        @include mobile{
+            flex-direction: column;
+            row-gap: rem(30);
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__body{
+        width: fluid(496, 300);
+    }
+
+    &__image{
+        @include tablet{
+            width: rem(500);
+            height: rem(450);
+        }
+
+        @include mobile-s{
+            width: rem(290);
+            height: rem(270);
+        }
+    }
+
+    &__title{
+        font-size: fluid(55, 28);
+        font-weight: 900;
+        margin-top: fluid(24, 10);
+        margin-bottom: fluid(60, 30);
+    }
+
+    &__buttons{
+        display: flex;
+        column-gap: rem(24);
+    }
+
+    &__achievements{
+        padding-bottom: rem(80);
+
+        &-list{
+            display: flex;
+            column-gap: fluid(140, 55);
+            justify-content: space-between;
+
+            @include tablet{
+                flex-wrap: wrap;
+                column-gap: rem(1);
+                row-gap: rem(20);
+                justify-content: center;
+            }
+        }
+
+        &-item{
+            display: flex;
+            column-gap: rem(12);
+            align-items: center;
+            position: relative;
+
+            
+            @include tablet{
+                width: rem(350);
+                justify-content: center;
+            }
+
+            @include mobile{
+                flex-direction: column;
+            }
+        }
+
+        &-item::before{
+            content: '';
+            position: absolute;
+            left: -40%;
+            top: 50%; /* Центрируем по вертикали */
+            transform: translateY(-50%); /* Сдвигаем точку вверх на половину её высоты */
+            width: rem(8); /* Ширина точки */
+            height: rem(8); /* Высота точки */
+            border-radius: 50%; /* Делаем точку круглой */
+            background-color: var(--color-accent); /* Цвет точки, можно изменить на нужный */
+
+            @include tablet{
+                left: 2%;
+            }
+
+            @include mobile{
+                left: 15%;
+            }
+        }
+
+        &-item:first-child::before{
+            content: none;
+
+            @include mobile{
+                content: '';
+            }
+        }
+
+        @include tablet{
+            &-item:nth-child(3)::before{
+                content: none;
+            }
+        }
+
+        @include mobile{
+            &-item:nth-child(3)::before{
+                content: '';
+            }
+        }
+    }
+}

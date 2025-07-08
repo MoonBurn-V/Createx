@@ -1,0 +1,44 @@
+@use 'helpers' as *;
+
+:root{
+    --color-light: #FFFFFF;
+    --color-gray-900: #1E212C;
+    --color-gray-800: #424551;
+    --color-gray-700: #787A80;
+    --color-gray-600: #9A9CA5;
+    --color-gray-500: #B3B7BC;
+    --color-gray-400: #D7DADD;
+    --color-gray-300: #E5E8ED;
+    --color-green: #03CEA4;
+    --color-orange: #F89828;
+    --color-blue: #5A87FC;
+    --color-pink: #F52F6E;
+    --color-accent: #FF3F3A;
+    --color-light-red: #FF4242;
+    --color-red: #ff0800;
+    --color-btn-gradient:  linear-gradient(45deg, #ff3f3a 0%, #f75e05 100%);
+    // background: linear-gradient(45deg, #ff3f3a 0%, #f75e05 100%);
+
+    --border: rem(1) solid var(--color-btn-gradient);
+
+    // --shadow: 0 4px 4px -4px rgba(30, 33, 44, 0.05), 0 12px 10px -6px rgba(255, 63, 58, 0.08), 0 30px 24px -10px rgba(255, 63, 58, 0.1), 0 80px 80px -20px rgba(255, 63, 58, 0.16);
+
+    --shadow: 4px 4px 10px rgba(66, 69, 81, 0.5);
+
+    --font-family: "Lato", sans-serif;
+    // --second-family: "Inter", sans-serif;
+
+    --container-width: #{rem(1230)};
+    --container-padding-x: #{rem(0)};
+
+    --reristered-width: #{rem(486)};
+    --reristered-padding-x: #{rem(48)};
+
+    --transition-duration: 0.4s;
+
+    --100vw: calc(100vw - var(--scrollbar-width));
+
+    @include laptop {
+        --container-width: #{rem(1280)};
+    }
+}

@@ -1,0 +1,153 @@
+@use '../helpers' as *;
+
+.team{
+    //padding-bottom: fluid(180, 40);
+
+    @include laptop{
+        padding-inline: rem(15);
+    }
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+
+        @include mobile-s{
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    &__subtitle{
+        font-weight: 700;
+    }
+
+    &__title{
+        font-size: fluid(46, 28);
+        font-weight: 900;
+    }
+
+    &__buttons{
+        margin-top: rem(25);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include mobile-s{
+            justify-content: space-between;
+        }
+    }
+
+    &__button{
+        border: none;
+        background: none;
+
+        &:hover path[fill]{
+            fill: white;
+        }
+
+        &:hover circle{
+            opacity: 1;
+        }
+    }
+
+    &__body{
+        display: flex;
+        flex-direction: column;
+        row-gap: fluid(60, 20);
+
+
+        @include mobile-s{
+            place-items: center;
+        }
+
+        &-inner{
+            display: flex;
+            column-gap: rem(30);
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            width: 100%;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+
+            &::-webkit-scrollbar{
+                display: none;
+            }
+
+            @include mobile-s{
+                width: rem(200);
+            }
+        }
+    }
+
+    &__card{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+       // cursor: pointer;
+        width: fluid(285, 200);
+        flex-shrink: 0;
+        scroll-snap-align: start;
+
+        &:hover .team__card-shadow{
+            background: linear-gradient(180deg, rgba(30, 33, 44, 0) 43.9%, 
+            rgba(30, 33, 44, 0.03) 55.21%, 
+            rgba(30, 33, 44, 0.33) 68.73%, 
+            rgba(30, 33, 44, 0.56) 76.17%, 
+            rgba(30, 33, 44, 0.77) 83.75%, 
+            rgba(30, 33, 44, 0.92) 91.49%, #1e212c 100%);
+        }
+
+        &:hover .team__card-icons{
+            opacity: 1;
+        }
+
+
+        &-head{
+            position: relative;
+        }
+
+        &-shadow{
+            position: absolute;
+            width: rem(285);
+            height: rem(340);
+
+            @include tablet{
+                display: none;
+            }
+        }
+
+        &-image{
+            @include mobile-s{
+                width: rem(200);
+                height: rem(238);
+            }
+        }
+
+        &-icons{
+            position: absolute;
+            top: rem(300);
+            right: rem(20);
+            z-index: 100;
+            opacity: 0;
+
+            @include tablet{
+                display: none;
+            }
+        }
+
+        &-info{
+            padding-top: rem(16);
+            text-align: center;
+        }
+
+        &-name{
+            color: var(--color-gray-800);
+            font-size: rem(20);
+            font-weight: 700;
+        }
+
+        &-position{
+            color: var(--color-gray-700);
+        }
+    }
+}

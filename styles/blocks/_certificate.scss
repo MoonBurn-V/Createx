@@ -1,0 +1,91 @@
+@use '../helpers' as *;
+
+.certificate{
+    &__body{
+        position: relative;
+        display: flex;
+        width: fluid(1230, 300);
+        //column-gap: fluid(130, 30);
+
+        @media (width <= 1228px) {
+            width: rem(944);
+        }
+
+        @include tablet{
+            width: fluid(525, 300);
+            place-content: center;
+        }
+
+        &-inner{
+            width: fluid(525, 300);
+        }
+    }
+
+    &__header{
+        padding-bottom: fluid(48, 20);
+    }
+
+    &__subtitle{
+        font-weight: 700;
+        color: var(----color-gray-800);
+    }
+
+    &__title{
+        font-size: fluid(46, 28);
+        font-weight: 900;
+        line-height: 130%;
+    }
+
+    &__description{
+        width: rem(392);
+        padding-bottom: fluid(32, 15);
+
+        @include mobile{
+            width: 100%;
+        }
+    }
+
+    &__logos{
+        display: flex;
+        column-gap: rem(40);
+        padding-bottom: rem(120);
+        flex-wrap: wrap;
+
+        @media (width <= 1228px) {
+            padding-bottom: rem(40);
+        }
+
+
+        @include tablet{
+            padding-bottom: rem(300);
+        }
+
+        @include mobile{
+            padding-bottom: rem(220);
+        }
+
+        @include mobile-s{
+            padding-bottom: rem(190);
+        }
+    }
+
+    &__image{
+        position: absolute;
+        right: rem(0);
+        //width: fluid(705, 300);
+        box-shadow: 
+        0 4px 4px -4px rgba(30, 33, 44, 0.05), 
+        0 12px 10px -6px rgba(154, 156, 165, 0.08), 
+        0 30px 24px -10px rgba(154, 156, 165, 0.1), 
+        0 80px 80px -20px rgba(154, 156, 165, 0.16);
+
+        @media (width <= (1533px)) {
+            width: rem(500);
+        }
+
+        @include tablet{
+            right: rem(0);
+            bottom: rem(-50);
+        }
+    }
+}

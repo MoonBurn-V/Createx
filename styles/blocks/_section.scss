@@ -1,0 +1,43 @@
+@use '../helpers' as *;
+
+.section{
+    //padding-block: fluid(180, 40);
+
+    &__wrapper{
+        &.about{
+            width: 100%;
+            max-height: rem(484);
+            background: url('..//..//img/About-background.jpg') center no-repeat;
+            -webkit-background-size: cover;
+            background-size: cover;
+
+            @include mobile{
+                min-height: rem(480);
+                background: url('..//..//img/About-background-mobile.jpg') center no-repeat;
+            }
+        }
+
+        &.events{
+            background: url("../../img/hero-background.jpg") center no-repeat;
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+
+        &.carousel{
+            background: url("../../img/Team-background.jpg") center no-repeat;
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+
+        &.subscribe{
+            background: url("../../img/Subscribe-background.jpg") center no-repeat;
+            -webkit-background-size: cover;
+            background-size: cover;
+
+            @include mobile-s{
+                background: url("../../img/Subscribe-background-s2.jpg") center no-repeat;
+            }
+        }
+    }
+
+}

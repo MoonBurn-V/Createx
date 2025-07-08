@@ -1,0 +1,21 @@
+@use '../helpers' as *;
+
+.benefits{
+    @include laptop{
+        padding-inline: rem(15);
+    }
+
+    &__body{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(50);
+    }
+
+    &__header{
+        text-align: center;
+    }
+
+    &__subtitle{
+        font-weight: 700;
+    }
+}
