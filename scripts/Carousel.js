@@ -7,10 +7,6 @@ class Carousel {
         lines: '[data-js-lines]',
     }
 
-    staticClasses = {
-        active: 'active',
-    }
-
     constructor() {
         this.carousels = [];
 
