@@ -27,13 +27,13 @@ class CarouselInstance {
         this.btnNxtElement = document.querySelector(`[data-js-btn-nxt][index="${index}"]`);
         this.padding = (index === 1) ? 105 : 0;
         this.cardWidth = this.cardElement ? this.cardElement.getBoundingClientRect().width : 0;
-        //console.log("CW=", this.cardWidth)
+
         this.bindEvents();
 
         if (this.index === 1) {
-            this.chengeLine = new ChengeLine(this.index); // Инициализируем ChengeLine только для карусели с индексом 1
+            this.chengeLine = new ChengeLine(this.index, this.btnPrevElement, this.btnNxtElement);
         } else {
-            this.chengeLine = null; // Или null для других каруселей
+            this.chengeLine = null;
         }
     }
 
@@ -51,19 +51,11 @@ class CarouselInstance {
         if (this.cardElement) {
             this.container.scrollLeft -= this.cardWidth + this.padding + 5;
         }
-        //Добавил проверку на существование chengeLine
-        if (this.chengeLine) {
-            this.chengeLine.prevLine();
-        }
     }
 
     scrollNxt = () => {
         if (this.cardElement) {
             this.container.scrollLeft += this.cardWidth + this.padding;
-        }
-        //Добавил проверку на существование chengeLine
-        if (this.chengeLine) {
-            this.chengeLine.nxtLine();
         }
     }
 }
@@ -79,12 +71,14 @@ class ChengeLine {
         active: 'active',
     }
 
-    constructor(carouselIndex) {
-        this.carouselIndex = carouselIndex;
+    constructor(carouselIndex, btnPrevElement, btnNxtElement) {
+        this.carouselIndex = carouselIndex;    
         this.linesContainer = document.querySelector(this.selectors.lines.split('>')[0]);
         this.linesElement = document.querySelectorAll(this.selectors.lines);
+        this.btnPrevElement = btnPrevElement;        
+        this.btnNxtElement = btnNxtElement;
 
-        this.activeIndex = -1; // Инициализируем индекс активного элемента
+        this.activeIndex = -1;
         for (let i = 0; i < this.linesElement.length; i++) {
             if (this.linesElement[i].classList.contains(this.stateClasses.active)) {
                 this.activeIndex = i;
@@ -92,13 +86,11 @@ class ChengeLine {
             }
         }
 
-        this.btnPrevElement = document.querySelector(this.selectors.btnPrev);
-        this.btnNxtElement = document.querySelector(this.selectors.btnNxt);
         this.bindEvents();
     }
 
     bindEvents() {
-        if (this.btnPrevElement){
+        if (this.btnPrevElement) {
             this.btnPrevElement.addEventListener('click', this.prevLine);
         }
 
@@ -107,7 +99,10 @@ class ChengeLine {
         }
     }
 
-    nxtLine = () => {
+    nxtLine = (event) => {
+        if (this.carouselIndex !== 1) {
+            return;
+        }
         if (this.activeIndex == this.linesElement.length - 1) {
             return
         }
@@ -115,7 +110,10 @@ class ChengeLine {
         this.changeLine(1);
     }
 
-    prevLine = () => {
+    prevLine = (event) => {
+        if (this.carouselIndex !== 1) {
+            return;
+        }
         if (this.activeIndex == 0) {
             return
         }
@@ -125,20 +123,14 @@ class ChengeLine {
 
 
     changeLine = (direction) => {
-        if (this.carouselIndex !== 1) { // Проверяем индекс карусели
-            return; // Ничего не делаем, если индекс не равен 1
-        }
-
         if (!this.linesElement) {
             return;
         }
 
-        // Удаляем класс active у текущего активного элемента (если он есть)
         if (this.activeIndex !== -1) {
             this.linesElement[this.activeIndex].classList.remove(this.stateClasses.active);
         }
-        
-        // Вычисляем индекс следующего элемента
+
         let nextIndex = this.activeIndex + direction;
 
         if (nextIndex < 0) {
@@ -147,10 +139,8 @@ class ChengeLine {
             nextIndex = 0;
         }
 
-        // Добавляем класс active к новому активному элементу
         this.linesElement[nextIndex].classList.add(this.stateClasses.active);
 
-        // Обновляем индекс активного элемента
         this.activeIndex = nextIndex;
     }
 }
