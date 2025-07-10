@@ -21,7 +21,7 @@
     max-width: fluid(486, 290);
     flex-direction: column;
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: rem(486);
@@ -30,6 +30,7 @@
     z-index: 100000;
 
     @include mobile{
+        top: 40%;
         transform: translate(-50%, -45%);
     }
 
@@ -39,6 +40,8 @@
 
 
     &__form{
+        max-width: 100%;
+        margin-inline: auto;
         position: relative;
         display: flex;
         flex-direction: column;

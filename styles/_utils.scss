@@ -13,10 +13,10 @@
   padding-inline: var(--container-padding-x);
 }
 
-.registered-container{
-  max-width: 100%;
-  margin-inline: auto;
-}
+// .registered-container{
+//   max-width: 100%;
+//   margin-inline: auto;
+// }
 
 .visually-hidden {
   @include visually-hidden;

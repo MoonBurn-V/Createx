@@ -2,7 +2,7 @@
 
 .checkbox {
   display: inline-flex;
-  align-items: center;
+  place-content: center;
   column-gap: rem(10);
   color: var(--color-gray-800);
 
