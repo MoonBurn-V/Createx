@@ -1,4 +1,3 @@
-
 class Header {
     selectors = {
         root: '[data-js-header]',
@@ -37,19 +36,20 @@ class Header {
         this.signInLinkElement = document.querySelector(this.selectors.signInLink);
         this.signUpLinkElement = document.querySelector(this.selectors.signUpLink);
 
-        // Определяем, нужно ли добавлять toggleMenuState на основе ширины экрана.
         this.isSmallScreen = window.innerWidth <= 830;
         this.bindEvents();
 
-        // Слушаем изменение размера окна.  Если ширина изменится, перепривязываем события.
         window.addEventListener('resize', () => {
             const newIsSmallScreen = window.innerWidth <= 830;
             if (newIsSmallScreen !== this.isSmallScreen) {
                 this.isSmallScreen = newIsSmallScreen;
-                this.unbindEvents(); // Сначала отвязываем старые события.
-                this.bindEvents();   // Затем привязываем новые.
+                this.unbindEvents();
+                this.bindEvents();
             }
         });
+
+        this.formInstance = null; // Store Form instance
+        this.checkFormActivity(); // Initial check
     }
 
     onBurgerButtonClick = () => {
@@ -61,13 +61,6 @@ class Header {
             !this.rootElement.contains(event.target)) {
             this.toggleMenuState();
         }
-        //Закрытие формы при клике снаружи
-        // if (this.signInFormElement && !this.signInFormElement.contains(event.target) && this.SignInHeaderElement && !this.SignInHeaderElement.contains(event.target) && this.signInFormElement.classList.contains(this.stateClasses.activeForm)) {
-        //     this.togglesignInFormElement();
-        // }   
-        // if (this.signUpForm && !this.signUpForm.contains(event.target) && this.SignUpHeaderElement && !this.SignUpHeaderElement.contains(event.target) && this.signUpForm.classList.contains(this.stateClasses.activeForm)) {
-        //     this.toggleSignUpForm();
-        // }
     }
 
     toggleMenuState = () => {
@@ -93,6 +86,7 @@ class Header {
             }
         });
         this.signInFormElement.classList.toggle(this.stateClasses.activeForm);
+        this.checkFormActivity();
     }
 
     toggleSignUpFormElement = () => {
@@ -104,6 +98,23 @@ class Header {
             }
         });
         this.signUpFormElement.classList.toggle(this.stateClasses.activeForm);
+        this.checkFormActivity();
+    }
+
+    checkFormActivity() {
+        const isSignInActive = this.signInFormElement && this.signInFormElement.classList.contains(this.stateClasses.activeForm);
+        const isSignUpActive = this.signUpFormElement && this.signUpFormElement.classList.contains(this.stateClasses.activeForm);
+
+        if (isSignInActive || isSignUpActive) {
+            if (!this.formInstance) {
+                const activeFormElement = isSignInActive ? this.signInFormElement : this.signUpFormElement;
+                this.formInstance = new Form(activeFormElement);
+            }
+        } else {
+            if (this.formInstance) {
+                this.formInstance = null;
+            }
+        }
     }
 
     bindEvents() {
@@ -140,37 +151,124 @@ class Header {
         }
     }
 
-    // Функция для отвязки событий, чтобы избежать дублирования при изменении размера окна.
     unbindEvents() {
         if (this.signInHeaderElement) {
             this.signInHeaderElement.removeEventListener('click', this.toggleSignInFormElement);
-            //this.signInHeaderElement.removeEventListener('click', this.toggleMenuState); // Всегда удаляем, даже если не добавляли.
         }
         if (this.signUpHeaderElement) {
             this.signUpHeaderElement.removeEventListener('click', this.toggleSignUpFormElement);
-           // this.signUpHeaderElement.removeEventListener('click', this.toggleMenuState); // Всегда удаляем, даже если не добавляли.
+        }
+    }
+}
+
+class Form {
+    constructor(formElement) {
+        this.formElement = formElement;
+
+        this.selectors = {
+            fieldEmail: '[data-js-field-email]',
+            fieldPassword: '[data-js-field-password]',
+            fieldConfirmPassword: '[data-js-field-confirm-password]',
+            inputName: '[data-js-input-name]',
+            inputEmail: '[data-js-input-email]',
+            inputPassword: '[data-js-input-password]',
+            inputConfirmPassword: '[data-js-input-confirm-password]',
+            viewingPassword: '[data-js-viewing-password]',
+            viewingConfirmPassword: '[data-js-viewing-confirm-password]',
+            buttonForm: '[data-js-form-button]',
         }
 
-        // Здесь можно добавить отвязку других событий, если это необходимо.
-        // this.burgerButtonElement.removeEventListener('click', this.onBurgerButtonClick);
-        // document.body.removeEventListener('click', this.onBodyClick);
+        this.stateClasses = {
+            activeError: 'active-error',
+            activeViewing: 'active-viewing',
+        }
 
-        // if (this.signInCrossElement) {
-        //     this.signInCrossElement.removeEventListener('click', this.toggleSignInFormElement);
-        // }
-        // if (this.signUpCrossElement) {
-        //     this.signUpCrossElement.removeEventListener('click', this.toggleSignUpFormElement);
-        // }
 
-        // if (this.signUpLinkElement) {
-        //     this.signUpLinkElement.removeEventListener('click', this.toggleSignInFormElement);
-        //     this.signUpLinkElement.removeEventListener('click', this.toggleSignUpFormElement);
-        // }
+        this.fieldEmailElement = this.formElement.querySelector(this.selectors.fieldEmail);
+        this.fieldPasswordElement = this.formElement.querySelector(this.selectors.fieldPassword);
+        this.fieldConfirmPasswordElement = this.formElement.querySelector(this.selectors.fieldConfirmPassword);
+        this.inputNameElement = this.formElement.querySelector(this.selectors.inputName);
+        this.inputEmailElement = this.formElement.querySelector(this.selectors.inputEmail);
+        this.inputPasswordElement = this.formElement.querySelector(this.selectors.inputPassword);
+        this.inputConfirmPasswordElement = this.formElement.querySelector(this.selectors.inputConfirmPassword);
+        this.viewingPasswordElement = this.formElement.querySelector(this.selectors.viewingPassword);
+        this.viewingConfirmPasswordElement = this.formElement.querySelector(this.selectors.viewingConfirmPassword);
+        this.buttonFormElement = this.formElement.querySelector(this.selectors.buttonForm);
 
-        // if (this.signInLinkElement) {
-        //     this.signInLinkElement.removeEventListener('click', this.toggleSignUpFormElement);
-        //     this.signInLinkElement.removeEventListener('click', this.toggleSignInFormElement);
-        // }
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        if (this.buttonFormElement) {
+            this.buttonFormElement.addEventListener('click', this.checkingInputContents);
+        }
+
+        if (this.viewingPasswordElement) {
+            this.viewingPasswordElement.addEventListener('click', this.togglePasswordVisibility);
+        }
+
+        if (this.viewingConfirmPasswordElement) {
+            this.viewingConfirmPasswordElement.addEventListener('click', this.toggleConfirmPasswordVisibility)
+        }
+    }
+
+    checkingInputContents = () => {
+        this.emailContent = this.inputEmailElement ? this.inputEmailElement.value : '';
+        this.emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        this.passwordContent = this.inputPasswordElement ? this.inputPasswordElement.value : '';
+        this.passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+        //this.confirmPasswordContent = this.inputConfirmPasswordElement ? this.inputConfirmPasswordElement.value : '';
+
+        if (!this.emailRegex.test(this.emailContent)) {
+            this.fieldEmailElement.classList.add(this.stateClasses.activeError);
+        } else if (this.emailRegex.test(this.emailContent)) {
+            this.fieldEmailElement.classList.remove(this.stateClasses.activeError);
+        }
+
+        if (!this.passwordRegex.test(this.passwordContent)) {
+            this.fieldPasswordElement.classList.add(this.stateClasses.activeError);
+        } else if (this.passwordRegex.test(this.passwordContent)) {
+            this.fieldPasswordElement.classList.remove(this.stateClasses.activeError);
+        }
+
+        if(this.inputConfirmPasswordElement) {
+            this.confirmPasswordContent = this.inputConfirmPasswordElement ? this.inputConfirmPasswordElement.value : '';
+            if (this.passwordContent !== this.confirmPasswordContent) {
+                this.fieldConfirmPasswordElement.classList.add(this.stateClasses.activeError);
+            } else if (this.passwordContent === this.confirmPasswordContent) {
+                this.fieldConfirmPasswordElement.classList.remove(this.stateClasses.activeError);
+            }
+        }
+    }
+
+    togglePasswordVisibility = (event) => {
+        event.preventDefault();
+
+        if (this.inputPasswordElement) {
+            if (this.inputPasswordElement.type === 'password') {
+                this.inputPasswordElement.type = 'text';
+            } else {
+                this.inputPasswordElement.type = 'password';
+            }
+        }
+
+        this.viewingPasswordElement.classList.toggle(this.stateClasses.activeViewing);
+    }
+
+    toggleConfirmPasswordVisibility = (event) => {
+        event.preventDefault();
+
+        if (this.inputConfirmPasswordElement) {
+            if (this.inputConfirmPasswordElement.type === 'password') {
+                this.inputConfirmPasswordElement.type = 'text';
+            } else {
+                this.inputConfirmPasswordElement.type = 'password';
+            }
+        }
+
+        if(this.viewingConfirmPasswordElement) {
+            this.viewingConfirmPasswordElement.classList.toggle(this.stateClasses.activeViewing);
+        }
     }
 }
 

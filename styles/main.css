@@ -318,10 +318,12 @@ html.is-lock {
   touch-action: none;
 }
 html.lock-form {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: 100vh;
-  touch-action: none;
+  overflow: hidden;
+  height: 100vh; /* Важно для корректной работы на мобильных */
+  position: fixed; /* Предотвращает смещение контента */
+  width: 100%; /* Предотвращает смещение контента */
+  top: 0;
+  left: 0;
 }
 
 body {
@@ -1139,7 +1141,7 @@ select:-webkit-autofill {
   max-width: clamp(18.125rem, 14.1766528926rem + 16.1983471074vw, 30.375rem);
   flex-direction: column;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30.375rem;
@@ -1171,6 +1173,12 @@ select:-webkit-autofill {
     padding: 0.75rem 1.5rem;
   }
 }
+@media (width <= 30.06125rem) {
+  .registered__form {
+    padding: 0.4375rem 0.9375rem;
+    row-gap: 0.625rem;
+  }
+}
 .registered__title {
   padding-top: 1.25rem;
 }
@@ -1187,6 +1195,11 @@ select:-webkit-autofill {
   flex-direction: column;
   row-gap: 1.25rem;
   width: 100%;
+}
+@media (width <= 30.06125rem) {
+  .registered__body {
+    row-gap: 0.625rem;
+  }
 }
 .registered__signed {
   display: flex;
@@ -1233,7 +1246,7 @@ select:-webkit-autofill {
 @media (width <= 51.93625rem) {
   .registered__with {
     padding-block: 0.3125rem;
-    row-gap: 5;
+    row-gap: 0.625rem;
   }
 }
 .registered__alternative {

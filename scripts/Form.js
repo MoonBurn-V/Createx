@@ -1,36 +1,37 @@
 class Form {
-    
-    selectors = {
-        fieldEmail: '[data-js-field-email]',
-        fieldPassword: '[data-js-field-password]',
-        fieldConfirmPassword: '[data-js-field-confirm-password]',
-        inputName: '[data-js-input-name]',
-        inputEmail: '[data-js-input-email]',
-        inputPassword: '[data-js-input-password]',
-        inputConfirmPassword: '[data-js-input-confirm-password]',
-        viewingPassword: '[data-js-viewing-password]',
-        viewingConfirmPassword: '[data-js-viewing-confirm-password]',
-        buttonForm: '[data-js-form-button]',
-        buttonSignUp: '[data-js-sign-up-button]',
-    }
+    constructor(formElement) {
+        this.formElement = formElement;
 
-    stateClasses = {
-        activeError: 'active-error',
-        activeViewing: 'active-viewing',
-    }
+        this.selectors = {
+            fieldEmail: '[data-js-field-email]',
+            fieldPassword: '[data-js-field-password]',
+            fieldConfirmPassword: '[data-js-field-confirm-password]',
+            inputName: '[data-js-input-name]',
+            inputEmail: '[data-js-input-email]',
+            inputPassword: '[data-js-input-password]',
+            inputConfirmPassword: '[data-js-input-confirm-password]',
+            viewingPassword: '[data-js-viewing-password]',
+            viewingConfirmPassword: '[data-js-viewing-confirm-password]',
+            buttonForm: '[data-js-form-button]',
+        }
+
+        this.stateClasses = {
+            activeError: 'active-error',
+            activeViewing: 'active-viewing',
+        }
 
 
-    constructor() {
-        this.fieldEmailElement = document.querySelector(this.selectors.fieldEmail);
-        this.fieldPasswordElement = document.querySelector(this.selectors.fieldPassword);
-        this.fieldConfirmPasswordElement = document.querySelector(this.selectors.fieldConfirmPassword);
-        this.inputNameElement = document.querySelector(this.selectors.inputName);
-        this.inputEmailElement = document.querySelector(this.selectors.inputEmail);
-        this.inputPasswordElement = document.querySelector(this.selectors.inputPassword);
-        this.inputConfirmPasswordElement = document.querySelector(this.selectors.inputConfirmPassword);
-        this.viewingPasswordElement = document.querySelector(this.selectors.viewingPassword);
-        this.viewingConfirmPasswordElement = document.querySelector(this.selectors.viewingConfirmPassword);
-        this.buttonFormElement = document.querySelector(this.selectors.buttonForm);
+        this.fieldEmailElement = this.formElement.querySelector(this.selectors.fieldEmail);
+        this.fieldPasswordElement = this.formElement.querySelector(this.selectors.fieldPassword);
+        this.fieldConfirmPasswordElement = this.formElement.querySelector(this.selectors.fieldConfirmPassword);
+        this.inputNameElement = this.formElement.querySelector(this.selectors.inputName);
+        this.inputEmailElement = this.formElement.querySelector(this.selectors.inputEmail);
+        this.inputPasswordElement = this.formElement.querySelector(this.selectors.inputPassword);
+        this.inputConfirmPasswordElement = this.formElement.querySelector(this.selectors.inputConfirmPassword);
+        this.viewingPasswordElement = this.formElement.querySelector(this.selectors.viewingPassword);
+        this.viewingConfirmPasswordElement = this.formElement.querySelector(this.selectors.viewingConfirmPassword);
+        this.buttonFormElement = this.formElement.querySelector(this.selectors.buttonForm);
+
         this.bindEvents();
     }
 
@@ -103,11 +104,9 @@ class Form {
     }
 }
 
-// Получаем элементы форм
 const signInFormElement = document.querySelector('.sign-in .registered__form');
 const signUpFormElement = document.querySelector('.sign-up .registered__form');
 
-// Создаем экземпляры класса Form для каждой формы, если они существуют
 if (signInFormElement) {
     new Form(signInFormElement);
 }
