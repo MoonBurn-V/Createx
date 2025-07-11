@@ -1,17 +1,21 @@
 class Header {
     selectors = {
         root: '[data-js-header]',
+        body: '[data-js-header-body]',
         logo: '[data-js-header-logo]',
         overlay: '[data-js-header-overlay]',
+        headerLinck: '.header__menu-linck',
         burgerButton: '[data-js-burger-button]',
         signInForm: '[data-js-sign-in]',
         signUpForm: '[data-js-sign-up]',
         signInHeader: '[data-js-sign-in-header]',
         signUpHeader: '[data-js-sign-up-header]',
+        span:'[data-js-header-span]',
         signInCross: '[data-js-sign-in-cross]',
         signUpCross: '[data-js-sign-up-cross]',
         signInLink: '[data-js-sign-in-link]',
         signUpLink: '[data-js-sign-up-link]',
+        hero: '[data-js-hero]',
     }
 
     stateClasses = {
@@ -20,21 +24,27 @@ class Header {
         activeForm: 'active-form',
         lockForm: 'lock-form',
         isDimmed: 'dimmed',
+        fixed: 'fixed',
     }
 
     constructor() {
         this.rootElement = document.querySelector(this.selectors.root);
+        this.bodyElement = this.rootElement.querySelector(this.selectors.body);
         this.logoElement = this.rootElement.querySelector(this.selectors.logo);
+        this.logoElements = this.rootElement.querySelectorAll(this.selectors.logo + ' .logo__img');
         this.overlayElement = this.rootElement.querySelector(this.selectors.overlay);
+        this.headerLinckElements = document.querySelectorAll(this.selectors.headerLinck);
         this.burgerButtonElement = this.rootElement.querySelector(this.selectors.burgerButton);
         this.signInFormElement = document.querySelector(this.selectors.signInForm);
         this.signUpFormElement = document.querySelector(this.selectors.signUpForm);
         this.signInHeaderElement = document.querySelector(this.selectors.signInHeader);
         this.signUpHeaderElement = document.querySelector(this.selectors.signUpHeader);
+        this.spanElement = document.querySelector(this.selectors.span);
         this.signInCrossElement = document.querySelector(this.selectors.signInCross);
         this.signUpCrossElement = document.querySelector(this.selectors.signUpCross);
         this.signInLinkElement = document.querySelector(this.selectors.signInLink);
         this.signUpLinkElement = document.querySelector(this.selectors.signUpLink);
+        this.heroElement = document.querySelector(this.selectors.hero);
 
         this.isSmallScreen = window.innerWidth <= 830;
         this.bindEvents();
@@ -48,8 +58,56 @@ class Header {
             }
         });
 
-        this.formInstance = null; // Store Form instance
-        this.checkFormActivity(); // Initial check
+        this.formInstance = null;
+        this.checkFormActivity();
+
+        // Add scroll event listener for fixed header
+        this.scrollHandler = this.handleScroll.bind(this); // Bind the 'this' context
+        window.addEventListener('scroll', this.scrollHandler);
+
+        if (this.logoElements.length > 0) {
+            this.logoElements[0].classList.add(this.stateClasses.fixed);
+        }
+    }
+
+    // New method to handle scroll event
+    handleScroll() {
+        if (!this.heroElement) return; // Проверка на существование heroElement
+
+        const heroHeight = this.heroElement.offsetHeight;
+        const scrollPosition = window.scrollY || window.pageYOffset;
+
+        const toggleFixedClass = (element, shouldAdd) => {
+            if (shouldAdd) {
+                element.classList.add(this.stateClasses.fixed);
+            } else {
+                element.classList.remove(this.stateClasses.fixed);
+            }
+        };
+
+        if (scrollPosition >= heroHeight) {
+            this.rootElement.classList.add(this.stateClasses.fixed);
+            this.bodyElement.classList.add(this.stateClasses.fixed);
+            this.headerLinckElements.forEach(link => toggleFixedClass(link, true));
+            this.signInHeaderElement.classList.add(this.stateClasses.fixed);
+            this.signUpHeaderElement.classList.add(this.stateClasses.fixed);
+            this.spanElement.classList.add(this.stateClasses.fixed);
+            if (this.logoElements.length > 1) {
+                this.logoElements[1].classList.add(this.stateClasses.fixed); // Скрываем первый логотип
+                this.logoElements[0].classList.remove(this.stateClasses.fixed); // Показываем второй логотип
+            }
+        } else {
+            this.rootElement.classList.remove(this.stateClasses.fixed);
+            this.bodyElement.classList.remove(this.stateClasses.fixed);
+            this.headerLinckElements.forEach(link => toggleFixedClass(link, false));
+            this.signInHeaderElement.classList.remove(this.stateClasses.fixed);
+            this.signUpHeaderElement.classList.remove(this.stateClasses.fixed);
+            this.spanElement.classList.remove(this.stateClasses.fixed);
+            if (this.logoElements.length > 1) {
+                this.logoElements[1].classList.remove(this.stateClasses.fixed); // Показываем первый логотип
+                this.logoElements[0].classList.add(this.stateClasses.fixed); // Скрываем второй логотип
+            }
+        }
     }
 
     onBurgerButtonClick = () => {
@@ -158,8 +216,12 @@ class Header {
         if (this.signUpHeaderElement) {
             this.signUpHeaderElement.removeEventListener('click', this.toggleSignUpFormElement);
         }
+
+        // Remove scroll event listener when unbinding events (important for cleanup)
+        window.removeEventListener('scroll', this.scrollHandler);
     }
 }
+
 
 class Form {
     constructor(formElement) {

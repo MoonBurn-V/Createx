@@ -10,35 +10,36 @@
 </head>
 <body>
     <header class="header" data-js-header>
-        <div class="header__body">
+        <div class="header__body fixed" data-js-header-body>
             <div class="header__body-inner container">
                 <a class="header__logo logo" href="#" aria-label="Home" title="Home" data-js-header-logo>
                     <img class="logo__img" src="./img/logo-header.png" alt="" width="130" height="22">
+                    <img class="logo__img" src="./img/logo-darck.svg" alt="" width="130" height="22">
                 </a>
                 <div class="header__overlay" data-js-header-overlay>
                     <nav class="header__menu">
                         <ul class="header__menu-list">
                             <li class="header__menu-item">
-                                <a class="header__menu-linck" href="#">About Us</a>
+                                <a class="header__menu-linck" href="#" data-js-header-linck>About Us</a>
                             </li>
                             <li class="header__menu-item">
-                                <a class="header__menu-linck" href="#">Courses</a>
+                                <a class="header__menu-linck" href="#" data-js-header-linck>Courses</a>
                             </li>
                             <li class="header__menu-item">
-                                <a class="header__menu-linck" href="#">Events</a>
+                                <a class="header__menu-linck" href="#" data-js-header-linck>Events</a>
                             </li>
                             <li class="header__menu-item">
-                                <a class="header__menu-linck" href="#">Blog</a>
+                                <a class="header__menu-linck" href="#" data-js-header-linck>Blog</a>
                             </li>
                             <li class="header__menu-item">
-                                <a class="header__menu-linck" href="#">Contacts</a>
+                                <a class="header__menu-linck" href="#" data-js-header-linck>Contacts</a>
                             </li>
                         </ul>
                     </nav>
                     <div class="header__action action">
                         <a class="action__consultation-lick button button--accent" href="#">Get consultation</a>
                         <div class="action__authorization">
-                            <button class="action__log-in" href="#" data-js-sign-in-header>
+                            <button class="action__log-in" data-js-sign-in-header>
                                 <div class="icon icon__user">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0002 2.70866C8.38936 2.70866 7.08353 4.0145 7.08353 5.62533C7.08353 7.23616 8.38936 8.54199 10.0002 8.54199C11.611 8.54199 12.9169 7.23616 12.9169 5.62533C12.9169 4.0145 11.611 2.70866 10.0002 2.70866ZM5.41686 5.62533C5.41686 3.09402 7.46889 1.04199 10.0002 1.04199C12.5315 1.04199 14.5835 3.09402 14.5835 5.62533C14.5835 8.15663 12.5315 10.2087 10.0002 10.2087C7.46889 10.2087 5.41686 8.15663 5.41686 5.62533Z" fill="#424551"/>
@@ -46,8 +47,8 @@
                                     </svg> <span>Log in</span>
                                 </div>
                             </button>
-                            <span>/</span>
-                            <button class="action__registr" href="#" data-js-sign-up-header>Register</button>
+                            <span class="action__span" data-js-header-span>/</span>
+                            <button class="action__registr" data-js-sign-up-header>Register</button>
                         </div>
                     </div>
                 </div>
@@ -62,7 +63,7 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero" data-js-hero>
             <div class="hero__container container">
                 <div class="hero__main">
                     <div class="hero__body">
@@ -104,8 +105,6 @@
                     </ul>
                 </div>
             </div>
-
-
         </section>
 
         <section class="section">
@@ -1432,7 +1431,7 @@
                 <nav class="footer__menu">
                     <div class="footer__menu-column column--1">
                         <a class="footer__menu-logo logo" href="#" aria-label="Home" title="Home">
-                            <img class="logo__img" src="./img/footer-logo.svg" alt="" width="130" height="22">
+                            <img class="logo__img fixed" src="./img/logo-darck.svg" alt="" width="130" height="22"> <!--попробуй убрать fixed-->>
                         </a>
                         <ul class="footer__menu-list">
                             <li class="footer__menu-item">

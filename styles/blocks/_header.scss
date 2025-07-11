@@ -8,14 +8,39 @@
   padding-top: rem(20);
   z-index: 1000;
 
+  &.fixed{
+    background-color: var(--color-gray-900);
+    box-shadow: rem(0) rem(2) rem(20) rem(-1) rgba(0, 0, 0, 5);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 0;
+  }
+
   @include laptop{
     padding-top: 0;
     padding-right: rem(10);
     padding-left: rem(10);
   }
 
+  .logo{
+    &__img{
+      display: none;
+
+      &.fixed{
+        display: block;
+      }
+    }
+  }
+
   &__body{
     padding-block: rem(13);
+
+    &.fixed{
+      padding-block: rem(5);
+    }
 
     &-inner{
       display: flex;
@@ -84,6 +109,11 @@
       column-gap: rem(40);
       padding-block: rem(13);
 
+      // &.fixed{
+      //   color: var(--color-light);
+      //   opacity: 0.6;
+      // }
+
       @include tablet{
         column-gap: rem(25)
       }
@@ -95,6 +125,15 @@
     }
 
     &-linck{
+      &.fixed{
+        color: var(--color-light);
+        opacity: 0.6;
+
+        &:hover{
+          opacity: 1;
+        }
+      }
+
       &.is-active{
         color: var(--color-accent);
       }
@@ -141,6 +180,16 @@
       background: none;
       padding-top: rem(4);
 
+      &.fixed{
+        color: var(--color-light);
+        opacity: 0.6;
+
+        &:hover{
+          color: var(--color-light);
+          opacity: 1;
+        }
+      }
+
       &:hover{
         color: var(--color-accent);
       }
@@ -155,9 +204,31 @@
       border: none;
       background: none;
 
+      &.fixed{
+        color: var(--color-light);
+        opacity: 0.6;
+
+        &:hover{
+          color: var(--color-light);
+          opacity: 1;
+        }
+      }
+
       &:hover{
         color: var(--color-accent);
       }
-    }   
+    } 
+
+    &__span{
+      &.fixed{
+        color: var(--color-light);
+        opacity: 0.6;
+
+        &:hover{
+          color: var(--color-light);
+          opacity: 1;
+        }
+      }
+    }
   }
 }
