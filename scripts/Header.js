@@ -53,6 +53,7 @@ class Header {
             const newIsSmallScreen = window.innerWidth <= 830;
             if (newIsSmallScreen !== this.isSmallScreen) {
                 this.isSmallScreen = newIsSmallScreen;
+                this.updateFixedClasses(); // Update classes on resize
                 this.unbindEvents();
                 this.bindEvents();
             }
@@ -68,6 +69,8 @@ class Header {
         if (this.logoElements.length > 0) {
             this.logoElements[0].classList.add(this.stateClasses.fixed);
         }
+
+        this.updateFixedClasses(); // Initial update of classes
     }
 
     // New method to handle scroll event
@@ -88,10 +91,13 @@ class Header {
         if (scrollPosition >= heroHeight) {
             this.rootElement.classList.add(this.stateClasses.fixed);
             this.bodyElement.classList.add(this.stateClasses.fixed);
-            this.headerLinckElements.forEach(link => toggleFixedClass(link, true));
-            this.signInHeaderElement.classList.add(this.stateClasses.fixed);
-            this.signUpHeaderElement.classList.add(this.stateClasses.fixed);
-            this.spanElement.classList.add(this.stateClasses.fixed);
+            if (!this.isSmallScreen) {  // Check screen size before adding fixed class
+                this.headerLinckElements.forEach(link => toggleFixedClass(link, true));
+                this.signInHeaderElement.classList.add(this.stateClasses.fixed);
+                this.signUpHeaderElement.classList.add(this.stateClasses.fixed);
+                this.spanElement.classList.add(this.stateClasses.fixed);
+            }
+
             if (this.logoElements.length > 1) {
                 this.logoElements[1].classList.add(this.stateClasses.fixed); // Скрываем первый логотип
                 this.logoElements[0].classList.remove(this.stateClasses.fixed); // Показываем второй логотип
@@ -99,14 +105,40 @@ class Header {
         } else {
             this.rootElement.classList.remove(this.stateClasses.fixed);
             this.bodyElement.classList.remove(this.stateClasses.fixed);
-            this.headerLinckElements.forEach(link => toggleFixedClass(link, false));
-            this.signInHeaderElement.classList.remove(this.stateClasses.fixed);
-            this.signUpHeaderElement.classList.remove(this.stateClasses.fixed);
-            this.spanElement.classList.remove(this.stateClasses.fixed);
+
+            if (!this.isSmallScreen) {  // Check screen size before removing fixed class
+                this.headerLinckElements.forEach(link => toggleFixedClass(link, false));
+                this.signInHeaderElement.classList.remove(this.stateClasses.fixed);
+                this.signUpHeaderElement.classList.remove(this.stateClasses.fixed);
+                this.spanElement.classList.remove(this.stateClasses.fixed);
+            }
+
             if (this.logoElements.length > 1) {
                 this.logoElements[1].classList.remove(this.stateClasses.fixed); // Показываем первый логотип
                 this.logoElements[0].classList.add(this.stateClasses.fixed); // Скрываем второй логотип
             }
+        }
+    }
+
+    // New method to update fixed classes based on screen size
+    updateFixedClasses() {
+        const toggleFixedClass = (element, shouldAdd) => {
+            if (shouldAdd) {
+                element.classList.add(this.stateClasses.fixed);
+            } else {
+                element.classList.remove(this.stateClasses.fixed);
+            }
+        };
+
+        if (this.isSmallScreen) {
+            this.headerLinckElements.forEach(link => toggleFixedClass(link, false));
+            this.signInHeaderElement.classList.remove(this.stateClasses.fixed);
+            this.signUpHeaderElement.classList.remove(this.stateClasses.fixed);
+            this.spanElement.classList.remove(this.stateClasses.fixed);
+        }
+        else {
+            // Reapply fixed class if it should be fixed based on scroll position
+            this.handleScroll();
         }
     }
 
