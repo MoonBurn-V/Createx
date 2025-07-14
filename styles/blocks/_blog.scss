@@ -53,7 +53,7 @@
         }
     }
 
-    &__badge{ // иконки не по центру
+    &__badge{
         position: absolute;
         background: var(--color-light);
         top: rem(12);
@@ -63,8 +63,6 @@
         border-radius: rem(4);
         padding: rem(0) rem(8);
         align-self: flex-start;
-        //place-content: center;
-        //white-space: nowrap;
     }
 
     &__content{
@@ -73,16 +71,17 @@
         row-gap: rem(8);
 
         &-meta{
-            display: inline-flex;
+            display: flex;
             column-gap: rem(12);
             padding-top: rem(16);
             color: var(--color-gray-700);
 
             &-item{
                 display: flex;
-                column-gap: rem(12);
+                column-gap: rem(5);
                 place-items: center;
                 text-align: center;
+                height: rem(16);
                 padding-left: rem(12);
                 line-height: 0;
                 border-left: rem(1) solid var(--color-gray-700);
@@ -91,7 +90,7 @@
                     border-left: none;
                     padding-left: 0;
                 }
-            }
+            }        
         }
 
         &-discription{
@@ -100,6 +99,12 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
             padding-right: rem(10);
+        }
+    }
+
+    &__icon{
+        @include mobile{
+            display: none;
         }
     }
 

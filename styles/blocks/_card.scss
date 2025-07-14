@@ -32,6 +32,7 @@
             padding-right: fluid(32, 15);
 
             @include mobile-s{
+                width: rem(200);
                 row-gap: fluid(10, 5);
                 padding-block: rem(15);
                 padding-right: rem(5);

@@ -1,6 +1,8 @@
 @use '../helpers' as *;
 
 .subscribe{
+    display: flex;
+    flex-direction: column;
     padding-top: fluid(120, 60);
     place-items: center;
 

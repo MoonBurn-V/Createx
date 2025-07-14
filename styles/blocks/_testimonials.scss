@@ -50,10 +50,11 @@
             background: var(--color-light);
             padding: fluid(64, 5) fluid(105, 10);
             width: fluid(1010, 300);
-            overflow-x: auto;
+            overflow-x: scroll;
             scroll-behavior: smooth;
             overflow-y: hidden;
             scroll-snap-type: x mandatory;
+            scrollbar-width: none;
 
             &::-webkit-scrollbar{
                 display: none;

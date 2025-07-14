@@ -928,7 +928,7 @@ select:-webkit-autofill {
   column-gap: 1.5rem;
 }
 .hero__achievements {
-  padding-bottom: 5rem;
+  padding-bottom: clamp(3.125rem, 2.0774793388rem + 4.2975206612vw, 6.375rem);
 }
 .hero__achievements-list {
   display: flex;
@@ -1455,7 +1455,7 @@ select:-webkit-autofill {
   }
 }
 .section__wrapper.events {
-  background: url("../../img/hero-background.jpg") center no-repeat;
+  background: url("../../img/Events-background3.svg") center no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
 }
@@ -1620,6 +1620,7 @@ select:-webkit-autofill {
 }
 @media (width <= 30.06125rem) {
   .card__body-inner {
+    width: 12.5rem;
     row-gap: clamp(0.3125rem, 0.2117768595rem + 0.4132231405vw, 0.625rem);
     padding-block: 0.9375rem;
     padding-right: 0.3125rem;
@@ -2184,10 +2185,11 @@ select:-webkit-autofill {
   background: var(--color-light);
   padding: clamp(0.3125rem, -0.8760330579rem + 4.8760330579vw, 4rem) clamp(0.625rem, -1.2887396694rem + 7.8512396694vw, 6.5625rem);
   width: clamp(18.75rem, 4.4473140496rem + 58.6776859504vw, 63.125rem);
-  overflow-x: auto;
+  overflow-x: scroll;
   scroll-behavior: smooth;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
 .testimonials__body-inner::-webkit-scrollbar {
   display: none;
@@ -2326,16 +2328,17 @@ select:-webkit-autofill {
   row-gap: 0.5rem;
 }
 .blog__content-meta {
-  display: inline-flex;
+  display: flex;
   column-gap: 0.75rem;
   padding-top: 1rem;
   color: var(--color-gray-700);
 }
 .blog__content-meta-item {
   display: flex;
-  column-gap: 0.75rem;
+  column-gap: 0.3125rem;
   place-items: center;
   text-align: center;
+  height: 1rem;
   padding-left: 0.75rem;
   line-height: 0;
   border-left: 0.0625rem solid var(--color-gray-700);
@@ -2351,11 +2354,18 @@ select:-webkit-autofill {
   overflow: hidden;
   padding-right: 0.625rem;
 }
+@media (width <= 51.93625rem) {
+  .blog__icon {
+    display: none;
+  }
+}
 .blog__link {
   padding-top: clamp(0.5625rem, 0.4214876033rem + 0.5785123967vw, 1rem);
 }
 
 .subscribe {
+  display: flex;
+  flex-direction: column;
   padding-top: clamp(3.75rem, 2.541322314rem + 4.958677686vw, 7.5rem);
   place-items: center;
 }
