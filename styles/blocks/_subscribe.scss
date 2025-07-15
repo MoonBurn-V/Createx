@@ -13,7 +13,20 @@
     }
 
     &__subtitle{
+        display: none;
         padding-bottom: rem(8);
+
+        &.visible{
+            display: block;
+        }
+    }
+
+    &__title{
+        display: none;
+
+        &.visible{
+            display: block;
+        }
     }
 
     &__body{
@@ -27,5 +40,13 @@
             flex-direction: column;
             row-gap: rem(30);
         }
+    }
+
+    &__wrapper{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(1);
+        width: 100%;
     }
 }

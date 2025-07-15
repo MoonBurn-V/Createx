@@ -396,7 +396,7 @@
             </div>
         </section>
 
-        <section class="section"> <!--фоновое изображение и ширина item-->
+        <section class="section">
             <div class="section__wrapper events">
                 <div class="events__body container">
                     <header class="events__header">
@@ -1214,11 +1214,19 @@
             <div class="section__wrapper subscribe">
                 <header class="subscribe__header">
                     <div class="subscribe__subtitle">Don’t miss anything</div>
-                    <h1 class="subscribe__title">Subscribe to the Createx School announcements</h1>
+                    <div class="subscribe__title-wrapper" data-js-subscribe-headers>
+                        <h1 class="subscribe__title">Subscribe to the Createx School announcements</h1>
+                        <h1 class="subscribe__title">Now you are subscribed!</h1>
+                    </div>
                 </header>
                 <form class="subscribe__body container">
-                    <input class="field__control" type="email" placeholder="Your working email">
-                    <button class="field__button button button--accent">Subscribe</button>
+                    <div class="subscribe__wrapper">
+                        <input class="field__control" type="email" placeholder="Your working email" data-js-email-input>
+                        <div class="field__error" data-js-error-message>
+                            <p>Incorrect email</p>
+                        </div>
+                    </div>
+                    <button class="field__button button button--accent" type="submit" data-js-btn-submit>Subscribe</button>
                 </form>
             </div>
         </section>
@@ -1432,13 +1440,13 @@
     </section>
 
 
-    <footer class="footer"> <!--добавить иконке стрелки функцию отправки почты наверное-->
+    <footer class="footer">
         <div class="footer__inner container">
             <div class="footer__body">
                 <nav class="footer__menu">
                     <div class="footer__menu-column column--1">
                         <a class="footer__menu-logo logo" href="#" aria-label="Home" title="Home">
-                            <img class="logo__img fixed" src="./img/logo-darck.svg" alt="" width="130" height="22"> <!--попробуй убрать fixed-->>
+                            <img class="logo__img" src="./img/logo-darck.svg" alt="" width="130" height="22">
                         </a>
                         <ul class="footer__menu-list">
                             <li class="footer__menu-item">
@@ -1497,9 +1505,9 @@
                                         <div class="icon icon__linked-In">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <g opacity="0.6">
-                                                <path d="M21.995 22L22 21.9992V14.6642C22 11.0758 21.2275 8.31167 17.0325 8.31167C15.0158 8.31167 13.6625 9.41833 13.11 10.4675H13.0517V8.64667H9.07416V21.9992H13.2158V15.3875C13.2158 13.6467 13.5458 11.9633 15.7017 11.9633C17.8258 11.9633 17.8575 13.95 17.8575 15.4992V22H21.995Z" fill="white"/>
-                                                <path d="M2.32999 8.6475H6.47666V22H2.32999V8.6475Z" fill="white"/>
-                                                <path d="M4.40167 2C3.07583 2 2 3.07583 2 4.40167C2 5.7275 3.07583 6.82583 4.40167 6.82583C5.7275 6.82583 6.80333 5.7275 6.80333 4.40167C6.8025 3.07583 5.72667 2 4.40167 2Z" fill="white"/>
+                                                    <path d="M21.995 22L22 21.9992V14.6642C22 11.0758 21.2275 8.31167 17.0325 8.31167C15.0158 8.31167 13.6625 9.41833 13.11 10.4675H13.0517V8.64667H9.07416V21.9992H13.2158V15.3875C13.2158 13.6467 13.5458 11.9633 15.7017 11.9633C17.8258 11.9633 17.8575 13.95 17.8575 15.4992V22H21.995Z" fill="white"/>
+                                                    <path d="M2.32999 8.6475H6.47666V22H2.32999V8.6475Z" fill="white"/>
+                                                    <path d="M4.40167 2C3.07583 2 2 3.07583 2 4.40167C2 5.7275 3.07583 6.82583 4.40167 6.82583C5.7275 6.82583 6.80333 5.7275 6.80333 4.40167C6.8025 3.07583 5.72667 2 4.40167 2Z" fill="white"/>
                                                 </g>
                                             </svg>
                                         </div>
@@ -1509,7 +1517,7 @@
                         </ul>
                     </div>
                     <div class="footer__menu-column column--2">
-                        <h6 class="footer__menu-column-title">SITE MAP</h6>
+                        <h6 class="footer__menu-column-title visible">SITE MAP</h6>
                         <ul class="footer__menu-list">
                             <li class="footer__menu-item">
                                 <a href="#" class="footer__menu-link">About Us</a>
@@ -1529,7 +1537,7 @@
                         </ul>
                     </div>
                     <div class="footer__menu-column column--3">
-                        <h6 class="footer__menu-column-title">COURSES</h6>
+                        <h6 class="footer__menu-column-title visible">COURSES</h6>
                         <ul class="footer__menu-list">
                             <li class="footer__menu-item">
                                 <a href="#" class="footer__menu-link">Marketing</a>
@@ -1549,7 +1557,7 @@
                         </ul>
                     </div>
                     <div class="footer__menu-column column--4">
-                        <h6 class="footer__menu-column-title">CONTACT US</h6>
+                        <h6 class="footer__menu-column-title visible">CONTACT US</h6>
                         <ul class="footer__menu-list">
                             <li class="footer__menu-item">
                                 <a class="footer__menu-link" href="tel:+74055550128">
@@ -1572,20 +1580,28 @@
                         </ul>
                     </div>
                     <div class="footer__menu-column column--5">
-                        <h6 class="footer__menu-column-title">SIGN UP TO OUR NEWSLETTER</h6>
+                        <div class="footer__menu-title-wrapper" data-js-footer-headers>
+                            <h6 class="footer__menu-column-title visible">SIGN UP TO OUR NEWSLETTER</h6>
+                            <h6 class="footer__menu-column-title">NOW YOU ARE SUBSCRIBED!</h6>
+                        </div>
                         <ul class="footer__menu-list">
                             <li class="footer__menu-item">
-                                <div class="footer__menu-cell">
-                                    <input class="footer__menu-input" id="email" placeholder="Email address" type="email">
-                                    <span class="icon icon__footer-right">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.86193 4.52861C10.1223 4.26826 10.5444 4.26826 10.8047 4.52861L13.8047 7.52861C14.0651 7.78896 14.0651 8.21107 13.8047 8.47141L10.8047 11.4714C10.5444 11.7318 10.1223 11.7318 9.86193 11.4714C9.60158 11.2111 9.60158 10.789 9.86193 10.5286L11.7239 8.66668H2.66667C2.29848 8.66668 2 8.3682 2 8.00001C2 7.63182 2.29848 7.33334 2.66667 7.33334H11.7239L9.86193 5.47141C9.60158 5.21107 9.60158 4.78896 9.86193 4.52861Z" fill="white"/>
-                                        </svg>
-                                    </span>
-                                </div>
+                                <form class="footer__menu-cell">
+                                    <input class="footer__menu-input" id="email" placeholder="Email address" type="email" data-js-email-input>
+                                    <button class="footer__menu-button" type="submit" data-js-btn-submit>
+                                        <div class="icon icon__footer-right">
+                                            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.86193 4.52861C10.1223 4.26826 10.5444 4.26826 10.8047 4.52861L13.8047 7.52861C14.0651 7.78896 14.0651 8.21107 13.8047 8.47141L10.8047 11.4714C10.5444 11.7318 10.1223 11.7318 9.86193 11.4714C9.60158 11.2111 9.60158 10.789 9.86193 10.5286L11.7239 8.66668H2.66667C2.29848 8.66668 2 8.3682 2 8.00001C2 7.63182 2.29848 7.33334 2.66667 7.33334H11.7239L9.86193 5.47141C9.60158 5.21107 9.60158 4.78896 9.86193 4.52861Z" fill="white"/>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </form>
+                                <div class="field__error" data-js-error-message>
+                                    <p>Incorrect email</p>
+                                </div>                                
                             </li>
                             <li class="footer__menu-item">
-                                <p class="footer__menu-subscribe">*Subscribe to our newsletter to receive communications and early updates from Createx SEO Agency.</p>
+                                <p class="footer__menu-subscribe visible" data-js-footer-recommendation>*Subscribe to our newsletter to receive communications and early updates from Createx SEO Agency.</p>
                             </li>
                         </ul>
                     </div>
