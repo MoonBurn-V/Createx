@@ -1208,12 +1208,17 @@ select:-webkit-autofill {
     align-items: center;
   }
 }
-.footer__extra-link {
+.footer__extra-button {
+  background: none;
+  border: none;
   color: var(--color-light);
   font-size: 0.75rem;
   font-weight: 700;
   padding-top: 0.1875rem;
   white-space: nowrap;
+}
+.footer__extra-button:hover {
+  color: var(--color-accent);
 }
 .footer__copyright {
   color: var(--color-light);
