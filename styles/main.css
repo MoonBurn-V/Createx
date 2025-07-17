@@ -1958,6 +1958,9 @@ select:-webkit-autofill {
   }
 }
 
+.certificate {
+  place-items: center;
+}
 .certificate__body {
   position: relative;
   display: flex;

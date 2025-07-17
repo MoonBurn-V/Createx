@@ -1,6 +1,8 @@
 @use '../helpers' as *;
 
 .certificate{
+    place-items: center;
+
     &__body{
         position: relative;
         display: flex;
