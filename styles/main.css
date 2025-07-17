@@ -277,6 +277,10 @@ section h1, h2 {
   }
 }
 
+.section-mrgin {
+  margin-bottom: clamp(2.5rem, -0.3202479339rem + 11.5702479339vw, 11.25rem);
+}
+
 .circle-icon {
   --circleSize: 3.25rem;
   --circleMarginLeft: 1.25rem;
@@ -333,28 +337,6 @@ body {
 main {
   background-color: var(--color-light);
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  row-gap: 0; /* Лучше использовать gap вместо row-gap для большей совместимости */
-  gap: 0;
-}
-
-main section {
-  margin-bottom: clamp(2.5rem, -0.3202479339rem + 11.5702479339vw, 11.25rem); /* общий отступ */
-}
-
-/* Убираем отступ только у последней секции */
-main section:last-child {
-  margin-bottom: 0;
-}
-
-main section.certificate {
-  margin-bottom: 0 !important;
-}
-
-/* Дополнительно:  Если нужно переопределить отступ для секций с классом "testimonials" */
-main section.testimonials {
-  margin-bottom: 0 !important; /* Используйте !important осторожно */
 }
 
 h1, .h1,

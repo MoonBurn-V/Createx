@@ -28,33 +28,10 @@ body {
 
 }
 
-main { //работа с ми не должна быть в глобалс ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+main {
   background-color: var(--color-light);
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  row-gap: 0; /* Лучше использовать gap вместо row-gap для большей совместимости */
-  gap: 0;
 }
-
-main section {
-  margin-bottom: fluid(180, 40); /* общий отступ */
-}
-
-/* Убираем отступ только у последней секции */
-main section:last-child {
-  margin-bottom: 0;
-}
-
-main section.certificate {
-  margin-bottom: 0 !important;
-}
-
-/* Дополнительно:  Если нужно переопределить отступ для секций с классом "testimonials" */
-main section.testimonials {
-  margin-bottom: 0 !important; /* Используйте !important осторожно */
-}
-
 
 h1, .h1,
 h2, .h2,
