@@ -11,9 +11,20 @@ class Carousel {
         this.carousels = [];
 
         const cardContainerElements = document.querySelectorAll(this.selectors.cardContainer);
-        cardContainerElements.forEach((container, index) => {
-            this.carousels.push(new CarouselInstance(container, index, this));
-        });
+        const containerIndexes = Array.from(cardContainerElements).map(el => parseInt(el.getAttribute('index')));
+        const hasCarousel0 = containerIndexes.includes(0);
+        const hasCarousel1 = containerIndexes.includes(1);
+
+        if (hasCarousel0 || (hasCarousel1 && !hasCarousel0)) {
+            cardContainerElements.forEach((container, index) => {
+                this.carousels.push(new CarouselInstance(container, parseInt(container.getAttribute('index')), this));
+            });
+        } else if (hasCarousel1) {
+            const container = document.querySelector('[data-js-card-container][index="1"]');
+            if (container) {
+                this.carousels.push(new CarouselInstance(container, 1, this));
+            }
+        }
     }
 }
 
@@ -87,7 +98,6 @@ class CarouselInstance {
     }
 
     isVerticalScroll = (event) => {
-        // Проверяем, больше ли абсолютное значение изменения по оси Y, чем по оси X
         return Math.abs(event.deltaY) > Math.abs(event.deltaX);
     }
 }

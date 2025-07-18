@@ -1,3 +1,4 @@
+
 class Header {
     selectors = {
         root: '[data-js-header]',
@@ -53,7 +54,7 @@ class Header {
             const newIsSmallScreen = window.innerWidth <= 830;
             if (newIsSmallScreen !== this.isSmallScreen) {
                 this.isSmallScreen = newIsSmallScreen;
-                this.updateFixedClasses(); // Update classes on resize
+                this.updateFixedClasses();
                 this.unbindEvents();
                 this.bindEvents();
             }
@@ -62,23 +63,19 @@ class Header {
         this.formInstance = null;
         this.checkFormActivity();
 
-        // Add scroll event listener for fixed header
-        this.scrollHandler = this.handleScroll.bind(this); // Bind the 'this' context
+        this.scrollHandler = this.handleScroll.bind(this);
         window.addEventListener('scroll', this.scrollHandler);
 
         if (this.logoElements.length > 0) {
             this.logoElements[0].classList.add(this.stateClasses.fixed);
         }
 
-        this.updateFixedClasses(); // Initial update of classes
+        this.updateFixedClasses();
     }
 
-    // New method to handle scroll event
     handleScroll() {
-        if (!this.heroElement) return; // Проверка на существование heroElement
-
-        const heroHeight = this.heroElement.offsetHeight;
         const scrollPosition = window.scrollY || window.pageYOffset;
+        const fixedThreshold = 300;
 
         const toggleFixedClass = (element, shouldAdd) => {
             if (shouldAdd) {
@@ -88,10 +85,18 @@ class Header {
             }
         };
 
-        if (scrollPosition >= heroHeight) {
+        let shouldBeFixed = scrollPosition >= fixedThreshold;
+
+        if (this.heroElement) {
+            const heroHeight = this.heroElement.offsetHeight;
+            shouldBeFixed = scrollPosition >= heroHeight; // Override if hero exists
+        }
+
+
+        if (shouldBeFixed) {
             this.rootElement.classList.add(this.stateClasses.fixed);
             this.bodyElement.classList.add(this.stateClasses.fixed);
-            if (!this.isSmallScreen) {  // Check screen size before adding fixed class
+            if (!this.isSmallScreen) {
                 this.headerLinckElements.forEach(link => toggleFixedClass(link, true));
                 this.signInHeaderElement.classList.add(this.stateClasses.fixed);
                 this.signUpHeaderElement.classList.add(this.stateClasses.fixed);
@@ -99,14 +104,14 @@ class Header {
             }
 
             if (this.logoElements.length > 1) {
-                this.logoElements[1].classList.add(this.stateClasses.fixed); // Скрываем первый логотип
-                this.logoElements[0].classList.remove(this.stateClasses.fixed); // Показываем второй логотип
+                this.logoElements[1].classList.add(this.stateClasses.fixed);
+                this.logoElements[0].classList.remove(this.stateClasses.fixed);
             }
         } else {
             this.rootElement.classList.remove(this.stateClasses.fixed);
             this.bodyElement.classList.remove(this.stateClasses.fixed);
 
-            if (!this.isSmallScreen) {  // Check screen size before removing fixed class
+            if (!this.isSmallScreen) {
                 this.headerLinckElements.forEach(link => toggleFixedClass(link, false));
                 this.signInHeaderElement.classList.remove(this.stateClasses.fixed);
                 this.signUpHeaderElement.classList.remove(this.stateClasses.fixed);
@@ -114,13 +119,12 @@ class Header {
             }
 
             if (this.logoElements.length > 1) {
-                this.logoElements[1].classList.remove(this.stateClasses.fixed); // Показываем первый логотип
-                this.logoElements[0].classList.add(this.stateClasses.fixed); // Скрываем второй логотип
+                this.logoElements[1].classList.remove(this.stateClasses.fixed);
+                this.logoElements[0].classList.add(this.stateClasses.fixed);
             }
         }
     }
 
-    // New method to update fixed classes based on screen size
     updateFixedClasses() {
         const toggleFixedClass = (element, shouldAdd) => {
             if (shouldAdd) {
@@ -137,7 +141,6 @@ class Header {
             this.spanElement.classList.remove(this.stateClasses.fixed);
         }
         else {
-            // Reapply fixed class if it should be fixed based on scroll position
             this.handleScroll();
         }
     }
@@ -249,7 +252,6 @@ class Header {
             this.signUpHeaderElement.removeEventListener('click', this.toggleSignUpFormElement);
         }
 
-        // Remove scroll event listener when unbinding events (important for cleanup)
         window.removeEventListener('scroll', this.scrollHandler);
     }
 }
