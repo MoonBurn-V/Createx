@@ -17,10 +17,26 @@
             row-gap: rem(15);
         }
 
-    }
+        &.three-column{
+            grid-template-columns: repeat(3, rem(390));
+            gap: rem(30);
 
-    &.horisontal{
-        display: flex;
+            @include laptop-s{
+                grid-template-columns: repeat(2, rem(350));
+            }
+
+            @include tablet{
+                display: grid;
+                grid-template-columns: repeat(2, rem(350));
+                gap: rem(30);
+            }
+
+            @include mobile{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
     }
 
     &__body{
@@ -30,6 +46,24 @@
             row-gap: rem(20);
             padding-block: fluid(32, 15);
             padding-right: fluid(32, 15);
+
+            &.vertical{
+                padding-left: rem(24);
+
+                @include mobile{
+                    padding-left: 0;
+                    padding-right: 0;
+                    width: rem(400);
+                    row-gap: rem(10);
+                    padding-block: 0;
+                    row-gap: rem(20);
+                    //place-items: center;
+                }
+
+                @include mobile-s{
+                    width: rem(300);
+                }
+            }
 
             @include mobile-s{
                 width: rem(200);
@@ -58,6 +92,16 @@
         @include mobile-s{
             width: rem(150);
         }
+
+        &.vertical{
+            @include mobile{
+                width: rem(400);
+            }
+
+            @include mobile-s{
+                width: rem(300);
+            }
+        }
     }
 
     &__item{
@@ -65,8 +109,8 @@
         border-radius: rem(4);
         cursor: pointer;
         box-shadow: 
-        0 4px 4px -4px rgba(30, 33, 44, 0.03), 
-        0 12px 10px -6px rgba(154, 156, 165, 0.04), 
+        0 4px 4px -4px rgba(30, 33, 44, 0.03),
+        0 12px 10px -6px rgba(154, 156, 165, 0.04),
         0 30px 24px -10px rgba(154, 156, 165, 0.05), 
         0 80px 80px -20px rgba(154, 156, 165, 0.08);
 
@@ -82,6 +126,17 @@
     &__title{
         @include mobile-s{
             font-size: rem(14);
+        }
+
+        &.vertical{
+            @include mobile{
+                font-size: rem(18);
+                text-align: center;
+            }
+
+            @include mobile-s{
+                font-size: rem(16);
+            }
         }
     }
 
@@ -110,6 +165,23 @@
         &.pink{
             background-color: var(--color-pink);
         }
+
+        &.purple{
+            background-color: var(--color-purple);
+        }
+
+        &.vertical{
+            @include fluid-text(16, 14);
+
+            @include mobile{
+                display: flex;
+                text-align: center;
+                align-self: stretch;
+                justify-content: center;
+                border-radius: 0;
+                font-size: rem(16);
+            }
+        }
     }
 
     &__info{
@@ -118,6 +190,17 @@
 
         @include mobile-s{
             flex-direction: column;
+        }
+
+        &.vertical{
+            width: rem(300);
+            padding-bottom: rem(15);
+
+            @include mobile{
+                width: 100%;
+                flex-direction: row;
+                place-content: center;
+            }
         }
     }
 
@@ -128,17 +211,17 @@
     &__separator{
         color: var(--color-gray-700);
 
-        @include mobile-s{
-            display: none;
-        }
+        // @include mobile-s{
+        //     display: none;
+        // }
     }
 
     &__speaker{
         color: var(--color-gray-700);
         font-weight: 400;
 
-        @include mobile-s{
-            border-top: rem(1) solid var(--color-gray-700);
-        }
+        // @include mobile-s{
+        //     border-top: rem(1) solid var(--color-gray-700);
+        // }
     }
 }

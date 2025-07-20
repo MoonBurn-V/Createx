@@ -4,10 +4,35 @@
     display: flex;
     flex-direction: column;
     row-gap: fluid(60, 15);
+    place-items: center;
+
+    &__body{
+        display: flex;
+        column-gap: fluid(100, 10);
+
+        &.cours{
+            width: fluid(1230, 300);
+
+            @include laptop-s{
+                flex-direction: column;
+                row-gap: rem(30);
+            }
+        }
+    }
 
     &__list{
         display: flex;
         justify-content: center;
+
+        &.cours{
+            display: flex;
+            column-gap: rem(12);
+
+            @include mobile-s{
+                display: grid;
+                grid-template-columns: repeat(2, rem(130));
+            }
+        }
 
         @include mobile{
             flex-wrap: wrap;
@@ -22,8 +47,8 @@
 
         display: flex;
         column-gap: rem(8); 
-        width: fluid(307, 200);
-        height: fluid(46, 30);
+        // width: fluid(307, 200);
+        // height: fluid(46, 30);
         background: none;
         border: none;
         white-space: nowrap;
@@ -38,6 +63,14 @@
             border-radius: rem(4);
         }
 
+        &.cours{
+            // width: none;
+            // height: none;
+            column-gap: rem(4);
+            padding: rem(10) rem(20);
+            align-self: flex-start;
+        }
+
         // &:not(.active-link){
         //     @include hover{
         //         color: var(--color-accent);
@@ -46,6 +79,13 @@
         //     color: var(--color-gray-600);
         //     border: none;
         // }
+    }
+
+    &__superscript{
+        //vertical-align: top;
+        font-size: rem(10);
+        margin-top: rem(-10);
+        //margin-left: rem(-5);
     }
 
     &__block{
@@ -83,4 +123,50 @@
         }
     }
 
+    &__search-wrapper{
+        width: 100%;
+        min-width: rem(300);
+        height: rem(44);
+        position: relative;
+        align-content: center;
+    }
+
+    &__search{
+        width: 100%;
+        height: rem(44);
+        opacity: 0.6;
+        //color: var(--color-light);
+        font-size: rem(14);
+        padding-inline: rem(9);
+        padding-right: rem(30);
+        border-radius: rem(4);
+        // margin-top: rem(12);
+        // margin-bottom: rem(6);
+
+        &:hover{
+        border-color: var(--color-gray-800);
+        box-shadow: var(--shadow);
+        }
+
+        &:focus{
+        border-color: var(--color-gray-800);
+        box-shadow: var(--shadow);
+        }
+    }
+
+    &__btnsearch{
+        position: absolute;
+        top: 30%;
+        left: 90%;
+        background: none;
+        border: none;
+
+        @include tablet{
+            left: 95%;
+        }
+
+        @include mobile{
+            left: 90%;
+        }
+    }
 }

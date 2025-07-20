@@ -6,6 +6,10 @@
     row-gap: fluid(60, 30);
     place-items: center;
 
+    &.padding-top{
+        padding-top: fluid(200, 100);
+    }
+
     @include laptop{
         padding-inline: rem(10);
     }
@@ -18,6 +22,22 @@
 
         @include tablet{
             flex-direction: column;
+        }
+
+        &.center{
+            flex-direction: column;
+            row-gap: rem(8);
+            justify-content: center;
+        }
+    }
+
+    &__body{
+        &.row{
+            display: flex;
+            flex-direction: column;
+            row-gap: rem(60);
+            //align-items: center;
+            place-items: center;
         }
     }
 
@@ -42,5 +62,12 @@
         @include tablet{
             margin-top: rem(10);
         }
+    }
+
+    &__load{
+        display: inline-flex;
+        column-gap: rem(16);
+        background: none;
+        border: none;
     }
 }
