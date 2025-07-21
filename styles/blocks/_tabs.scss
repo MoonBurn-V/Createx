@@ -47,8 +47,8 @@
 
         display: flex;
         column-gap: rem(8); 
-        // width: fluid(307, 200);
-        // height: fluid(46, 30);
+        width: fluid(307, 200);
+        height: fluid(46, 30);
         background: none;
         border: none;
         white-space: nowrap;
@@ -64,8 +64,8 @@
         }
 
         &.cours{
-            // width: none;
-            // height: none;
+            width: auto;
+            height: auto;
             column-gap: rem(4);
             padding: rem(10) rem(20);
             align-self: flex-start;

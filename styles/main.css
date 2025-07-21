@@ -1759,6 +1759,9 @@ select:-webkit-autofill {
 .card__item:hover {
   box-shadow: 4px 4px 4px -4px rgba(30, 33, 44, 0.05), 16px 12px 10px -6px rgba(154, 156, 165, 0.08), 40px 30px 24px -10px rgba(154, 156, 165, 0.1), 100px 80px 80px -20px rgba(154, 156, 165, 0.16);
 }
+.card__item.hide {
+  display: none;
+}
 @media (width <= 30.06125rem) {
   .card__title {
     font-size: 0.875rem;
@@ -1902,6 +1905,8 @@ select:-webkit-autofill {
 .tabs__item {
   display: flex;
   column-gap: 0.5rem;
+  width: clamp(12.5rem, 10.3445247934rem + 8.8429752066vw, 19.1875rem);
+  height: clamp(1.875rem, 1.5526859504rem + 1.3223140496vw, 2.875rem);
   background: none;
   border: none;
   white-space: nowrap;
@@ -1926,6 +1931,8 @@ select:-webkit-autofill {
   border-radius: 0.25rem;
 }
 .tabs__item.cours {
+  width: auto;
+  height: auto;
   column-gap: 0.25rem;
   padding: 0.625rem 1.25rem;
   align-self: flex-start;
