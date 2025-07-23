@@ -1,5 +1,18 @@
 const rootSelector = '[data-js-tabs]'
 
+class TabsCollection {
+    constructor() {
+        this.init()
+    }
+
+    init() {
+        document.querySelectorAll(rootSelector).forEach((element) => {
+            new Tabs(element)
+        })
+    }
+
+}
+
 class Tabs {
     selectors = {
         root: rootSelector,
@@ -30,6 +43,7 @@ class Tabs {
         }
         this.limitTabsIndex = this.buttonElements.length - 1;
         this.subtitleElement = document.querySelectorAll(this.selectors.subtitle);
+        this.isInsideCoursesTabs = this.rootElement.closest('.courses__tabs.tabs') !== null;
         this.bindEvents();
         this.updateUI();
     }
@@ -49,17 +63,20 @@ class Tabs {
             contentElement.classList.toggle(this.stateClasses.active, active);
         });
 
-        this.filterCards();
+        if (!this.isInsideCoursesTabs) {
+            return
+        }
+        else {
+            this.filterCards();
+        }
     }
 
     filterCards() {
         const activeButton = Array.from(this.buttonElements).find(button => button.classList.contains(this.stateClasses.active));
-
         const buttonText = activeButton.querySelector('span').textContent.trim();
 
         this.cardItems.forEach(cardItem => {
             const cardSubtitle = cardItem.querySelector(this.selectors.subtitle);
-
             const subtitleText = cardSubtitle.textContent.trim();
 
             if (buttonText === 'All') {
@@ -83,19 +100,6 @@ class Tabs {
             buttonElement.addEventListener('click', () => this.onButtonClick(index))
         })
     }
-}
-
-class TabsCollection {
-    constructor() {
-        this.init()
-    }
-
-    init() {
-        document.querySelectorAll(rootSelector).forEach((element) => {
-            new Tabs(element)
-        })
-    }
-
 }
 
 export default TabsCollection
