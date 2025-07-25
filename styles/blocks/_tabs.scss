@@ -61,6 +61,7 @@
             color: var(--color-accent);
             border: rem(1) solid var(--color-accent);
             border-radius: rem(4);
+            pointer-events: none;
         }
 
         &.cours{
@@ -96,6 +97,11 @@
         @include mobile{
             flex-direction: column;
             column-gap: rem(15);
+        }
+
+        &.active:focus-visible {
+            border: rem(1) solid var(--color-accent);
+            box-shadow: 5px 5px 10px #FF3F3A;
         }
         
         &:not(.active){

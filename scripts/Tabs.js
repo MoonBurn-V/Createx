@@ -55,6 +55,8 @@ class Tabs {
             const active = index === activeTabIndex;
 
             buttonElement.classList.toggle(this.stateClasses.active, active);
+            //buttonElement.stateAttribute(this.stateAttributs.ariaSelector, active.toString());
+            //buttonElement.stateAttribute(this.stateAttributs.tabIndex, active ? '0' : '1')
         });
 
         this.contentElements.forEach((contentElement, index) => {

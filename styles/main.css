@@ -557,6 +557,7 @@ a:focus-visible, button:focus-visible {
 }
 .header__menu-linck.is-active {
   color: var(--color-accent);
+  opacity: 1;
 }
 .header__action {
   display: flex;
@@ -1934,6 +1935,7 @@ a:focus-visible, button:focus-visible {
   color: var(--color-accent);
   border: 0.0625rem solid var(--color-accent);
   border-radius: 0.25rem;
+  pointer-events: none;
 }
 .tabs__item.cours {
   width: auto;
@@ -1956,6 +1958,10 @@ a:focus-visible, button:focus-visible {
     flex-direction: column;
     column-gap: 0.9375rem;
   }
+}
+.tabs__block.active:focus-visible {
+  border: 0.0625rem solid var(--color-accent);
+  box-shadow: 5px 5px 10px #FF3F3A;
 }
 .tabs__block:not(.active) {
   display: none;
