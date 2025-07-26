@@ -69,5 +69,9 @@
         column-gap: rem(16);
         background: none;
         border: none;
+
+        &.hide {
+            display: none;
+        }
     }
 }

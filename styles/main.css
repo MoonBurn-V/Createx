@@ -1654,6 +1654,9 @@ a:focus-visible, button:focus-visible {
   background: none;
   border: none;
 }
+.courses__load.hide {
+  display: none;
+}
 
 .card__list {
   display: grid;

@@ -10,7 +10,6 @@ class TabsCollection {
             new Tabs(element)
         })
     }
-
 }
 
 class Tabs {
@@ -28,8 +27,8 @@ class Tabs {
     }
 
     stateAttributs = {
-        ariaSelector: 'aria-selector',
         tabIndex: 'tabindex',
+        ariaSelected: 'aria-selected',
     }
 
     constructor(rootElement) {
@@ -52,17 +51,17 @@ class Tabs {
         const {activeTabIndex} = this.state;
 
         this.buttonElements.forEach((buttonElement, index) => {
-            const active = index === activeTabIndex;
+            const activeTab = index === activeTabIndex;
 
-            buttonElement.classList.toggle(this.stateClasses.active, active);
-            //buttonElement.stateAttribute(this.stateAttributs.ariaSelector, active.toString());
-            //buttonElement.stateAttribute(this.stateAttributs.tabIndex, active ? '0' : '1')
+            buttonElement.classList.toggle(this.stateClasses.active, activeTab);
+            buttonElement.setAttribute(this.stateAttributs.tabIndex, activeTab ? '0' : '-1');
+            buttonElement.setAttribute(this.stateAttributs.ariaSelected, activeTab.toString()); // Set aria-selected
         });
 
         this.contentElements.forEach((contentElement, index) => {
-            const active = index === activeTabIndex;
+            const activeTab = index === activeTabIndex;
 
-            contentElement.classList.toggle(this.stateClasses.active, active);
+            contentElement.classList.toggle(this.stateClasses.active, activeTab);
         });
 
         if (!this.isInsideCoursesTabs) {
@@ -73,7 +72,7 @@ class Tabs {
         }
     }
 
-    filterCards() {
+    filterCards() {        
         const activeButton = Array.from(this.buttonElements).find(button => button.classList.contains(this.stateClasses.active));
         const buttonText = activeButton.querySelector('span').textContent.trim();
 
@@ -95,12 +94,39 @@ class Tabs {
     onButtonClick(buttonIndex) {
         this.state.activeTabIndex = buttonIndex;
         this.updateUI();
+        this.focusActiveButton();
     }
 
     bindEvents() {
         this.buttonElements.forEach((buttonElement, index) => {
-            buttonElement.addEventListener('click', () => this.onButtonClick(index))
-        })
+            buttonElement.addEventListener('click', () => this.onButtonClick(index));
+        });
+
+        this.rootElement.addEventListener('keydown', (event) => this.onKeyDown(event));
+    }
+
+    onKeyDown(event) {
+        let newIndex = this.state.activeTabIndex;
+
+        if (event.key === 'ArrowLeft') {
+            newIndex--;
+        } else if (event.key === 'ArrowRight') {
+            newIndex++;
+        } else {
+            return;
+        }
+
+        if (newIndex < 0) {
+            newIndex = this.limitTabsIndex;
+        } else if (newIndex > this.limitTabsIndex) {
+            newIndex = 0;
+        }
+
+        this.onButtonClick(newIndex);
+    }
+
+    focusActiveButton() {
+        this.buttonElements[this.state.activeTabIndex].focus();
     }
 }
 
