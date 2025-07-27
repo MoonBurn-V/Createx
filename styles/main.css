@@ -1657,6 +1657,15 @@ a:focus-visible, button:focus-visible {
 .courses__load.hide {
   display: none;
 }
+.courses__hide {
+  display: inline-flex;
+  column-gap: 1rem;
+  background: none;
+  border: none;
+}
+.courses__hide.hide {
+  display: none;
+}
 
 .card__list {
   display: grid;
