@@ -7,9 +7,9 @@ import SearchCard from './SearchCard.js';
 import LoadCards from './LoadCards.js';
 
 new Header();
-const loadCardsInstance = new LoadCards(); // Создаем экземпляр LoadCards
-new TabsCollection(loadCardsInstance); // Передаем его в TabsCollection
+const loadCardsInstance = new LoadCards();
+new TabsCollection(loadCardsInstance);
 new Carousel();
 new Subscribe();
 new GoToTop();
-new SearchCard();
+new SearchCard(loadCardsInstance);

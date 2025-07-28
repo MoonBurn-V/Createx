@@ -52,7 +52,6 @@ class LoadCards {
         for (let i = this.cardsToShow; i < this.totalCards; i++) {
             this.itemElements[i].classList.add(this.stateClasses.hide);
         }
-        //this.cardsShown = this.cardsToShow;
 
         this.hideInitialCards();
         
@@ -73,7 +72,6 @@ class LoadCards {
         for (let i = this.cardsToShow; i < this.totalCards; i++) {
             this.itemElements[i].classList.add(this.stateClasses.hide);
         }
-        //this.cardsShown = this.cardsToShow;
     }
 }
 
