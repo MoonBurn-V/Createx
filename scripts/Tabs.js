@@ -89,6 +89,7 @@ class Tabs {
             if (buttonText === 'All') {
                 cardItem.classList.remove(this.stateClasses.hide);
 
+                this.loadCardsInstance.resetCardsShown();
                 this.loadCardsInstance.hideInitialCards();
 
                 this.loadButtonElement.classList.remove(this.stateClasses.hide);
@@ -103,35 +104,39 @@ class Tabs {
         });
     }
 
-    updateSuperscripts() {
-        this.buttonElements.forEach(buttonElement => {
-            const buttonText = buttonElement.querySelector('span').textContent.trim();
-            let count = 0;
-
-            if (buttonText === 'All') {
-                count = this.cardItems.length;
-            } else {
-                this.cardItems.forEach(cardItem => {
-                    const cardSubtitle = cardItem.querySelector(this.selectors.subtitle);
-                    const subtitleText = cardSubtitle.textContent.trim();
-
-                    if (subtitleText === buttonText) {
-                        count++;
-                    }
-                });
-            }
-
-            this.superscriptElement = buttonElement.querySelector(this.selectors.superscript);
-            this.superscriptElement.textContent = count.toString();
-        });
-    }
-
-
     onButtonClick(buttonIndex) {
         this.state.activeTabIndex = buttonIndex;
         this.updateUI();
         this.focusActiveButton();
         this.updateSuperscripts();
+    }
+
+    updateSuperscripts() {
+        if (!this.isInsideCoursesTabs) {
+            return
+        }
+        else {
+            this.buttonElements.forEach(buttonElement => {
+                const buttonText = buttonElement.querySelector('span').textContent.trim();
+                let count = 0;
+
+                if (buttonText === 'All') {
+                    count = this.cardItems.length;
+                } else {
+                    this.cardItems.forEach(cardItem => {
+                        const cardSubtitle = cardItem.querySelector(this.selectors.subtitle);
+                        const subtitleText = cardSubtitle.textContent.trim();
+
+                        if (subtitleText === buttonText) {
+                            count++;
+                        }
+                    });
+                }
+
+                this.superscriptElement = buttonElement.querySelector(this.selectors.superscript);
+                this.superscriptElement.textContent = count.toString();
+            });
+        }
     }
 
     bindEvents() {

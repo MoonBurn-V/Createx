@@ -17,9 +17,13 @@ class LoadCards {
         this.titleElement = document.querySelector(this.selectors.title);
         this.totalCards = this.itemElements.length;
         this.cardsToShow = 9;
-        this.cardsShown = 0;
+        this.cardsShown = 9;
         this.hideInitialCards();
         this.bindEvents();
+    }
+
+    resetCardsShown() {
+        this.cardsShown = 9;
     }
 
     bindEvents() {
@@ -45,14 +49,13 @@ class LoadCards {
                 this.hideButtonElement.classList.remove(this.stateClasses.hide);
             }
         }
-
     }
 
     hideCards = () => {
-        for (let i = this.cardsToShow; i < this.totalCards; i++) {
-            this.itemElements[i].classList.add(this.stateClasses.hide);
-        }
-
+        // for (let i = this.cardsToShow; i < this.totalCards; i++) {
+        //     this.itemElements[i].classList.add(this.stateClasses.hide);
+        // }
+        this.resetCardsShown();
         this.hideInitialCards();
         
         this.loadButtonElement.classList.remove(this.stateClasses.hide);

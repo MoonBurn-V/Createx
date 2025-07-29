@@ -29,14 +29,6 @@ class SearchCard {
     bindEvents() {
         if (this.searchInputElement) {
             this.searchInputElement.addEventListener('input', this.search);
-            this.searchInputElement.addEventListener('keydown', this.handleEnter);
-        }
-    }
-
-    handleEnter = (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            this.search();
         }
     }
 
@@ -50,6 +42,7 @@ class SearchCard {
 
         if (searchTerm === "") {
             this.loadButtonElement.classList.remove(this.stateClasses.hide);
+            this.loadCardsInstance.resetCardsShown();
             this.loadCardsInstance.hideInitialCards();
             return;
         }
