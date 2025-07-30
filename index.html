@@ -231,7 +231,7 @@
             <div class="courses__body card">
                 <ul class="card__list">
                     <li class="card__item" aria-label="About the course" title="About the course">
-                        <a class="card__body horisontal">
+                        <a class="card__body horisontal" href="#">
                             <img class="card__image" src="img/card-speaker-1.svg" width="214" height="214" loading="lazy" alt="">
                             <div class="card__body-inner">
                                 <div class="card__subtitle green">Marketing</div>
@@ -245,7 +245,7 @@
                         </a>
                     </li>
                     <li class="card__item" aria-label="About the course" title="About the course">
-                        <a class="card__body horisontal">
+                        <a class="card__body horisontal" href="#">
                             <img class="card__image" src="img/card-speaker-2.svg" width="214" height="214" loading="lazy" alt="">
                             <div class="card__body-inner">
                                 <div class="card__subtitle blue">Management</div>
@@ -259,11 +259,10 @@
                         </a>
                     </li>
                     <li class="card__item" aria-label="About the course" title="About the course">
-                        <a class="card__body horisontal">
+                        <a class="card__body horisontal" href="#">
                             <img class="card__image" src="img/card-speaker-3.svg" width="214" height="214" loading="lazy" alt="">
                             <div class="card__body-inner">
-                                <div class="card__subtitle orange">HR & Recruting</div>
-                                <div class="card__title h4">HR  Management and Analytics</div>
+                                <div class="card__subtitle orange">HR & Recruting</div>                                <div class="card__title h4">HR  Management and Analytics</div>
                                 <div class="card__info">
                                     <div class="card__price h5">$200</div>
                                     <span class="card__separator">|</span>
@@ -273,7 +272,7 @@
                         </a>
                     </li>
                     <li class="card__item" aria-label="About the course" title="About the course">
-                        <a class="card__body horisontal">
+                        <a class="card__body horisontal" href="#">
                             <img class="card__image" src="img/card-speaker-4.svg" width="214" height="214" loading="lazy" alt="">
                             <div class="card__body-inner">
                                 <div class="card__subtitle green">Marketing</div>
@@ -287,7 +286,7 @@
                         </a>
                     </li>
                     <li class="card__item" aria-label="About the course" title="About the course">
-                        <a class="card__body horisontal">
+                        <a class="card__body horisontal" href="#">
                             <img class="card__image" src="img/card-speaker-5.svg" width="214" height="214" loading="lazy" alt="">
                             <div class="card__body-inner">
                                 <div class="card__subtitle blue">Management</div>
@@ -301,7 +300,7 @@
                         </a>
                     </li>
                     <li class="card__item" aria-label="About the course" title="About the course">
-                        <a class="card__body horisontal">
+                        <a class="card__body horisontal" href="#">
                             <img class="card__image" src="img/card-speaker-6.svg" width="214" height="214" loading="lazy" alt="">
                             <div class="card__body-inner">
                                 <div class="card__subtitle pink">Design</div>
@@ -479,7 +478,7 @@
                                     <div class="events__info-description h4">Formation of the organizational structure of the company in the face of uncertainty</div>
                                     <div class="events__info-type">Onine master-class</div>
                                 </div>
-                                <div class="events__button button column--3">View more</div>
+                                <a href="#" class="events__button button column--3" tabindex="0">View more</a>
                             </li>
                             <li class="events__item">
                                 <div class="events__date column--1">
@@ -493,7 +492,7 @@
                                     <div class="events__info-description h4">Building a customer service department. Best Practices.</div>
                                     <div class="events__info-type">Onine lecture</div>
                                 </div>
-                                <div class="events__button button column--3">View more</div>
+                                <a href="#" class="events__button button column--3" tabindex="0">View more</a>
                             </li>
                             <li class="events__item">
                                 <div class="events__date column--1">
@@ -507,19 +506,20 @@
                                     <div class="events__info-description h4">How to apply methods of speculative design in practice. Worldbuilding prototyping.</div>
                                     <div class="events__info-type">Onine workshop</div>
                                 </div>
-                                <div class="events__button button column--3">View more</div>
+                                <a href="#" class="events__button button column--3" tabindex="0">View more</a>
                             </li>
                         </ul>
                     </div>
                     <div class="events__viewall">
                         <div class="events__viewall-title h3">Do you want more?</div>
-                        <div class="events__viewall-button button button--accent">Explore all events</div>
+                        <a class="events__viewall-button button button--accent" href="#" tabindex="0">Explore all events</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section certificate container">
+
+        <section class="section certificate container" tabindex="0">
             <div class="certificate__body">
                 <div class="certificate__body-inner">
                     <header class="certificate__header">
@@ -540,7 +540,7 @@
         <section class="section section-mrgin">
             <div class="section__wrapper carousel">
 
-                <section class="section team container section-mrgin">
+                <section class="section team container section-mrgin" aria-roledescription="carousel" tabindex="0">
                     <div class="team__body">
                         <header class="team__header">
                             <div class="team__header-titles">
@@ -571,7 +571,7 @@
                         </header>
                         <div class="team__body-inner" data-js-card-container index="0">
 
-                            <div class="team__card" data-js-card >
+                            <div class="team__card" data-js-card>
                                 <div class="team__card-head">
                                     <a class="team__card-head-link" href="#" aria-label="learn more about a speaker">
                                         <div class="team__card-shadow"></div>
@@ -942,13 +942,18 @@
                     </div>
                 </section>
 
-                <section class="section testimonials container">
+                <section class="section testimonials container" aria-roledescription="carousel">
                     <header class="testimonials__header">
                         <div class="testimonials__subtitle">TESTIMONIALS</div>
                         <h1 class="testimonials__title">What our students say<h1>
                     </header>
                     <div class="testimonials__body">
-                        <button class="testimonials__button" aria-label="scroll to the left" data-js-btn-prev index="1">
+                        <button 
+                            class="testimonials__button" 
+                            aria-label="scroll to the left" 
+                            aria-controls="myCarousel-items" 
+                            data-js-btn-prev index="1"
+                        >
                             <div class="icon icon__prev-btn">
                                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="24" cy="24" r="24" fill="#FF3F3A" opacity="0"/>
@@ -959,8 +964,14 @@
                                 </svg>
                             </div>
                         </button>
-                        <div class="testimonials__body-inner" data-js-card-container index="1">
-                            <div class="testimonials__card" data-js-card >
+                        <div class="testimonials__body-inner" id="myCarousel-items" data-js-card-container index="1">
+                            <div 
+                                class="testimonials__card" 
+                                role="group" 
+                                aria-roledescription="slide" 
+                                aria-label="1 of 5" 
+                                data-js-card
+                            >
                                 <div class="testimonials__card-brace icon icon__brace">
                                     <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M18 8.92534C18 8.63119 18.1295 8.35196 18.3541 8.16195L28 0V19C28 19.5523 27.5523 20 27 20H19C18.4477 20 18 19.5523 18 19V8.92534Z" fill="#FF3F3A"/>
@@ -989,7 +1000,13 @@
                                 </div>
                             </div>
 
-                            <div class="testimonials__card" data-js-card>
+                            <div 
+                                class="testimonials__card" 
+                                role="group" 
+                                aria-roledescription="slide" 
+                                aria-label="2 of 5" 
+                                data-js-card
+                            >
                                 <div class="testimonials__card-brace icon icon__brace">
                                     <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M18 8.92534C18 8.63119 18.1295 8.35196 18.3541 8.16195L28 0V19C28 19.5523 27.5523 20 27 20H19C18.4477 20 18 19.5523 18 19V8.92534Z" fill="#FF3F3A"/>
@@ -1018,7 +1035,13 @@
                                 </div>
                             </div>
 
-                            <div class="testimonials__card" data-js-card>
+                            <div 
+                                class="testimonials__card" 
+                                role="group" 
+                                aria-roledescription="slide" 
+                                aria-label="3 of 5" 
+                                data-js-card
+                            >
                                 <div class="testimonials__card-brace icon icon__brace">
                                     <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M18 8.92534C18 8.63119 18.1295 8.35196 18.3541 8.16195L28 0V19C28 19.5523 27.5523 20 27 20H19C18.4477 20 18 19.5523 18 19V8.92534Z" fill="#FF3F3A"/>
@@ -1047,7 +1070,12 @@
                                 </div>
                             </div>
 
-                            <div class="testimonials__card" data-js-card>
+                            <div 
+                                class="testimonials__card" 
+                                role="group" aria-roledescription="slide" 
+                                aria-label="4 of 5" 
+                                data-js-card
+                            >
                                 <div class="testimonials__card-brace icon icon__brace">
                                     <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M18 8.92534C18 8.63119 18.1295 8.35196 18.3541 8.16195L28 0V19C28 19.5523 27.5523 20 27 20H19C18.4477 20 18 19.5523 18 19V8.92534Z" fill="#FF3F3A"/>
@@ -1076,7 +1104,13 @@
                                 </div>
                             </div>
 
-                            <div class="testimonials__card" data-js-card>
+                            <div 
+                                class="testimonials__card" 
+                                role="group" 
+                                aria-roledescription="slide" 
+                                aria-label="5 of 5" 
+                                data-js-card
+                            >
                                 <div class="testimonials__card-brace icon icon__brace">
                                     <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M18 8.92534C18 8.63119 18.1295 8.35196 18.3541 8.16195L28 0V19C28 19.5523 27.5523 20 27 20H19C18.4477 20 18 19.5523 18 19V8.92534Z" fill="#FF3F3A"/>
@@ -1104,9 +1138,13 @@
                                     </div>
                                 </div>
                             </div>
-                        
                         </div>
-                        <button class="testimonials__button mobile" aria-label="scroll to the right" data-js-btn-nxt index="1">
+                        <button
+                            class="testimonials__button mobile" 
+                            aria-label="scroll to the right" 
+                            aria-controls="myCarousel-items" 
+                            data-js-btn-nxt index="1"
+                        >
                             <div class="icon icon__btn-nxt">
                                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="24" cy="24" r="24" fill="#FF3F3A" opacity="0"/>

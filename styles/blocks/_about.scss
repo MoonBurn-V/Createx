@@ -2,6 +2,11 @@
 
 .about{
 
+    &.active:focus-visible {
+        border: rem(1) solid var(--color-accent);
+        box-shadow: 5px 5px 10px #FF3F3A;
+    }
+
     &__body{
         display: flex;
         column-gap: fluid(135, 10);

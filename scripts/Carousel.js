@@ -5,6 +5,8 @@ class Carousel {
         btnPrev: '[data-js-btn-prev]',
         btnNxt: '[data-js-btn-nxt]',
         lines: '[data-js-lines]',
+        cardHeadLink: '.team__card-head-link',
+        iconLink: '.team__card-link',
     }
 
     constructor() {
@@ -29,6 +31,10 @@ class Carousel {
 }
 
 class CarouselInstance {
+    stateClasses = {
+        focused: 'focused',
+    }
+
     constructor(container, index, carousel) {
         this.container = container;
         this.index = index;
@@ -37,6 +43,8 @@ class CarouselInstance {
         this.cardElement = this.container.querySelector('[data-js-card]');
         this.btnPrevElement = document.querySelector(`[data-js-btn-prev][index="${index}"]`);
         this.btnNxtElement = document.querySelector(`[data-js-btn-nxt][index="${index}"]`);
+        this.headLinksElements = this.container.querySelectorAll(this.carousel.selectors.cardHeadLink);
+        this.iconLinksElements = this.container.querySelectorAll(this.carousel.selectors.iconLink);
         this.padding = (index === 1) ? 105 : 0;
         this.cardWidth = this.cardElement ? this.cardElement.getBoundingClientRect().width : 0;
         this.touchStartY = 0;
@@ -83,6 +91,8 @@ class CarouselInstance {
         if (this.btnNxtElement) {
             this.btnNxtElement.addEventListener('click', this.scrollNxt);
         }
+
+        this.addFocusListeners();
     }
 
     scrollPrev = () => {
@@ -99,6 +109,40 @@ class CarouselInstance {
 
     isVerticalScroll = (event) => {
         return Math.abs(event.deltaY) > Math.abs(event.deltaX);
+    }
+
+    addFocusListeners() {
+        this.headLinksElements.forEach(link => {
+            link.addEventListener('focus', () => {
+                const card = link.closest('.team__card');
+                if (card) {
+                    card.classList.add(this.stateClasses.focused);
+                }
+            });
+
+            link.addEventListener('blur', () => {
+                const card = link.closest('.team__card');
+                if (card) {
+                    card.classList.remove(this.stateClasses.focused);
+                }
+            });
+        });
+
+        this.iconLinksElements.forEach(link => {
+            link.addEventListener('focus', () => {
+                const card = link.closest('.team__card');
+                if (card) {
+                    card.classList.add(this.stateClasses.focused);
+                }
+            });
+
+            link.addEventListener('blur', () => {
+                const card = link.closest('.team__card');
+                if (card) {
+                    card.classList.remove(this.stateClasses.focused);
+                }
+            });
+        });
     }
 }
 

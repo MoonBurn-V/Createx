@@ -1,7 +1,6 @@
 @use '../helpers' as *;
 
 .team{
-    //padding-bottom: fluid(180, 40);
 
     @include laptop{
         padding-inline: rem(15);
@@ -83,10 +82,24 @@
         display: flex;
         flex-direction: column;
         position: relative;
-       // cursor: pointer;
         width: fluid(285, 200);
         flex-shrink: 0;
         scroll-snap-align: start;
+
+        &.focused{
+            .team__card-shadow{
+                background: linear-gradient(180deg, rgba(30, 33, 44, 0) 43.9%, 
+                rgba(30, 33, 44, 0.03) 55.21%, 
+                rgba(30, 33, 44, 0.33) 68.73%, 
+                rgba(30, 33, 44, 0.56) 76.17%, 
+                rgba(30, 33, 44, 0.77) 83.75%, 
+                rgba(30, 33, 44, 0.92) 91.49%, #1e212c 100%);
+            }
+
+            .team__card-icons{
+                opacity: 1;
+            }
+        }
 
         &:hover .team__card-shadow{
             background: linear-gradient(180deg, rgba(30, 33, 44, 0) 43.9%, 

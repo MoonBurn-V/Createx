@@ -52,9 +52,6 @@ class LoadCards {
     }
 
     hideCards = () => {
-        // for (let i = this.cardsToShow; i < this.totalCards; i++) {
-        //     this.itemElements[i].classList.add(this.stateClasses.hide);
-        // }
         this.resetCardsShown();
         this.hideInitialCards();
         

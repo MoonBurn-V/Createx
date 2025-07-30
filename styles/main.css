@@ -1520,6 +1520,10 @@ a:focus-visible, button:focus-visible {
   background: url("../../img/Courses-background.jpg") center no-repeat;
 }
 
+.about.active:focus-visible {
+  border: 0.0625rem solid var(--color-accent);
+  box-shadow: 5px 5px 10px #FF3F3A;
+}
 .about__body {
   display: flex;
   column-gap: clamp(0.625rem, -1.8930785124rem + 10.3305785124vw, 8.4375rem);
@@ -2328,6 +2332,12 @@ a:focus-visible, button:focus-visible {
   width: clamp(12.5rem, 10.7877066116rem + 7.0247933884vw, 17.8125rem);
   flex-shrink: 0;
   scroll-snap-align: start;
+}
+.team__card.focused .team__card-shadow {
+  background: linear-gradient(180deg, rgba(30, 33, 44, 0) 43.9%, rgba(30, 33, 44, 0.03) 55.21%, rgba(30, 33, 44, 0.33) 68.73%, rgba(30, 33, 44, 0.56) 76.17%, rgba(30, 33, 44, 0.77) 83.75%, rgba(30, 33, 44, 0.92) 91.49%, #1e212c 100%);
+}
+.team__card.focused .team__card-icons {
+  opacity: 1;
 }
 .team__card:hover .team__card-shadow {
   background: linear-gradient(180deg, rgba(30, 33, 44, 0) 43.9%, rgba(30, 33, 44, 0.03) 55.21%, rgba(30, 33, 44, 0.33) 68.73%, rgba(30, 33, 44, 0.56) 76.17%, rgba(30, 33, 44, 0.77) 83.75%, rgba(30, 33, 44, 0.92) 91.49%, #1e212c 100%);
