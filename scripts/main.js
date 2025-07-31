@@ -1,4 +1,5 @@
 import Header from './Header.js';
+import Form from './Form.js';
 import TabsCollection from './Tabs.js';
 import Carousel from './Carousel.js';
 import Subscribe from './Subscribe.js';
@@ -6,7 +7,8 @@ import GoToTop from './GoToTop.js';
 import SearchCard from './SearchCard.js';
 import LoadCards from './LoadCards.js';
 
-new Header();
+const form = new Form();
+new Header(form);
 const loadCardsInstance = new LoadCards();
 new TabsCollection(loadCardsInstance);
 new Carousel();

@@ -1,4 +1,3 @@
-
 class Header {
     selectors = {
         root: '[data-js-header]',
@@ -7,8 +6,6 @@ class Header {
         overlay: '[data-js-header-overlay]',
         headerLinck: '.header__menu-linck',
         burgerButton: '[data-js-burger-button]',
-        signInForm: '[data-js-sign-in]',
-        signUpForm: '[data-js-sign-up]',
         signInHeader: '[data-js-sign-in-header]',
         signUpHeader: '[data-js-sign-up-header]',
         span:'[data-js-header-span]',
@@ -17,6 +14,8 @@ class Header {
         signInLink: '[data-js-sign-in-link]',
         signUpLink: '[data-js-sign-up-link]',
         hero: '[data-js-hero]',
+        signInForm: '[data-js-sign-in]', // Добавлено
+        signUpForm: '[data-js-sign-up]'    // Добавлено
     }
 
     stateClasses = {
@@ -28,7 +27,7 @@ class Header {
         fixed: 'fixed',
     }
 
-    constructor() {
+    constructor(formInstance) {
         this.rootElement = document.querySelector(this.selectors.root);
         this.bodyElement = this.rootElement.querySelector(this.selectors.body);
         this.logoElement = this.rootElement.querySelector(this.selectors.logo);
@@ -36,8 +35,6 @@ class Header {
         this.overlayElement = this.rootElement.querySelector(this.selectors.overlay);
         this.headerLinckElements = document.querySelectorAll(this.selectors.headerLinck);
         this.burgerButtonElement = this.rootElement.querySelector(this.selectors.burgerButton);
-        this.signInFormElement = document.querySelector(this.selectors.signInForm);
-        this.signUpFormElement = document.querySelector(this.selectors.signUpForm);
         this.signInHeaderElement = document.querySelector(this.selectors.signInHeader);
         this.signUpHeaderElement = document.querySelector(this.selectors.signUpHeader);
         this.spanElement = document.querySelector(this.selectors.span);
@@ -46,6 +43,10 @@ class Header {
         this.signInLinkElement = document.querySelector(this.selectors.signInLink);
         this.signUpLinkElement = document.querySelector(this.selectors.signUpLink);
         this.heroElement = document.querySelector(this.selectors.hero);
+        this.bodyChildren = Array.from(document.body.children);
+
+        this.signInFormElement = document.querySelector(this.selectors.signInForm); // Добавлено
+        this.signUpFormElement = document.querySelector(this.selectors.signUpForm);   // Добавлено
 
         this.isSmallScreen = window.innerWidth <= 830;
         this.bindEvents();
@@ -60,8 +61,8 @@ class Header {
             }
         });
 
-        this.formInstance = null;
-        this.checkFormActivity();
+        this.formInstance = formInstance; // Получаем экземпляр Form из main.js
+        // this.checkFormActivity(); // Форма обрабатывается в Form.js
 
         this.scrollHandler = this.handleScroll.bind(this);
         window.addEventListener('scroll', this.scrollHandler);
@@ -89,7 +90,7 @@ class Header {
 
         if (this.heroElement) {
             const heroHeight = this.heroElement.offsetHeight;
-            shouldBeFixed = scrollPosition >= heroHeight; // Override if hero exists
+            shouldBeFixed = scrollPosition >= heroHeight;
         }
 
 
@@ -162,8 +163,7 @@ class Header {
         this.overlayElement.classList.toggle(this.stateClasses.isActive);
         document.documentElement.classList.toggle(this.stateClasses.isLock);
 
-        const bodyChildren = Array.from(document.body.children);
-        bodyChildren.forEach(el => {
+        this.bodyChildren.forEach(el => {
             if (el !== this.rootElement) {
                 el.classList.toggle(this.stateClasses.isDimmed);
             }
@@ -172,42 +172,42 @@ class Header {
 
     toggleSignInFormElement = () => {
         document.documentElement.classList.toggle(this.stateClasses.lockForm);
-        const bodyChildren = Array.from(document.body.children);
-        bodyChildren.forEach(el => {
+        this.bodyChildren.forEach(el => {
             if (el !== this.signInFormElement && el !== this.signUpFormElement) {
                 el.classList.toggle(this.stateClasses.isDimmed);
+                el.inert = true;
             }
         });
         this.signInFormElement.classList.toggle(this.stateClasses.activeForm);
-        this.checkFormActivity();
+        this.formInstance.setActiveForm(this.signInFormElement); // передаем в Form.js
+    }
+
+    inertFolseSignIn = () => {
+        this.bodyChildren.forEach(el => {
+            if (el !== this.signInFormElement && el !== this.signUpFormElement) {
+                el.inert = false;
+            }
+        });
     }
 
     toggleSignUpFormElement = () => {
         document.documentElement.classList.toggle(this.stateClasses.lockForm);
-        const bodyChildren = Array.from(document.body.children);
-        bodyChildren.forEach(el => {
+        this.bodyChildren.forEach(el => {
             if (el !== this.signInFormElement && el !== this.signUpFormElement) {
                 el.classList.toggle(this.stateClasses.isDimmed);
+                el.inert = true;
             }
         });
         this.signUpFormElement.classList.toggle(this.stateClasses.activeForm);
-        this.checkFormActivity();
+        this.formInstance.setActiveForm(this.signUpFormElement); // передаем в Form.js
     }
 
-    checkFormActivity() {
-        const isSignInActive = this.signInFormElement && this.signInFormElement.classList.contains(this.stateClasses.activeForm);
-        const isSignUpActive = this.signUpFormElement && this.signUpFormElement.classList.contains(this.stateClasses.activeForm);
-
-        if (isSignInActive || isSignUpActive) {
-            if (!this.formInstance) {
-                const activeFormElement = isSignInActive ? this.signInFormElement : this.signUpFormElement;
-                this.formInstance = new Form(activeFormElement);
+    inertFolseSignUp = () => {
+        this.bodyChildren.forEach(el => {
+            if (el !== this.signInFormElement && el !== this.signUpFormElement) {
+                el.inert = false;
             }
-        } else {
-            if (this.formInstance) {
-                this.formInstance = null;
-            }
-        }
+        });
     }
 
     bindEvents() {
@@ -228,9 +228,11 @@ class Header {
         }
         if (this.signInCrossElement) {
             this.signInCrossElement.addEventListener('click', this.toggleSignInFormElement);
+            this.signInCrossElement.addEventListener('click', this.inertFolseSignIn);
         }
         if (this.signUpCrossElement) {
             this.signUpCrossElement.addEventListener('click', this.toggleSignUpFormElement);
+            this.signUpCrossElement.addEventListener('click', this.inertFolseSignUp);
         }
 
         if (this.signUpLinkElement) {
@@ -257,115 +259,4 @@ class Header {
 }
 
 
-class Form {
-    constructor(formElement) {
-        this.formElement = formElement;
-
-        this.selectors = {
-            fieldEmail: '[data-js-field-email]',
-            fieldPassword: '[data-js-field-password]',
-            fieldConfirmPassword: '[data-js-field-confirm-password]',
-            inputName: '[data-js-input-name]',
-            inputEmail: '[data-js-input-email]',
-            inputPassword: '[data-js-input-password]',
-            inputConfirmPassword: '[data-js-input-confirm-password]',
-            viewingPassword: '[data-js-viewing-password]',
-            viewingConfirmPassword: '[data-js-viewing-confirm-password]',
-            buttonForm: '[data-js-form-button]',
-        }
-
-        this.stateClasses = {
-            activeError: 'active-error',
-            activeViewing: 'active-viewing',
-        }
-
-
-        this.fieldEmailElement = this.formElement.querySelector(this.selectors.fieldEmail);
-        this.fieldPasswordElement = this.formElement.querySelector(this.selectors.fieldPassword);
-        this.fieldConfirmPasswordElement = this.formElement.querySelector(this.selectors.fieldConfirmPassword);
-        this.inputNameElement = this.formElement.querySelector(this.selectors.inputName);
-        this.inputEmailElement = this.formElement.querySelector(this.selectors.inputEmail);
-        this.inputPasswordElement = this.formElement.querySelector(this.selectors.inputPassword);
-        this.inputConfirmPasswordElement = this.formElement.querySelector(this.selectors.inputConfirmPassword);
-        this.viewingPasswordElement = this.formElement.querySelector(this.selectors.viewingPassword);
-        this.viewingConfirmPasswordElement = this.formElement.querySelector(this.selectors.viewingConfirmPassword);
-        this.buttonFormElement = this.formElement.querySelector(this.selectors.buttonForm);
-
-        this.bindEvents();
-    }
-
-    bindEvents() {
-        if (this.buttonFormElement) {
-            this.buttonFormElement.addEventListener('click', this.checkingInputContents);
-        }
-
-        if (this.viewingPasswordElement) {
-            this.viewingPasswordElement.addEventListener('click', this.togglePasswordVisibility);
-        }
-
-        if (this.viewingConfirmPasswordElement) {
-            this.viewingConfirmPasswordElement.addEventListener('click', this.toggleConfirmPasswordVisibility)
-        }
-    }
-
-    checkingInputContents = () => {
-        this.emailContent = this.inputEmailElement ? this.inputEmailElement.value : '';
-        this.emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        this.passwordContent = this.inputPasswordElement ? this.inputPasswordElement.value : '';
-        this.passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-        //this.confirmPasswordContent = this.inputConfirmPasswordElement ? this.inputConfirmPasswordElement.value : '';
-
-        if (!this.emailRegex.test(this.emailContent)) {
-            this.fieldEmailElement.classList.add(this.stateClasses.activeError);
-        } else if (this.emailRegex.test(this.emailContent)) {
-            this.fieldEmailElement.classList.remove(this.stateClasses.activeError);
-        }
-
-        if (!this.passwordRegex.test(this.passwordContent)) {
-            this.fieldPasswordElement.classList.add(this.stateClasses.activeError);
-        } else if (this.passwordRegex.test(this.passwordContent)) {
-            this.fieldPasswordElement.classList.remove(this.stateClasses.activeError);
-        }
-
-        if(this.inputConfirmPasswordElement) {
-            this.confirmPasswordContent = this.inputConfirmPasswordElement ? this.inputConfirmPasswordElement.value : '';
-            if (this.passwordContent !== this.confirmPasswordContent) {
-                this.fieldConfirmPasswordElement.classList.add(this.stateClasses.activeError);
-            } else if (this.passwordContent === this.confirmPasswordContent) {
-                this.fieldConfirmPasswordElement.classList.remove(this.stateClasses.activeError);
-            }
-        }
-    }
-
-    togglePasswordVisibility = (event) => {
-        event.preventDefault();
-
-        if (this.inputPasswordElement) {
-            if (this.inputPasswordElement.type === 'password') {
-                this.inputPasswordElement.type = 'text';
-            } else {
-                this.inputPasswordElement.type = 'password';
-            }
-        }
-
-        this.viewingPasswordElement.classList.toggle(this.stateClasses.activeViewing);
-    }
-
-    toggleConfirmPasswordVisibility = (event) => {
-        event.preventDefault();
-
-        if (this.inputConfirmPasswordElement) {
-            if (this.inputConfirmPasswordElement.type === 'password') {
-                this.inputConfirmPasswordElement.type = 'text';
-            } else {
-                this.inputConfirmPasswordElement.type = 'password';
-            }
-        }
-
-        if(this.viewingConfirmPasswordElement) {
-            this.viewingConfirmPasswordElement.classList.toggle(this.stateClasses.activeViewing);
-        }
-    }
-}
-
-export default Header
+export default Header;

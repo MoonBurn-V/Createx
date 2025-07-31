@@ -1,7 +1,6 @@
 class Form {
-    constructor(formElement) {
-        this.formElement = formElement;
-
+    constructor() {
+        this.activeFormElement = null;
         this.selectors = {
             fieldEmail: '[data-js-field-email]',
             fieldPassword: '[data-js-field-password]',
@@ -20,22 +19,40 @@ class Form {
             activeViewing: 'active-viewing',
         }
 
-
-        this.fieldEmailElement = this.formElement.querySelector(this.selectors.fieldEmail);
-        this.fieldPasswordElement = this.formElement.querySelector(this.selectors.fieldPassword);
-        this.fieldConfirmPasswordElement = this.formElement.querySelector(this.selectors.fieldConfirmPassword);
-        this.inputNameElement = this.formElement.querySelector(this.selectors.inputName);
-        this.inputEmailElement = this.formElement.querySelector(this.selectors.inputEmail);
-        this.inputPasswordElement = this.formElement.querySelector(this.selectors.inputPassword);
-        this.inputConfirmPasswordElement = this.formElement.querySelector(this.selectors.inputConfirmPassword);
-        this.viewingPasswordElement = this.formElement.querySelector(this.selectors.viewingPassword);
-        this.viewingConfirmPasswordElement = this.formElement.querySelector(this.selectors.viewingConfirmPassword);
-        this.buttonFormElement = this.formElement.querySelector(this.selectors.buttonForm);
+        this.fieldEmailElement = null;
+        this.fieldPasswordElement = null;
+        this.fieldConfirmPasswordElement = null;
+        this.inputNameElement = null;
+        this.inputEmailElement = null;
+        this.inputPasswordElement = null;
+        this.inputConfirmPasswordElement = null;
+        this.viewingPasswordElement = null;
+        this.viewingConfirmPasswordElement = null;
+        this.buttonFormElement = null;
 
         this.bindEvents();
     }
 
-    bindEvents() {
+    setActiveForm(formElement) {
+        this.activeFormElement = formElement;
+        this.initializeFormElements();
+    }
+
+    initializeFormElements() {
+        this.fieldEmailElement = this.activeFormElement.querySelector(this.selectors.fieldEmail);
+        this.fieldPasswordElement = this.activeFormElement.querySelector(this.selectors.fieldPassword);
+        this.fieldConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.fieldConfirmPassword);
+        this.inputNameElement = this.activeFormElement.querySelector(this.selectors.inputName);
+        this.inputEmailElement = this.activeFormElement.querySelector(this.selectors.inputEmail);
+        this.inputPasswordElement = this.activeFormElement.querySelector(this.selectors.inputPassword);
+        this.inputConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.inputConfirmPassword);
+        this.viewingPasswordElement = this.activeFormElement.querySelector(this.selectors.viewingPassword);
+        this.viewingConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.viewingConfirmPassword);
+        this.buttonFormElement = this.activeFormElement.querySelector(this.selectors.buttonForm);
+        this.bindEventsToActiveForm();
+    }
+
+    bindEventsToActiveForm() {
         if (this.buttonFormElement) {
             this.buttonFormElement.addEventListener('click', this.checkingInputContents);
         }
@@ -47,31 +64,39 @@ class Form {
         if (this.viewingConfirmPasswordElement) {
             this.viewingConfirmPasswordElement.addEventListener('click', this.toggleConfirmPasswordVisibility)
         }
+
     }
 
-    checkingInputContents = () => {
+    bindEvents() {}
+
+    checkingInputContents = (event) => {
         this.emailContent = this.inputEmailElement ? this.inputEmailElement.value : '';
         this.emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         this.passwordContent = this.inputPasswordElement ? this.inputPasswordElement.value : '';
         this.passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-        this.confirmPasswordContent = this.inputConfirmPasswordElement ? this.inputConfirmPasswordElement.value : '';
 
         if (!this.emailRegex.test(this.emailContent)) {
             this.fieldEmailElement.classList.add(this.stateClasses.activeError);
+            event.preventDefault();
         } else if (this.emailRegex.test(this.emailContent)) {
             this.fieldEmailElement.classList.remove(this.stateClasses.activeError);
         }
 
         if (!this.passwordRegex.test(this.passwordContent)) {
             this.fieldPasswordElement.classList.add(this.stateClasses.activeError);
+            event.preventDefault();
         } else if (this.passwordRegex.test(this.passwordContent)) {
             this.fieldPasswordElement.classList.remove(this.stateClasses.activeError);
         }
 
-        if (this.passwordContent !== this.confirmPasswordContent) {
-            this.fieldConfirmPasswordElement.classList.add(this.stateClasses.activeError);
-        } else if (this.passwordContent === this.confirmPasswordContent) {
-            this.fieldConfirmPasswordElement.classList.remove(this.stateClasses.activeError);
+        if(this.inputConfirmPasswordElement) {
+            this.confirmPasswordContent = this.inputConfirmPasswordElement ? this.inputConfirmPasswordElement.value : '';
+            if (this.passwordContent !== this.confirmPasswordContent) {
+                this.fieldConfirmPasswordElement.classList.add(this.stateClasses.activeError);
+                event.preventDefault();
+            } else if (this.passwordContent === this.confirmPasswordContent) {
+                this.fieldConfirmPasswordElement.classList.remove(this.stateClasses.activeError);
+            }
         }
     }
 
@@ -100,19 +125,10 @@ class Form {
             }
         }
 
-        this.viewingConfirmPasswordElement.classList.toggle(this.stateClasses.activeViewing)
+        if(this.viewingConfirmPasswordElement) {
+            this.viewingConfirmPasswordElement.classList.toggle(this.stateClasses.activeViewing);
+        }
     }
-}
-
-const signInFormElement = document.querySelector('.sign-in .registered__form');
-const signUpFormElement = document.querySelector('.sign-up .registered__form');
-
-if (signInFormElement) {
-    new Form(signInFormElement);
-}
-
-if (signUpFormElement) {
-    new Form(signUpFormElement);
 }
 
 export default Form;
