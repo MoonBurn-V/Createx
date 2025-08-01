@@ -16,7 +16,10 @@
         flex-direction: column;
         row-gap: fluid(190, 50);
         padding-top: fluid(200, 80);
-        // align-items: center;
+
+        &.course{
+            row-gap: 0;
+        }
 
         @include laptop{
             padding-left: rem(20);
@@ -32,7 +35,6 @@
 
     &__main{
         display: flex;
-        // column-gap: fluid(180, 8);
         align-items: start;
         justify-content: space-between;
 
@@ -60,11 +62,23 @@
         }
     }
 
+    &__subtitle{
+        color: var(--color-accent);
+        text-align: center;
+    }
+
     &__title{
         font-size: fluid(55, 28);
         font-weight: 900;
         margin-top: fluid(24, 10);
         margin-bottom: fluid(60, 30);
+
+        &.course{
+            font-size: fluid(46, 28);
+            text-align: center;
+            margin-top: rem(12);
+            margin-bottom: fluid(120, 50);
+        }
     }
 
     &__buttons{
