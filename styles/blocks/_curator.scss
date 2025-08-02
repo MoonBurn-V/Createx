@@ -1,0 +1,72 @@
+@use '../helpers' as *;
+
+.curator{
+    &__body{
+        display: flex;
+        column-gap: fluid(135, 10);
+        place-content: center;
+
+        @include laptop{
+            padding-inline: rem(20);
+        }
+
+        @include mobile{
+            flex-direction: column;
+            row-gap: rem(50);
+            place-items: center;
+        }
+
+        &-inner{
+            padding-top: rem(20);
+
+            @include mobile{
+                place-items: center;
+                text-align: center;
+            }
+        }
+    }
+
+    &__title{
+        padding-bottom: rem(16);
+    }
+
+    &__post{
+        color: var(--color-gray-700);
+        padding-bottom: fluid(32, 15);
+
+        @include mobile{
+            padding-top: rem(15);
+            font-weight: 700;
+            font-size: rem(16);
+        }
+    }
+
+    &__statistics{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(4);
+        padding-bottom: fluid(32, 15);
+
+        @include mobile{
+            flex-direction: row;
+            column-gap: rem(10);
+        }
+
+        @include mobile-s{
+            place-content: center;
+            flex-wrap: wrap;
+            gap: rem(10);
+        }
+
+        &-item{
+            display: flex;
+            column-gap: rem(8);
+        }
+    }
+
+    &__socials{
+        display: flex;
+        column-gap: rem(24);
+        padding-top: fluid(40, 20);
+    }
+}

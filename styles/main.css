@@ -725,6 +725,9 @@ a:focus-visible, button:focus-visible {
   opacity: 1;
   transition-duration: var(--transition-duration);
 }
+.icon__behance [fill] {
+  fill: currentColor;
+}
 .icon__sign-cross [fill] {
   fill: currentColor;
 }
@@ -1531,6 +1534,9 @@ a:focus-visible, button:focus-visible {
 }
 .section__wrapper.courses {
   background: url("../../img/Courses-background.jpg") center no-repeat;
+}
+.section__wrapper.curator {
+  background: url("../../img/course-background.jpg") center no-repeat;
 }
 
 .about.active:focus-visible {
@@ -2742,6 +2748,75 @@ a:focus-visible, button:focus-visible {
   flex-direction: column;
   row-gap: 0.0625rem;
   width: 100%;
+}
+
+.curator__body {
+  display: flex;
+  column-gap: clamp(0.625rem, -1.8930785124rem + 10.3305785124vw, 8.4375rem);
+  place-content: center;
+}
+@media (width <= 90.06125rem) {
+  .curator__body {
+    padding-inline: 1.25rem;
+  }
+}
+@media (width <= 51.93625rem) {
+  .curator__body {
+    flex-direction: column;
+    row-gap: 3.125rem;
+    place-items: center;
+  }
+}
+.curator__body-inner {
+  padding-top: 1.25rem;
+}
+@media (width <= 51.93625rem) {
+  .curator__body-inner {
+    place-items: center;
+    text-align: center;
+  }
+}
+.curator__title {
+  padding-bottom: 1rem;
+}
+.curator__post {
+  color: var(--color-gray-700);
+  padding-bottom: clamp(0.9375rem, 0.5950413223rem + 1.4049586777vw, 2rem);
+}
+@media (width <= 51.93625rem) {
+  .curator__post {
+    padding-top: 0.9375rem;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+}
+.curator__statistics {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+  padding-bottom: clamp(0.9375rem, 0.5950413223rem + 1.4049586777vw, 2rem);
+}
+@media (width <= 51.93625rem) {
+  .curator__statistics {
+    flex-direction: row;
+    column-gap: 0.625rem;
+  }
+}
+@media (width <= 30.06125rem) {
+  .curator__statistics {
+    place-content: center;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+  }
+}
+.curator__statistics-item {
+  display: flex;
+  column-gap: 0.5rem;
+}
+.curator__socials {
+  display: flex;
+  column-gap: 1.5rem;
+  padding-top: clamp(1.25rem, 0.847107438rem + 1.652892562vw, 2.5rem);
 }
 
 /*# sourceMappingURL=main.css.map */

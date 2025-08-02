@@ -52,6 +52,10 @@
         transition-duration: var(--transition-duration);
     }
 
+    &__behance [fill]{
+        fill: currentColor;
+    }
+
     &__sign{
         &-cross [fill]{
             fill: currentColor;
