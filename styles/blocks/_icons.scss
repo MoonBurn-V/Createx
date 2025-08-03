@@ -131,6 +131,11 @@
         }
     }
 
+    &__step{
+        position: relative;
+        z-index: 1;
+    }
+
     // &::before {
     //     --size: #{rem(20)};
 

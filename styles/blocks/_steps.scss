@@ -1,0 +1,125 @@
+@use '../helpers' as *;
+
+.steps{
+  place-items: center;
+
+  &__body{
+    display: flex;
+    column-gap: rem(30);
+    padding-top: fluid(60, 30);
+
+    @include laptop{
+      padding-inline: rem(20);
+      flex-wrap: wrap;
+      gap: rem(30);
+      place-content: center;
+    }
+
+    @include mobile{
+      row-gap: rem(20);
+    }
+
+    &-step{
+      display: flex;
+      place-items: center;
+      padding-bottom: rem(16);
+    }
+
+    &-item{
+      position: relative;
+
+      &:hover .steps__icon svg path{
+        fill: var(--color-accent);
+      }
+
+      &:hover .circle-1{
+        display: block;
+      }
+
+      &:hover .circle-2{
+        display: block;
+      }
+      @include laptop{
+        width: rem(285);
+      }
+
+      @include mobile{
+        place-items: center;
+      }
+
+      p{
+        color: var(--color-gray-700);
+      }
+    }
+
+    &-title{
+      font-size: rem(20);
+      padding-bottom: rem(8);
+    }
+  }
+
+  &__step{
+    &-wrapper{
+      position: relative;
+      width: rem(53);
+      height: rem(35);
+      margin-right: rem(22);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  &__title{
+    text-align: center;
+  }
+
+  &__icon{
+    position: relative;
+    z-index: 1;
+    transition: fill 0.3s ease;
+  }
+
+  &__line{
+    width: rem(209);
+    height: 0;
+    border: rem(1) dashed var(--color-gray-400);
+
+    @include laptop{
+      display: none;
+    }
+
+    @include mobile{
+      display: block;
+      width: 0;
+      height: rem(100);
+    }
+  }
+
+  &__background-circle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #FF3F3A;
+    opacity: 0;
+    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+    z-index: 0;
+  }
+}
+
+.circle-1 {
+  display: none;
+  width: rem(116);
+  height: rem(116);
+  opacity: 0.06;
+}
+
+.circle-2 {
+  display: none;
+  width: rem(84);
+  height: rem(84);
+  opacity: 0.12;
+}
