@@ -1,65 +1,86 @@
 @use '../helpers' as *;
 
-.steps{
+.steps {
   place-items: center;
 
-  &__body{
+  &__body {
     display: flex;
     column-gap: rem(30);
     padding-top: fluid(60, 30);
 
-    @include laptop{
+    @include laptop {
       padding-inline: rem(20);
       flex-wrap: wrap;
       gap: rem(30);
       place-content: center;
     }
 
-    @include mobile{
+    @include mobile {
       row-gap: rem(20);
     }
 
-    &-step{
+    &-step {
       display: flex;
       place-items: center;
       padding-bottom: rem(16);
     }
 
-    &-item{
+    &-item {
       position: relative;
 
-      &:hover .steps__icon svg path{
+      &:hover .steps__icon svg path {
         fill: var(--color-accent);
       }
 
-      &:hover .circle-1{
-        display: block;
-      }
-
-      &:hover .circle-2{
-        display: block;
-      }
-      @include laptop{
+      @include laptop {
         width: rem(285);
       }
 
-      @include mobile{
+      @include mobile {
         place-items: center;
       }
 
-      p{
+      p {
         color: var(--color-gray-700);
+      }
+
+      .circle-1 {
+        display: block;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+      }
+
+      .circle-2 {
+        display: block;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+      }
+
+      &:hover .circle-1 {
+        width: rem(116);
+        height: rem(116);
+        opacity: 0.06;
+      }
+
+      &:hover .circle-2 {
+        width: rem(84);
+        height: rem(84);
+        opacity: 0.12;
       }
     }
 
-    &-title{
+    &-title {
       font-size: rem(20);
       padding-bottom: rem(8);
     }
   }
 
-  &__step{
-    &-wrapper{
+  &__step {
+    &-wrapper {
       position: relative;
       width: rem(53);
       height: rem(35);
@@ -68,58 +89,43 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      overflow: visible;
     }
   }
 
-  &__title{
+  &__title {
     text-align: center;
   }
 
-  &__icon{
+  &__icon {
     position: relative;
     z-index: 1;
     transition: fill 0.3s ease;
   }
 
-  &__line{
+  &__line {
     width: rem(209);
     height: 0;
     border: rem(1) dashed var(--color-gray-400);
 
-    @include laptop{
+    @include laptop {
       display: none;
     }
 
-    @include mobile{
+    @include mobile {
       display: block;
       width: 0;
       height: rem(100);
     }
   }
 
-  &__background-circle{
+  &__background-circle {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     background-color: #FF3F3A;
-    opacity: 0;
-    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
     z-index: 0;
   }
-}
-
-.circle-1 {
-  display: none;
-  width: rem(116);
-  height: rem(116);
-  opacity: 0.06;
-}
-
-.circle-2 {
-  display: none;
-  width: rem(84);
-  height: rem(84);
-  opacity: 0.12;
 }

@@ -2855,12 +2855,6 @@ a:focus-visible, button:focus-visible {
 .steps__body-item:hover .steps__icon svg path {
   fill: var(--color-accent);
 }
-.steps__body-item:hover .circle-1 {
-  display: block;
-}
-.steps__body-item:hover .circle-2 {
-  display: block;
-}
 @media (width <= 90.06125rem) {
   .steps__body-item {
     width: 17.8125rem;
@@ -2873,6 +2867,30 @@ a:focus-visible, button:focus-visible {
 }
 .steps__body-item p {
   color: var(--color-gray-700);
+}
+.steps__body-item .circle-1 {
+  display: block;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+.steps__body-item .circle-2 {
+  display: block;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+.steps__body-item:hover .circle-1 {
+  width: 7.25rem;
+  height: 7.25rem;
+  opacity: 0.06;
+}
+.steps__body-item:hover .circle-2 {
+  width: 5.25rem;
+  height: 5.25rem;
+  opacity: 0.12;
 }
 .steps__body-title {
   font-size: 1.25rem;
@@ -2887,6 +2905,7 @@ a:focus-visible, button:focus-visible {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  overflow: visible;
 }
 .steps__title {
   text-align: center;
@@ -2920,23 +2939,7 @@ a:focus-visible, button:focus-visible {
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background-color: #FF3F3A;
-  opacity: 0;
-  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
   z-index: 0;
-}
-
-.circle-1 {
-  display: none;
-  width: 7.25rem;
-  height: 7.25rem;
-  opacity: 0.06;
-}
-
-.circle-2 {
-  display: none;
-  width: 5.25rem;
-  height: 5.25rem;
-  opacity: 0.12;
 }
 
 /*# sourceMappingURL=main.css.map */
