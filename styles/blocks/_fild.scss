@@ -60,6 +60,10 @@
     &.active-error{
       border-color: var(--color-red);
     }
+
+    &.course{
+      min-width: rem(275);
+    }
   }
 
 

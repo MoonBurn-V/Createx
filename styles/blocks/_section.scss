@@ -46,6 +46,14 @@
         &.curator{
             background: url("../../img/course-background.jpg") center no-repeat;
         }
+
+        &.discount{
+            background: url("../../img/Discount-background.jpg") center no-repeat;
+
+            @include laptop-s{
+                background: url("../../img/Discount-background-1.jpg") center no-repeat;
+            }
+        }
     }
 
 }

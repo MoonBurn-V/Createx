@@ -6,6 +6,8 @@ import Subscribe from './Subscribe.js';
 import GoToTop from './GoToTop.js';
 import SearchCard from './SearchCard.js';
 import LoadCards from './LoadCards.js';
+import Countdown from './Countdown.js';
+import DiscountSubscride from './DiscountSubscride.js';
 
 const form = new Form();
 new Header(form);
@@ -15,3 +17,5 @@ new Carousel();
 new Subscribe();
 new GoToTop();
 new SearchCard(loadCardsInstance);
+new Countdown();
+new DiscountSubscride();

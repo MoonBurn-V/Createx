@@ -1,0 +1,71 @@
+@use '../helpers' as *;
+
+.discount{
+
+    &__body{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(32);
+        padding: fluid(48, 34) fluid(60, 45);
+
+        @include mobile{
+            row-gap: rem(40);
+        }
+    }
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+
+        @include mobile{
+            flex-direction: column;
+            row-gap: rem(20);
+            align-items: center;
+        }
+    }
+
+    &__title{
+        font-size: fluid(32, 28);
+        font-weight: 900;
+        text-align: center;
+    }
+
+    &__countdown{
+        display: none;
+        column-gap: rem(24);
+
+        &-item{
+            place-items: center;
+        }
+
+        &-number{
+            font-size: rem(20);
+            font-weight: 700;
+        }
+
+        &.active{
+            display: flex;
+        }
+    }
+
+    &__registered{
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: rem(24);
+        row-gap: rem(20);
+        align-items: end;
+        justify-content: center;
+    }
+
+    &__button{
+        max-height: rem(44);
+    }
+
+    &__message{
+        display: none;
+
+        &.active{
+            display: block;
+        }
+    }
+}

@@ -401,7 +401,7 @@
                             <p>Nulla sem adipiscing adipiscing felis fringilla. Adipiscing mauris quam ac elit tristique dis.</p>
                         </div>
                     </div>
-                    <a class="about__button button button--accent" href="#">Join the course</a>
+                    <a class="about__button button button--accent" href="#discount">Join the course</a>
                 </div>
             </div>
         </section>
@@ -569,6 +569,62 @@
                             <p>Sit veniam aute dolore adipisicing nulla sit culpa. Minim mollit voluptate ullamco proident ea ad.</p>
                         </li>
                     </ul>
+                </section>
+
+                <section class="section section-mrgin">
+                    <div class="section__wrapper discount container">
+                        <div class="discount__body" id="discount">
+                            <div class="discount__header">
+                                <div class="discount__title">20% discount for early birds!</div>
+                                <div class="discount__countdown active" data-js-countdown>
+                                    <div class="discount__countdown-item">
+                                        <div class="discount__countdown-number" data-js-days>06</div>
+                                        <div class="discount__countdown-time">Days</div>
+                                    </div>
+                                    <div class="discount__countdown-item">
+                                        <div class="discount__countdown-number" data-js-hours>18</div>
+                                        <div class="discount__countdown-time">Hours</div>
+                                    </div>
+                                    <div class="discount__countdown-item">
+                                        <div class="discount__countdown-number" data-js-mins>24</div>
+                                        <div class="discount__countdown-time">Mins</div>
+                                    </div>
+                                    <div class="discount__countdown-item">
+                                        <div class="discount__countdown-number" data-js-sec>12</div>
+                                        <div class="discount__countdown-time">Sec</div>
+                                    </div>
+                                </div>
+                                <div class="discount__message" data-js-discount-message>
+                                    The action has passed
+                                </div>
+                            </div>
+                            <form class="discount__registered" action="">
+                                <div class="registered__form-cell field" data-js-field-name>
+                                    <label class="field__label" for="name">Full Name</label> <!--обрати внимание на for-->
+                                    <input class="field__control course" type="name" placeholder="Your full name" required id="discount-name" name="name" data-js-input-name>
+                                </div>
+                                <div class="registered__form-cell field" data-js-field-email>
+                                    <label class="field__label" for="sign-up-email">Email</label>
+                                    <input class="field__control course" type="email" placeholder="Your working email" required aria-describedby="name-error-email" id="discount-email" autocomplete="email" data-js-input-email>
+                                    <div class="field__error" id="name-error-email" role="alert">
+                                        <p>
+                                            Incorrect email
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="registered__form-cell field" data-js-field-phone>
+                                    <label class="field__label" for="sign-up-email">Phone</label>
+                                    <input class="field__control course" type="phone" placeholder="Your phone number" required aria-describedby="name-error-phone" id="discount-phone" data-js-input-phone>
+                                    <div class="field__error" id="name-error-phone" role="alert">
+                                        <p>
+                                            There is no such phone number.
+                                        </p>
+                                    </div>
+                                </div>
+                                <button class="discount__button button button--accent" type="submit" data-js-discount-button>Join the course</button>
+                            </form>
+                        </div>
+                    </div>
                 </section>
 
             </div>
