@@ -11,9 +11,9 @@
 //     }
 
 //     initialValues = {
-//         days: 0,
-//         hours: 0,
-//         mins: 0,
+//         days: 6,
+//         hours: 18,
+//         mins: 24,
 //         sec: 12
 //     }
 
@@ -22,14 +22,22 @@
 //     }
 
 //     constructor() {
-//         this.rootElement = document.querySelector(this.selectors.root);
-//         this.daysElement = this.rootElement.querySelector(this.selectors.days);
-//         this.hoursElement = this.rootElement.querySelector(this.selectors.hours);
-//         this.minsElement = this.rootElement.querySelector(this.selectors.mins);
-//         this.secElement = this.rootElement.querySelector(this.selectors.sec);
-//         this.messageElement = document.querySelector(this.selectors.message);
-//         this.timeLeft = { ...this.initialValues };
-//         this.startCountdown();
+
+//         if (window.location.pathname.includes('course.html')) {
+//             this.rootElement = document.querySelector(this.selectors.root);
+
+//             if(!this.rootElement) {
+//                 return
+//             }
+
+//             this.daysElement = this.rootElement.querySelector(this.selectors.days);
+//             this.hoursElement = this.rootElement.querySelector(this.selectors.hours);
+//             this.minsElement = this.rootElement.querySelector(this.selectors.mins);
+//             this.secElement = this.rootElement.querySelector(this.selectors.sec);
+//             this.messageElement = document.querySelector(this.selectors.message);
+//             this.timeLeft = { ...this.initialValues };
+//             this.startCountdown();
+//         }
 //     }
 
 //     updateDisplay() {
@@ -97,18 +105,25 @@ class Countdown {
     }
 
     constructor() {
-        this.rootElement = document.querySelector(this.selectors.root);
-        this.daysElement = this.rootElement.querySelector(this.selectors.days);
-        this.hoursElement = this.rootElement.querySelector(this.selectors.hours);
-        this.minsElement = this.rootElement.querySelector(this.selectors.mins);
-        this.secElement = this.rootElement.querySelector(this.selectors.sec);
-        this.messageElement = document.querySelector(this.selectors.message);
-        this.targetDate = new Date(new Date().getFullYear(), 8, 1);
-        if (new Date() > this.targetDate) {
-            this.targetDate = new Date(new Date().getFullYear() + 1, 8, 1);
+        if (window.location.pathname.includes('course.html')) {
+            this.rootElement = document.querySelector(this.selectors.root);
+
+            if (!this.rootElement) {
+                return;
+            }
+
+            this.daysElement = this.rootElement.querySelector(this.selectors.days);
+            this.hoursElement = this.rootElement.querySelector(this.selectors.hours);
+            this.minsElement = this.rootElement.querySelector(this.selectors.mins);
+            this.secElement = this.rootElement.querySelector(this.selectors.sec);
+            this.messageElement = document.querySelector(this.selectors.message);
+            this.targetDate = new Date(new Date().getFullYear(), 8, 1);
+            if (new Date() > this.targetDate) {
+                this.targetDate = new Date(new Date().getFullYear() + 1, 8, 1);
+            }
+            this.timeLeft = this.getTimeLeft();
+            this.startCountdown();
         }
-        this.timeLeft = this.getTimeLeft();
-        this.startCountdown();
     }
 
     getTimeLeft() {

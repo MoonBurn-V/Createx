@@ -571,9 +571,10 @@
                     </ul>
                 </section>
 
-                <section class="section section-mrgin">
+                <section class="section section-mrgin" id="discount">
                     <div class="section__wrapper discount container">
-                        <div class="discount__body" id="discount">
+                        <div class="discount__success h1" data-js-success>Hurray! You were able to take advantage of this unique opportunity!!!</div>
+                        <div class="discount__body active" data-js-discount>
                             <div class="discount__header">
                                 <div class="discount__title">20% discount for early birds!</div>
                                 <div class="discount__countdown active" data-js-countdown>
@@ -599,13 +600,13 @@
                                 </div>
                             </div>
                             <form class="discount__registered" action="">
-                                <div class="registered__form-cell field" data-js-field-name>
+                                <div class="registered__form-cell field" data-js-field-discount-name>
                                     <label class="field__label" for="name">Full Name</label> <!--обрати внимание на for-->
-                                    <input class="field__control course" type="name" placeholder="Your full name" required id="discount-name" name="name" data-js-input-name>
+                                    <input class="field__control course" type="name" placeholder="Your full name" id="discount-name" name="name" data-js-input-discount-name>
                                 </div>
-                                <div class="registered__form-cell field" data-js-field-email>
+                                <div class="registered__form-cell field" data-js-field-discount-email>
                                     <label class="field__label" for="sign-up-email">Email</label>
-                                    <input class="field__control course" type="email" placeholder="Your working email" required aria-describedby="name-error-email" id="discount-email" autocomplete="email" data-js-input-email>
+                                    <input class="field__control course" type="email" placeholder="Your working email" required aria-describedby="name-error-email" id="discount-email" autocomplete="email" data-js-input-discount-email>
                                     <div class="field__error" id="name-error-email" role="alert">
                                         <p>
                                             Incorrect email
@@ -614,7 +615,7 @@
                                 </div>
                                 <div class="registered__form-cell field" data-js-field-phone>
                                     <label class="field__label" for="sign-up-email">Phone</label>
-                                    <input class="field__control course" type="phone" placeholder="Your phone number" required aria-describedby="name-error-phone" id="discount-phone" data-js-input-phone>
+                                    <input class="field__control course" type="phone" placeholder="Your phone number" required aria-describedby="name-error-phone" id="discount-phone" data-js-input-mask="(000) 000-00-00"> <!--data-js-input-phone-->
                                     <div class="field__error" id="name-error-phone" role="alert">
                                         <p>
                                             There is no such phone number.
@@ -886,7 +887,7 @@
         </div>
     </footer>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/7.6.1/imask.min.js"></script>
     <script src="./scripts/main.js" type="module"></script>
 </body>
 </html> <!--укажи типы для кнопок и инпутов-->

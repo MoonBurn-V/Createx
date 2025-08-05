@@ -2953,8 +2953,16 @@ a:focus-visible, button:focus-visible {
   z-index: 0;
 }
 
+.discount__success {
+  display: none;
+  padding: clamp(2.125rem, 1.8429752066rem + 1.1570247934vw, 3rem) clamp(2.8125rem, 2.5103305785rem + 1.2396694215vw, 3.75rem);
+  text-align: center;
+}
+.discount__success.active {
+  display: block;
+}
 .discount__body {
-  display: flex;
+  display: none;
   flex-direction: column;
   row-gap: 2rem;
   padding: clamp(2.125rem, 1.8429752066rem + 1.1570247934vw, 3rem) clamp(2.8125rem, 2.5103305785rem + 1.2396694215vw, 3.75rem);
@@ -2963,6 +2971,9 @@ a:focus-visible, button:focus-visible {
   .discount__body {
     row-gap: 2.5rem;
   }
+}
+.discount__body.active {
+  display: flex;
 }
 .discount__header {
   display: flex;

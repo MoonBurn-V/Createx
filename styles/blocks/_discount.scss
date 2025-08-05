@@ -2,14 +2,28 @@
 
 .discount{
 
+    &__success{
+        display: none;
+        padding: fluid(48, 34) fluid(60, 45);
+        text-align: center;
+
+        &.active{
+            display: block;
+        }
+    }
+
     &__body{
-        display: flex;
+        display: none;
         flex-direction: column;
         row-gap: rem(32);
         padding: fluid(48, 34) fluid(60, 45);
 
         @include mobile{
             row-gap: rem(40);
+        }
+
+        &.active{
+            display: flex;
         }
     }
 

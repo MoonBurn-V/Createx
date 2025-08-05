@@ -8,9 +8,10 @@ import SearchCard from './SearchCard.js';
 import LoadCards from './LoadCards.js';
 import Countdown from './Countdown.js';
 import DiscountSubscride from './DiscountSubscride.js';
+import InputMaskCollection from './InputMask.js';
 
 const form = new Form();
-new Header(form);
+new Header();
 const loadCardsInstance = new LoadCards();
 new TabsCollection(loadCardsInstance);
 new Carousel();
@@ -19,3 +20,4 @@ new GoToTop();
 new SearchCard(loadCardsInstance);
 new Countdown();
 new DiscountSubscride();
+new InputMaskCollection();

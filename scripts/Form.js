@@ -5,7 +5,7 @@ class Form {
             fieldEmail: '[data-js-field-email]',
             fieldPassword: '[data-js-field-password]',
             fieldConfirmPassword: '[data-js-field-confirm-password]',
-            inputName: '[data-js-input-name]',
+            //inputName: '[data-js-input-name]',
             inputEmail: '[data-js-input-email]',
             inputPassword: '[data-js-input-password]',
             inputConfirmPassword: '[data-js-input-confirm-password]',
@@ -22,7 +22,7 @@ class Form {
         this.fieldEmailElement = null;
         this.fieldPasswordElement = null;
         this.fieldConfirmPasswordElement = null;
-        this.inputNameElement = null;
+        //this.inputNameElement = null;
         this.inputEmailElement = null;
         this.inputPasswordElement = null;
         this.inputConfirmPasswordElement = null;
@@ -42,7 +42,7 @@ class Form {
         this.fieldEmailElement = this.activeFormElement.querySelector(this.selectors.fieldEmail);
         this.fieldPasswordElement = this.activeFormElement.querySelector(this.selectors.fieldPassword);
         this.fieldConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.fieldConfirmPassword);
-        this.inputNameElement = this.activeFormElement.querySelector(this.selectors.inputName);
+        //this.inputNameElement = this.activeFormElement.querySelector(this.selectors.inputName);
         this.inputEmailElement = this.activeFormElement.querySelector(this.selectors.inputEmail);
         this.inputPasswordElement = this.activeFormElement.querySelector(this.selectors.inputPassword);
         this.inputConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.inputConfirmPassword);
