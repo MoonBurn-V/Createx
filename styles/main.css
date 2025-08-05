@@ -3012,4 +3012,42 @@ a:focus-visible, button:focus-visible {
   display: block;
 }
 
+.whom__body {
+  display: flex;
+  column-gap: clamp(0.625rem, -1.8930785124rem + 10.3305785124vw, 8.4375rem);
+}
+@media (width <= 90.06125rem) {
+  .whom__body {
+    padding-inline: 1.25rem;
+  }
+}
+@media (width <= 51.93625rem) {
+  .whom__body {
+    flex-direction: column;
+    row-gap: 0.9375rem;
+    place-items: center;
+  }
+}
+@media (width <= 51.93625rem) {
+  .whom__header {
+    text-align: center;
+  }
+}
+.whom__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.25rem;
+  max-width: 37.5rem;
+  padding-top: 2.1875rem;
+}
+.whom__item {
+  display: flex;
+  column-gap: 1rem;
+  font-size: 1.25rem;
+  align-items: start;
+}
+.whom__icon {
+  padding-top: 0.5rem;
+}
+
 /*# sourceMappingURL=main.css.map */
