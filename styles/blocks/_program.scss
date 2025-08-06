@@ -1,0 +1,35 @@
+@use '../helpers' as *;
+
+.program{
+    display: flex;
+    justify-content: space-between;
+    place-content: center;
+
+    @include laptop{
+        padding-inline: rem(20);
+    }
+
+    &__body{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(60);
+    }
+    
+    &__header{
+        @include tablet{
+            text-align: center;
+        }
+    }
+
+    &__accordion{
+        display: grid;
+        row-gap: rem(24);
+        width: fluid(600, 300);
+    }
+
+    &__image{
+        @include tablet{
+            display: none;
+        }
+    }
+}
