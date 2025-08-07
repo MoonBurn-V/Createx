@@ -3,16 +3,19 @@
 .program{
     display: flex;
     justify-content: space-between;
-    place-content: center;
 
     @include laptop{
         padding-inline: rem(20);
     }
 
+    @include tablet{
+        place-content: center;
+    }
+
     &__body{
         display: flex;
         flex-direction: column;
-        row-gap: rem(60);
+        row-gap: fluid(60, 30);
     }
     
     &__header{

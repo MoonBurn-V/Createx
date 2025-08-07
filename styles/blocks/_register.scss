@@ -1,0 +1,48 @@
+@use '../helpers' as *;
+
+.register{
+    display: flex;
+    column-gap: fluid(100, 10);
+    padding-bottom: fluid(100, 40);
+
+    @include laptop{
+        padding-inline: rem(20);
+    }
+
+    @include tablet{
+        place-items: center;
+    }
+
+    &__body{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(40);
+
+        &-inner{
+            display: flex;
+            flex-direction: column;
+            row-gap: rem(24);
+            max-width: rem(495);
+        }
+    }
+
+    &__header{
+        @include mobile{
+            text-align: center;
+        }
+    }
+
+    &__title{
+        white-space: nowrap;
+
+        @include mobile{
+            white-space: wrap;
+        }
+    }
+
+    &__image{
+        @include tablet{
+            display: none;
+        }
+    }
+}

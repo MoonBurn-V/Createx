@@ -1,5 +1,5 @@
 import Header from './Header.js';
-import Form from './Form.js';
+import LogInForm from './LogInForm.js';
 import TabsCollection from './Tabs.js';
 import Carousel from './Carousel.js';
 import Subscribe from './Subscribe.js';
@@ -7,11 +7,11 @@ import GoToTop from './GoToTop.js';
 import SearchCard from './SearchCard.js';
 import LoadCards from './LoadCards.js';
 import Countdown from './Countdown.js';
-import DiscountSubscride from './DiscountSubscride.js';
+import JoinForm from './JoinForm.js';
 import InputMaskCollection from './InputMask.js';
 
-const form = new Form();
-new Header();
+const form = new LogInForm();
+new Header(form);
 const loadCardsInstance = new LoadCards();
 new TabsCollection(loadCardsInstance);
 new Carousel();
@@ -19,5 +19,5 @@ new Subscribe();
 new GoToTop();
 new SearchCard(loadCardsInstance);
 new Countdown();
-new DiscountSubscride();
+new JoinForm();
 new InputMaskCollection();

@@ -35,7 +35,9 @@
 
         &::before,
         &::after{
-            @include abs-y;
+            position: absolute;
+            top: 50%;
+            translate: 0 -50%;
 
             content: '';
             left: 0;
@@ -44,13 +46,18 @@
             background-color: var(--color-accent);
             border-radius: 1rem;
             transition-duration: var(--transition-duration);
+
+            @include tablet{
+                top: 21%;
+                translate: 0 -21%;
+            }
         }
 
         &::before{
             rotate: 90deg;
         }
 
-        @include mobile{
+        @include tablet{
             white-space: wrap;
         }
 

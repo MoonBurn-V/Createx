@@ -1,4 +1,4 @@
-class DiscountSubscride {
+class JoinForm {
   selectors = {
     root: '[data-js-discount]',
     fieldEmail: '[data-js-field-discount-email]',
@@ -68,4 +68,4 @@ class DiscountSubscride {
   }
 }
 
-export default DiscountSubscride
+export default JoinForm
