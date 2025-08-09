@@ -1,0 +1,85 @@
+@use '../helpers' as *;
+
+.related{
+    display: flex;
+    flex-direction: column;
+
+    @include laptop{
+        padding-inline: rem(20);
+    }
+
+    @include mobile{
+        place-items: center;
+    }
+
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: fluid(60, 30);
+
+        @include mobile{
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    &__buttons{
+        margin-top: rem(25);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include mobile{
+            justify-content: space-between;
+        }
+    }
+
+    &__button{
+        border: none;
+        background: none;
+
+        &:hover path[fill]{
+            fill: white;
+        }
+
+        &:hover circle{
+            opacity: 1;
+        }
+    }
+
+    &__body{
+        display: flex;
+        column-gap: rem(30);
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        width: 100%;
+        padding-bottom: fluid(80, 40);
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+
+        @include mobile{
+            width: rem(300);
+            column-gap: 0;
+        }
+    }
+
+    &__all{
+        display: flex;
+        column-gap: rem(40);
+        place-items: center;
+        place-content: center;
+
+        @include mobile{
+            flex-direction: column;
+            row-gap: rem(20);
+        }
+    }
+}
+
+.card__item{
+    scroll-snap-align: start;
+}

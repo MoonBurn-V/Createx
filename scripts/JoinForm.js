@@ -16,15 +16,23 @@ class JoinForm {
   }
 
   constructor() {
-    this.rootElement = document.querySelector(this.selectors.root);
-    this.fieldEmailElement = this.rootElement.querySelector(this.selectors.fieldEmail);
-    this.fieldPhoneElement = this.rootElement.querySelector(this.selectors.fieldPhone);
-    this.inputNameElement = this.rootElement.querySelector(this.selectors.inputName);
-    this.inputEmailElement = this.rootElement.querySelector(this.selectors.inputEmail);
-    this.inputphoneElement = this.rootElement.querySelector(this.selectors.inputphone);
-    this.discountButtonElement = this.rootElement.querySelector(this.selectors.discountButton);
-    this.successElement = document.querySelector(this.selectors.success);
-    this.bindEvents();
+    if (window.location.pathname.includes('course.html')) {
+      this.rootElement = document.querySelector(this.selectors.root);
+
+      if (!this.rootElement) {
+        return
+      }
+
+      this.rootElement = document.querySelector(this.selectors.root);
+      this.fieldEmailElement = this.rootElement.querySelector(this.selectors.fieldEmail);
+      this.fieldPhoneElement = this.rootElement.querySelector(this.selectors.fieldPhone);
+      this.inputNameElement = this.rootElement.querySelector(this.selectors.inputName);
+      this.inputEmailElement = this.rootElement.querySelector(this.selectors.inputEmail);
+      this.inputphoneElement = this.rootElement.querySelector(this.selectors.inputphone);
+      this.discountButtonElement = this.rootElement.querySelector(this.selectors.discountButton);
+      this.successElement = document.querySelector(this.selectors.success);
+      this.bindEvents();
+    }
   }
 
   bindEvents() {

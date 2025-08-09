@@ -1508,7 +1508,6 @@ a:focus-visible, button:focus-visible {
 
 .section__wrapper.about {
   width: 100%;
-  max-height: 30.25rem;
   background: url("..//..//img/About-background.jpg") center no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
@@ -1844,6 +1843,16 @@ a:focus-visible, button:focus-visible {
     width: 18.75rem;
   }
 }
+@media (width <= 64.06125rem) {
+  .card__body-inner.course {
+    padding-left: 0;
+    padding-right: 0;
+    width: 18.75rem;
+    row-gap: 0.625rem;
+    padding-block: 0;
+    row-gap: 1.25rem;
+  }
+}
 @media (width <= 30.06125rem) {
   .card__body-inner {
     width: 12.5rem;
@@ -1859,6 +1868,17 @@ a:focus-visible, button:focus-visible {
 .card__body.vertical {
   display: flex;
   flex-direction: column;
+}
+.card__body.course {
+  display: flex;
+  column-gap: clamp(0.625rem, 0.1818181818rem + 1.8181818182vw, 2rem);
+  width: clamp(18.75rem, 12.9080578512rem + 23.9669421488vw, 36.875rem);
+}
+@media (width <= 64.06125rem) {
+  .card__body.course {
+    flex-direction: column;
+    width: 18.75rem;
+  }
 }
 @media (width <= 51.93625rem) {
   .card__image {
@@ -1880,6 +1900,11 @@ a:focus-visible, button:focus-visible {
     width: 18.75rem;
   }
 }
+@media (width <= 64.06125rem) {
+  .card__image.course {
+    width: 18.75rem;
+  }
+}
 .card__item {
   border: 0.0625rem solid var(--color-gray-300);
   border-radius: 0.25rem;
@@ -1892,12 +1917,15 @@ a:focus-visible, button:focus-visible {
 .card__item.hide {
   display: none;
 }
+.card__item.course {
+  height: 13.375rem;
+}
 @media (width <= 30.06125rem) {
   .card__title {
     font-size: 0.875rem;
   }
 }
-@media (width <= 51.93625rem) {
+@media (width <= 64.06125rem) {
   .card__title.vertical {
     font-size: 1.125rem;
     text-align: center;
@@ -1905,6 +1933,18 @@ a:focus-visible, button:focus-visible {
 }
 @media (width <= 30.06125rem) {
   .card__title.vertical {
+    font-size: 1rem;
+  }
+}
+@media (width <= 64.06125rem) {
+  .card__title.course {
+    font-size: 1.125rem;
+    text-align: center;
+    padding-inline: 0.5rem;
+  }
+}
+@media (width <= 30.06125rem) {
+  .card__title.course {
     font-size: 1rem;
   }
 }
@@ -1945,6 +1985,16 @@ a:focus-visible, button:focus-visible {
     font-size: 1rem;
   }
 }
+@media (width <= 64.06125rem) {
+  .card__subtitle.course {
+    display: flex;
+    text-align: center;
+    align-self: stretch;
+    justify-content: center;
+    border-radius: 0;
+    font-size: 1rem;
+  }
+}
 .card__info {
   display: flex;
   column-gap: 0.5rem;
@@ -1965,15 +2015,33 @@ a:focus-visible, button:focus-visible {
     place-content: center;
   }
 }
+@media (width <= 64.06125rem) {
+  .card__info.course {
+    width: 100%;
+    flex-direction: row;
+    place-content: center;
+    padding-bottom: 1.25rem;
+  }
+}
 .card__price {
   color: var(--color-light-red);
 }
 .card__separator {
   color: var(--color-gray-700);
 }
+@media (width <= 30.06125rem) {
+  .card__separator.horisontal {
+    display: none;
+  }
+}
 .card__speaker {
   color: var(--color-gray-700);
   font-weight: 400;
+}
+@media (width <= 30.06125rem) {
+  .card__speaker.horisontal {
+    border-top: 0.0625rem solid var(--color-gray-700);
+  }
 }
 
 @media (width <= 90.06125rem) {
@@ -3207,6 +3275,88 @@ a:focus-visible, button:focus-visible {
   .register__image {
     display: none;
   }
+}
+
+.related {
+  display: flex;
+  flex-direction: column;
+}
+@media (width <= 90.06125rem) {
+  .related {
+    padding-inline: 1.25rem;
+  }
+}
+@media (width <= 51.93625rem) {
+  .related {
+    place-items: center;
+  }
+}
+.related__header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: clamp(1.875rem, 1.270661157rem + 2.479338843vw, 3.75rem);
+}
+@media (width <= 51.93625rem) {
+  .related__header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.related__buttons {
+  margin-top: 1.5625rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (width <= 51.93625rem) {
+  .related__buttons {
+    justify-content: space-between;
+  }
+}
+.related__button {
+  border: none;
+  background: none;
+}
+.related__button:hover path[fill] {
+  fill: white;
+}
+.related__button:hover circle {
+  opacity: 1;
+}
+.related__body {
+  display: flex;
+  column-gap: 1.875rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  padding-bottom: clamp(2.5rem, 1.694214876rem + 3.305785124vw, 5rem);
+}
+.related__body::-webkit-scrollbar {
+  display: none;
+}
+@media (width <= 51.93625rem) {
+  .related__body {
+    width: 18.75rem;
+    column-gap: 0;
+  }
+}
+.related__all {
+  display: flex;
+  column-gap: 2.5rem;
+  place-items: center;
+  place-content: center;
+}
+@media (width <= 51.93625rem) {
+  .related__all {
+    flex-direction: column;
+    row-gap: 1.25rem;
+  }
+}
+
+.card__item {
+  scroll-snap-align: start;
 }
 
 /*# sourceMappingURL=main.css.map */

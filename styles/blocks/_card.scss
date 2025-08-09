@@ -64,6 +64,17 @@
                 }
             }
 
+            &.course{
+                @include tablet{
+                    padding-left: 0;
+                    padding-right: 0;
+                    width: rem(300);
+                    row-gap: rem(10);
+                    padding-block: 0;
+                    row-gap: rem(20);
+                }
+            }
+
             @include mobile-s{
                 width: rem(200);
                 row-gap: fluid(10, 5);
@@ -80,6 +91,17 @@
         &.vertical{
             display: flex;
             flex-direction: column;
+        }
+
+        &.course{
+            display: flex;
+            column-gap: fluid(32, 10);
+            width: fluid(590, 300);
+
+            @include tablet{
+                flex-direction: column;
+                width: rem(300);
+            }
         }
     }
 
@@ -100,6 +122,12 @@
             @include mobile-s{
                 width: rem(300);
             }
+        }
+
+        &.course{
+            @include tablet{
+                width: rem(300);
+            }  
         }
     }
 
@@ -124,6 +152,10 @@
         &.hide{
             display: none;
         }
+
+        &.course{
+            height: rem(214);
+        }
     }
 
     &__title{
@@ -132,9 +164,21 @@
         }
 
         &.vertical{
-            @include mobile{
+            @include tablet{
                 font-size: rem(18);
                 text-align: center;
+            }
+
+            @include mobile-s{
+                font-size: rem(16);
+            }
+        }
+
+        &.course{
+            @include tablet{
+                font-size: rem(18);
+                text-align: center;
+                padding-inline: rem(8);
             }
 
             @include mobile-s{
@@ -185,6 +229,17 @@
                 font-size: rem(16);
             }
         }
+
+        &.course{
+            @include tablet{
+                display: flex;
+                text-align: center;
+                align-self: stretch;
+                justify-content: center;
+                border-radius: 0;
+                font-size: rem(16);
+            }
+        }
     }
 
     &__info{
@@ -205,6 +260,15 @@
                 place-content: center;
             }
         }
+
+        &.course{
+            @include tablet{
+                width: 100%;
+                flex-direction: row;
+                place-content: center;
+                padding-bottom: rem(20);
+            }
+        }
     }
 
     &__price{
@@ -214,17 +278,21 @@
     &__separator{
         color: var(--color-gray-700);
 
-        // @include mobile-s{
-        //     display: none;
-        // }
+        &.horisontal{
+            @include mobile-s{
+                display: none;
+            }
+        }
     }
 
     &__speaker{
         color: var(--color-gray-700);
         font-weight: 400;
 
-        // @include mobile-s{
-        //     border-top: rem(1) solid var(--color-gray-700);
-        // }
+        &.horisontal{
+            @include mobile-s{
+                border-top: rem(1) solid var(--color-gray-700);
+            }
+        }
     }
 }
