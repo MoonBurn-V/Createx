@@ -1,0 +1,71 @@
+@use '../helpers' as *;
+
+.values{
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(60, 30);
+    place-items: center;
+
+    @include laptop{
+        padding-inline: rem(20);
+    }
+
+    &__header{
+        text-align: center;
+    }
+
+    &__body{
+        display: flex;
+
+        @include tablet{
+            flex-direction: column;
+            row-gap: rem(30);
+        }
+    }
+
+    &__item{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(8);
+        place-items: center;
+        text-align: center;
+        border-right: rem(1) solid var(--color-gray-400);
+        padding-inline: rem(45);
+
+        @include tablet{
+            border-right: none;
+            padding-inline: 0;
+        }
+
+        &:first-child{
+            padding-inline: 0;
+            padding-right: rem(45);
+
+            @include tablet{
+                padding-right: 0;
+            }
+        }
+
+        &:last-child{
+            border: none;
+            padding-inline: 0;
+            padding-left: rem(45);
+
+            @include tablet{
+                padding-left: 0;
+            }
+        }
+
+        &-title{
+            font-size: rem(20);
+        }
+
+        p{
+            color: var(--color-gray-700);
+        }
+    }
+
+    &__icon{
+        padding-bottom: fluid(16, 8);
+    }
+}

@@ -1552,7 +1552,13 @@ a:focus-visible, button:focus-visible {
     background: url("../../img/Discount-background-1.jpg") center no-repeat;
   }
 }
+.section__wrapperabout-as {
+  background: url("../../img/AboutAs-background.jpg") center no-repeat;
+}
 
+.about.padding-top {
+  padding-top: clamp(6.25rem, 5.2024793388rem + 4.2975206612vw, 9.5rem);
+}
 .about.active:focus-visible {
   border: 0.0625rem solid var(--color-accent);
   box-shadow: 5px 5px 10px #FF3F3A;
@@ -1654,6 +1660,7 @@ a:focus-visible, button:focus-visible {
 @media (width <= 51.93625rem) {
   .about__title {
     text-align: center;
+    white-space: wrap;
   }
 }
 .about__subtitle {
@@ -1699,8 +1706,22 @@ a:focus-visible, button:focus-visible {
 .about__icon.course {
   right: 102%;
 }
+.about__buttons {
+  display: flex;
+  column-gap: 1.5rem;
+}
 .about__button.home {
   max-width: 10.0625rem;
+}
+.about__creotex {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+}
+.about__creotex-info {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
 }
 
 .courses {
@@ -1918,7 +1939,7 @@ a:focus-visible, button:focus-visible {
   display: none;
 }
 .card__item.course {
-  height: 13.375rem;
+  box-shadow: none;
 }
 @media (width <= 30.06125rem) {
   .card__title {
@@ -3357,6 +3378,73 @@ a:focus-visible, button:focus-visible {
 
 .card__item {
   scroll-snap-align: start;
+}
+
+.values {
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(1.875rem, 1.270661157rem + 2.479338843vw, 3.75rem);
+  place-items: center;
+}
+@media (width <= 90.06125rem) {
+  .values {
+    padding-inline: 1.25rem;
+  }
+}
+.values__header {
+  text-align: center;
+}
+.values__body {
+  display: flex;
+}
+@media (width <= 64.06125rem) {
+  .values__body {
+    flex-direction: column;
+    row-gap: 1.875rem;
+  }
+}
+.values__item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  place-items: center;
+  text-align: center;
+  border-right: 0.0625rem solid var(--color-gray-400);
+  padding-inline: 2.8125rem;
+}
+@media (width <= 64.06125rem) {
+  .values__item {
+    border-right: none;
+    padding-inline: 0;
+  }
+}
+.values__item:first-child {
+  padding-inline: 0;
+  padding-right: 2.8125rem;
+}
+@media (width <= 64.06125rem) {
+  .values__item:first-child {
+    padding-right: 0;
+  }
+}
+.values__item:last-child {
+  border: none;
+  padding-inline: 0;
+  padding-left: 2.8125rem;
+}
+@media (width <= 64.06125rem) {
+  .values__item:last-child {
+    padding-left: 0;
+  }
+}
+.values__item-title {
+  font-size: 1.25rem;
+}
+.values__item p {
+  color: var(--color-gray-700);
+}
+.values__icon {
+  padding-bottom: clamp(0.5rem, 0.3388429752rem + 0.6611570248vw, 1rem);
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -2,6 +2,10 @@
 
 .about{
 
+    &.padding-top{
+        padding-top: fluid(152, 100);
+    }
+
     &.active:focus-visible {
         border: rem(1) solid var(--color-accent);
         box-shadow: 5px 5px 10px #FF3F3A;
@@ -115,6 +119,7 @@
 
         @include mobile{
             text-align: center;
+            white-space: wrap;
         }
     }
 
@@ -170,9 +175,26 @@
         }
     }
 
+    &__buttons{
+        display: flex;
+        column-gap: rem(24);
+    }
+
     &__button{
         &.home{
             max-width: rem(161);
+        }
+    }
+
+    &__creotex{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(24);
+
+        &-info{
+            font-size: rem(20);
+            font-weight: 700;
+            color: var(--color-gray-900);
         }
     }
 
