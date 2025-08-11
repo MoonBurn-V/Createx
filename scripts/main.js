@@ -9,6 +9,7 @@ import LoadCards from './LoadCards.js';
 import Countdown from './Countdown.js';
 import JoinForm from './JoinForm.js';
 import InputMaskCollection from './InputMask.js';
+import VideoPlayerCollection from './VideoPlayer.js';
 
 const form = new LogInForm();
 new Header(form);
@@ -21,3 +22,4 @@ new SearchCard(loadCardsInstance);
 new Countdown();
 new JoinForm();
 new InputMaskCollection();
+new VideoPlayerCollection();

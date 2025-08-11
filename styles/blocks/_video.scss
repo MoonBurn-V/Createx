@@ -1,0 +1,73 @@
+@use '../helpers' as *;
+
+.video{
+    margin-bottom: rem(-50);
+
+    @include laptop{
+        padding-inline: rem(20);
+    }
+
+    &__button{
+        background: none;
+        border: none;
+        display: flex;
+        column-gap: rem(16);
+        place-items: center;
+        padding-bottom: rem(32);
+
+        &:hover span{
+            color: var(--color-accent);
+            transition-duration: var(--transition-duration);
+        }
+    }
+
+    &__body{
+        display: flex;
+        justify-content: space-between;
+        place-items: center;
+
+        @include laptop-s{
+            flex-direction: column;
+            row-gap: rem(30);
+        }
+    }
+
+    &__statistics{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(20);
+        padding-top: rem(80);
+
+        @include laptop-s{
+            flex-direction: row;
+            flex-wrap: wrap;
+            column-gap: rem(20);
+            place-content: center;
+            padding-top: 0;
+        }
+
+        &-category{
+            display: flex;
+            column-gap: rem(16);
+            place-items: center;
+
+            p{
+                font-size: fluid(18, 14);
+                font-weight: 700;
+            }
+        }
+
+        &-number{
+            font-size: fluid(48, 30);
+            font-weight: 900;
+            color: var(--color-accent);
+        }
+    }
+}
+
+.icon{
+    display: block;
+    &.hide{
+        display: none;
+    }
+}
