@@ -1,0 +1,96 @@
+@use '../helpers' as *;
+
+.studying{
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(60, 30);
+
+    @include laptop{
+        padding-inline: rem(20);
+    }
+
+    &__body{
+        display: flex;
+        justify-content: space-between;
+        place-items: center; //?
+    }
+
+    &__steps{
+        display: flex;
+        flex-direction: column;
+        row-gap: fluid(32, 20);
+        max-width: rem(490);
+        border-left: rem(1) solid var(--color-gray-400);
+        padding-left: rem(40);
+
+        &-step{
+            display: flex;
+            flex-direction: column;
+            row-gap: rem(8);
+        }
+
+        &-subtitle{
+            position: relative;
+            color: var(--color-gray-700);
+            font-size: rem(12);
+            font-weight: 900;
+
+            &::before{
+                position: absolute;
+                top: 50%;
+                translate: 0 -50%;
+
+                content: '';
+                left: rem(-45.4);
+                width: rem(8);
+                height: rem(8);
+                background-color: var(--color-accent);
+                border-radius: 1rem;
+                transition-duration: var(--transition-duration);
+                z-index: 10;
+
+                @include tablet{
+                    top: 18%;
+                    translate: 0 -1%;
+                }
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                translate: 0 -50%;
+                left: rem(-49);
+                width: rem(17);
+                height: rem(17);
+                background-color: white;
+                border-radius: 1rem;
+                z-index: 0;
+
+                @include tablet{
+                    top: 1%;
+                    translate: 0 -1%;
+                }
+            }
+        }
+
+        &-title{
+            font-size: rem(20);
+            font-weight: 700;
+        }
+
+        p{
+            color: var(--color-gray-700);
+
+        }
+    }
+
+    &__image{
+        display: block;
+        margin-top: rem(-100);
+
+        @include mobile{
+            display: none;
+        }
+    }
+}

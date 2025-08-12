@@ -40,12 +40,24 @@
     }
 
     &__body{
+        &.comminr-soon{
+            background-color: var(--color-gray-300);
+        }
+
         &-inner{
             display: flex;
             flex-direction: column;
             row-gap: rem(20);
             padding-block: fluid(32, 15);
             padding-right: fluid(32, 15);
+
+            p{
+                color: var(--color-gray-700);
+
+                @include mobile{
+                    padding-inline: rem(20);
+                }
+            }
 
             &.vertical{
                 padding-left: rem(24);
@@ -62,6 +74,19 @@
                 @include mobile-s{
                     width: rem(300);
                 }
+            }
+
+            &.about{
+                padding-left: rem(24);
+
+                @include mobile{
+                    padding-left: 0;
+                    padding-right: 0;
+                    width: auto;
+                    row-gap: rem(10);
+                    padding-block: 0;
+                    row-gap: rem(20);
+                }    
             }
 
             &.course{
@@ -124,6 +149,10 @@
             }
         }
 
+        &.about{
+            width: auto;
+        }
+
         &.course{
             @include tablet{
                 width: rem(300);
@@ -155,7 +184,6 @@
 
         &.course{
             box-shadow: none;
-            //height: rem(214);
         }
     }
 
@@ -295,5 +323,13 @@
                 border-top: rem(1) solid var(--color-gray-700);
             }
         }
+    }
+
+    &__comminr-soon{
+        padding-inline: fluid(74, 40);
+        padding-top: fluid(164, 90);
+        padding-bottom: fluid(204, 90);
+        font-weight: 700;
+        font-size: rem(20);
     }
 }

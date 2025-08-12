@@ -1552,7 +1552,7 @@ a:focus-visible, button:focus-visible {
     background: url("../../img/Discount-background-1.jpg") center no-repeat;
   }
 }
-.section__wrapperabout-as {
+.section__wrapper.about-as {
   background: url("../../img/AboutAs-background.jpg") center no-repeat;
 }
 
@@ -1839,12 +1839,23 @@ a:focus-visible, button:focus-visible {
     flex-direction: column;
   }
 }
+.card__body.comminr-soon {
+  background-color: var(--color-gray-300);
+}
 .card__body-inner {
   display: flex;
   flex-direction: column;
   row-gap: 1.25rem;
   padding-block: clamp(0.9375rem, 0.5950413223rem + 1.4049586777vw, 2rem);
   padding-right: clamp(0.9375rem, 0.5950413223rem + 1.4049586777vw, 2rem);
+}
+.card__body-inner p {
+  color: var(--color-gray-700);
+}
+@media (width <= 51.93625rem) {
+  .card__body-inner p {
+    padding-inline: 1.25rem;
+  }
 }
 .card__body-inner.vertical {
   padding-left: 1.5rem;
@@ -1862,6 +1873,19 @@ a:focus-visible, button:focus-visible {
 @media (width <= 30.06125rem) {
   .card__body-inner.vertical {
     width: 18.75rem;
+  }
+}
+.card__body-inner.about {
+  padding-left: 1.5rem;
+}
+@media (width <= 51.93625rem) {
+  .card__body-inner.about {
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+    row-gap: 0.625rem;
+    padding-block: 0;
+    row-gap: 1.25rem;
   }
 }
 @media (width <= 64.06125rem) {
@@ -1920,6 +1944,9 @@ a:focus-visible, button:focus-visible {
   .card__image.vertical {
     width: 18.75rem;
   }
+}
+.card__image.about {
+  width: auto;
 }
 @media (width <= 64.06125rem) {
   .card__image.course {
@@ -2063,6 +2090,13 @@ a:focus-visible, button:focus-visible {
   .card__speaker.horisontal {
     border-top: 0.0625rem solid var(--color-gray-700);
   }
+}
+.card__comminr-soon {
+  padding-inline: clamp(2.5rem, 1.8150826446rem + 2.8099173554vw, 4.625rem);
+  padding-top: clamp(5.625rem, 4.1342975207rem + 6.1157024793vw, 10.25rem);
+  padding-bottom: clamp(5.625rem, 3.3285123967rem + 9.4214876033vw, 12.75rem);
+  font-weight: 700;
+  font-size: 1.25rem;
 }
 
 @media (width <= 90.06125rem) {
@@ -2808,6 +2842,14 @@ a:focus-visible, button:focus-visible {
 .blog__link {
   padding-top: clamp(0.5625rem, 0.4214876033rem + 0.5785123967vw, 1rem);
 }
+.blog__link.about {
+  padding-top: 0;
+}
+@media (width <= 51.93625rem) {
+  .blog__link.about {
+    padding-left: 1.25rem;
+  }
+}
 
 .subscribe {
   display: flex;
@@ -3515,6 +3557,94 @@ a:focus-visible, button:focus-visible {
 }
 .icon.hide {
   display: none;
+}
+
+.studying {
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(1.875rem, 1.270661157rem + 2.479338843vw, 3.75rem);
+}
+@media (width <= 90.06125rem) {
+  .studying {
+    padding-inline: 1.25rem;
+  }
+}
+.studying__body {
+  display: flex;
+  justify-content: space-between;
+  place-items: center;
+}
+.studying__steps {
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(1.25rem, 1.0082644628rem + 0.9917355372vw, 2rem);
+  max-width: 30.625rem;
+  border-left: 0.0625rem solid var(--color-gray-400);
+  padding-left: 2.5rem;
+}
+.studying__steps-step {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+.studying__steps-subtitle {
+  position: relative;
+  color: var(--color-gray-700);
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+.studying__steps-subtitle::before {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  content: "";
+  left: -2.8375rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--color-accent);
+  border-radius: 1rem;
+  transition-duration: var(--transition-duration);
+  z-index: 10;
+}
+@media (width <= 64.06125rem) {
+  .studying__steps-subtitle::before {
+    top: 18%;
+    translate: 0 -1%;
+  }
+}
+.studying__steps-subtitle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  left: -3.0625rem;
+  width: 1.0625rem;
+  height: 1.0625rem;
+  background-color: white;
+  border-radius: 1rem;
+  z-index: 0;
+}
+@media (width <= 64.06125rem) {
+  .studying__steps-subtitle::after {
+    top: 1%;
+    translate: 0 -1%;
+  }
+}
+.studying__steps-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.studying__steps p {
+  color: var(--color-gray-700);
+}
+.studying__image {
+  display: block;
+  margin-top: -6.25rem;
+}
+@media (width <= 51.93625rem) {
+  .studying__image {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

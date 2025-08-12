@@ -1,8 +1,6 @@
 @use '../helpers' as *;
 
 .section{
-    //padding-block: fluid(180, 40);
-
     &__wrapper{
         &.about{
             width: 100%;
@@ -54,7 +52,7 @@
             }
         }
 
-        &about-as{
+        &.about-as{
             background: url("../../img/AboutAs-background.jpg") center no-repeat;
         }
     }

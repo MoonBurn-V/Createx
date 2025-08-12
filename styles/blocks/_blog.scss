@@ -110,5 +110,13 @@
 
     &__link{
         padding-top: fluid(16, 9);
+
+        &.about{
+            padding-top: 0;
+
+            @include mobile{
+                padding-left: rem(20);
+            }
+        }
     }
 }
