@@ -9,6 +9,10 @@
         padding-inline: rem(20);
     }
 
+    @include mobile{
+        place-items: center;
+    }
+
     &__body{
         display: flex;
         justify-content: space-between;

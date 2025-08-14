@@ -1839,6 +1839,28 @@ a:focus-visible, button:focus-visible {
     flex-direction: column;
   }
 }
+.card__list.four-column {
+  grid-template-columns: repeat(4, 17.3125rem);
+  gap: 1.875rem;
+}
+@media (width <= 76.31125rem) {
+  .card__list.four-column {
+    grid-template-columns: repeat(3, 15.625rem);
+  }
+}
+@media (width <= 64.06125rem) {
+  .card__list.four-column {
+    display: grid;
+    grid-template-columns: repeat(2, 15.625rem);
+    gap: 1.875rem;
+  }
+}
+@media (width <= 30.06125rem) {
+  .card__list.four-column {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .card__body.comminr-soon {
   background-color: var(--color-gray-300);
 }
@@ -3567,6 +3589,11 @@ a:focus-visible, button:focus-visible {
 @media (width <= 90.06125rem) {
   .studying {
     padding-inline: 1.25rem;
+  }
+}
+@media (width <= 51.93625rem) {
+  .studying {
+    place-items: center;
   }
 }
 .studying__body {
