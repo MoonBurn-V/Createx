@@ -1810,6 +1810,13 @@ a:focus-visible, button:focus-visible {
     gap: 0.9375rem;
   }
 }
+@media (width <= 64.06125rem) {
+  .card__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.9375rem;
+  }
+}
 .card__list.three-column {
   grid-template-columns: repeat(3, 24.375rem);
   gap: 1.875rem;
@@ -3465,7 +3472,7 @@ a:focus-visible, button:focus-visible {
   flex-direction: column;
   row-gap: clamp(1.875rem, 1.270661157rem + 2.479338843vw, 3.75rem);
   place-items: center;
-  padding-top: clamp(3.75rem, 0.1844008264rem + 14.6280991736vw, 14.8125rem);
+  padding-top: clamp(5.625rem, 2.6637396694rem + 12.1487603306vw, 14.8125rem);
 }
 @media (width <= 90.06125rem) {
   .values {
@@ -3590,10 +3597,17 @@ a:focus-visible, button:focus-visible {
   color: var(--color-accent);
 }
 
-.icon {
+.icon__video-play {
   display: block;
 }
-.icon.hide {
+.icon__video-play.hide {
+  display: none;
+}
+
+.icon__video-pouse {
+  display: block;
+}
+.icon__video-pouse.hide {
   display: none;
 }
 

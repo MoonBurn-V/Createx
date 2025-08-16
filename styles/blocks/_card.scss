@@ -11,13 +11,11 @@
             gap: rem(15);
         }
 
-        // верни как было------------------------------------------------------
-
-        // @include tablet{
-        //     display: flex;
-        //     flex-direction: column;
-        //     row-gap: rem(15);
-        // }
+        @include tablet{
+            display: flex;
+            flex-direction: column;
+            row-gap: rem(15);
+        }
 
         &.three-column{
             grid-template-columns: repeat(3, rem(390));

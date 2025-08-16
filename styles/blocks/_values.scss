@@ -5,7 +5,7 @@
     flex-direction: column;
     row-gap: fluid(60, 30);
     place-items: center;
-    padding-top: fluid(237, 60);
+    padding-top: fluid(237, 90);
 
     @include laptop{
         padding-inline: rem(20);

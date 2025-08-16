@@ -65,7 +65,14 @@
     }
 }
 
-.icon{
+.icon__video-play{
+    display: block;
+    &.hide{
+        display: none;
+    }
+}
+
+.icon__video-pouse{
     display: block;
     &.hide{
         display: none;
