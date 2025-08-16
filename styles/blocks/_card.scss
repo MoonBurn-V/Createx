@@ -11,11 +11,13 @@
             gap: rem(15);
         }
 
-        @include tablet{
-            display: flex;
-            flex-direction: column;
-            row-gap: rem(15);
-        }
+        // верни как было------------------------------------------------------
+
+        // @include tablet{
+        //     display: flex;
+        //     flex-direction: column;
+        //     row-gap: rem(15);
+        // }
 
         &.three-column{
             grid-template-columns: repeat(3, rem(390));
@@ -54,6 +56,27 @@
             @include mobile-s{
                 display: flex;
                 flex-direction: column;
+            }
+        }
+
+        &.six-column{
+            grid-template-columns: repeat(6, rem(120));
+            column-gap: fluid(102, 20);
+            row-gap: fluid(40, 20);
+
+            @include tablet{
+                display: grid;
+                grid-template-columns: repeat(4, rem(120));
+            }
+
+            @include mobile{
+                grid-template-columns: repeat(3, rem(120));
+            }
+
+            @include mobile-s{
+                grid-template-columns: repeat(2, rem(120));
+                column-gap: rem(30);
+                row-gap: rem(10);
             }
         }
     }

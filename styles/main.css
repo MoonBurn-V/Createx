@@ -1810,13 +1810,6 @@ a:focus-visible, button:focus-visible {
     gap: 0.9375rem;
   }
 }
-@media (width <= 64.06125rem) {
-  .card__list {
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.9375rem;
-  }
-}
 .card__list.three-column {
   grid-template-columns: repeat(3, 24.375rem);
   gap: 1.875rem;
@@ -1859,6 +1852,29 @@ a:focus-visible, button:focus-visible {
   .card__list.four-column {
     display: flex;
     flex-direction: column;
+  }
+}
+.card__list.six-column {
+  grid-template-columns: repeat(6, 7.5rem);
+  column-gap: clamp(1.25rem, -0.4018595041rem + 6.7768595041vw, 6.375rem);
+  row-gap: clamp(1.25rem, 0.847107438rem + 1.652892562vw, 2.5rem);
+}
+@media (width <= 64.06125rem) {
+  .card__list.six-column {
+    display: grid;
+    grid-template-columns: repeat(4, 7.5rem);
+  }
+}
+@media (width <= 51.93625rem) {
+  .card__list.six-column {
+    grid-template-columns: repeat(3, 7.5rem);
+  }
+}
+@media (width <= 30.06125rem) {
+  .card__list.six-column {
+    grid-template-columns: repeat(2, 7.5rem);
+    column-gap: 1.875rem;
+    row-gap: 0.625rem;
   }
 }
 .card__body.comminr-soon {
