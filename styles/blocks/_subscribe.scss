@@ -6,10 +6,31 @@
     padding-top: fluid(120, 60);
     place-items: center;
 
+    &.event{
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 0;
+        padding: fluid(60, 30) fluid(103, 40);
+
+        @include tablet{
+            place-content: center;
+        }
+    }
+
     &__header{
         width: fluid(820, 300);
         text-align: center;
         padding-bottom: fluid(60, 45);
+
+        &.event{
+            width: auto;
+            text-align: left;
+            padding-bottom: fluid(48, 25);
+
+            @include mobile{
+                text-align: center;
+            }
+        }
     }
 
     &__subtitle{
@@ -27,6 +48,14 @@
         &.visible{
             display: block;
         }
+
+        &.event{
+            text-align: left;
+
+            @include mobile{
+                text-align: center;
+            }
+        }
     }
 
     &__body{
@@ -40,6 +69,31 @@
             flex-direction: column;
             row-gap: rem(30);
         }
+
+        &-inner{
+            display: flex;
+            column-gap: rem(24);
+            place-items: center;
+            padding-bottom: rem(24);
+
+            @include mobile{
+                flex-direction: column;
+                row-gap: rem(20);
+            }
+        }
+
+        &.event{
+            min-width: rem(610);
+            flex-direction: column;
+            padding-bottom: 0;
+            justify-content: space-between;
+            place-items: stretch;
+
+            @include mobile{
+                min-width: auto;
+                row-gap: 0;
+            }
+        }
     }
 
     &__wrapper{
@@ -48,5 +102,11 @@
         flex-direction: column;
         row-gap: rem(1);
         width: 100%;
+    }
+
+    &__image{
+        @include tablet{
+            display: none;
+        }
     }
 }

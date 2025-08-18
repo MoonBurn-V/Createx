@@ -139,10 +139,6 @@
         flex-direction: column;
         row-gap: rem(12);
 
-        // p{
-        //     color: var(--color-gray-800);
-        // }
-
         &.course{
             width: fluid(600, 300);
             padding-left: rem(32);
@@ -198,4 +194,8 @@
         }
     }
 
+    &__link{
+        color: var(--color-accent);
+        text-decoration: underline !important;
+    }
 }

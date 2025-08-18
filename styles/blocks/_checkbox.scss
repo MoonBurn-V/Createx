@@ -6,6 +6,14 @@
   column-gap: rem(10);
   color: var(--color-gray-800);
 
+  &.event{
+    place-content: start;
+
+    @include mobile{
+      place-content: center;
+    }
+  }
+
   @include laptop {
     column-gap: rem(12);
   }

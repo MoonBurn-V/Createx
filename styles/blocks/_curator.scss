@@ -64,6 +64,13 @@
         }
     }
 
+    &__logos{
+        display: flex;
+        column-gap: rem(40);
+        padding-top: rem(40);
+        flex-wrap: wrap;
+    }
+
     &__socials{
         display: flex;
         column-gap: rem(24);

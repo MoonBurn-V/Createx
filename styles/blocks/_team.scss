@@ -1,6 +1,13 @@
 @use '../helpers' as *;
 
 .team{
+    &.event{
+        padding-bottom: fluid(180, 60);
+
+        @include mobile-s{
+            padding-inline: 0;
+        }
+    }
 
     @include laptop{
         padding-inline: rem(15);
@@ -13,6 +20,16 @@
         @include mobile-s{
             flex-direction: column;
             text-align: center;
+        }
+
+        &.event{
+            justify-content: flex-start;
+            column-gap: fluid(400, 10);
+
+            @include mobile{
+                flex-direction: column;
+                text-align: center;
+            }            
         }
     }
 
@@ -34,6 +51,12 @@
         @include mobile-s{
             justify-content: space-between;
         }
+
+        &.event{
+            @include mobile{
+                justify-content: space-between;
+            }
+        }
     }
 
     &__button{
@@ -54,6 +77,10 @@
         flex-direction: column;
         row-gap: fluid(60, 20);
 
+        &.event{
+            place-items: center;
+        }
+
 
         @include mobile-s{
             place-items: center;
@@ -64,7 +91,8 @@
             column-gap: rem(30);
             overflow-x: auto;
             scroll-behavior: smooth;
-            width: 100%;
+            //width: 100%;
+            width: fluid(1230, 200);
             overflow-y: hidden;
             scroll-snap-type: x mandatory;
 
@@ -74,6 +102,12 @@
 
             @include mobile-s{
                 width: rem(200);
+            }
+
+            &.event{
+                @include mobile{
+                    width: rem(302);
+                }
             }
         }
     }
@@ -112,6 +146,14 @@
 
         &:hover .team__card-icons{
             opacity: 1;
+        }
+
+        &.event{
+            width: fluid(390, 300);
+            background-color: var(--color-light);
+            padding-inline: rem(15);
+            padding-block: rem(20);
+            row-gap: fluid(51, 20);
         }
 
 
@@ -161,6 +203,52 @@
 
         &-position{
             color: var(--color-gray-700);
+        }
+    }
+
+    &__head{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(20);
+    }
+
+    &__data{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(4);
+
+        &-day{
+            color: var(--color-accent);
+        }
+
+        &-time{
+            color: var(--color-gray-700);
+        }
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(8);
+
+        &-desciption{
+            font-size: rem(18);
+            font-weight: 700;
+        }
+
+        &-type{
+            color: var(--color-gray-700);
+        }
+    }
+
+    &__footer{
+        display: flex;
+        column-gap: rem(40);
+        place-items: center;
+
+        @include mobile{
+            flex-direction: column;
+            row-gap: rem(20);
         }
     }
 }

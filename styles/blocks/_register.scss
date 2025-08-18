@@ -2,7 +2,7 @@
 
 .register{
     display: flex;
-    column-gap: fluid(100, 10);
+    justify-content: space-between;
     padding-bottom: fluid(100, 40);
 
     @include laptop{
@@ -11,6 +11,11 @@
 
     @include tablet{
         place-items: center;
+        justify-content: center;
+    }
+
+    &.course{
+        column-gap: fluid(100, 10);
     }
 
     &__body{

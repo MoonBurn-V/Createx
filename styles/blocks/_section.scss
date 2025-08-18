@@ -36,6 +36,14 @@
             }
         }
 
+        &.subscribe-event{
+            background: url("../../img/Subscribe-event.jpg") center no-repeat;
+
+            @include laptop-s{
+                background: url("../../img/Discount-background-1.jpg") center no-repeat;
+            }
+        }
+
         &.courses{
             background: url("../../img/Courses-background.jpg") center no-repeat;
         }
@@ -54,6 +62,10 @@
 
         &.about-as{
             background: url("../../img/AboutAs-background.jpg") center no-repeat;
+        }
+
+        &.event{
+            background: url("../../img/Event-Background.jpg") center no-repeat;
         }
     }
 
