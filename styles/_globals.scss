@@ -129,11 +129,17 @@ select:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
-a, button {
+a, button, select, input {
   &:focus-visible{
     border: rem(1) solid var(--color-accent);
     box-shadow: 5px 5px 10px #FF3F3A;
   }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  margin: 0; /* Убираем стандартные отступы */
+  padding: 0;
 }
 
 

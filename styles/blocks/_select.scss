@@ -1,0 +1,101 @@
+@use '../helpers' as *;
+
+.select {
+  &__original-control {
+    min-width: rem(100);
+
+    @include mobile-above {
+      @include visually-hidden;
+    }
+  }
+
+  &__body {
+    position: relative;
+
+    @include mobile {
+      @include visually-hidden;
+    }
+  }
+
+  &__button{
+    display: flex;
+    align-items: center;
+    column-gap: rem(49);
+    transition-duration: var(--transition-duration);
+
+    &.is-expandet{
+        &::after{
+            rotate: -180deg;
+        }
+    }
+
+    &::after {
+        width: rem(16);
+        height: rem(16);
+      content: '';
+      background:
+        url('../../icons/Down-chevron.svg')
+        center/contain no-repeat;
+      transition-duration: var(--transition-duration);
+    }
+  }
+
+  &__dropdown{
+    position: absolute;
+    top: calc(100% + #{rem(4)});
+    display: grid;
+    row-gap: rem(6);
+    min-width: rem(160);
+    max-height: rem(300);
+    overflow-y: auto;
+    padding: rem(8);
+    background-color: var(--color-light);
+    border: rem(1) solid var(--color-gray-400);
+    border-radius: rem(4);
+    transition-duration: var(--transition-duration);
+    z-index: 1;
+    transform-origin: center top;
+
+    &.is-on-the-left-side {
+      left: 0;
+    }
+
+    &.is-on-the-right-side {
+      right: 0;
+      transform-origin: 100% 0;
+    }
+
+    &:not(.is-expandet){
+        @include hide;
+
+        scale: 0;
+    }
+  }
+
+  &__option{
+    padding: rem(5);
+    border-bottom: rem(1) solid var(--color-gray-400);
+    transition-duration: var(--transition-duration);
+    cursor: pointer;
+
+    &:last-child{
+        border-bottom: none;
+    }
+
+    &:hover{
+        color: var(--color-accent);
+    }
+
+    &.is-selected{
+        color: var(--color-accent);
+
+        :before{
+            content: '';
+            width: rem(5);
+            height: rem(5);
+            background-color: var(--color-accent);
+            border-radius: 50%;
+        }
+    }
+  }
+}

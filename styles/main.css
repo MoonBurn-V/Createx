@@ -431,9 +431,15 @@ select:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
-a:focus-visible, button:focus-visible {
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
   border: 0.0625rem solid var(--color-accent);
   box-shadow: 5px 5px 10px #FF3F3A;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  margin: 0; /* Убираем стандартные отступы */
+  padding: 0;
 }
 
 .header {
@@ -1821,6 +1827,86 @@ a:focus-visible, button:focus-visible {
 .courses__hide.hide {
   display: none;
 }
+.courses__sorting {
+  display: flex;
+  column-gap: 1.25rem;
+}
+.courses__selector {
+  display: flex;
+  column-gap: 0.75rem;
+  place-items: center;
+}
+.courses__selector label {
+  white-space: nowrap;
+}
+.courses__selector p {
+  white-space: nowrap;
+}
+.courses__select {
+  min-width: 10rem;
+  height: 2.75rem;
+  font-size: 0.875rem;
+  color: var(--color-gray-800);
+  padding-inline: 0.5625rem;
+  padding-right: 1.875rem;
+  border-radius: 0.25rem;
+}
+.courses__select:hover {
+  border-color: var(--color-gray-800);
+  box-shadow: var(--shadow);
+}
+.courses__select:focus {
+  border-color: var(--color-gray-800);
+  box-shadow: var(--shadow);
+}
+.courses__number {
+  min-width: 3.75rem;
+  height: 2.75rem;
+  opacity: 0.6;
+  font-size: 0.875rem;
+  padding-inline: 1rem;
+  border-radius: 0.25rem;
+}
+.courses__number:hover {
+  border-color: var(--color-gray-800);
+  box-shadow: var(--shadow);
+}
+.courses__number:focus {
+  border-color: var(--color-gray-800);
+  box-shadow: var(--shadow);
+}
+.courses__view {
+  display: flex;
+  column-gap: 0.75rem;
+}
+.courses__view-button {
+  border: none;
+  background: none;
+}
+.courses__view-button :hover path[fill] {
+  fill: var(--color-accent);
+}
+.courses__pagination {
+  display: flex;
+  column-gap: 1.25rem;
+}
+.courses__pagination-button {
+  display: block;
+  background: none;
+  border: none;
+}
+.courses__pagination-button:hover path[fill] {
+  fill: var(--color-accent);
+}
+.courses__pagination-button.hide {
+  display: none;
+}
+.courses__pagination-page {
+  font-weight: 700;
+}
+.courses__pagination-page.active {
+  color: var(--color-accent);
+}
 
 .card__list {
   display: grid;
@@ -2678,9 +2764,12 @@ a:focus-visible, button:focus-visible {
 .team__card.event {
   width: clamp(18.75rem, 16.9369834711rem + 7.4380165289vw, 24.375rem);
   background-color: var(--color-light);
-  padding-inline: 0.9375rem;
-  padding-block: 1.25rem;
+  padding: 1.5rem;
   row-gap: clamp(1.25rem, 0.6255165289rem + 2.5619834711vw, 3.1875rem);
+  justify-content: space-between;
+  border: 0.0625rem solid var(--color-gray-400);
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 4px -4px rgba(30, 33, 44, 0.03), 0 12px 10px -6px rgba(154, 156, 165, 0.04), 0 30px 24px -10px rgba(154, 156, 165, 0.05), 0 80px 80px -20px rgba(154, 156, 165, 0.08);
 }
 .team__card-head {
   position: relative;
@@ -3871,6 +3960,107 @@ a:focus-visible, button:focus-visible {
   .studying__image {
     display: none;
   }
+}
+
+.select__original-control {
+  min-width: 6.25rem;
+}
+@media (width > 51.93625rem) {
+  .select__original-control {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(100%) !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important;
+  }
+}
+.select__body {
+  position: relative;
+}
+@media (width <= 51.93625rem) {
+  .select__body {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(100%) !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important;
+  }
+}
+.select__button {
+  display: flex;
+  align-items: center;
+  column-gap: 3.0625rem;
+  transition-duration: var(--transition-duration);
+}
+.select__button.is-expandet::after {
+  rotate: -180deg;
+}
+.select__button::after {
+  width: 1rem;
+  height: 1rem;
+  content: "";
+  background: url("../../icons/Down-chevron.svg") center/contain no-repeat;
+  transition-duration: var(--transition-duration);
+}
+.select__dropdown {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  display: grid;
+  row-gap: 0.375rem;
+  min-width: 10rem;
+  max-height: 18.75rem;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background-color: var(--color-light);
+  border: 0.0625rem solid var(--color-gray-400);
+  border-radius: 0.25rem;
+  transition-duration: var(--transition-duration);
+  z-index: 1;
+  transform-origin: center top;
+}
+.select__dropdown.is-on-the-left-side {
+  left: 0;
+}
+.select__dropdown.is-on-the-right-side {
+  right: 0;
+  transform-origin: 100% 0;
+}
+.select__dropdown:not(.is-expandet) {
+  opacity: 0;
+  visibility: hidden;
+  scale: 0;
+}
+.select__option {
+  padding: 0.3125rem;
+  border-bottom: 0.0625rem solid var(--color-gray-400);
+  transition-duration: var(--transition-duration);
+  cursor: pointer;
+}
+.select__option:last-child {
+  border-bottom: none;
+}
+.select__option:hover {
+  color: var(--color-accent);
+}
+.select__option.is-selected {
+  color: var(--color-accent);
+}
+.select__option.is-selected :before {
+  content: "";
+  width: 0.3125rem;
+  height: 0.3125rem;
+  background-color: var(--color-accent);
+  border-radius: 50%;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -141,22 +141,19 @@
         width: 100%;
         height: rem(44);
         opacity: 0.6;
-        //color: var(--color-light);
         font-size: rem(14);
         padding-inline: rem(9);
         padding-right: rem(30);
         border-radius: rem(4);
-        // margin-top: rem(12);
-        // margin-bottom: rem(6);
 
         &:hover{
-        border-color: var(--color-gray-800);
-        box-shadow: var(--shadow);
+            border-color: var(--color-gray-800);
+            box-shadow: var(--shadow);
         }
 
         &:focus{
-        border-color: var(--color-gray-800);
-        box-shadow: var(--shadow);
+            border-color: var(--color-gray-800);
+            box-shadow: var(--shadow);
         }
     }
 
