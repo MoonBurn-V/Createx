@@ -23,8 +23,9 @@
   &__control {
     width: 100%;
     height: rem(44);
-    padding-left: rem(16);
-    padding-right: rem(30);
+    // padding-left: rem(16); --перепроверь--
+    // padding-right: rem(30);
+    padding-inline: rem(16);
     border: rem(1) solid var(--color-gray-400);
     border-radius: rem(4);
 

@@ -87,8 +87,10 @@
     }
 
     &__sorting{
+        //width: rem(1230);
         display: flex;
-        column-gap: rem(20);
+        column-gap: rem(40);
+        //justify-content: center;
     }
 
     &__selector{

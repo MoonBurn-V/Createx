@@ -10,6 +10,7 @@ import Countdown from './Countdown.js';
 import JoinForm from './JoinForm.js';
 import InputMaskCollection from './InputMask.js';
 import VideoPlayerCollection from './VideoPlayer.js';
+import SelectCollection from './Select.js';
 
 const form = new LogInForm();
 new Header(form);
@@ -23,3 +24,4 @@ new Countdown();
 new JoinForm();
 new InputMaskCollection();
 new VideoPlayerCollection();
+new SelectCollection();

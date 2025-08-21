@@ -1,37 +1,49 @@
 @use '../helpers' as *;
 
 .select {
-  &__original-control {
-    min-width: rem(100);
+  display: flex;
+  column-gap: rem(10);
+  //min-width: rem(120);
+  place-items: center;
 
-    @include mobile-above {
-      @include visually-hidden;
-    }
+  &__label{
+    white-space: nowrap;
+  }
+
+  &__original-control {
+    display: none;
+    // min-width: rem(120);
+
+    // @include mobile-above {
+    //   @include visually-hidden;
+    // }
   }
 
   &__body {
     position: relative;
 
-    @include mobile {
-      @include visually-hidden;
-    }
+    // @include mobile {
+    //   @include visually-hidden;
+    // }
   }
 
   &__button{
     display: flex;
     align-items: center;
-    column-gap: rem(49);
+    column-gap: rem(15);
+    justify-content: space-between;
     transition-duration: var(--transition-duration);
+    white-space: nowrap;
 
-    &.is-expandet{
+    &.is-expanded{
         &::after{
             rotate: -180deg;
         }
     }
 
     &::after {
-        width: rem(16);
-        height: rem(16);
+      width: rem(17);
+      height: rem(17);
       content: '';
       background:
         url('../../icons/Down-chevron.svg')
@@ -65,37 +77,40 @@
       transform-origin: 100% 0;
     }
 
-    &:not(.is-expandet){
-        @include hide;
+    &:not(.is-expanded){
+      @include hide;
 
-        scale: 0;
+      scale: 0;
     }
   }
 
   &__option{
+    display: flex;
+    column-gap: rem(8);
     padding: rem(5);
+    place-items: center;
     border-bottom: rem(1) solid var(--color-gray-400);
     transition-duration: var(--transition-duration);
     cursor: pointer;
 
     &:last-child{
-        border-bottom: none;
+      border-bottom: none;
     }
 
     &:hover{
-        color: var(--color-accent);
+      color: var(--color-accent);
     }
 
     &.is-selected{
-        color: var(--color-accent);
+      color: var(--color-accent);
 
-        :before{
-            content: '';
-            width: rem(5);
-            height: rem(5);
-            background-color: var(--color-accent);
-            border-radius: 50%;
-        }
+      &:before{
+        content: '';
+        width: rem(7);
+        height: rem(7);
+        background-color: var(--color-accent);
+        border-radius: 60%;
+      }
     }
   }
 }
