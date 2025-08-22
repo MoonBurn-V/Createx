@@ -1408,9 +1408,6 @@ input[type=number]::-webkit-outer-spin-button {
   border-color: var(--color-gray-800);
   box-shadow: var(--shadow);
 }
-.field__control:not(:placeholder-shown) {
-  border-color: var(--color-gray-800);
-}
 .field__control:-webkit-autofill {
   box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.12) inset !important;
   -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.12) inset !important;
@@ -2390,6 +2387,9 @@ input[type=number]::-webkit-outer-spin-button {
   height: 2.75rem;
   position: relative;
   align-content: center;
+}
+.tabs__search {
+  padding-right: 1.875rem;
 }
 .tabs__btnsearch {
   position: absolute;
@@ -3992,13 +3992,6 @@ input[type=number]::-webkit-outer-spin-button {
   z-index: 1;
   transform-origin: center top;
 }
-.select__dropdown.is-on-the-left-side {
-  left: 0;
-}
-.select__dropdown.is-on-the-right-side {
-  right: 0;
-  transform-origin: 100% 0;
-}
 .select__dropdown:not(.is-expanded) {
   opacity: 0;
   visibility: hidden;
@@ -4028,6 +4021,9 @@ input[type=number]::-webkit-outer-spin-button {
   height: 0.4375rem;
   background-color: var(--color-accent);
   border-radius: 60%;
+}
+.select__option.is-current {
+  color: var(--color-accent);
 }
 
 /*# sourceMappingURL=main.css.map */

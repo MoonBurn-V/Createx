@@ -14,9 +14,7 @@ class Select extends BaseComponent {
     stateClasses = {
         isExpanded: 'is-expanded',
         isSelected: 'is-selected',
-        isCurrent: 'is-current', // может не понадобиться
-        isOnTheLeftSide: 'is-on-the-left-side', // может не понадобиться
-        isOnTheRightSide: 'is-on-the-right-side', // может не понадобиться
+        isCurrent: 'is-current',
     }
 
     stateAttributes = {
@@ -39,13 +37,10 @@ class Select extends BaseComponent {
         this.dropdownElement = this.rootElement.querySelector(this.selectors.dropdown)
         this.optionElements = this.dropdownElement.querySelectorAll(this.selectors.option)
         this.state = this.getProxyState({
-        ...this.initialState,
-        currentOptionIndex: this.originalControlElement.selectedIndex,
-        selectedOptionElement: this.optionElements[this.originalControlElement.selectedIndex],
+          ...this.initialState,
+          currentOptionIndex: this.originalControlElement.selectedIndex,
+          selectedOptionElement: this.optionElements[this.originalControlElement.selectedIndex],
         })
-        this.state.isExpanded = true
-        //this.fixDropdownPosition()
-        // this.updateTabIndexes()
         this.bindEvents()
     }
 
@@ -101,8 +96,12 @@ class Select extends BaseComponent {
         this.state.isExpanded = true
     }
 
-    collaps () {
+    collapse () {
         this.state.isExpanded = false
+    }
+
+    selectCurrentOption() {
+      this.state.selectedOptionElement = this.optionElements[this.state.currentOptionIndex]
     }
 
     onClick = (event) => {
@@ -127,13 +126,82 @@ class Select extends BaseComponent {
         }
     }
 
+    get isNeedToExpand() {
+      const isButtonFocused = document.activeElement === this.buttonElement
+
+      return (!this.state.isExpanded && isButtonFocused)
+    }
+
     onButtonClick = () => {
         this.toggleExpandentState()
+    }
+
+    onArrowUpKeyDown = () => {
+      if (this.isNeedToExpand) {
+        this.expand()
+        return
+      }
+
+      if (this.state.currentOptionIndex > 0) {
+        this.state.currentOptionIndex--
+      } else {
+        this.state.currentOptionIndex = this.optionElements.length - 1;
+      }
+    }
+
+    onArrowDownKeyDown = () => {
+      if (this.isNeedToExpand) {
+        this.expand()
+        return
+      }
+
+      if (this.state.currentOptionIndex < this.optionElements.length - 1) {
+        this.state.currentOptionIndex++
+      } else {
+        this.state.currentOptionIndex = 0;
+      }
+    }
+
+    onSpaceKeyDown = () => {
+      if (this.isNeedToExpand) {
+        this.expand()
+        return
+      }
+
+      this.selectCurrentOption()
+      this.collapse()
+    }
+
+    onEnterKeyDown = () => {
+      if (this.isNeedToExpand) {
+        this.expand()
+        return
+      }
+
+      this.selectCurrentOption()
+      this.collapse()
+    }
+
+    onKeyDown = (event) => {
+      const { code } = event
+
+      const action = {
+        ArrowUp: this.onArrowUpKeyDown,
+        ArrowDown: this.onArrowDownKeyDown,
+        Space: this.onSpaceKeyDown,
+        Enter: this.onEnterKeyDown,
+      }[code]
+
+      if (action) {
+        event.preventDefault()
+        action()
+      }
     }
 
     bindEvents() {
         this.buttonElement.addEventListener('click', this.onButtonClick)
         document.addEventListener('click', this.onClick)
+        this.rootElement.addEventListener('keydown', this.onKeyDown)
     }
 }
 
