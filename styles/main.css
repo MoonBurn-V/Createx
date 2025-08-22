@@ -185,6 +185,11 @@ section h1, h2 {
   margin-block-end: 0;
 }
 
+button {
+  background: none;
+  border: none;
+}
+
 @font-face {
   font-family: "Lato";
   src: url("../fonts/Lato-Regular.woff2") format("woff22");
@@ -3976,6 +3981,9 @@ input[type=number]::-webkit-outer-spin-button {
   background: url("../../icons/Down-chevron.svg") center/contain no-repeat;
   transition-duration: var(--transition-duration);
 }
+.select__icon {
+  padding-bottom: 0.1875rem;
+}
 .select__dropdown {
   position: absolute;
   top: calc(100% + 0.25rem);
@@ -4024,6 +4032,31 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .select__option.is-current {
   color: var(--color-accent);
+}
+.select__spinbutton {
+  position: relative;
+  display: flex;
+  column-gap: 0.9375rem;
+  place-items: center;
+  justify-content: space-between;
+  padding-left: 0.875rem !important;
+  padding-right: 1.875rem !important;
+}
+.select__buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  top: 0;
+}
+.select__buttons-button {
+  width: 1.875rem;
+  height: 1.25rem;
+}
+.select__icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.6875rem;
 }
 
 /*# sourceMappingURL=main.css.map */

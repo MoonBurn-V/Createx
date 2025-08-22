@@ -3,7 +3,6 @@
 .select {
   display: flex;
   column-gap: rem(10);
-  //min-width: rem(120);
   place-items: center;
 
   &__label{
@@ -12,19 +11,10 @@
 
   &__original-control {
     display: none;
-    // min-width: rem(120);
-
-    // @include mobile-above {
-    //   @include visually-hidden;
-    // }
   }
 
   &__body {
     position: relative;
-
-    // @include mobile {
-    //   @include visually-hidden;
-    // }
   }
 
   &__button{
@@ -50,6 +40,10 @@
         center/contain no-repeat;
       transition-duration: var(--transition-duration);
     }
+  }
+
+  &__icon{
+    padding-bottom: rem(3);
   }
 
   &__dropdown{
@@ -107,5 +101,35 @@
     &.is-current{
       color: var(--color-accent);
     }
+  }
+
+  &__spinbutton{
+    position: relative;
+    display: flex;
+    column-gap: rem(15);
+    place-items: center;
+    justify-content: space-between;
+    //padding-inline: rem(14) !important;
+    padding-left: rem(14) !important;
+    padding-right: rem(30) !important;
+  }
+
+  &__buttons{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    top: 0;
+
+    &-button{
+      width: rem(30);
+      height: rem(20);
+    }
+  }
+
+  &__icon{
+    position: absolute;
+    right: rem(12);
+    top: rem(11);
   }
 }

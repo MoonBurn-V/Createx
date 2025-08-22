@@ -11,6 +11,7 @@ import JoinForm from './JoinForm.js';
 import InputMaskCollection from './InputMask.js';
 import VideoPlayerCollection from './VideoPlayer.js';
 import SelectCollection from './Select.js';
+import SpinbuttonCollection from './Spinbutton.js';
 
 const form = new LogInForm();
 new Header(form);
@@ -25,3 +26,4 @@ new JoinForm();
 new InputMaskCollection();
 new VideoPlayerCollection();
 new SelectCollection();
+new SpinbuttonCollection();
