@@ -273,12 +273,12 @@
             <div class="section__wrapper courses section-mrgin padding-top">
                 <header class="courses__header center">
                     <div class="courses__subtitle">OUR EVENTS</div>
-                    <h1 class="courses__title" data-js-title>Lectures, workshops & master-classes</h1>
+                    <h1 class="courses__title events" data-js-title>Lectures, workshops & master-classes</h1>
                 </header>
                 <div class="courses__body row container">
 
                     <div class="courses__sorting">
-                        <div class="select" data-js-select>
+                        <div class="select column--1" data-js-select>
                             <label class="select__label" for="themes" id="theme-label">Event category</label>
 
                             <select 
@@ -342,8 +342,7 @@
                             </div>
                         </div>
 
-
-                        <div class="select" data-js-select>
+                        <div class="select column--2" data-js-select>
                             <label class="select__label" for="sort" id="sort-label">Sort by</label>
 
                             <select 
@@ -391,8 +390,8 @@
                             </div>
                         </div>
 
-                        <div class="select" data-js-spinbutton-root>
-                            <label class="select__label" for="spinbutton">Show</label>
+                        <div class="select column--3" data-js-spinbutton-root>
+                            <label class="select__label" for="spinbutton" id="spinbuttonLabel">Show</label>
                             <div class="select__body">
                                 <div 
                                     class="select__spinbutton field__control" 
@@ -401,41 +400,39 @@
                                     aria-valuemin="3"
                                     aria-valuemax="18"
                                     id="spinbutton"
+                                    aria-labelledby="spinbuttonLabel"
+                                    tabindex="0"
                                     data-js-spinbutton
                                 >
                                     9
                                 </div>
-                                <div class="select__icon icon">
-                                    <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M5.00003 0.666992L9.61883 6.66699H0.381226L5.00003 0.666992Z" fill="#424551"/>
-                                        <path d="M5.00003 15.3337L0.381226 8.83366L9.61883 8.83366L5.00003 15.3337Z" fill="#424551"/>
-                                    </svg>
-                                </div>
                                 <div class="select__buttons">
+                                    <div class="select__icon icon">
+                                        <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M5.00003 0.666992L9.61883 6.66699H0.381226L5.00003 0.666992Z" fill="#424551"/>
+                                            <path d="M5.00003 15.3337L0.381226 8.83366L9.61883 8.83366L5.00003 15.3337Z" fill="#424551"/>
+                                        </svg>
+                                    </div>
                                     <button 
                                         class="select__buttons-button"
                                         aria-label="increase the number of pages by three"
+                                        tabindex="-1"
                                         data-js-btn-increasing
                                     >                                        
                                     </button>
                                     <button 
                                         class="select__buttons-button" 
                                         aria-label="reducing the number of pages by three"
+                                        tabindex="-1"
                                         data-js-btn-reducing
                                     >                                       
                                     </button>
                                 </div>
                             </div>
-                            <p class="select__label">events per page</p>
+                            <p class="select__label hidden-mobile">events per page</p>
                         </div>
 
-                        <!-- <div class="courses__selector" >
-                            <label for="page">Show</label>
-                            <input class="courses__number" type="number" id="page" name="price" min="3" max="27" step="3" value="9">
-                            <label>events per page</labels>
-                        </div> -->
-
-                        <form class="tabs__search-wrapper" >
+                        <form class="tabs__search-wrapper column--4">
                             <input class="tabs__search field__control" type="search" placeholder="Search event..." data-js-search>
                             <div class="tabs__btnsearch icon icon__search">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -451,7 +448,7 @@
                             </div>
                         </form>
 
-                        <div class="courses__view" >
+                        <div class="courses__view column--5">
                             <button class="courses__view-button icon">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_2492_18387)">

@@ -5,6 +5,11 @@
   column-gap: rem(10);
   place-items: center;
 
+  @include mobile{
+    flex-direction: column;
+    row-gap: rem(5);
+  }
+
   &__label{
     white-space: nowrap;
   }
@@ -109,7 +114,6 @@
     column-gap: rem(15);
     place-items: center;
     justify-content: space-between;
-    //padding-inline: rem(14) !important;
     padding-left: rem(14) !important;
     padding-right: rem(30) !important;
   }
@@ -124,12 +128,13 @@
     &-button{
       width: rem(30);
       height: rem(20);
+      padding: 0 !important;
     }
   }
 
   &__icon{
     position: absolute;
     right: rem(12);
-    top: rem(11);
+    top: rem(12.5);
   }
 }

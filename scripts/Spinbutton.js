@@ -49,6 +49,45 @@ class Spinbutton {
         this.spinbuttonElement.setAttribute(this.stateAttributes.ariaValuenow, newNumber)
     }
 
+    get isNeedToChange() {
+        const isFocused = document.activeElement === this.spinbuttonElement
+
+        return (isFocused)
+    }
+
+    chekFocused = () => {
+        const isFocused = document.activeElement === this.spinbuttonElement
+
+        if (isFocused) {
+            document.addEventListener('wheel', this.onWheel, {passive: false})
+        }
+    }
+
+    onWheel = (event) => {
+        if(this.isNeedToChange) {
+            event.preventDefault()
+            if (event.deltaY < 0) {
+                this.increasingNumber();
+            } else {
+                this.reducingNumber();
+            }
+        }else{return}
+    }
+
+    onKeyDown = (event) => {
+        const { code } = event
+
+        const action = {
+            ArrowUp: this.increasingNumber,
+            ArrowDown: this.reducingNumber,
+        }[code]
+
+        if (action) {
+            event.preventDefault()
+            action()
+        }
+    }
+
     beinEvents() {
         if (this.btnIncreasingElement) {
             this.btnIncreasingElement.addEventListener('click', this.increasingNumber)
@@ -56,6 +95,11 @@ class Spinbutton {
 
         if (this.btnReducingElement) {
             this.btnReducingElement.addEventListener('click', this.reducingNumber)
+        }
+        this.rootElement.addEventListener('keydown', this.onKeyDown)
+
+        if (this.spinbuttonElement) {
+            this.spinbuttonElement.addEventListener('click', this.chekFocused)
         }
     }
 }
