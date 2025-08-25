@@ -186,6 +186,11 @@
                 border-color: var(--color-gray-500);
             }
 
+            &:hover{
+                box-shadow: 1px 1px 10px 0px rgba(255, 255, 255, 0.3);
+                border-color: var(--color-gray-500);
+            }            
+
             &:not(:placeholder-shown){
                 opacity: 1;
             }

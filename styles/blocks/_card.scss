@@ -17,6 +17,11 @@
             row-gap: rem(15);
         }
 
+        &.row{
+            display: flex;
+            flex-direction: column;
+        }
+
         &.three-column{
             grid-template-columns: repeat(3, rem(390));
             gap: rem(30);
@@ -360,7 +365,7 @@
 
         &.horisontal{
             @include mobile-s{
-                border-top: rem(1) solid var(--color-gray-700);
+                border-top: rem(1) solid var(--color-gray-400);
             }
         }
     }

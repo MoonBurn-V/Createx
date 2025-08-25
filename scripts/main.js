@@ -12,6 +12,7 @@ import InputMaskCollection from './InputMask.js';
 import VideoPlayerCollection from './VideoPlayer.js';
 import SelectCollection from './Select.js';
 import SpinbuttonCollection from './Spinbutton.js';
+import SwitchingListStyleCollection from './switchingListStyle.js';
 
 const form = new LogInForm();
 new Header(form);
@@ -27,3 +28,4 @@ new InputMaskCollection();
 new VideoPlayerCollection();
 new SelectCollection();
 new SpinbuttonCollection();
+new SwitchingListStyleCollection();

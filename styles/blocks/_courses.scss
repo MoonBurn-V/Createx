@@ -181,6 +181,10 @@
             border: none;
             background: none;
 
+            &.active path[fill]{
+                fill: var(--color-accent);
+            }
+
             :hover path[fill]{
                 fill: var(--color-accent);
             }

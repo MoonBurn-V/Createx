@@ -29,12 +29,15 @@
     &__item{
         //width: rem(1230);
         display: flex;
-        column-gap: fluid(40, 15);
+        column-gap: fluid(35, 15);
         width: 100%;
         background-color: var(--color-light);
         border-radius: rem(4);
         //padding: rem(32) rem(40);
-        padding: fluid(32, 15) fluid(40, 20);
+        padding: fluid(32, 15) fluid(25, 20);
+        border: rem(1) solid var(--color-gray-400);
+        border-radius: rem(4);
+        box-shadow: 0 4px 4px -4px rgba(30, 33, 44, 0.03), 0 12px 10px -6px rgba(154, 156, 165, 0.04), 0 30px 24px -10px rgba(154, 156, 165, 0.05), 0 80px 80px -20px rgba(154, 156, 165, 0.08);
 
         @include laptop{
             width: fluid(1400, 400);
@@ -71,6 +74,20 @@
             50px 80px 80px -15px rgba(255, 63, 58, 0.16);
         }
 
+        &.events{
+            &:hover{
+                box-shadow:
+                    4px 4px 4px -4px rgba(30, 33, 44, 0.05),
+                    16px 12px 10px -6px rgba(154, 156, 165, 0.08),
+                    40px 30px 24px -10px rgba(154, 156, 165, 0.1),
+                    100px 80px 80px -20px rgba(154, 156, 165, 0.16)
+                ;
+            }
+        }
+
+        &.hide{
+            display: none;
+        }
     }
 
     &__date{
