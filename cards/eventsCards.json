@@ -1,0 +1,316 @@
+[
+    {
+        "id": 1,
+        "data": "05 Aug",
+        "time": "11:00 – 14:00",
+        "description": "Formation of the organizational structure of the company in the face of uncertainty.",
+        "type": "Online master-class"
+    },
+    {
+        "id": 2,
+        "data": "24 Jul",
+        "time": "11:00 – 12:30",
+        "description": "Building a customer service department. Best Practices.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 3,
+        "data": "10 Jul",
+        "time": "9:00 – 14:00",
+        "description": "Find and evaluate: search and assessment tools for candidates.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 4,
+        "data": "16 Jul",
+        "time": "10:00 – 13:00",
+        "description": "How to apply methods of speculative design in practice. Worldbuilding prototyping.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 5,
+        "data": "27 Jun",
+        "time": "15:00 – 19:00",
+        "description": "Connection to Microsoft Excel and Google Sheets, Data Visualization in Power BI",
+        "type": "Online master-class"
+    },
+    {
+        "id": 6,
+        "data": "15 Jun",
+        "time": "11:00 – 12:00",
+        "description": "Marketing or growth hacking: main differences and what business needs",
+        "type": "Online lecture"
+    },
+    {
+        "id": 7,
+        "data": "02 Jul",
+        "time": "11:00 – 13:00",
+        "description": "How to brief a client and present your design to approve it from the first show.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 8,
+        "data": "29 May",
+        "time": "11:00 – 12:00",
+        "description": "Who is a project manager and do I want to be PM?",
+        "type": "Online lecture"
+    },
+    {
+        "id": 9,
+        "data": "18 May",
+        "time": "10:00 – 12:00",
+        "description": "The company's business page as an additional tool to support the announcement of vacancies.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 10,
+        "data": "12 Aug",
+        "time": "14:00 – 16:00",
+        "description": "Effective communication strategies for remote teams.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 11,
+        "data": "01 Aug",
+        "time": "10:00 – 11:30",
+        "description": "Introduction to Blockchain Technology and its Applications.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 12,
+        "data": "19 Jul",        
+        "time": "16:00 – 18:00",
+        "description": "Developing a successful social media strategy for your business.",
+        "type": "Online master-class"
+    },
+    {
+        "id": 13,
+        "data": "11 Jul",
+        "time": "13:00 – 15:00",
+        "description": "The art of negotiation: achieving win-win outcomes.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 14,
+        "data": "20 Jul",
+        "time": "14:00 – 17:00",
+        "description": "Advanced techniques in data analysis using Python.",
+        "type": "Online master-class"
+    },
+    {
+        "id": 15,
+        "data": "29 Jun",
+        "time": "10:00 – 12:00",
+        "description": "Cybersecurity awareness: protecting your business from online threats.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 16,
+        "data": "17 Jun",
+        "time": "14:00 – 16:00",
+        "description": "Building a strong brand identity for your startup.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 17,
+        "data": "04 Jul",
+        "time": "15:00 – 17:00",
+        "description": "Effective time management techniques for increased productivity.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 18,
+        "data": "31 May",
+        "time": "13:00 – 15:00",
+        "description": "Introduction to Artificial Intelligence and Machine Learning.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 19,
+        "data": "20 May",
+        "time": "11:00 – 13:00",
+        "description": "Understanding and implementing SEO best practices.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 20,
+        "data": "07 Aug",
+        "time": "10:00 – 12:00",
+        "description": "Financial Planning for Small Businesses.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 21,
+        "data": "03 Aug",
+        "time": "14:00 – 17:00",
+        "description": "Advanced Google Analytics for Marketing Professionals.",
+        "type": "Online master-class"
+    },
+    {
+        "id": 22,
+        "data": "26 Jul",
+        "time": "10:00 – 12:00",
+        "description": "Customer Relationship Management (CRM) strategies.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 23,
+        "data": "13 Jul",
+        "time": "10:00 – 16:00",
+        "description": "Design Thinking: A Practical Approach to Innovation.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 24,
+        "data": "18 Jul",
+        "time": "19:00 – 20:30",
+        "description": "Project Management Methodologies: Agile, Scrum, Waterfall.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 25,
+        "data": "01 Jul",
+        "time": "13:00 – 17:00",
+        "description": "Advanced SQL for Data Analysis and Reporting.",
+        "type": "Online master-class"
+    },
+    {
+        "id": 26,
+        "data": "19 Jun",
+        "time": "10:00 – 12:00",
+        "description": "Developing a Content Marketing Strategy.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 27,
+        "data": "06 Jul",
+        "time": "10:00 – 16:00",
+        "description": "UX/UI Design Fundamentals for Web and Mobile.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 28,
+        "data": "01 Jun",
+        "time": "14:00 – 15:00",
+        "description": "Remote Team Leadership: Best Practices.",
+        "type": "Online lecture"
+    },
+     {
+        "id": 29,
+        "data": "15 May",
+        "time": "15:00 – 17:00",
+        "description": "Introduction to No-Code Development.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 30,
+        "data": "22 Aug",
+        "time": "13:00 – 15:00",
+        "description": "Building Scalable Web Applications with Node.js.",
+        "type": "Online master-class"
+    },
+    {
+        "id": 31,
+        "data": "29 Aug",
+        "time": "16:00 – 17:30",
+        "description": "Understanding Cloud Computing: AWS, Azure, Google Cloud.",
+        "type": "Online lecture"
+    },{
+        "id": 32,
+        "data": "08 Aug",
+        "time": "9:00 – 12:00",
+        "description": "Data Visualization with Tableau.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 33,
+        "data": "17 Aug",
+        "time": "14:00 – 16:00",
+        "description": "Email Marketing Automation Strategies.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 34,
+        "data": "16 Aug",
+        "time": "18:00 – 20:00",
+        "description": "Growth Hacking Techniques for Startups.",
+        "type": "Online master-class"
+    },
+    {
+        "id": 35,
+        "data": "25 Aug",
+        "time": "11:00 – 13:00",
+        "description": "Mobile App Marketing: Strategies for Success.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 36,
+        "data": "23 Aug",
+        "time": "10:00 – 16:00",
+        "description": "Full-Stack Web Development with React and Python.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 37,
+        "data": "30 Aug",
+        "time": "14:00 – 15:00",
+        "description": "Personal Branding for Professionals.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 38,
+        "data": "31 Aug",
+        "time": "13:00 – 17:00",
+        "description": "Advanced Digital Marketing Strategies.",
+        "type": "Online master-class"
+    },
+    {
+        "id": 39,
+        "data": "21 Aug",
+        "time": "11:00 – 12:30",
+        "description": "How to build an effective sales funnel.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 40,
+        "data": "24 Aug",
+        "time": "9:00 – 14:00",
+        "description": "Advanced Project Management Tools and Techniques.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 41,
+        "data": "15 Aug",
+        "time": "10:00 – 13:00",
+        "description": "Creating Engaging Video Content for Social Media.",
+        "type": "Online workshop"
+    },
+    {
+        "id": 42,
+        "data": "09 Aug",
+        "time": "15:00 – 19:00",
+        "description": "Introduction to Machine Learning with TensorFlow.",
+        "type": "Online master-class"
+    },
+    {
+        "id": 43,
+        "data": "14 Aug",
+        "time": "11:00 – 12:00",
+        "description": "Managing Remote Teams Effectively.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 44,
+        "data": "10 Aug",
+        "time": "11:00 – 13:00",
+        "description": "Effective Time Management for Busy Professionals.",
+        "type": "Online lecture"
+    },
+    {
+        "id": 45,
+        "data": "11 Aug",
+        "time": "11:00 – 12:00",
+        "description": "How to be a Product Manager.",
+        "type": "Online lecture"
+    }
+]
