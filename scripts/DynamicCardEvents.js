@@ -1,3 +1,6 @@
+import SwitchingListStyle from "./SwitchingListStyle.js";
+import Spinbutton from "./Spinbutton.js";
+
 const rootSelector = '[data-js-courses-body-root]';
 
 class DynamicCardEvents {
@@ -13,37 +16,41 @@ class DynamicCardEvents {
         this.rootElement = rootElement
         this.cardListElement = rootElement.querySelector(this.selectors.cardList)
         this.events = []
+        this.switchingListStyle = new SwitchingListStyle(this, rootElement);
+        this.spinbutton = new Spinbutton(this, rootElement)
         this.initApp()
     }
 
-    // addDataBlockToHTML = () => {
-    //     this.cardListElement.innerHTML = ''
+    addDataBlockToHTML = () => {
+        this.cardListElement.innerHTML = ''
+        const limitation = parseInt(this.spinbutton.spinbuttonElement.textContent)
 
-    //     this.events.slice(0, 9).forEach(eventData => {
-    //         const newEvent = document.createElement('li')
-    //         newEvent.classList.add('team__card', 'event')
-    //         newEvent.innerHTML = `
-    //             <div class="team__head">
-    //                 <div class="team__data">
-    //                     <div class="team__data-day h3">${eventData.data}</div>
-    //                     <div class="team__data-time">${eventData.time}</div>
-    //                 </div>
-    //                 <div class="team__info">
-    //                     <div class="team__info-desciption">${eventData.description}</div>
-    //                     <div class="team__info-type">${eventData.type}</div>
-    //                 </div>
-    //             </div>
-    //             <a href="./event.html" class="button">View more</a>
-    //         `
+        this.events.slice(0, limitation).forEach(eventData => {
+            const newEvent = document.createElement('li')
+            newEvent.classList.add('team__card', 'event')
+            newEvent.innerHTML = `
+                <div class="team__head">
+                    <div class="team__data">
+                        <div class="team__data-day h3">${eventData.data}</div>
+                        <div class="team__data-time">${eventData.time}</div>
+                    </div>
+                    <div class="team__info">
+                        <div class="team__info-desciption">${eventData.description}</div>
+                        <div class="team__info-type">${eventData.type}</div>
+                    </div>
+                </div>
+                <a href="./event.html" class="button">View more</a>`
 
-    //         this.cardListElement.appendChild(newEvent)
-    //     });
-    // }
+
+            this.cardListElement.appendChild(newEvent)
+        });
+    }
 
     addDataRowToHTML = () => {
         this.cardListElement.innerHTML = ''
+        const limitation = parseInt(this.spinbutton.spinbuttonElement.textContent)
 
-        this.events.slice(0, 9).forEach(eventData => {
+        this.events.slice(0, limitation).forEach(eventData => {
 
             const parts = eventData.data.split(' ')
             const day = parts[0]
@@ -63,20 +70,19 @@ class DynamicCardEvents {
                     <div class="events__info-description h4">${eventData.description}</div>
                     <div class="events__info-type">${eventData.type}</div>
                 </div>
-                <a href="./event.html" class="events__button button column--3" tabindex="0">View more</a>
-            `
+                <a href="./event.html" class="events__button button column--3" tabindex="0">View more</a>`
+
             this.cardListElement.appendChild(newEvent)
         })
     }
 
-    initApp ()  {
+    initApp() {
         fetch('./cards/eventsCards.json')
-        .then(response => response.json())
-        .then(data => {
-            this.events = data
-            //this.addDataBlockToHTML();
-            this.addDataRowToHTML();
-        })
+            .then(response => response.json())
+            .then(data => {
+                this.events = data
+                this.addDataRowToHTML();
+            })
     }
 }
 

@@ -1,5 +1,3 @@
-const rootSelector = '[data-js-spinbutton-root]';
-
 class Spinbutton {
     selectors = {
         spinbutton: '[data-js-spinbutton]',
@@ -13,7 +11,8 @@ class Spinbutton {
         ariaValuemax: 'aria-valuemax',
     }
 
-    constructor(rootElement) {
+    constructor(dynamicCardEvents, rootElement) {
+        this.dynamicCardEvents = dynamicCardEvents
         this.rootElement = rootElement
         this.spinbuttonElement = this.rootElement.querySelector(this.selectors.spinbutton)
         this.btnIncreasingElement = this.rootElement.querySelector(this.selectors.btnIncreasing)
@@ -25,7 +24,7 @@ class Spinbutton {
 
     increasingNumber = () => {
         let currentNumber = parseInt(this.spinbuttonElement.textContent)
-       
+
         let newNumber = currentNumber + 3
 
         if (newNumber > this.maxValue) {
@@ -34,6 +33,14 @@ class Spinbutton {
 
         this.spinbuttonElement.textContent = newNumber
         this.spinbuttonElement.setAttribute(this.stateAttributes.ariaValuenow, newNumber)
+
+        const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active');
+
+        if (isRowActive) {
+            this.dynamicCardEvents.addDataRowToHTML()
+        } else {
+            this.dynamicCardEvents.addDataBlockToHTML()
+        }
     }
 
     reducingNumber = () => {
@@ -47,6 +54,14 @@ class Spinbutton {
 
         this.spinbuttonElement.textContent = newNumber;
         this.spinbuttonElement.setAttribute(this.stateAttributes.ariaValuenow, newNumber)
+
+        const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active');
+
+        if (isRowActive) {
+            this.dynamicCardEvents.addDataRowToHTML()
+        } else {
+            this.dynamicCardEvents.addDataBlockToHTML()
+        }
     }
 
     get isNeedToChange() {
@@ -104,16 +119,4 @@ class Spinbutton {
     }
 }
 
-class SpinbuttonCollection {
-  constructor() {
-    this.init()
-  }
-
-  init() {
-    document.querySelectorAll(rootSelector).forEach((element) => {
-      new Spinbutton(element)
-    })
-  }
-}
-
-export default SpinbuttonCollection
+export default Spinbutton

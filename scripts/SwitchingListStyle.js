@@ -1,5 +1,3 @@
-const rootSelector = '[data-js-courses-body-root]';
-
 class SwitchingListStyle {
     selectors = {
         btnRow: '[data-js-btn-row]',
@@ -15,7 +13,8 @@ class SwitchingListStyle {
         active: 'active',
     }
 
-    constructor(rootElement) {
+    constructor(dynamicCardEvents, rootElement) {
+        this.dynamicCardEvents = dynamicCardEvents;
         this.rootElement = rootElement
         this.btnRowElement = rootElement.querySelector(this.selectors.btnRow)
         this.btnBlockElement = rootElement.querySelector(this.selectors.btnBlock)
@@ -30,8 +29,7 @@ class SwitchingListStyle {
         this.btnRowElement.classList.add(this.stateClasses.active)
         this.btnBlockElement.classList.remove(this.stateClasses.active)
 
-        this.cardItemsElements[0].classList.add(this.stateClasses.hide)
-        this.cardItemsElements[1].classList.remove(this.stateClasses.hide)
+        this.dynamicCardEvents.addDataRowToHTML()
     }
 
     blockStyle = () => {
@@ -40,8 +38,7 @@ class SwitchingListStyle {
         this.btnRowElement.classList.remove(this.stateClasses.active)
         this.btnBlockElement.classList.add(this.stateClasses.active)
 
-        this.cardItemsElements[1].classList.add(this.stateClasses.hide)
-        this.cardItemsElements[0].classList.remove(this.stateClasses.hide)      
+        this.dynamicCardEvents.addDataBlockToHTML()
     }
 
     bindEvents() {
@@ -55,16 +52,4 @@ class SwitchingListStyle {
     }
 }
 
-class SwitchingListStyleCollection {
-    constructor() {
-        this.init()
-    }
-
-    init() {
-        document.querySelectorAll(rootSelector).forEach((element) => {
-            new SwitchingListStyle(element)
-        })
-    }
-}
-
-export default SwitchingListStyleCollection
+export default SwitchingListStyle

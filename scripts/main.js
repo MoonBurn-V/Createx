@@ -11,8 +11,6 @@ import JoinForm from './JoinForm.js';
 import InputMaskCollection from './InputMask.js';
 import VideoPlayerCollection from './VideoPlayer.js';
 import SelectCollection from './Select.js';
-import SpinbuttonCollection from './Spinbutton.js';
-import SwitchingListStyleCollection from './switchingListStyle.js';
 import DynamicCardEventsCollection from './DynamicCardEvents.js';
 
 const form = new LogInForm();
@@ -28,6 +26,4 @@ new JoinForm();
 new InputMaskCollection();
 new VideoPlayerCollection();
 new SelectCollection();
-new SpinbuttonCollection();
-new SwitchingListStyleCollection();
 new DynamicCardEventsCollection();
