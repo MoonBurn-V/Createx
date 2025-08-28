@@ -5,6 +5,10 @@
   column-gap: rem(10);
   place-items: center;
 
+  &.hide{
+    display: none;
+  }
+
   @include mobile{
     flex-direction: column;
     row-gap: rem(5);

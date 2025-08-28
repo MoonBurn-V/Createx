@@ -10,7 +10,7 @@ import Countdown from './Countdown.js';
 import JoinForm from './JoinForm.js';
 import InputMaskCollection from './InputMask.js';
 import VideoPlayerCollection from './VideoPlayer.js';
-import SelectCollection from './Select.js';
+//import SelectCollection from './Select.js';
 import DynamicCardEventsCollection from './DynamicCardEvents.js';
 
 const form = new LogInForm();
@@ -25,5 +25,5 @@ new Countdown();
 new JoinForm();
 new InputMaskCollection();
 new VideoPlayerCollection();
-new SelectCollection();
+//new SelectCollection();
 new DynamicCardEventsCollection();

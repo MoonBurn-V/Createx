@@ -1,5 +1,6 @@
 class Spinbutton {
     selectors = {
+        rootSpinbutton: '[data-js-spinbutton-root]',
         spinbutton: '[data-js-spinbutton]',
         btnIncreasing: '[data-js-btn-increasing]',
         btnReducing: '[data-js-btn-reducing]',
@@ -14,6 +15,7 @@ class Spinbutton {
     constructor(dynamicCardEvents, rootElement) {
         this.dynamicCardEvents = dynamicCardEvents
         this.rootElement = rootElement
+        this.rootSpinbuttonElement = this.rootElement.querySelector(this.selectors.rootSpinbutton)
         this.spinbuttonElement = this.rootElement.querySelector(this.selectors.spinbutton)
         this.btnIncreasingElement = this.rootElement.querySelector(this.selectors.btnIncreasing)
         this.btnReducingElement = this.rootElement.querySelector(this.selectors.btnReducing)

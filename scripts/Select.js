@@ -1,10 +1,10 @@
-import BaseComponent from "./BaseComponent.js";
+//import BaseComponent from "./BaseComponent.js";
 
-const rootSelector = '[data-js-select]';
+//const rootSelector = '[data-js-select]';
 
-class Select extends BaseComponent {
+class Select  { //extends BaseComponent
   selectors = {
-    root: rootSelector,
+    //root: rootSelector,
     originalControl: '[data-js-select-original-control]',
     button: '[data-js-select-button]',
     dropdown: '[data-js-select-dropdown]',
@@ -29,8 +29,9 @@ class Select extends BaseComponent {
     selectedOptionElement: null,
   }
 
-  constructor(rootElement) {
-    super()
+  constructor(dynamicCardEvents, rootElement) {
+    //super()
+    this.dynamicCardEvents = dynamicCardEvents
     this.rootElement = rootElement
     this.originalControlElement = this.rootElement.querySelector(this.selectors.originalControl)
     this.buttonElement = this.rootElement.querySelector(this.selectors.button)
@@ -42,6 +43,26 @@ class Select extends BaseComponent {
       selectedOptionElement: this.optionElements[this.originalControlElement.selectedIndex],
     })
     this.bindEvents()
+  }
+
+
+  getProxyState = (initialState) => {
+    return new Proxy(initialState, {
+      get: (target, prop) => {
+        return target[prop]
+      },
+      set: (target, prop, newValue) => {
+        const oldValue = target[prop]
+
+        target[prop] = newValue
+
+        if (newValue !== oldValue) {
+          this.updateUI()
+        }
+
+        return true
+      },
+    })
   }
 
   updateUI () {
@@ -79,6 +100,14 @@ class Select extends BaseComponent {
         optionElement.classList.toggle(this.stateClasses.isCurrent, isCurrent)
         optionElement.classList.toggle(this.stateClasses.isSelected, isSelected)
         optionElement.setAttribute(this.stateAttributes.ariaSelected, isSelected)
+
+        const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active');
+
+        if (isRowActive) {
+          this.dynamicCardEvents.addDataRowToHTML()
+        } else {
+          this.dynamicCardEvents.addDataBlockToHTML()
+        }
       })
     }
 
@@ -205,16 +234,16 @@ class Select extends BaseComponent {
   }
 }
 
-class SelectCollection {
-  constructor() {
-    this.init()
-  }
+// class SelectCollection {
+//   constructor() {
+//     this.init()
+//   }
 
-  init() {
-    document.querySelectorAll(rootSelector).forEach((element) => {
-      new Select(element)
-    })
-  }
-}
+//   init() {
+//     document.querySelectorAll(rootSelector).forEach((element) => {
+//       new Select(element)
+//     })
+//   }
+// }
 
-export default SelectCollection
+export default Select
