@@ -1,249 +1,232 @@
-//import BaseComponent from "./BaseComponent.js";
-
-//const rootSelector = '[data-js-select]';
-
-class Select  { //extends BaseComponent
-  selectors = {
-    //root: rootSelector,
-    originalControl: '[data-js-select-original-control]',
-    button: '[data-js-select-button]',
-    dropdown: '[data-js-select-dropdown]',
-    option: '[data-js-select-option]',
-  }
-
-  stateClasses = {
-    isExpanded: 'is-expanded',
-    isSelected: 'is-selected',
-    isCurrent: 'is-current',
-  }
-
-  stateAttributes = {
-    ariaExpanded: 'aria-expanded',
-    ariaSelected: 'aria-selected',
-    ariaActiveDescendant: 'aria-activedescendant',
-  }
-
-  initialState = {
-    isExpanded: false,
-    currentOptionIndex: null,
-    selectedOptionElement: null,
-  }
-
-  constructor(dynamicCardEvents, rootElement) {
-    //super()
-    this.dynamicCardEvents = dynamicCardEvents
-    this.rootElement = rootElement
-    this.originalControlElement = this.rootElement.querySelector(this.selectors.originalControl)
-    this.buttonElement = this.rootElement.querySelector(this.selectors.button)
-    this.dropdownElement = this.rootElement.querySelector(this.selectors.dropdown)
-    this.optionElements = this.dropdownElement.querySelectorAll(this.selectors.option)
-    this.state = this.getProxyState({
-      ...this.initialState,
-      currentOptionIndex: this.originalControlElement.selectedIndex,
-      selectedOptionElement: this.optionElements[this.originalControlElement.selectedIndex],
-    })
-    this.bindEvents()
-  }
-
-
-  getProxyState = (initialState) => {
-    return new Proxy(initialState, {
-      get: (target, prop) => {
-        return target[prop]
-      },
-      set: (target, prop, newValue) => {
-        const oldValue = target[prop]
-
-        target[prop] = newValue
-
-        if (newValue !== oldValue) {
-          this.updateUI()
-        }
-
-        return true
-      },
-    })
-  }
-
-  updateUI () {
-    const {
-      isExpanded,
-      currentOptionIndex,
-      selectedOptionElement,
-    } = this.state
-
-    const newSelectedOptionValue = selectedOptionElement.textContent.trim()
-
-    const updateOriginControl = () => {
-      this.originalControlElement.value = newSelectedOptionValue
+class Select  {
+    selectors = {
+      rootSelects: '[data-js-select]',
+      originalControl: '[data-js-select-original-control]',
+      button: '[data-js-select-button]',
+      dropdown: '[data-js-select-dropdown]',
+      option: '[data-js-select-option]',
     }
 
-    const updateButton = () => {
-      this.buttonElement.textContent = newSelectedOptionValue
-      this.buttonElement.classList.toggle(this.stateClasses.isExpanded, isExpanded)
-      this.buttonElement.setAttribute(this.stateAttributes.ariaExpanded, isExpanded)
-      this.buttonElement.setAttribute(
-        this.stateAttributes.ariaActiveDescendant, 
-        this.optionElements[currentOptionIndex].id
-      )
+    stateClasses = {
+      isExpanded: 'is-expanded',
+      isSelected: 'is-selected',
+      isCurrent: 'is-current',
     }
 
-    const updateDropdown = () => {
-      this.dropdownElement.classList.toggle(this.stateClasses.isExpanded, isExpanded)
+    stateAttributes = {
+      ariaExpanded: 'aria-expanded',
+      ariaSelected: 'aria-selected',
+      ariaActiveDescendant: 'aria-activedescendant',
     }
 
-    const updateOptions = () => {
-      this.optionElements.forEach((optionElement, index) => {
-        const isCurrent = currentOptionIndex === index
-        const isSelected = selectedOptionElement === optionElement
+    initialState = {
+      isExpanded: false,
+      currentOptionIndex: null,
+      selectedOptionElement: null,
+    }
 
-        optionElement.classList.toggle(this.stateClasses.isCurrent, isCurrent)
-        optionElement.classList.toggle(this.stateClasses.isSelected, isSelected)
-        optionElement.setAttribute(this.stateAttributes.ariaSelected, isSelected)
+    constructor(dynamicCardEvents, rootElement) {
+      this.dynamicCardEvents = dynamicCardEvents
+      this.rootElement = rootElement
+      this.originalControlElement = this.rootElement.querySelector(this.selectors.originalControl)
+      this.buttonElement = this.rootElement.querySelector(this.selectors.button)
+      this.dropdownElement = this.rootElement.querySelector(this.selectors.dropdown)
+      this.optionElements = this.dropdownElement.querySelectorAll(this.selectors.option)
+      this.state = this.getProxyState({
+        ...this.initialState,
+        currentOptionIndex: this.originalControlElement.selectedIndex,
+        selectedOptionElement: this.optionElements[this.originalControlElement.selectedIndex],
+      })
+      this.bindEvents()
+    }
 
-        const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active');
 
-        if (isRowActive) {
-          this.dynamicCardEvents.addDataRowToHTML()
-        } else {
-          this.dynamicCardEvents.addDataBlockToHTML()
-        }
+    getProxyState = (initialState) => {
+      return new Proxy(initialState, {
+        get: (target, prop) => {
+          return target[prop]
+        },
+        set: (target, prop, newValue) => {
+          const oldValue = target[prop]
+
+          target[prop] = newValue
+
+          if (newValue !== oldValue) {
+            this.updateUI()
+          }
+
+          return true
+        },
       })
     }
 
-    updateOriginControl()
-    updateButton()
-    updateDropdown()
-    updateOptions()
-  }
+    updateUI () {
+      const {
+        isExpanded,
+        currentOptionIndex,
+        selectedOptionElement,
+      } = this.state
 
-  toggleExpandentState () {
-    this.state.isExpanded = !this.state.isExpanded
-  }
+      const newSelectedOptionValue = selectedOptionElement.textContent.trim()
 
-  expand () {
-    this.state.isExpanded = true
-  }
+      const updateOriginControl = () => {
+        this.originalControlElement.value = newSelectedOptionValue
+      }
 
-  collapse () {
-    this.state.isExpanded = false
-  }
+      const updateButton = () => {
+        this.buttonElement.textContent = newSelectedOptionValue
+        this.buttonElement.classList.toggle(this.stateClasses.isExpanded, isExpanded)
+        this.buttonElement.setAttribute(this.stateAttributes.ariaExpanded, isExpanded)
+        this.buttonElement.setAttribute(
+          this.stateAttributes.ariaActiveDescendant,
+          this.optionElements[currentOptionIndex].id
+        )
+      }
 
-  selectCurrentOption() {
-    this.state.selectedOptionElement = this.optionElements[this.state.currentOptionIndex]
-  }
+      const updateDropdown = () => {
+        this.dropdownElement.classList.toggle(this.stateClasses.isExpanded, isExpanded)
+      }
 
-  onClick = (event) => {
-    const { target } = event
+      const updateOptions = () => {
+        this.optionElements.forEach((optionElement, index) => {
+          const isCurrent = currentOptionIndex === index
+          const isSelected = selectedOptionElement === optionElement
 
-    const isButtonClick = target === this.buttonElement
-    const isOutsideDropdownClick =
-    target.closest(this.selectors.dropdown) !== this.dropdownElement
+          optionElement.classList.toggle(this.stateClasses.isCurrent, isCurrent)
+          optionElement.classList.toggle(this.stateClasses.isSelected, isSelected)
+          optionElement.setAttribute(this.stateAttributes.ariaSelected, isSelected)
 
-    if (!isButtonClick && isOutsideDropdownClick) {
+          const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active')
+
+          if (isRowActive) {
+            this.dynamicCardEvents.addDataRowToHTML()
+          } else {
+            this.dynamicCardEvents.addDataBlockToHTML()
+          }
+        })
+      }
+
+      updateOriginControl()
+      updateButton()
+      updateDropdown()
+      updateOptions()
+    }
+
+    toggleExpandentState () {
+      this.state.isExpanded = !this.state.isExpanded
+    }
+
+    expand () {
+      this.state.isExpanded = true
+    }
+
+    collapse () {
+      this.state.isExpanded = false
+    }
+
+    selectCurrentOption() {
+      this.state.selectedOptionElement = this.optionElements[this.state.currentOptionIndex]
+    }
+
+    onClick = (event) => {
+      const { target } = event
+
+      const isButtonClick = target === this.buttonElement
+      const isOutsideDropdownClick =
+      target.closest(this.selectors.dropdown) !== this.dropdownElement
+
+      if (!isButtonClick && isOutsideDropdownClick) {
+        this.collapse()
+        return
+      }
+
+      const isOptionClick = target.matches(this.selectors.option)
+
+      if (isOptionClick) {
+        this.state.selectedOptionElement = target
+        this.state.currentOptionIndex = [...this.optionElements]
+          .findIndex((optionElement) => optionElement === target)
+        this.collapse()
+      }
+    }
+
+    get isNeedToExpand() {
+      const isButtonFocused = document.activeElement === this.buttonElement
+
+      return (!this.state.isExpanded && isButtonFocused)
+    }
+
+    onButtonClick = () => {
+      this.toggleExpandentState()
+    }
+
+    onArrowUpKeyDown = () => {
+      if (this.isNeedToExpand) {
+        this.expand()
+        return
+      }
+
+      if (this.state.currentOptionIndex > 0) {
+        this.state.currentOptionIndex--
+      } else {
+        this.state.currentOptionIndex = this.optionElements.length - 1
+      }
+    }
+
+    onArrowDownKeyDown = () => {
+      if (this.isNeedToExpand) {
+        this.expand()
+        return
+      }
+
+      if (this.state.currentOptionIndex < this.optionElements.length - 1) {
+        this.state.currentOptionIndex++
+      } else {
+        this.state.currentOptionIndex = 0
+      }
+    }
+
+    onSpaceKeyDown = () => {
+      if (this.isNeedToExpand) {
+        this.expand()
+        return
+      }
+
+      this.selectCurrentOption()
       this.collapse()
-      return
     }
 
-    const isOptionClick = target.matches(this.selectors.option)
+    onEnterKeyDown = () => {
+      if (this.isNeedToExpand) {
+        this.expand()
+        return
+      }
 
-    if (isOptionClick) {
-      this.state.selectedOptionElement = target
-      this.state.currentOptionIndex = [...this.optionElements]
-        .findIndex((optionElement) => optionElement === target)
+      this.selectCurrentOption()
       this.collapse()
     }
-  }
 
-  get isNeedToExpand() {
-    const isButtonFocused = document.activeElement === this.buttonElement
+    onKeyDown = (event) => {
+      const { code } = event
 
-    return (!this.state.isExpanded && isButtonFocused)
-  }
+      const action = {
+        ArrowUp: this.onArrowUpKeyDown,
+        ArrowDown: this.onArrowDownKeyDown,
+        Space: this.onSpaceKeyDown,
+        Enter: this.onEnterKeyDown,
+      }[code]
 
-  onButtonClick = () => {
-    this.toggleExpandentState()
-  }
-
-  onArrowUpKeyDown = () => {
-    if (this.isNeedToExpand) {
-      this.expand()
-      return
+      if (action) {
+        event.preventDefault()
+        action()
+      }
     }
 
-    if (this.state.currentOptionIndex > 0) {
-      this.state.currentOptionIndex--
-    } else {
-      this.state.currentOptionIndex = this.optionElements.length - 1;
-    }
-  }
-
-  onArrowDownKeyDown = () => {
-    if (this.isNeedToExpand) {
-      this.expand()
-      return
-    }
-
-    if (this.state.currentOptionIndex < this.optionElements.length - 1) {
-      this.state.currentOptionIndex++
-    } else {
-      this.state.currentOptionIndex = 0;
+    bindEvents() {
+      this.buttonElement.addEventListener('click', this.onButtonClick)
+      this.dropdownElement.addEventListener('click', this.onClick)
+      this.rootElement.addEventListener('keydown', this.onKeyDown)
     }
   }
 
-  onSpaceKeyDown = () => {
-    if (this.isNeedToExpand) {
-      this.expand()
-      return
-    }
-
-    this.selectCurrentOption()
-    this.collapse()
-  }
-
-  onEnterKeyDown = () => {
-    if (this.isNeedToExpand) {
-      this.expand()
-      return
-    }
-
-    this.selectCurrentOption()
-    this.collapse()
-  }
-
-  onKeyDown = (event) => {
-    const { code } = event
-
-    const action = {
-      ArrowUp: this.onArrowUpKeyDown,
-      ArrowDown: this.onArrowDownKeyDown,
-      Space: this.onSpaceKeyDown,
-      Enter: this.onEnterKeyDown,
-    }[code]
-
-    if (action) {
-      event.preventDefault()
-      action()
-    }
-  }
-
-  bindEvents() {
-    this.buttonElement.addEventListener('click', this.onButtonClick)
-    document.addEventListener('click', this.onClick)
-    this.rootElement.addEventListener('keydown', this.onKeyDown)
-  }
-}
-
-// class SelectCollection {
-//   constructor() {
-//     this.init()
-//   }
-
-//   init() {
-//     document.querySelectorAll(rootSelector).forEach((element) => {
-//       new Select(element)
-//     })
-//   }
-// }
-
-export default Select
+  export default Select
