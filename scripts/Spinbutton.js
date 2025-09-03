@@ -36,7 +36,7 @@ class Spinbutton {
         this.spinbuttonElement.textContent = newNumber
         this.spinbuttonElement.setAttribute(this.stateAttributes.ariaValuenow, newNumber)
 
-        const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active');
+        const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active')
 
         if (isRowActive) {
             this.dynamicCardEvents.addDataRowToHTML()

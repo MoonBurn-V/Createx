@@ -1,13 +1,15 @@
 import SwitchingListStyle from "./SwitchingListStyle.js";
 import Spinbutton from "./Spinbutton.js";
 import Select from "./Select.js";
+import SearchEventCard from "./SearchEventCard.js";
 
-const rootSelector = '[data-js-courses-body-root]';
+const rootSelector = '[data-js-courses-body-root]'
 
 class DynamicCardEvents {
     selectors = {
         cardList: '[data-js-card-list]',
         rootSelects: '[data-js-select]',
+       // searchInput: '[data-js-search]',
     }
 
     stateClasses = {
@@ -17,17 +19,61 @@ class DynamicCardEvents {
     constructor(rootElement) {
         this.rootElement = rootElement
         this.cardListElement = rootElement.querySelector(this.selectors.cardList)
+        //this.searchInputElement = rootElement.querySelector(this.selectors.searchInput)
         this.events = []
         this.switchingListStyle = new SwitchingListStyle(this, rootElement)
         this.spinbutton = new Spinbutton(this, rootElement)
-        this.selects = this.initializeSelects();
+        this.searchEventCard = new SearchEventCard(this, rootElement)
+        this.selects = this.initializeSelects()
+        this.selectElements = []
+        //this.bindEvents()
+        this.isInitialized = false
         this.initApp()
     }
 
+    // isFocus = () => {
+    //     return document.activeElement === this.searchInputElement
+    // }
+
     initializeSelects = () => {
-        const selectElements = this.rootElement.querySelectorAll(this.selectors.rootSelects)
-        return Array.from(selectElements).map(selectElement => new Select(this, selectElement))
-    };
+        this.selectElements = this.rootElement.querySelectorAll(this.selectors.rootSelects)
+        return Array.from(this.selectElements).map(selectElement => new Select(this, selectElement))
+    }
+
+    parseDate (dataString)  {
+        const months = {
+            Jan: 0,
+            Feb: 1,
+            Mar: 2,
+            Apr: 3,
+            May: 4,
+            Jun: 5,
+            Jul: 6,
+            Aug: 7,
+            Sep: 8,
+            Oct: 9,
+            Nov: 10,
+            Dec: 11,
+        }
+
+        const parts = dataString.split(' ')
+        const day = parseInt(parts[0], 10)
+        const month = parts[1]
+        const monthIndex = months[month]
+        const year = new Date().getFullYear()
+
+        return new Date(year, monthIndex, parseInt(day))
+    }
+
+    sortCardsByDate = (cardsArray) => {
+        const eventsfiltered = cardsArray.sort((a, b) => {
+            const dateA = this.parseDate(a.data)
+            const dateB = this.parseDate(b.data)
+
+            return dateB - dateA
+        })
+        return eventsfiltered
+    }
 
     addDataBlockToHTML = () => {
         this.cardListElement.innerHTML = ''
@@ -43,7 +89,9 @@ class DynamicCardEvents {
             filteredEvents = filteredEvents.filter(eventData => selected1 === eventData.theme)
         }
 
-        if (selected2 !== "newest") {
+        if (selected2 == "newest") {
+            filteredEvents = this.sortCardsByDate(filteredEvents)
+        } else {
             filteredEvents.sort((a, b) => b.popularity - a.popularity)
         }
 
@@ -78,12 +126,20 @@ class DynamicCardEvents {
 
         let filteredEvents = this.events;
 
-        if (selected1 !== "all themes") {
-            filteredEvents = filteredEvents.filter(eventData => selected1 === eventData.theme);
-        }
+        if (this.searchEventCard.isTyping) {
+            console.log("Новая логика")
+            filteredEvents = filteredEvents
+            limitation = filteredEvents.length
+        } else {
+            if (selected1 !== "all themes") {
+                filteredEvents = filteredEvents.filter(eventData => selected1 === eventData.theme)
+            }
 
-        if (selected2 !== "newest") {
-            filteredEvents.sort((a, b) => b.popularity - a.popularity)
+            if (selected2 == "newest") {
+                filteredEvents = this.sortCardsByDate(filteredEvents)
+            } else {
+                filteredEvents.sort((a, b) => b.popularity - a.popularity)
+            }
         }
 
         filteredEvents.slice(0, limitation).forEach(eventData => {
@@ -111,12 +167,25 @@ class DynamicCardEvents {
         });
     }
 
+    // bindEvents() {
+    //     if(this.searchInputElement) {
+    //         this.searchInputElement.addEventListener('input', (event) => {
+    //             if (document.activeElement === this.searchInputElement) {
+    //                 console.log("Работает в bindEvents");
+    //                 this.addDataRowToHTML();
+    //             }
+    //         });
+    //     }
+    // }
+
+
     initApp() {
         fetch('./cards/eventsCards.json')
             .then(response => response.json())
             .then(data => {
                 this.events = data
-                this.addDataRowToHTML();
+                this.addDataRowToHTML()
+                this.isInitialized = true
             })
     }
 }

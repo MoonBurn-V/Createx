@@ -1932,6 +1932,9 @@ input[type=number]::-webkit-outer-spin-button {
 .courses__pagination-button.hide {
   display: none;
 }
+.courses__pagination.hide {
+  display: none;
+}
 .courses__pagination-page {
   font-weight: 700;
 }
@@ -2469,11 +2472,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .events__item {
   display: flex;
-  column-gap: clamp(0.9375rem, 0.534607438rem + 1.652892562vw, 2.1875rem);
+  column-gap: clamp(0.9375rem, 0.4338842975rem + 2.0661157025vw, 2.5rem);
   width: 100%;
   background-color: var(--color-light);
   border-radius: 0.25rem;
-  padding: clamp(0.9375rem, 0.5950413223rem + 1.4049586777vw, 2rem) clamp(1.25rem, 1.1492768595rem + 0.4132231405vw, 1.5625rem);
+  padding: clamp(0.9375rem, 0.5950413223rem + 1.4049586777vw, 2rem) clamp(1.25rem, 0.847107438rem + 1.652892562vw, 2.5rem);
   border: 0.0625rem solid var(--color-gray-400);
   border-radius: 0.25rem;
   box-shadow: 0 4px 4px -4px rgba(30, 33, 44, 0.03), 0 12px 10px -6px rgba(154, 156, 165, 0.04), 0 30px 24px -10px rgba(154, 156, 165, 0.05), 0 80px 80px -20px rgba(154, 156, 165, 0.08);
@@ -2550,6 +2553,7 @@ input[type=number]::-webkit-outer-spin-button {
   row-gap: 0.25rem;
 }
 .events__info-description {
+  min-width: 43.75rem;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -2557,6 +2561,11 @@ input[type=number]::-webkit-outer-spin-button {
   .events__info-description {
     white-space: wrap;
     font-size: clamp(1rem, 0.7582644628rem + 0.9917355372vw, 1.75rem);
+  }
+}
+@media (width <= 30.06125rem) {
+  .events__info-description {
+    min-width: 11.875rem;
   }
 }
 .events__info-type {

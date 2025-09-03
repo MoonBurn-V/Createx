@@ -209,6 +209,10 @@
             }
         }
 
+        &.hide {
+            display: none;
+        }
+
         &-page{
             font-weight: 700;
 
