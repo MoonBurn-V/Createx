@@ -1,17 +1,6 @@
 class SearchEventCard {
     selectors = {
         searchInput: '[data-js-search]',
-        eventItem: '.events__item',
-        teamItem: '.team__card',
-        eventDay: '.events__date-day',
-        eventMonth: '.events__date-month',
-        eventTime: '.events__date-time',
-        eventDescription: '.events__info-description',
-        eventType: '.events__info-type',
-        teamDay: '.team__data-day',
-        teamTime: '.team__data-time',
-        teameDescriprion: '.team__info-desciption',
-        teamType: '.team__info-type',
         pagination: '[data-js-pagination]',
     }
 
@@ -22,42 +11,47 @@ class SearchEventCard {
     constructor(dynamicCardEvents, rootElement) {
         this.dynamicCardEvents = dynamicCardEvents
         this.rootElement = rootElement
-        this.searchInputElement = rootElement.querySelector(this.selectors.searchInput)
-        this.paginationElement = rootElement.querySelector(this.selectors.pagination)
+        this.searchInputElement = this.rootElement.querySelector(this.selectors.searchInput)
+        this.paginationElement = this.rootElement.querySelector(this.selectors.pagination)
         this.isTyping = false
+        this.cards = this.dynamicCardEvents.events
         this.bindeEvents()
     }
 
     search = () => {
         const searchTerm = this.searchInputElement.value.toLowerCase()
 
-        if(searchTerm === "") {
+        this.isTyping = searchTerm !== ""
+
+        if (searchTerm === "") {
             if (this.paginationElement) {
                 this.paginationElement.classList.remove(this.steteClasses.hide)
             }
 
-            // const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active')
-
-            // if (isRowActive) {
-            //     this.dynamicCardEvents.addDataRowToHTML()
-            // } else {
-            //     this.dynamicCardEvents.addDataBlockToHTML()
-            // }
         } else {
-            this.isTyping = true
-
-            const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active')
-
-            if (isRowActive) {
-                this.dynamicCardEvents.addDataRowToHTML()
-            } else {
-                this.dynamicCardEvents.addDataBlockToHTML()
-            }
-
-            this.dynamicCardEvents.selects[0].updateUI()
-
             this.paginationElement.classList.add(this.steteClasses.hide)
+
+            this.cards = this.dynamicCardEvents.events.filter(card => {
+                const description = card.description.toLowerCase()
+                const data = card.data.toLowerCase()
+                const time = card.time.toLowerCase()
+                const type = card.type.toLowerCase()
+
+                return (
+                    description.includes(searchTerm) || data.includes(searchTerm) || time.includes(searchTerm) || type.includes(searchTerm)
+                )
+            })
         }
+
+        const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active')
+
+        if (isRowActive) {
+            this.dynamicCardEvents.addDataRowToHTML()
+        } else {
+            this.dynamicCardEvents.addDataBlockToHTML()
+        }
+
+        this.dynamicCardEvents.selects[0].updateUI()
     }
 
     bindeEvents() {

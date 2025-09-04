@@ -9,7 +9,6 @@ class DynamicCardEvents {
     selectors = {
         cardList: '[data-js-card-list]',
         rootSelects: '[data-js-select]',
-       // searchInput: '[data-js-search]',
     }
 
     stateClasses = {
@@ -19,21 +18,14 @@ class DynamicCardEvents {
     constructor(rootElement) {
         this.rootElement = rootElement
         this.cardListElement = rootElement.querySelector(this.selectors.cardList)
-        //this.searchInputElement = rootElement.querySelector(this.selectors.searchInput)
         this.events = []
         this.switchingListStyle = new SwitchingListStyle(this, rootElement)
         this.spinbutton = new Spinbutton(this, rootElement)
         this.searchEventCard = new SearchEventCard(this, rootElement)
         this.selects = this.initializeSelects()
         this.selectElements = []
-        //this.bindEvents()
-        this.isInitialized = false
         this.initApp()
     }
-
-    // isFocus = () => {
-    //     return document.activeElement === this.searchInputElement
-    // }
 
     initializeSelects = () => {
         this.selectElements = this.rootElement.querySelectorAll(this.selectors.rootSelects)
@@ -85,16 +77,20 @@ class DynamicCardEvents {
 
         let filteredEvents = this.events;
 
-        if (selected1 !== "all themes") {
-            filteredEvents = filteredEvents.filter(eventData => selected1 === eventData.theme)
-        }
-
-        if (selected2 == "newest") {
-            filteredEvents = this.sortCardsByDate(filteredEvents)
+        if (this.searchEventCard.isTyping) {
+            filteredEvents = this.searchEventCard.cards
+            limitation = filteredEvents.length
         } else {
-            filteredEvents.sort((a, b) => b.popularity - a.popularity)
-        }
+            if (selected1 !== "all themes") {
+                filteredEvents = filteredEvents.filter(eventData => selected1 === eventData.theme)
+            }
 
+            if (selected2 == "newest") {
+                filteredEvents = this.sortCardsByDate(filteredEvents)
+            } else {
+                filteredEvents.sort((a, b) => b.popularity - a.popularity)
+            }
+        }
 
         filteredEvents.slice(0, limitation).forEach(eventData => {
             const newEvent = document.createElement('li')
@@ -124,11 +120,10 @@ class DynamicCardEvents {
         const selected1 = this.selects[0]?.state.selectedOptionElement.textContent
         const selected2 = this.selects[1]?.state.selectedOptionElement.textContent
 
-        let filteredEvents = this.events;
+        let filteredEvents = this.events
 
         if (this.searchEventCard.isTyping) {
-            console.log("Новая логика")
-            filteredEvents = filteredEvents
+            filteredEvents = this.searchEventCard.cards
             limitation = filteredEvents.length
         } else {
             if (selected1 !== "all themes") {
@@ -167,25 +162,12 @@ class DynamicCardEvents {
         });
     }
 
-    // bindEvents() {
-    //     if(this.searchInputElement) {
-    //         this.searchInputElement.addEventListener('input', (event) => {
-    //             if (document.activeElement === this.searchInputElement) {
-    //                 console.log("Работает в bindEvents");
-    //                 this.addDataRowToHTML();
-    //             }
-    //         });
-    //     }
-    // }
-
-
     initApp() {
         fetch('./cards/eventsCards.json')
             .then(response => response.json())
             .then(data => {
                 this.events = data
                 this.addDataRowToHTML()
-                this.isInitialized = true
             })
     }
 }

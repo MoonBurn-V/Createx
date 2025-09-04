@@ -106,7 +106,6 @@ class Select  {
           
           optionElement.classList.remove(this.stateClasses.isCurrent, isCurrent)
           optionElement.classList.remove(this.stateClasses.isSelected, isSelected)
-          //optionElement.removeAttribute()(this.stateAttributes.ariaSelected, isSelected)
         })
 
       } else {
@@ -247,7 +246,7 @@ class Select  {
 
   bindEvents() {
     this.buttonElement.addEventListener('click', this.onButtonClick)
-    this.dropdownElement.addEventListener('click', this.onClick)
+    document.addEventListener('click', this.onClick)
     this.rootElement.addEventListener('keydown', this.onKeyDown)
   }
 }
