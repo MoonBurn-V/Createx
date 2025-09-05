@@ -2,6 +2,7 @@ import SwitchingListStyle from "./SwitchingListStyle.js";
 import Spinbutton from "./Spinbutton.js";
 import Select from "./Select.js";
 import SearchEventCard from "./SearchEventCard.js";
+import Pagination from "./Pagination.js";
 
 const rootSelector = '[data-js-courses-body-root]'
 
@@ -21,6 +22,7 @@ class DynamicCardEvents {
         this.events = []
         this.switchingListStyle = new SwitchingListStyle(this, rootElement)
         this.spinbutton = new Spinbutton(this, rootElement)
+        this.pagination = new Pagination(this, rootElement)
         this.searchEventCard = new SearchEventCard(this, rootElement)
         this.selects = this.initializeSelects()
         this.selectElements = []
@@ -168,6 +170,7 @@ class DynamicCardEvents {
             .then(data => {
                 this.events = data
                 this.addDataRowToHTML()
+                this.pagination.determiningNumberPages()
             })
     }
 }

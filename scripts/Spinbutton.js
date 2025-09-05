@@ -43,6 +43,8 @@ class Spinbutton {
         } else {
             this.dynamicCardEvents.addDataBlockToHTML()
         }
+
+        this.dynamicCardEvents.pagination.determiningNumberPages()
     }
 
     reducingNumber = () => {
@@ -64,6 +66,8 @@ class Spinbutton {
         } else {
             this.dynamicCardEvents.addDataBlockToHTML()
         }
+
+        this.dynamicCardEvents.pagination.determiningNumberPages()
     }
 
     get isNeedToChange() {
@@ -113,6 +117,7 @@ class Spinbutton {
         if (this.btnReducingElement) {
             this.btnReducingElement.addEventListener('click', this.reducingNumber)
         }
+
         this.rootElement.addEventListener('keydown', this.onKeyDown)
 
         if (this.spinbuttonElement) {

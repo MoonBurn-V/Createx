@@ -1935,6 +1935,18 @@ input[type=number]::-webkit-outer-spin-button {
 .courses__pagination.hide {
   display: none;
 }
+.courses__pagination-body {
+  display: flex;
+  column-gap: 1.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  width: 6rem;
+  scroll-snap-type: x mandatory;
+}
+.courses__pagination-body::-webkit-scrollbar {
+  display: none;
+}
 .courses__pagination-page {
   font-weight: 700;
 }

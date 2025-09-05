@@ -213,6 +213,20 @@
             display: none;
         }
 
+        &-body{
+            display: flex;
+            column-gap: rem(20);
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            width: rem(96);
+            scroll-snap-type: x mandatory;
+
+            &::-webkit-scrollbar{
+                display: none;
+            }
+        }
+
         &-page{
             font-weight: 700;
 
