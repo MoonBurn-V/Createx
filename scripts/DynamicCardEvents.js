@@ -25,6 +25,7 @@ class DynamicCardEvents {
         this.pagination = new Pagination(this, rootElement)
         this.searchEventCard = new SearchEventCard(this, rootElement)
         this.selects = this.initializeSelects()
+        this.curentPage = 0
         this.selectElements = []
         this.initApp()
     }
@@ -94,7 +95,11 @@ class DynamicCardEvents {
             }
         }
 
-        filteredEvents.slice(0, limitation).forEach(eventData => {
+        const startIndex = this.curentPage * limitation
+        const endIndex = startIndex + limitation
+        const eventsToDisplay = filteredEvents.slice(startIndex, endIndex)
+
+        eventsToDisplay.forEach(eventData => {
             const newEvent = document.createElement('li')
             newEvent.classList.add('team__card', 'event')
             newEvent.innerHTML = `
@@ -139,7 +144,11 @@ class DynamicCardEvents {
             }
         }
 
-        filteredEvents.slice(0, limitation).forEach(eventData => {
+        const startIndex = this.curentPage * limitation
+        const endIndex = startIndex + limitation
+        const eventsToDisplay = filteredEvents.slice(startIndex, endIndex)
+
+        eventsToDisplay.forEach(eventData => {
             const parts = eventData.data.split(' ')
             const day = parts[0]
             const month = parts[1]

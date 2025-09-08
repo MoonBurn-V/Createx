@@ -24,7 +24,6 @@ class Pagination {
         this.numberPages = 0
         this.pages = []
         this.bindEvents()
-        //this.determiningNumberPages()
         this.setActivePage()
     }
 
@@ -90,9 +89,19 @@ class Pagination {
         this.pageBodyElement.scrollLeft -= 25
         if(this.currentPageIndex == 0) {
             this.currentPageIndex = 0
+            this.dynamicCardEvents.curentPage = 0
         } else {
             this.currentPageIndex--
+            this.dynamicCardEvents.curentPage--
+
+            const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active');
+            if (isRowActive) {
+                this.dynamicCardEvents.addDataRowToHTML()
+            } else {
+                this.dynamicCardEvents.addDataBlockToHTML()
+            }
         }
+
         this.setActivePage()
     }
 
@@ -100,9 +109,18 @@ class Pagination {
         this.pageBodyElement.scrollLeft += 25
         if(this.currentPageIndex == this.pageElements.length - 1) {
             this.currentPageIndex = this.pageElements.length - 1
+            this.dynamicCardEvents.curentPage = this.pageElements.length - 1
         } else {
             this.currentPageIndex++
+            this.dynamicCardEvents.curentPage++
+            const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active');
+            if (isRowActive) {
+                this.dynamicCardEvents.addDataRowToHTML()
+            } else {
+                this.dynamicCardEvents.addDataBlockToHTML()
+            }
         }
+
         this.setActivePage()
     }
 
