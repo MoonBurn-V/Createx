@@ -199,6 +199,7 @@
             display: block;
             background: none;
             border: none;
+            padding-top: rem(5);
 
             &:hover path[fill]{
                 fill: var(--color-accent);
@@ -228,7 +229,10 @@
         }
 
         &-page{
+            //width: rem(17.5);
+            place-content: center;
             font-weight: 700;
+            scroll-snap-align: start;
 
             &.active{
                 color: var(--color-accent);

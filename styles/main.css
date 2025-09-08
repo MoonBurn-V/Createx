@@ -1925,6 +1925,7 @@ input[type=number]::-webkit-outer-spin-button {
   display: block;
   background: none;
   border: none;
+  padding-top: 0.3125rem;
 }
 .courses__pagination-button:hover path[fill] {
   fill: var(--color-accent);
@@ -1948,7 +1949,9 @@ input[type=number]::-webkit-outer-spin-button {
   display: none;
 }
 .courses__pagination-page {
+  place-content: center;
   font-weight: 700;
+  scroll-snap-align: start;
 }
 .courses__pagination-page.active {
   color: var(--color-accent);

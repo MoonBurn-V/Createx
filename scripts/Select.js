@@ -118,12 +118,13 @@ class Select  {
           optionElement.setAttribute(this.stateAttributes.ariaSelected, isSelected)
 
           const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active')
-
           if (isRowActive) {
             this.dynamicCardEvents.addDataRowToHTML()
           } else {
             this.dynamicCardEvents.addDataBlockToHTML()
           }
+
+          this.dynamicCardEvents.pagination.determiningNumberPages()
         })
       }
     }

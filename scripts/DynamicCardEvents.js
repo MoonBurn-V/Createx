@@ -170,6 +170,9 @@ class DynamicCardEvents {
             .then(data => {
                 this.events = data
                 this.addDataRowToHTML()
+                if (this.selects && this.selects.length > 0) {
+                    this.pagination.determiningNumberPages()
+                }
                 this.pagination.determiningNumberPages()
             })
     }
