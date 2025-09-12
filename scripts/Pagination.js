@@ -67,7 +67,7 @@ class Pagination {
         }
     }
 
-    getFilteredEvents = () => { //позже вынести в BaseComponent
+    getFilteredEvents = () => {
         let filteredEvents = this.dynamicCardEvents.events
         const selected1 = this.dynamicCardEvents.selects[0]?.state.selectedOptionElement.textContent
         const selected2 = this.dynamicCardEvents.selects[1]?.state.selectedOptionElement.textContent
@@ -94,11 +94,15 @@ class Pagination {
             this.currentPageIndex--
             this.dynamicCardEvents.curentPage--
 
-            const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active');
-            if (isRowActive) {
-                this.dynamicCardEvents.addDataRowToHTML()
-            } else {
+            if (this.dynamicCardEvents.isSmallScreen) {
                 this.dynamicCardEvents.addDataBlockToHTML()
+            } else {
+                const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active')
+                if (isRowActive) {
+                    this.dynamicCardEvents.addDataRowToHTML()
+                } else {
+                    this.dynamicCardEvents.addDataBlockToHTML()
+                }
             }
         }
 
@@ -113,11 +117,16 @@ class Pagination {
         } else {
             this.currentPageIndex++
             this.dynamicCardEvents.curentPage++
-            const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active');
-            if (isRowActive) {
-                this.dynamicCardEvents.addDataRowToHTML()
-            } else {
+
+            if (this.dynamicCardEvents.isSmallScreen) {
                 this.dynamicCardEvents.addDataBlockToHTML()
+            } else {
+                const isRowActive = this.dynamicCardEvents.switchingListStyle.btnRowElement.classList.contains('active')
+                if (isRowActive) {
+                    this.dynamicCardEvents.addDataRowToHTML()
+                } else {
+                    this.dynamicCardEvents.addDataBlockToHTML()
+                }
             }
         }
 
@@ -132,6 +141,10 @@ class Pagination {
         }
     }
 
+    isVerticalScroll = (event) => {
+        return Math.abs(event.deltaY) > Math.abs(event.deltaX);
+    }
+
     bindEvents () {
         if (this.btnPrevElement) {
             this.btnPrevElement.addEventListener('click', this.previousPage)
@@ -139,6 +152,30 @@ class Pagination {
         if (this.btnNextElement) {
             this.btnNextElement.addEventListener('click', this.nextPage)
         }
+
+
+        this.pageBodyElement.addEventListener('wheel', (event) => {
+            if(!this.isVerticalScroll(event)){
+                event.preventDefault();
+            }
+        })
+        
+        this.pageBodyElement.addEventListener('touchstart', (event) => {
+            this.touchStartY = event.touches[0].clientY;
+            this.touchStartX = event.touches[0].clientX;
+        })
+        
+        this.pageBodyElement.addEventListener('touchmove', (event) => {
+            this.touchEndY = event.touches[0].clientY;
+            this.touchEndX = event.touches[0].clientX;
+
+            this.deltaY = this.touchEndY - this.touchStartY;
+            this.deltaX = this.touchEndX - this.touchStartX;
+
+            if(Math.abs(this.deltaY) <= Math.abs(this.deltaX)) {
+                event.preventDefault();
+            }
+        })
     }
 }
 

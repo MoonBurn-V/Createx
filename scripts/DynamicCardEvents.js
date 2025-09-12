@@ -27,13 +27,49 @@ class DynamicCardEvents {
         this.selects = this.initializeSelects()
         this.curentPage = 0
         this.selectElements = []
+        this.isSmallScreen = window.innerWidth <= 830
+        //this.renderCards = this.isSmallScreen ? this.addDataBlockToHTML.bind(this) : this.addDataRowToHTML.bind(this)
         this.initApp()
+
+
+        window.addEventListener('resize', () => {
+            const newIsSmallScreen = window.innerWidth <= 830
+            //const isRowActive = this.switchingListStyle.btnRowElement.classList.contains('active')
+            if (newIsSmallScreen !== this.isSmallScreen) {
+                this.isSmallScreen = newIsSmallScreen
+                //this.renderCards = this.isSmallScreen ? this.addDataBlockToHTML.bind(this) : this.addDataRowToHTML.bind(this)
+                //this.switchingListStyle.blockStyle()
+                this.renderCards()
+            } else {
+                // if(isRowActive) {
+                //     this.switchingListStyle.rowStyle()
+                // }
+            }
+        })
+    }
+
+    renderCards() {
+        const isRowActive = this.switchingListStyle.btnRowElement.classList.contains('active')
+        if(this.isSmallScreen && isRowActive) {
+            this.addDataBlockToHTML()
+        }
+
+        if (!this.isSmallScreen && isRowActive) {
+            this.addDataRowToHTML()
+        }
     }
 
     initializeSelects = () => {
         this.selectElements = this.rootElement.querySelectorAll(this.selectors.rootSelects)
-        return Array.from(this.selectElements).map(selectElement => new Select(this, selectElement))
+        return Array.from(this.selectElements).map(selectElement => new Select(this, selectElement, this.resetToFirstPage.bind(this)))
     }
+
+    resetToFirstPage = () => {
+        this.curentPage = 0
+        this.pagination.currentPageIndex = 0
+        this.pagination.setActivePage()
+    }
+
 
     parseDate (dataString)  {
         const months = {
@@ -77,12 +113,13 @@ class DynamicCardEvents {
         const selected1 = this.selects[0]?.state.selectedOptionElement.textContent
         const selected2 = this.selects[1]?.state.selectedOptionElement.textContent
 
-
-        let filteredEvents = this.events;
+        let filteredEvents = this.events
+        const startIndex = this.curentPage * limitation
+        const endIndex = startIndex + limitation
+        let eventsToDisplay = []
 
         if (this.searchEventCard.isTyping) {
-            filteredEvents = this.searchEventCard.cards
-            limitation = filteredEvents.length
+            eventsToDisplay = this.searchEventCard.cards
         } else {
             if (selected1 !== "all themes") {
                 filteredEvents = filteredEvents.filter(eventData => selected1 === eventData.theme)
@@ -93,11 +130,9 @@ class DynamicCardEvents {
             } else {
                 filteredEvents.sort((a, b) => b.popularity - a.popularity)
             }
-        }
 
-        const startIndex = this.curentPage * limitation
-        const endIndex = startIndex + limitation
-        const eventsToDisplay = filteredEvents.slice(startIndex, endIndex)
+            eventsToDisplay = filteredEvents.slice(startIndex, endIndex)
+        }
 
         eventsToDisplay.forEach(eventData => {
             const newEvent = document.createElement('li')
@@ -128,10 +163,12 @@ class DynamicCardEvents {
         const selected2 = this.selects[1]?.state.selectedOptionElement.textContent
 
         let filteredEvents = this.events
+        const startIndex = this.curentPage * limitation
+        const endIndex = startIndex + limitation
+        let eventsToDisplay = []
 
         if (this.searchEventCard.isTyping) {
-            filteredEvents = this.searchEventCard.cards
-            limitation = filteredEvents.length
+            eventsToDisplay = this.searchEventCard.cards
         } else {
             if (selected1 !== "all themes") {
                 filteredEvents = filteredEvents.filter(eventData => selected1 === eventData.theme)
@@ -142,11 +179,9 @@ class DynamicCardEvents {
             } else {
                 filteredEvents.sort((a, b) => b.popularity - a.popularity)
             }
+            
+            eventsToDisplay = filteredEvents.slice(startIndex, endIndex)
         }
-
-        const startIndex = this.curentPage * limitation
-        const endIndex = startIndex + limitation
-        const eventsToDisplay = filteredEvents.slice(startIndex, endIndex)
 
         eventsToDisplay.forEach(eventData => {
             const parts = eventData.data.split(' ')
@@ -175,15 +210,14 @@ class DynamicCardEvents {
 
     initApp() {
         fetch('./cards/eventsCards.json')
-            .then(response => response.json())
-            .then(data => {
-                this.events = data
-                this.addDataRowToHTML()
-                if (this.selects && this.selects.length > 0) {
-                    this.pagination.determiningNumberPages()
-                }
+        .then(response => response.json())
+        .then(data => {
+            this.events = data
+            this.renderCards()
+            if (this.selects && this.selects.length > 0) {
                 this.pagination.determiningNumberPages()
-            })
+            }
+        })
     }
 }
 

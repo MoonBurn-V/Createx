@@ -1,8 +1,22 @@
+const rootSelector = '[data-js-countdown]'
+
+class CountdownCollection {
+    constructor() {
+        this.init()
+    }
+
+    init() {
+        document.querySelectorAll(rootSelector).forEach((element) => {
+            new Countdown(element)
+        })
+    }
+}
+
+
 //Демонстрационный вариант
 // class Countdown {
 
 //     selectors = {
-//         root: '[data-js-countdown]',
 //         days: '[data-js-days]',
 //         hours: '[data-js-hours]',
 //         mins: '[data-js-mins]',
@@ -21,23 +35,16 @@
 //         active: 'active',
 //     }
 
-//     constructor() {
-
-//         if (window.location.pathname.includes('course.html')) {
-//             this.rootElement = document.querySelector(this.selectors.root);
-
-//             if(!this.rootElement) {
-//                 return
-//             }
-
-//             this.daysElement = this.rootElement.querySelector(this.selectors.days);
-//             this.hoursElement = this.rootElement.querySelector(this.selectors.hours);
-//             this.minsElement = this.rootElement.querySelector(this.selectors.mins);
-//             this.secElement = this.rootElement.querySelector(this.selectors.sec);
-//             this.messageElement = document.querySelector(this.selectors.message);
-//             this.timeLeft = { ...this.initialValues };
-//             this.startCountdown();
-//         }
+//     constructor(rootElement) {
+//         this.rootElement = rootElement
+//         this.daysElement = this.rootElement.querySelector(this.selectors.days);
+//         this.hoursElement = this.rootElement.querySelector(this.selectors.hours);
+//         this.minsElement = this.rootElement.querySelector(this.selectors.mins);
+//         this.secElement = this.rootElement.querySelector(this.selectors.sec);
+//         this.messageElement = document.querySelector(this.selectors.message);
+//         this.timeLeft = { ...this.initialValues };
+//         this.startCountdown();
+        
 //     }
 
 //     updateDisplay() {
@@ -104,26 +111,20 @@ class Countdown {
         active: 'active',
     }
 
-    constructor() {
-        if (window.location.pathname.includes('course.html')) {
-            this.rootElement = document.querySelector(this.selectors.root);
-
-            if (!this.rootElement) {
-                return;
-            }
-
-            this.daysElement = this.rootElement.querySelector(this.selectors.days);
-            this.hoursElement = this.rootElement.querySelector(this.selectors.hours);
-            this.minsElement = this.rootElement.querySelector(this.selectors.mins);
-            this.secElement = this.rootElement.querySelector(this.selectors.sec);
-            this.messageElement = document.querySelector(this.selectors.message);
-            this.targetDate = new Date(new Date().getFullYear(), 8, 1);
-            if (new Date() > this.targetDate) {
-                this.targetDate = new Date(new Date().getFullYear() + 1, 8, 1);
-            }
-            this.timeLeft = this.getTimeLeft();
-            this.startCountdown();
+    constructor(rootElement) {
+        this.rootElement = rootElement
+        this.daysElement = this.rootElement.querySelector(this.selectors.days);
+        this.hoursElement = this.rootElement.querySelector(this.selectors.hours);
+        this.minsElement = this.rootElement.querySelector(this.selectors.mins);
+        this.secElement = this.rootElement.querySelector(this.selectors.sec);
+        this.messageElement = document.querySelector(this.selectors.message);
+        this.targetDate = new Date(new Date().getFullYear(), 0, 1);
+        if (new Date() > this.targetDate) {
+            this.targetDate = new Date(new Date().getFullYear() + 1, 0, 1);
         }
+        this.timeLeft = this.getTimeLeft();
+        this.startCountdown();
+        
     }
 
     getTimeLeft() {
@@ -184,8 +185,7 @@ class Countdown {
                 }
             }
         }
-
-        this.updateDisplay();
+        alert("проблема не в тиках")
     }
 
 
@@ -204,4 +204,5 @@ class Countdown {
     }
 }
 
-export default Countdown;
+
+export default CountdownCollection

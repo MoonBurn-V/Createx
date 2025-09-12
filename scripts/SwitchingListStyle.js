@@ -19,7 +19,7 @@ class SwitchingListStyle {
         this.btnRowElement = rootElement.querySelector(this.selectors.btnRow)
         this.btnBlockElement = rootElement.querySelector(this.selectors.btnBlock)
         this.cardListElement = rootElement.querySelector(this.selectors.cardList)
-        this.cardItemsElements = Array.from(rootElement.querySelectorAll(this.selectors.cardItems))
+        //this.cardItemsElements = Array.from(rootElement.querySelectorAll(this.selectors.cardItems))
         this.bindEvents()
     }
 

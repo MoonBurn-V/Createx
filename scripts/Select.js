@@ -25,7 +25,7 @@ class Select  {
     selectedOptionElement: null,
   }
 
-  constructor(dynamicCardEvents, rootElement) {
+  constructor(dynamicCardEvents, rootElement, resetToFirstPage) {
     this.dynamicCardEvents = dynamicCardEvents
     this.rootElement = rootElement
     this.originalControlElement = this.rootElement.querySelector(this.selectors.originalControl)
@@ -37,6 +37,7 @@ class Select  {
       currentOptionIndex: this.originalControlElement.selectedIndex,
       selectedOptionElement: this.optionElements[this.originalControlElement.selectedIndex],
     })
+    this.resetToFirstPage = resetToFirstPage
     this.bindEvents()
   }
 
@@ -94,7 +95,6 @@ class Select  {
     }
 
     const updateOptions = () => {
-
       if(this.dynamicCardEvents.searchEventCard.isTyping) {
         this.optionElements[0].classList.add(this.stateClasses.isCurrent)
         this.optionElements[0].classList.add(this.stateClasses.isSelected)
@@ -245,10 +245,19 @@ class Select  {
     }
   }
 
+  reset = () => {
+    if (this.resetToFirstPage) {
+      this.resetToFirstPage()
+    }
+  }
+
   bindEvents() {
     this.buttonElement.addEventListener('click', this.onButtonClick)
     document.addEventListener('click', this.onClick)
     this.rootElement.addEventListener('keydown', this.onKeyDown)
+    if(this.dropdownElement) {
+      this.dropdownElement.addEventListener('click', this.reset)
+    }
   }
 }
 

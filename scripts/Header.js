@@ -14,8 +14,8 @@ class Header {
         signInLink: '[data-js-sign-in-link]',
         signUpLink: '[data-js-sign-up-link]',
         hero: '[data-js-hero]',
-        signInForm: '[data-js-sign-in]', // Добавлено
-        signUpForm: '[data-js-sign-up]'    // Добавлено
+        signInForm: '[data-js-sign-in]',
+        signUpForm: '[data-js-sign-up]'
     }
 
     stateClasses = {
@@ -45,8 +45,8 @@ class Header {
         this.heroElement = document.querySelector(this.selectors.hero);
         this.bodyChildren = Array.from(document.body.children);
 
-        this.signInFormElement = document.querySelector(this.selectors.signInForm); // Добавлено
-        this.signUpFormElement = document.querySelector(this.selectors.signUpForm);   // Добавлено
+        this.signInFormElement = document.querySelector(this.selectors.signInForm);
+        this.signUpFormElement = document.querySelector(this.selectors.signUpForm);
 
         this.isSmallScreen = window.innerWidth <= 830;
         this.bindEvents();
@@ -61,8 +61,7 @@ class Header {
             }
         });
 
-        this.formInstance = formInstance; // Получаем экземпляр Form из main.js
-        // this.checkFormActivity(); // Форма обрабатывается в Form.js
+        this.formInstance = formInstance;
 
         this.scrollHandler = this.handleScroll.bind(this);
         window.addEventListener('scroll', this.scrollHandler);
@@ -179,7 +178,7 @@ class Header {
             }
         });
         this.signInFormElement.classList.toggle(this.stateClasses.activeForm);
-        this.formInstance.setActiveForm(this.signInFormElement); // передаем в Form.js
+        this.formInstance.setActiveForm(this.signInFormElement);
     }
 
     inertFolseSignIn = () => {
@@ -199,7 +198,7 @@ class Header {
             }
         });
         this.signUpFormElement.classList.toggle(this.stateClasses.activeForm);
-        this.formInstance.setActiveForm(this.signUpFormElement); // передаем в Form.js
+        this.formInstance.setActiveForm(this.signUpFormElement);
     }
 
     inertFolseSignUp = () => {
