@@ -1347,6 +1347,7 @@ input[type=number]::-webkit-outer-spin-button {
 @media (width <= 51.93625rem) {
   .registered__signed {
     flex-direction: column;
+    place-items: center;
     row-gap: 0.4375rem;
   }
 }

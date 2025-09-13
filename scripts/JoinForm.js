@@ -1,6 +1,19 @@
+const rootSelector = '[data-js-join]'
+
+class JoinFormCollection {
+  constructor() {
+    this.init()
+  }
+
+  init() {
+    document.querySelectorAll(rootSelector).forEach((element) => {
+      new JoinForm(element)
+    })
+  }
+}
+
 class JoinForm {
   selectors = {
-    root: '[data-js-discount]',
     fieldEmail: '[data-js-field-discount-email]',
     fieldPhone: '[data-js-field-phone]',
     inputName: '[data-js-input-name]',
@@ -15,24 +28,17 @@ class JoinForm {
     activeError: 'active-error',
   }
 
-  constructor() {
-    if (window.location.pathname.includes('course.html')) {
-      this.rootElement = document.querySelector(this.selectors.root);
-
-      if (!this.rootElement) {
-        return
-      }
-
-      this.rootElement = document.querySelector(this.selectors.root);
-      this.fieldEmailElement = this.rootElement.querySelector(this.selectors.fieldEmail);
-      this.fieldPhoneElement = this.rootElement.querySelector(this.selectors.fieldPhone);
-      this.inputNameElement = this.rootElement.querySelector(this.selectors.inputName);
-      this.inputEmailElement = this.rootElement.querySelector(this.selectors.inputEmail);
-      this.inputphoneElement = this.rootElement.querySelector(this.selectors.inputphone);
-      this.discountButtonElement = this.rootElement.querySelector(this.selectors.discountButton);
-      this.successElement = document.querySelector(this.selectors.success);
-      this.bindEvents();
-    }
+  constructor(rootElement) {
+    this.rootElement = rootElement
+    this.fieldEmailElement = this.rootElement.querySelector(this.selectors.fieldEmail);
+    this.fieldPhoneElement = this.rootElement.querySelector(this.selectors.fieldPhone);
+    this.inputNameElement = this.rootElement.querySelector(this.selectors.inputName);
+    this.inputEmailElement = this.rootElement.querySelector(this.selectors.inputEmail);
+    this.inputphoneElement = this.rootElement.querySelector(this.selectors.inputphone);
+    this.discountButtonElement = this.rootElement.querySelector(this.selectors.discountButton);
+    this.successElement = document.querySelector(this.selectors.success);
+    this.bindEvents();
+    
   }
 
   bindEvents() {
@@ -76,4 +82,4 @@ class JoinForm {
   }
 }
 
-export default JoinForm
+export default JoinFormCollection
