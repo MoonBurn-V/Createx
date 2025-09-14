@@ -58,6 +58,12 @@
             padding: rem(7) rem(15);
             row-gap: rem(10);
         }
+
+        &-cell{
+            &.texter{
+                padding-bottom: rem(24);
+            }
+        }
     }
 
     &__title{

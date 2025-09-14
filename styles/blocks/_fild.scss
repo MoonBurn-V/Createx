@@ -65,6 +65,12 @@
     &.course{
       min-width: rem(275);
     }
+
+    &.textarea{
+      padding: rem(10);
+      height: fluid(128, 90);
+      resize: vertical;
+    }
   }
 
 

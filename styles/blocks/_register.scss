@@ -27,7 +27,27 @@
             display: flex;
             flex-direction: column;
             row-gap: rem(24);
-            max-width: rem(495);
+
+            &.join{
+                max-width: rem(495);
+            }
+
+            &.contacts{
+                display: grid;
+                grid-template-columns: repeat(2, rem(340));
+                column-gap: rem(25);
+                max-width: auto;
+
+                .texter{
+                    grid-column: 1/3;
+                    grid-row: 3/4;
+                }
+
+                @include mobile{
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
         }
     }
 

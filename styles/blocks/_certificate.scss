@@ -7,7 +7,6 @@
         position: relative;
         display: flex;
         width: fluid(1230, 300);
-        //column-gap: fluid(130, 30);
 
         @media (width <= 1228px) {
             width: rem(944);
@@ -21,10 +20,24 @@
         &-inner{
             width: fluid(525, 300);
         }
+
+        &.contacts{
+            column-gap: rem(30);
+
+            @include mobile{
+                flex-direction: column;
+                row-gap: rem(40);
+                place-items: center;
+            }
+        }
     }
 
     &__header{
         padding-bottom: fluid(48, 20);
+
+        &.contacts{
+            padding-bottom: fluid(40, 15);
+        }
     }
 
     &__subtitle{
@@ -74,7 +87,6 @@
     &__image{
         position: absolute;
         right: rem(0);
-        //width: fluid(705, 300);
         box-shadow: 
         0 4px 4px -4px rgba(30, 33, 44, 0.05), 
         0 12px 10px -6px rgba(154, 156, 165, 0.08), 
@@ -88,6 +100,45 @@
         @include tablet{
             right: rem(0);
             bottom: rem(-50);
+        }
+    }
+
+    &__contacts{
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(24);
+    }
+
+    &__item{
+        display: flex;
+        column-gap: rem(12);
+
+        &-info{
+            &-type{
+                font-weight: 700;
+                font-size: rem(14);
+                color: var(--color-gray-700);
+            }
+        }
+    }
+
+    &__icon{
+        margin-top: rem(-25);
+    }
+
+    &__follow-us{
+        padding-top: fluid(48, 30);
+
+        &-title{
+            font-weight: 700;
+        }
+    }
+
+    &__map{
+        border-radius: rem(4);
+
+        @include mobile{
+            width: fluid(400, 320);
         }
     }
 }

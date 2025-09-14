@@ -24,6 +24,15 @@
                 text-align: center;
             }
         }
+
+        &.contacts{
+            column-gap: 0;
+            justify-content: space-between;
+
+            @include laptop-s{
+                place-content: center;
+            }
+        }
     }
 
     &__title{
@@ -75,5 +84,17 @@
         display: flex;
         column-gap: rem(24);
         padding-top: fluid(40, 20);
+
+        &.contacts{
+            padding-top: rem(15);
+        }
+    }
+
+    &__image{
+        &.contacts{
+            @include laptop-s{
+                display: none;
+            }
+        }
     }
 }
