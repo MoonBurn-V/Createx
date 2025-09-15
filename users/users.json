@@ -1,0 +1,42 @@
+[
+    {
+        "full name": "Scott Piligrim",
+        "mail": "scott@mail.ru",
+        "password": "1234SDfsdas##",
+        "phone": "(123) 123-12-31",
+        "message": null,
+        "subscribe": "yes"
+    },
+    {
+        "full name": "Ramona Flowers",
+        "mail": "ramona@mail.com",
+        "password": "R4m0n@Fl0w3rs!",
+        "phone": "(555) 123-45-67",
+        "message": "Hello there! I'm interested in your services.",
+        "subscribe": null
+    },
+    {
+        "full name": "Wallace Wells",
+        "mail": "wallace@company.net",
+        "password": "W@ll4c3W3lls99",
+        "phone": null,
+        "message": "Urgent inquiry. Please contact me ASAP.",
+        "subscribe": "yes"
+    },
+    {
+        "full name": "Kim Pine",
+        "mail": "kim.pine@email.org",
+        "password": "P1n3K!mR0ckz",
+        "phone": "(987) 654-32-10",
+        "message": null,
+        "subscribe": "yes"
+    },
+    {
+        "full name": "Stephen Stills",
+        "mail": "stephen.stills@anothermail.co",
+        "password": "S7illzS7!llz",
+        "phone": null,
+        "message": "Regarding our previous conversation...",
+        "subscribe": null
+    }
+]

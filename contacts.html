@@ -12,7 +12,7 @@
     <header class="header" data-js-header>
         <div class="header__body fixed" data-js-header-body>
             <div class="header__body-inner container">
-                <a class="header__logo logo" href="#" aria-label="Home" title="Home" data-js-header-logo>
+                <a class="header__logo logo" href="index.html" aria-label="Home" title="Home" data-js-header-logo>
                     <img class="logo__img" src="./img/logo-header.png" alt="" width="130" height="22">
                     <img class="logo__img" src="./img/logo-darck.svg" alt="" width="130" height="22">
                 </a>
@@ -168,7 +168,12 @@
                 <div class="registered__body">
                     <div class="registered__form-cell field" data-js-field-name>
                         <label class="field__label" for="name">Full Name</label>
-                        <input class="field__control" type="name" placeholder="Your full name" required id="name" name="name" data-js-input-name>
+                        <input class="field__control" type="name" placeholder="Your full name" required id="name" name="name" aria-describedby="name-error-full-name" data-js-input-name>
+                        <div class="field__error" id="name-error-full-name" role="alert">
+                            <p>
+                                TThis field is required to fill in.
+                            </p>
+                        </div>
                     </div>
                     <div class="registered__form-cell field" data-js-field-email>
                         <label class="field__label" for="sign-up-email">Email</label>
@@ -395,7 +400,12 @@
                     <form class="register__body-inner contacts" action="" data-js-join>
                         <div class="registered__form-cell field" data-js-field-discount-first-name>
                             <label class="field__label" for="name">First Name*</label>
-                            <input class="field__control course" type="name" required placeholder="Your first name" id="discount-first-name" name="name" data-js-input-discount-name>
+                            <input class="field__control course" type="name" required placeholder="Your first name" id="discount-first-name" name="name" aria-describedby="name-error-first-name" data-js-input-first-name>
+                            <div class="field__error" id="name-error-first-name" role="alert">
+                                <p>
+                                    This field is required to fill in.
+                                </p>
+                            </div>
                         </div>
                         <div class="registered__form-cell field" data-js-field-discount-email>
                             <label class="field__label" for="sign-up-email">Email*</label>
@@ -408,25 +418,37 @@
                         </div>
                         <div class="registered__form-cell field" data-js-field-discount-last-name>
                             <label class="field__label" for="name">Last Name*</label>
-                            <input class="field__control course" type="name" required placeholder="Your last name" id="discount-last-name" name="name" data-js-input-discount-name>
+                            <input class="field__control course" type="name" required placeholder="Your last name" id="discount-last-name" name="name" aria-describedby="name-error-last-name" data-js-input-last-name>
+                            <div class="field__error" id="name-error-last-name" role="alert">
+                                <p>
+                                    This field is required to fill in.
+                                </p>
+                            </div>
                         </div>
                         <div class="registered__form-cell field" data-js-field-phone>
                             <label class="field__label" for="sign-up-email">Phone</label>
-                            <input class="field__control course" type="phone" placeholder="Your phone number" aria-describedby="name-error-phone" id="discount-phone" data-js-input-mask="(000) 000-00-00"> <!--data-js-input-phone-->
+                            <input class="field__control course" type="phone" placeholder="Your phone number" aria-describedby="name-error-phone" id="discount-phone" data-js-input-mask="(000) 000-00-00">
                             <div class="field__error" id="name-error-phone" role="alert">
                                 <p>
                                     There is no such phone number.
                                 </p>
                             </div>
                         </div>
-                        <div class="registered__form-cell field texter">
+                        <div class="registered__form-cell field texter" data-js-field-message>
                             <label class="field__label" for="message">Message*</label>
                             <textarea
                                 class="field__control textarea"
                                 id="message"
                                 placeholder="Your message"
                                 required
+                                aria-describedby="name-error-message"
+                                data-js-input-message
                             ></textarea>
+                            <div class="field__error" id="name-error-message" role="alert">
+                                <p>
+                                    This field is required to fill in.
+                                </p>
+                            </div>
                         </div>
                         <label class="checkbox contacts">
                             <input class="checkbox__input" type="checkbox">

@@ -14,9 +14,16 @@ class JoinFormCollection {
 
 class JoinForm {
   selectors = {
+    fieldName: '[data-js-field-discount-name]',
+    fieldFirstName: '[data-js-field-discount-first-name]',
+    fieldLastName: '[data-js-field-discount-last-name]',
+    fieldMessage: '[data-js-field-message]',
+    inputFirstName: '[data-js-input-first-name]',
+    inputLastName: '[data-js-input-last-name]',
+    inputMessage: '[data-js-input-message]',
     fieldEmail: '[data-js-field-discount-email]',
     fieldPhone: '[data-js-field-phone]',
-    inputName: '[data-js-input-name]',
+    inputName: '[data-js-input-discount-name]',
     inputEmail: '[data-js-input-discount-email]',
     inputphone: '[data-js-input-mask]',
     discountButton: '[data-js-discount-button]',
@@ -30,6 +37,13 @@ class JoinForm {
 
   constructor(rootElement) {
     this.rootElement = rootElement
+    this.fieldNameElement = this.rootElement.querySelector(this.selectors.fieldName);
+    this.fieldFirstNameElement = this.rootElement.querySelector(this.selectors.fieldFirstName);
+    this.fieldLastNameElement = this.rootElement.querySelector(this.selectors.fieldLastName);
+    this.fieldMessageElement = this.rootElement.querySelector(this.selectors.fieldMessage);
+    this.inputFirstNameElement = this.rootElement.querySelector(this.selectors.inputFirstName);
+    this.inputLastNameElement = this.rootElement.querySelector(this.selectors.inputLastName);
+    this.inputMessageElement = this.rootElement.querySelector(this.selectors.inputMessage);
     this.fieldEmailElement = this.rootElement.querySelector(this.selectors.fieldEmail);
     this.fieldPhoneElement = this.rootElement.querySelector(this.selectors.fieldPhone);
     this.inputNameElement = this.rootElement.querySelector(this.selectors.inputName);
@@ -50,6 +64,7 @@ class JoinForm {
   checkingInputContents = (event) => {
     event.preventDefault();
 
+    let nameIsVoid = false
     this.emailContent = this.inputEmailElement ? this.inputEmailElement.value : '';
     this.emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     this.phonContent = this.inputphoneElement.value;
@@ -59,6 +74,45 @@ class JoinForm {
     const cleanedPhone = this.phonContent.replace(/\D/g, '');
     let isPhoneValid = cleanedPhone.length === 10;
 
+    if (this.inputNameElement) {
+      this.nameContent = this.inputNameElement.value;
+
+      if (this.nameContent === '') {
+        this.fieldNameElement.classList.add(this.stateClasses.activeError);
+      } else {
+        this.fieldNameElement.classList.remove(this.stateClasses.activeError);
+        nameIsVoid = true;
+      }
+    } else if(this.inputFirstNameElement && this.inputLastNameElement) {
+      this.firstNameContent = this.inputFirstNameElement.value;
+      this.lastNameContent = this.inputLastNameElement.value;
+
+      if (this.firstNameContent === '') {
+        this.fieldFirstNameElement.classList.add(this.stateClasses.activeError);
+      } else {
+        this.fieldFirstNameElement.classList.remove(this.stateClasses.activeError);
+      }
+
+      if (this.lastNameContent === '') {
+        this.fieldLastNameElement.classList.add(this.stateClasses.activeError);
+      } else {
+        this.fieldLastNameElement.classList.remove(this.stateClasses.activeError);
+      }
+
+      if (this.firstNameContent !== '' && this.lastNameContent !== '') {
+        nameIsVoid = true;
+      }
+    }
+
+    if(this.fieldMessageElement) {
+      this.messageContent = this.inputMessageElement.value;
+
+      if (this.messageContent === '') {
+        this.fieldMessageElement.classList.add(this.stateClasses.activeError);
+      }else{
+        this.fieldMessageElement.classList.remove(this.stateClasses.activeError);
+      }
+    }
 
     if (!isEmailValid) {
       this.fieldEmailElement.classList.add(this.stateClasses.activeError);
@@ -68,17 +122,17 @@ class JoinForm {
 
 
     if (!isPhoneValid) {
-       this.fieldPhoneElement.classList.add(this.stateClasses.activeError);
+      this.fieldPhoneElement.classList.add(this.stateClasses.activeError);
     } else {
-       this.fieldPhoneElement.classList.remove(this.stateClasses.activeError);
+      this.fieldPhoneElement.classList.remove(this.stateClasses.activeError);
     }
 
-
-    if (isEmailValid && isPhoneValid) {
+    if(this.successElement) {
+      if (isEmailValid && isPhoneValid && nameIsVoid) {
         this.rootElement.classList.remove(this.stateClasses.active);
         this.successElement.classList.add(this.stateClasses.active);
+      }
     }
-
   }
 }
 

@@ -168,7 +168,12 @@
                 <div class="registered__body">
                     <div class="registered__form-cell field" data-js-field-name>
                         <label class="field__label" for="name">Full Name</label>
-                        <input class="field__control" type="name" placeholder="Your full name" required id="name" name="name" data-js-input-name>
+                        <input class="field__control" type="name" placeholder="Your full name" required id="name" name="name" aria-describedby="name-error-full-name" data-js-input-name>
+                        <div class="field__error" id="name-error-full-name" role="alert">
+                            <p>
+                                TThis field is required to fill in.
+                            </p>
+                        </div>
                     </div>
                     <div class="registered__form-cell field" data-js-field-email>
                         <label class="field__label" for="sign-up-email">Email</label>
@@ -365,7 +370,7 @@
                         </div>
                     </div>
                     <a class="about__link" href="#">EVENT ON FACEBOOK</a>
-                    <a class="about__button button button--accent" href="#discount">Join the event</a>
+                    <a class="about__button button button--accent" href="#join">Join the event</a>
                 </div>
             </div>
         </section>
@@ -573,7 +578,7 @@
         </section>
 
         <section class="section register container">
-            <div class="register__body">
+            <div class="register__body" id="join">
                 <div class="register__header">
                     <div class="register__subtitle">DON’T MISS THE EVENT</div>
                     <div class="register__title h1">Leave a request</div>
@@ -581,7 +586,12 @@
                 <form class="register__body-inner join" action="" data-js-join>
                     <div class="registered__form-cell field" data-js-field-discount-name>
                         <label class="field__label" for="name">Full Name</label>
-                        <input class="field__control course" type="name" placeholder="Your full name" id="discount-name" name="name" data-js-input-discount-name>
+                        <input class="field__control course" type="name" placeholder="Your full name" id="discount-name" name="name" aria-describedby="name-error-name" data-js-input-discount-name>
+                        <div class="field__error" id="name-error-name" role="alert">
+                            <p>
+                                TThis field is required to fill in.
+                            </p>
+                        </div>
                     </div>
                     <div class="registered__form-cell field" data-js-field-discount-email>
                         <label class="field__label" for="sign-up-email">Email</label>

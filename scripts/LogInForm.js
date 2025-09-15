@@ -18,9 +18,11 @@ class LogInForm {
             activeViewing: 'active-viewing',
         }
 
+        this.fieldNameElement = null;
         this.fieldEmailElement = null;
         this.fieldPasswordElement = null;
         this.fieldConfirmPasswordElement = null;
+        this.inputNameElement = null;
         this.inputEmailElement = null;
         this.inputPasswordElement = null;
         this.inputConfirmPasswordElement = null;
@@ -28,6 +30,7 @@ class LogInForm {
         this.viewingConfirmPasswordElement = null;
         this.buttonFormElement = null;
 
+        
         this.bindEvents();
     }
 
@@ -37,19 +40,21 @@ class LogInForm {
     }
 
     initializeFormElements() {
+        this.fieldNameElement = this.activeFormElement.querySelector(this.selectors.fieldName);
         this.fieldEmailElement = this.activeFormElement.querySelector(this.selectors.fieldEmail);
         this.fieldPasswordElement = this.activeFormElement.querySelector(this.selectors.fieldPassword);
         this.fieldConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.fieldConfirmPassword);
+        this.inputNameElement = this.activeFormElement.querySelector(this.selectors.inputName);
         this.inputEmailElement = this.activeFormElement.querySelector(this.selectors.inputEmail);
         this.inputPasswordElement = this.activeFormElement.querySelector(this.selectors.inputPassword);
         this.inputConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.inputConfirmPassword);
         this.viewingPasswordElement = this.activeFormElement.querySelector(this.selectors.viewingPassword);
         this.viewingConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.viewingConfirmPassword);
         this.buttonFormElement = this.activeFormElement.querySelector(this.selectors.buttonForm);
-        this.bindEventsToActiveForm();
+        this.bindEvents();
     }
 
-    bindEventsToActiveForm() {
+    bindEvents() {
         if (this.buttonFormElement) {
             this.buttonFormElement.addEventListener('click', this.checkingInputContents);
         }
@@ -67,10 +72,17 @@ class LogInForm {
     bindEvents() {}
 
     checkingInputContents = (event) => {
+        this.nameContent = this.inputEmailElement ? this.inputNameElement.value : '';
         this.emailContent = this.inputEmailElement ? this.inputEmailElement.value : '';
         this.emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         this.passwordContent = this.inputPasswordElement ? this.inputPasswordElement.value : '';
         this.passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+        if (this.nameContent === '') {
+        this.fieldNameElement.classList.add(this.stateClasses.activeError);
+        } else {
+        this.fieldNameElement.classList.remove(this.stateClasses.activeError);
+        }
 
         if (!this.emailRegex.test(this.emailContent)) {
             this.fieldEmailElement.classList.add(this.stateClasses.activeError);

@@ -168,7 +168,12 @@
                 <div class="registered__body">
                     <div class="registered__form-cell field" data-js-field-name>
                         <label class="field__label" for="name">Full Name</label>
-                        <input class="field__control" type="name" placeholder="Your full name" required id="name" name="name" data-js-input-name>
+                        <input class="field__control" type="name" placeholder="Your full name" required id="name" name="name" aria-describedby="name-error-full-name" data-js-input-name>
+                            <div class="field__error" id="name-error-full-name" role="alert">
+                                <p>
+                                    TThis field is required to fill in.
+                                </p>
+                            </div>
                     </div>
                     <div class="registered__form-cell field" data-js-field-email>
                         <label class="field__label" for="sign-up-email">Email</label>
