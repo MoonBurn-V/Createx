@@ -64,7 +64,6 @@ class JoinForm {
   checkingInputContents = (event) => {
     event.preventDefault();
 
-    let nameIsVoid = false
     this.emailContent = this.inputEmailElement ? this.inputEmailElement.value : '';
     this.emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     this.phonContent = this.inputphoneElement.value;
@@ -81,7 +80,6 @@ class JoinForm {
         this.fieldNameElement.classList.add(this.stateClasses.activeError);
       } else {
         this.fieldNameElement.classList.remove(this.stateClasses.activeError);
-        nameIsVoid = true;
       }
     } else if(this.inputFirstNameElement && this.inputLastNameElement) {
       this.firstNameContent = this.inputFirstNameElement.value;
@@ -97,10 +95,6 @@ class JoinForm {
         this.fieldLastNameElement.classList.add(this.stateClasses.activeError);
       } else {
         this.fieldLastNameElement.classList.remove(this.stateClasses.activeError);
-      }
-
-      if (this.firstNameContent !== '' && this.lastNameContent !== '') {
-        nameIsVoid = true;
       }
     }
 
@@ -120,15 +114,24 @@ class JoinForm {
       this.fieldEmailElement.classList.remove(this.stateClasses.activeError);
     }
 
-
-    if (!isPhoneValid) {
-      this.fieldPhoneElement.classList.add(this.stateClasses.activeError);
-    } else {
+    if (this.phonContent == '') {
       this.fieldPhoneElement.classList.remove(this.stateClasses.activeError);
+    } else {
+      if (!isPhoneValid) {
+        this.fieldPhoneElement.classList.add(this.stateClasses.activeError);
+      } else {
+        this.fieldPhoneElement.classList.remove(this.stateClasses.activeError);
+      }
     }
 
+    // if (!isPhoneValid) {
+    //   this.fieldPhoneElement.classList.add(this.stateClasses.activeError);
+    // } else {
+    //   this.fieldPhoneElement.classList.remove(this.stateClasses.activeError);
+    // }
+
     if(this.successElement) {
-      if (isEmailValid && isPhoneValid && nameIsVoid) {
+      if (isEmailValid && this.nameContent !== '') {
         this.rootElement.classList.remove(this.stateClasses.active);
         this.successElement.classList.add(this.stateClasses.active);
       }

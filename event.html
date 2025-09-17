@@ -585,8 +585,8 @@
                 </div>
                 <form class="register__body-inner join" action="" data-js-join>
                     <div class="registered__form-cell field" data-js-field-discount-name>
-                        <label class="field__label" for="name">Full Name</label>
-                        <input class="field__control course" type="name" placeholder="Your full name" id="discount-name" name="name" aria-describedby="name-error-name" data-js-input-discount-name>
+                        <label class="field__label" for="name">Full Name*</label>
+                        <input class="field__control course" type="name" placeholder="Your full name" id="discount-name" name="name" required aria-describedby="name-error-name" data-js-input-discount-name>
                         <div class="field__error" id="name-error-name" role="alert">
                             <p>
                                 TThis field is required to fill in.
@@ -594,7 +594,7 @@
                         </div>
                     </div>
                     <div class="registered__form-cell field" data-js-field-discount-email>
-                        <label class="field__label" for="sign-up-email">Email</label>
+                        <label class="field__label" for="sign-up-email">Email*</label>
                         <input class="field__control course" type="email" placeholder="Your working email" required aria-describedby="name-error-email" id="discount-email" autocomplete="email" data-js-input-discount-email>
                         <div class="field__error" id="name-error-email" role="alert">
                             <p>
@@ -604,7 +604,7 @@
                     </div>
                     <div class="registered__form-cell field" data-js-field-phone>
                         <label class="field__label" for="sign-up-email">Phone</label>
-                        <input class="field__control course" type="phone" placeholder="Your phone number" required aria-describedby="name-error-phone" id="discount-phone" data-js-input-mask="(000) 000-00-00"> <!--data-js-input-phone-->
+                        <input class="field__control course" type="phone" placeholder="Your phone number" aria-describedby="name-error-phone" id="discount-phone" data-js-input-mask="(000) 000-00-00"> <!--data-js-input-phone-->
                         <div class="field__error" id="name-error-phone" role="alert">
                             <p>
                                 There is no such phone number.
