@@ -9,7 +9,7 @@
 }
 
 .sign-up {
-  display: none;
+    display: none;
 
   &.active-form {
     display: block;
@@ -18,16 +18,21 @@
 
 .registered{
     display: flex;
-    max-width: fluid(486, 290);
+    //max-width: fluid(486, 290);
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: rem(486);
+    //width: rem(486);
     border-radius: rem(4);
     background-color: var(--color-light);
     z-index: 100000;
+    width: 90%;
+    max-width: 500px;
+    max-height: 95vh; /* Ограничиваем максимальную высоту окна */
+    overflow-y: auto; /* Добавляем прокрутку внутри окна */
+    padding: 20px;
 
     @include mobile{
         top: 40%;

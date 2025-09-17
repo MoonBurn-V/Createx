@@ -15,7 +15,7 @@ class Header {
         signUpLink: '[data-js-sign-up-link]',
         hero: '[data-js-hero]',
         signInForm: '[data-js-sign-in]',
-        signUpForm: '[data-js-sign-up]'
+        signUpForm: '[data-js-sign-up]',
     }
 
     stateClasses = {
@@ -170,7 +170,7 @@ class Header {
     }
 
     toggleSignInFormElement = () => {
-        document.documentElement.classList.toggle(this.stateClasses.lockForm);
+        document.body.classList.toggle(this.stateClasses.lockForm);
         this.bodyChildren.forEach(el => {
             if (el !== this.signInFormElement && el !== this.signUpFormElement) {
                 el.classList.toggle(this.stateClasses.isDimmed);
@@ -190,7 +190,7 @@ class Header {
     }
 
     toggleSignUpFormElement = () => {
-        document.documentElement.classList.toggle(this.stateClasses.lockForm);
+        document.body.classList.toggle(this.stateClasses.lockForm);
         this.bodyChildren.forEach(el => {
             if (el !== this.signInFormElement && el !== this.signUpFormElement) {
                 el.classList.toggle(this.stateClasses.isDimmed);
