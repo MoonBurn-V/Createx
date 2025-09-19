@@ -1,0 +1,27 @@
+[
+    {
+        "full name": "Scott Piligrim",
+        "mail": "scott@mail.ru",
+        "phone": "(123) 123-12-31"
+    },
+    {
+        "full name": "Ramona Flowers",
+        "mail": "ramona@mail.com",
+        "phone": "(555) 123-45-67"
+    },
+    {
+        "full name": "Wallace Wells",
+        "mail": "wallace@company.net",
+        "phone": null
+    },
+    {
+        "full name": "Kim Pine",
+        "mail": "kim.pine@email.org",
+        "phone": "(987) 654-32-10"
+    },
+    {
+        "full name": "Stephen Stills",
+        "mail": "stephen.stills@anothermail.co",
+        "phone": null
+    }
+]

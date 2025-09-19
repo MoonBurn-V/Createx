@@ -1,3 +1,5 @@
+import LogInForm from "./LogInForm.js";
+
 class Header {
     selectors = {
         root: '[data-js-header]',
@@ -9,6 +11,7 @@ class Header {
         signInHeader: '[data-js-sign-in-header]',
         signUpHeader: '[data-js-sign-up-header]',
         span:'[data-js-header-span]',
+        exit: '[data-js-exit]',
         signInCross: '[data-js-sign-in-cross]',
         signUpCross: '[data-js-sign-up-cross]',
         signInLink: '[data-js-sign-in-link]',
@@ -25,9 +28,10 @@ class Header {
         lockForm: 'lock-form',
         isDimmed: 'dimmed',
         fixed: 'fixed',
+        hide: 'hide', //&&&&&
     }
 
-    constructor(formInstance) {
+    constructor() { //formInstance
         this.rootElement = document.querySelector(this.selectors.root);
         this.bodyElement = this.rootElement.querySelector(this.selectors.body);
         this.logoElement = this.rootElement.querySelector(this.selectors.logo);
@@ -38,6 +42,7 @@ class Header {
         this.signInHeaderElement = document.querySelector(this.selectors.signInHeader);
         this.signUpHeaderElement = document.querySelector(this.selectors.signUpHeader);
         this.spanElement = document.querySelector(this.selectors.span);
+        this.exitElement = document.querySelector(this.selectors.exit);
         this.signInCrossElement = document.querySelector(this.selectors.signInCross);
         this.signUpCrossElement = document.querySelector(this.selectors.signUpCross);
         this.signInLinkElement = document.querySelector(this.selectors.signInLink);
@@ -61,7 +66,7 @@ class Header {
             }
         });
 
-        this.formInstance = formInstance;
+        //this.formInstance = formInstance;
 
         this.scrollHandler = this.handleScroll.bind(this);
         window.addEventListener('scroll', this.scrollHandler);
@@ -178,7 +183,9 @@ class Header {
             }
         });
         this.signInFormElement.classList.toggle(this.stateClasses.activeForm);
-        this.formInstance.setActiveForm(this.signInFormElement);
+        //this.formInstance.setActiveForm(this.signInFormElement);
+
+        this.formInstance = new LogInForm(this, this.signInFormElement);
     }
 
     inertFolseSignIn = () => {
@@ -198,7 +205,9 @@ class Header {
             }
         });
         this.signUpFormElement.classList.toggle(this.stateClasses.activeForm);
-        this.formInstance.setActiveForm(this.signUpFormElement);
+        //this.formInstance.setActiveForm(this.signUpFormElement);
+
+        this.formInstance = new LogInForm(this, this.signUpFormElement);
     }
 
     inertFolseSignUp = () => {
@@ -207,6 +216,13 @@ class Header {
                 el.inert = false;
             }
         });
+    }
+
+    exitingAccount = () => {
+        this.signInHeaderElement.classList.remove(this.stateClasses.hide)
+        this.signUpHeaderElement.classList.remove(this.stateClasses.hide)
+        this.spanElement.classList.remove(this.stateClasses.hide)
+        this.exitElement.classList.add(this.stateClasses.hide)
     }
 
     bindEvents() {
@@ -242,6 +258,10 @@ class Header {
         if (this.signInLinkElement) {
             this.signInLinkElement.addEventListener('click', this.toggleSignUpFormElement);
             this.signInLinkElement.addEventListener('click', this.toggleSignInFormElement);
+        }
+
+        if(this.exitElement) {
+            this.exitElement.addEventListener('click', this.exitingAccount);
         }
     }
 

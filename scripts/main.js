@@ -1,5 +1,5 @@
 import Header from './Header.js';
-import LogInForm from './LogInForm.js';
+//import LogInForm from './LogInForm.js';
 import TabsCollection from './Tabs.js';
 import Carousel from './Carousel.js';
 import Subscribe from './Subscribe.js';
@@ -12,8 +12,9 @@ import InputMaskCollection from './InputMask.js';
 import VideoPlayerCollection from './VideoPlayer.js';
 import DynamicCardEventsCollection from './DynamicCardEvents.js';
 
-const form = new LogInForm();
-new Header(form);
+// const form = new LogInForm();
+// new Header(form);
+new Header();
 const loadCardsInstance = new LoadCards();
 new TabsCollection(loadCardsInstance);
 new Carousel();

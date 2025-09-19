@@ -1,0 +1,27 @@
+[
+    {
+        "full name": "Scott Piligrim",
+        "mail": "scott@mail.ru",
+        "password": "1234SDfsdas##"
+    },
+    {
+        "full name": "Ramona Flowers",
+        "mail": "ramona@mail.com",
+        "password": "R4m0n@Fl0w3rs!"
+    },
+    {
+        "full name": "Wallace Wells",
+        "mail": "wallace@company.net",
+        "password": "W@ll4c3W3lls99"
+    },
+    {
+        "full name": "Kim Pine",
+        "mail": "kim.pine@email.org",
+        "password": "P1n3K!mR0ckz"
+    },
+    {
+        "full name": "Stephen Stills",
+        "mail": "stephen.stills@anothermail.co",
+        "password": "S7illzS7!llz"
+    }
+]

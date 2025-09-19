@@ -1,48 +1,30 @@
 class LogInForm {
-    constructor() {
-        this.activeFormElement = null;
-        this.selectors = {
-            fieldName: '[data-js-field-name]',
-            inputName: '[data-js-input-name]',
-            fieldEmail: '[data-js-field-email]',
-            fieldPassword: '[data-js-field-password]',
-            fieldConfirmPassword: '[data-js-field-confirm-password]',
-            inputEmail: '[data-js-input-email]',
-            inputPassword: '[data-js-input-password]',
-            inputConfirmPassword: '[data-js-input-confirm-password]',
-            viewingPassword: '[data-js-viewing-password]',
-            viewingConfirmPassword: '[data-js-viewing-confirm-password]',
-            buttonForm: '[data-js-form-button]',
-        }
 
-        this.stateClasses = {
-            activeError: 'active-error',
-            activeViewing: 'active-viewing',
-        }
-
-        this.fieldNameElement = null;
-        this.inputNameElement = null;
-        this.fieldEmailElement = null;
-        this.fieldPasswordElement = null;
-        this.fieldConfirmPasswordElement = null;
-        this.inputEmailElement = null;
-        this.inputPasswordElement = null;
-        this.inputConfirmPasswordElement = null;
-        this.viewingPasswordElement = null;
-        this.viewingConfirmPasswordElement = null;
-        this.buttonFormElement = null;
-
-        this.bindEvents();
+    selectors = {
+        fieldName: '[data-js-field-name]',
+        inputName: '[data-js-input-name]',
+        fieldEmail: '[data-js-field-email]',
+        fieldPassword: '[data-js-field-password]',
+        fieldConfirmPassword: '[data-js-field-confirm-password]',
+        inputEmail: '[data-js-input-email]',
+        inputPassword: '[data-js-input-password]',
+        inputConfirmPassword: '[data-js-input-confirm-password]',
+        viewingPassword: '[data-js-viewing-password]',
+        viewingConfirmPassword: '[data-js-viewing-confirm-password]',
+        buttonForm: '[data-js-form-button]',
     }
 
-    setActiveForm(formElement) {
-        this.activeFormElement = formElement;
-        this.initializeFormElements();
+    stateClasses = {
+        activeError: 'active-error',
+        activeViewing: 'active-viewing',
+        hide: 'hide'
     }
 
-    initializeFormElements() {
+    constructor(header, activeFormElement) {
+        this.header = header;
+        this.activeFormElement = activeFormElement;
         this.fieldNameElement = this.activeFormElement.querySelector(this.selectors.fieldName);
-         this.inputNameElement = this.activeFormElement.querySelector(this.selectors.inputName);
+        this.inputNameElement = this.activeFormElement.querySelector(this.selectors.inputName);
         this.fieldEmailElement = this.activeFormElement.querySelector(this.selectors.fieldEmail);
         this.fieldPasswordElement = this.activeFormElement.querySelector(this.selectors.fieldPassword);
         this.fieldConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.fieldConfirmPassword);
@@ -52,10 +34,21 @@ class LogInForm {
         this.viewingPasswordElement = this.activeFormElement.querySelector(this.selectors.viewingPassword);
         this.viewingConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.viewingConfirmPassword);
         this.buttonFormElement = this.activeFormElement.querySelector(this.selectors.buttonForm);
-        this.bindEventsToActiveForm();
+        this.users = []
+        this.initData();
+        this.bindEvents();
     }
 
-    bindEventsToActiveForm() {
+    initData() {
+        fetch('./users-info/users.json')
+        .then(response => response.json())
+        .then(data => {
+            this.users = data
+        })
+
+    }
+
+    bindEvents() {
         if (this.buttonFormElement) {
             this.buttonFormElement.addEventListener('click', this.checkingInputContents);
         }
@@ -69,8 +62,6 @@ class LogInForm {
         }
 
     }
-
-    bindEvents() {}
 
     checkingInputContents = (event) => {
         this.emailContent = this.inputEmailElement ? this.inputEmailElement.value : '';
@@ -110,6 +101,49 @@ class LogInForm {
                 event.preventDefault();
             } else if (this.passwordContent === this.confirmPasswordContent) {
                 this.fieldConfirmPasswordElement.classList.remove(this.stateClasses.activeError);
+
+                alert('Registration successful!');
+                this.header.signInHeaderElement.classList.add(this.stateClasses.hide)
+                this.header.signUpHeaderElement.classList.add(this.stateClasses.hide)
+                this.header.spanElement.classList.add(this.stateClasses.hide)
+                this.header.exitElement.classList.remove(this.stateClasses.hide)
+                this.header.toggleSignUpFormElement()
+                this.header.inertFolseSignUp()
+                event.preventDefault()
+            }
+        }
+
+        if (!this.inputConfirmPasswordElement) {
+            if (this.emailRegex.test(this.emailContent) && this.passwordRegex.test(this.passwordContent)) {
+                let foundMatch = false
+
+                for (const user of this.users) {
+                    const userMail = user.mail
+                    const userPasswor = user.password
+
+                    if (this.emailContent === userMail && this.passwordContent === userPasswor) {
+                        this.header.signInHeaderElement.classList.add(this.stateClasses.hide)
+                        this.header.signUpHeaderElement.classList.add(this.stateClasses.hide)
+                        this.header.spanElement.classList.add(this.stateClasses.hide)
+                        this.header.exitElement.classList.remove(this.stateClasses.hide)
+                        this.header.toggleSignInFormElement()
+                        this.header.inertFolseSignIn()
+                        event.preventDefault()
+                        foundMatch = true
+                        break
+                    }
+                }
+
+                if (!foundMatch) {
+                    const userResponse = confirm("Sorry you didn't register. Please complete the registration process")
+
+                    if (userResponse) {
+                        this.header.toggleSignInFormElement()
+                        this.header.toggleSignUpFormElement()
+                    }
+
+                    event.preventDefault()
+                }
             }
         }
     }
