@@ -28,10 +28,10 @@ class Header {
         lockForm: 'lock-form',
         isDimmed: 'dimmed',
         fixed: 'fixed',
-        hide: 'hide', //&&&&&
+        hide: 'hide',
     }
 
-    constructor() { //formInstance
+    constructor() {
         this.rootElement = document.querySelector(this.selectors.root);
         this.bodyElement = this.rootElement.querySelector(this.selectors.body);
         this.logoElement = this.rootElement.querySelector(this.selectors.logo);
@@ -54,6 +54,7 @@ class Header {
         this.signUpFormElement = document.querySelector(this.selectors.signUpForm);
 
         this.isSmallScreen = window.innerWidth <= 830;
+        this.checkLoginStatus();
         this.bindEvents();
 
         window.addEventListener('resize', () => {
@@ -66,8 +67,6 @@ class Header {
             }
         });
 
-        //this.formInstance = formInstance;
-
         this.scrollHandler = this.handleScroll.bind(this);
         window.addEventListener('scroll', this.scrollHandler);
 
@@ -76,6 +75,32 @@ class Header {
         }
 
         this.updateFixedClasses();
+    }
+
+    checkLoginStatus() {
+        if(localStorage.getItem('isLoggedIn') === 'true') {
+            this.updateHeaderButtons()
+        } else {
+            this.resetHeaderButtons()
+        }
+    }
+
+    updateHeaderButtons = () => {
+        this.signInHeaderElement.classList.add(this.stateClasses.hide)
+        this.signUpHeaderElement.classList.add(this.stateClasses.hide)
+        this.spanElement.classList.add(this.stateClasses.hide)
+                if(this.exitElement) {
+            this.exitElement.classList.remove(this.stateClasses.hide)
+        }
+    }
+
+    resetHeaderButtons = () => {
+        this.signInHeaderElement.classList.remove(this.stateClasses.hide)
+        this.signUpHeaderElement.classList.remove(this.stateClasses.hide)
+        this.spanElement.classList.remove(this.stateClasses.hide)
+        if(this.exitElement) {
+            this.exitElement.classList.add(this.stateClasses.hide)
+        }    
     }
 
     handleScroll() {
@@ -106,6 +131,9 @@ class Header {
                 this.signInHeaderElement.classList.add(this.stateClasses.fixed);
                 this.signUpHeaderElement.classList.add(this.stateClasses.fixed);
                 this.spanElement.classList.add(this.stateClasses.fixed);
+                if(this.exitElement) {
+                    this.exitElement.classList.add(this.stateClasses.fixed);
+                }
             }
 
             if (this.logoElements.length > 1) {
@@ -121,6 +149,9 @@ class Header {
                 this.signInHeaderElement.classList.remove(this.stateClasses.fixed);
                 this.signUpHeaderElement.classList.remove(this.stateClasses.fixed);
                 this.spanElement.classList.remove(this.stateClasses.fixed);
+                if(this.exitElement) {
+                    this.exitElement.classList.remove(this.stateClasses.fixed);
+                }
             }
 
             if (this.logoElements.length > 1) {
@@ -183,8 +214,6 @@ class Header {
             }
         });
         this.signInFormElement.classList.toggle(this.stateClasses.activeForm);
-        //this.formInstance.setActiveForm(this.signInFormElement);
-
         this.formInstance = new LogInForm(this, this.signInFormElement);
     }
 
@@ -205,8 +234,6 @@ class Header {
             }
         });
         this.signUpFormElement.classList.toggle(this.stateClasses.activeForm);
-        //this.formInstance.setActiveForm(this.signUpFormElement);
-
         this.formInstance = new LogInForm(this, this.signUpFormElement);
     }
 
@@ -219,10 +246,8 @@ class Header {
     }
 
     exitingAccount = () => {
-        this.signInHeaderElement.classList.remove(this.stateClasses.hide)
-        this.signUpHeaderElement.classList.remove(this.stateClasses.hide)
-        this.spanElement.classList.remove(this.stateClasses.hide)
-        this.exitElement.classList.add(this.stateClasses.hide)
+        localStorage.removeItem('isLoggedIn');
+        this.resetHeaderButtons();
     }
 
     bindEvents() {
