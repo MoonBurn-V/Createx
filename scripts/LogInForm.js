@@ -106,20 +106,11 @@ class LogInForm {
                     && this.emailRegex.test(this.emailContent) 
                     && this.passwordRegex.test(this.passwordContent)
                     && this.nameContent !== '') {
-                    // alert('Registration successful!')
-                    // this.header.signInHeaderElement.classList.add(this.stateClasses.hide)
-                    // this.header.signUpHeaderElement.classList.add(this.stateClasses.hide)
-                    // this.header.spanElement.classList.add(this.stateClasses.hide)
-                    // this.header.exitElement.classList.remove(this.stateClasses.hide)
-                    // this.header.toggleSignUpFormElement()
-                    // this.header.inertFolseSignUp()
-                    // event.preventDefault()
-
                     alert('Registration successful!')
                     this.header.toggleSignUpFormElement()
                     this.header.inertFolseSignUp()
-                    localStorage.setItem('isLoggedIn', 'true') //Сохраняем в localstorage
-                    this.header.updateHeaderButtons() // Обновляем видимость кнопок через Header
+                    localStorage.setItem('isLoggedIn', 'true')
+                    this.header.updateHeaderButtons()
                     event.preventDefault()
                 }
             }
@@ -134,20 +125,10 @@ class LogInForm {
                     const userPasswor = user.password
 
                     if (this.emailContent === userMail && this.passwordContent === userPasswor) {
-                        // this.header.signInHeaderElement.classList.add(this.stateClasses.hide)
-                        // this.header.signUpHeaderElement.classList.add(this.stateClasses.hide)
-                        // this.header.spanElement.classList.add(this.stateClasses.hide)
-                        // this.header.exitElement.classList.remove(this.stateClasses.hide)
-                        // this.header.toggleSignInFormElement()
-                        // this.header.inertFolseSignIn()
-                        // event.preventDefault()
-                        // foundMatch = true
-                        // break
-
                         this.header.toggleSignInFormElement();
                         this.header.inertFolseSignIn();
-                        localStorage.setItem('isLoggedIn', 'true'); //Сохраняем в localstorage
-                        this.header.updateHeaderButtons(); // Обновляем видимость кнопок через Header
+                        localStorage.setItem('isLoggedIn', 'true');
+                        this.header.updateHeaderButtons();
                         event.preventDefault();
                         foundMatch = true;
                         break;

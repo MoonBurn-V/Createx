@@ -1,0 +1,170 @@
+[
+    {
+        "img": "img/card-speaker-1-v.svg",
+        "type": "Marketing",
+        "description": "The Ultimate Google Ads Training Course",
+        "price": "$100",
+        "coach": "by Jerome Bell"
+    },
+    {
+        "img": "img/card-speaker-2-v.svg",
+        "type": "Management",
+        "description": "Prduct Management Fundamentals",
+        "price": "$480",
+        "coach": "by Marvin McKinney"
+    },
+    {
+        "img": "img/card-speaker-3-v.svg",
+        "type": "HR & Recruting",
+        "description": "HR Management and Analytics",
+        "price": "$200",
+        "coach": "by Leslie Alexander Li"
+    },
+    {
+        "img": "img/card-speaker-4-v.svg",
+        "type": "Marketing",
+        "description": "The Ultimate Google Ads Training Course",
+        "price": "$530",
+        "coach": "by Kristin Watson"
+    },
+    {
+        "img": "img/card-speaker-5-v.svg",
+        "type": "Management",
+        "description": "Business Development Management",
+        "price": "$400",
+        "coach": "by Dianne Russell"
+    },
+    {
+        "img": "img/card-speaker-6-v.svg",
+        "type": "Design",
+        "description": "Graphic Design Basic",
+        "price": "$500",
+        "coach": "by Guy Hawkins"
+    },
+    {
+        "img": "img/card-speaker-7-v.svg",
+        "type": "Development",
+        "description": "Highload Software Architecture",
+        "price": "$600",
+        "coach": "by Brooklyn Simmons"
+    },
+    {
+        "img": "img/card-speaker-8-v.svg",
+        "type": "HR & Recruting",
+        "description": "Human Resources – Selection and Recruitment",
+        "price": "$150",
+        "coach": "by Kathryn Murphy"
+    },
+    {
+        "img": "img/card-speaker-9-v.svg",
+        "type": "Design",
+        "description": "User Experience. Human-centered Design",
+        "price": "$240",
+        "coach": "by Cody Fisher"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Marketing",
+        "description": "Social Media Marketing Strategy",
+        "price": "$320",
+        "coach": "by Jane Cooper"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Management",
+        "description": "Leading High-Performing Teams",
+        "price": "$550",
+        "coach": "by Robert Fox"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "HR & Recruting",
+        "description": "Compensation and Benefits Management",
+        "price": "$280",
+        "coach": "by Eleanor Pena"
+    },    
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Design",
+        "description": "Web Design Fundamentals",
+        "price": "$420",
+        "coach": "by Albert Flores"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Development",
+        "description": "Python Programming for Beginners",
+        "price": "$350",
+        "coach": "by Jenny Wilson"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Marketing",
+        "description": "Email Marketing Mastery",
+        "price": "$180",
+        "coach": "by Jacob Jones"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Management",
+        "description": "Strategic Planning and Execution",
+        "price": "$490",
+        "coach": "by Esther Howard"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "HR & Recruting",
+        "description": "Employee Relations and Engagement",
+        "price": "$220",
+        "coach": "by Ronald Richards"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Design",
+        "description": "Mobile App Design Principles",
+        "price": "$510",
+        "coach": "by Theresa Webb"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Development",
+        "description": "JavaScript Essentials",
+        "price": "$380",
+        "coach": "by Ralph Edwards"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Marketing",
+        "description": "Content Marketing Strategy",
+        "price": "$250",
+        "coach": "by Savannah Nguyen"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Management",
+        "description": "Operations Management",
+        "price": "$450",
+        "coach": "by Floyd Miles"
+    },
+     {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Development",
+        "description": "Full-Stack Web Development",
+        "price": "$700",
+        "coach": "by Brandon Smith"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "HR & Recruting",
+        "description": "The Future of Work and HR",
+        "price": "$300",
+        "coach": "by Jenny Lawson"
+    },
+    {
+        "img": "img/an-unloaded-coach.png",
+        "type": "Design",
+        "description": "UI/UX Design Bootcamp",
+        "price": "$650",
+        "coach": "by Hector Sims"
+    }
+]

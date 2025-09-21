@@ -6,7 +6,7 @@ import Pagination from "./Pagination.js";
 
 const rootSelector = '[data-js-courses-body-root]'
 
-class DynamicCardEvents {
+export class DynamicCardEvents {
     selectors = {
         cardList: '[data-js-card-list]',
         rootSelects: '[data-js-select]',
@@ -28,22 +28,15 @@ class DynamicCardEvents {
         this.curentPage = 0
         this.selectElements = []
         this.isSmallScreen = window.innerWidth <= 830
-        //this.renderCards = this.isSmallScreen ? this.addDataBlockToHTML.bind(this) : this.addDataRowToHTML.bind(this)
         this.initApp()
 
 
         window.addEventListener('resize', () => {
             const newIsSmallScreen = window.innerWidth <= 830
-            //const isRowActive = this.switchingListStyle.btnRowElement.classList.contains('active')
             if (newIsSmallScreen !== this.isSmallScreen) {
                 this.isSmallScreen = newIsSmallScreen
-                //this.renderCards = this.isSmallScreen ? this.addDataBlockToHTML.bind(this) : this.addDataRowToHTML.bind(this)
-                //this.switchingListStyle.blockStyle()
                 this.renderCards()
             } else {
-                // if(isRowActive) {
-                //     this.switchingListStyle.rowStyle()
-                // }
             }
         })
     }

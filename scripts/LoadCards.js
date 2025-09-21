@@ -10,54 +10,34 @@ class LoadCards {
         hide: 'hide',
     }
 
-    constructor() {
-        this.loadButtonElement = document.querySelector(this.selectors.loadButton);
-        this.hideButtonElement = document.querySelector(this.selectors.hideButton);
-        this.itemElements = Array.from(document.querySelectorAll(this.selectors.item));
-        this.titleElement = document.querySelector(this.selectors.title);
-        this.totalCards = this.itemElements.length;
-        this.cardsToShow = 9;
-        this.cardsShown = 9;
-        this.hideInitialCards();
-        this.bindEvents();
-    }
-
-    resetCardsShown() {
-        this.cardsShown = 9;
-    }
-
-    bindEvents() {
-        if (this.loadButtonElement) {
-            this.loadButtonElement.addEventListener('click', this.showMoreCards);
-        }
-
-        if (this.hideButtonElement) {
-            this.hideButtonElement.addEventListener('click', this.hideCards);
-        }
+    constructor(dynamicCardCourses, rootElement) {
+        this.dynamicCardCourses = dynamicCardCourses
+        this.rootElement = rootElement
+        this.loadButtonElement = this.rootElement.querySelector(this.selectors.loadButton)
+        this.hideButtonElement = this.rootElement.querySelector(this.selectors.hideButton)
+        this.titleElement = document.querySelector(this.selectors.title)
+        this.bindEvents()
     }
 
     showMoreCards = () => {
-        for (let i = this.cardsShown; i < Math.min(this.cardsShown + this.cardsToShow, this.totalCards); i++) {
-            this.itemElements[i].classList.remove(this.stateClasses.hide);
-        }
+        const increasingLimit = this.dynamicCardCourses.limitation += 9
+        this.dynamicCardCourses.addDataToList()
 
-        this.cardsShown += this.cardsToShow;
-
-        if (this.cardsShown >= this.totalCards) {
-            this.loadButtonElement.classList.add(this.stateClasses.hide);
+        if (increasingLimit >= this.dynamicCardCourses.coursesCards.length) {
+            this.loadButtonElement.classList.add(this.stateClasses.hide)
             if (this.hideButtonElement) {
-                this.hideButtonElement.classList.remove(this.stateClasses.hide);
+                this.hideButtonElement.classList.remove(this.stateClasses.hide)
             }
         }
     }
 
     hideCards = () => {
-        this.resetCardsShown();
-        this.hideInitialCards();
-        
-        this.loadButtonElement.classList.remove(this.stateClasses.hide);
+        this.dynamicCardCourses.limitation = 9
+        this.dynamicCardCourses.addDataToList()
+
+        this.loadButtonElement.classList.remove(this.stateClasses.hide)
         if (this.hideButtonElement) {
-            this.hideButtonElement.classList.add(this.stateClasses.hide);
+            this.hideButtonElement.classList.add(this.stateClasses.hide)
         }
 
         if (this.titleElement) {
@@ -68,9 +48,13 @@ class LoadCards {
         }
     }
 
-    hideInitialCards = () => {
-        for (let i = this.cardsToShow; i < this.totalCards; i++) {
-            this.itemElements[i].classList.add(this.stateClasses.hide);
+    bindEvents() {
+        if (this.loadButtonElement) {
+            this.loadButtonElement.addEventListener('click', this.showMoreCards)
+        }
+
+        if (this.hideButtonElement) {
+            this.hideButtonElement.addEventListener('click', this.hideCards)
         }
     }
 }

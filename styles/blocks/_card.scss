@@ -185,6 +185,7 @@
         }
 
         &.vertical{
+            max-height: rem(240);
             @include mobile{
                 width: rem(400);
             }
