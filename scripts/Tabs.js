@@ -1,14 +1,13 @@
 const rootSelector = '[data-js-tabs]'
 
 class TabsCollection {
-    constructor(loadCardsInstance) {
-        this.loadCardsInstance = loadCardsInstance;
-        this.init();
+    constructor() {
+        this.init()
     }
 
     init() {
         document.querySelectorAll(rootSelector).forEach((element) => {
-            new Tabs(element, this.loadCardsInstance)
+            new Tabs(element)
         })
     }
 }
@@ -18,15 +17,10 @@ class Tabs {
         root: rootSelector,
         button: '[data-js-tabs-button]',
         content: '[data-js-tabs-content]',
-        subtitle: '.card__subtitle',
-        item: '.card__item',
-        loadButton: '[data-js-load-btn]',
-        superscript: '.tabs__superscript',
     }
 
     stateClasses = {
         active: 'active',
-        hide: 'hide',
     }
 
     stateAttributs = {
@@ -34,23 +28,17 @@ class Tabs {
         ariaSelected: 'aria-selected',
     }
 
-    constructor(rootElement, loadCardsInstance) {
+    constructor(rootElement) {
         this.rootElement = rootElement;
         this.buttonElements = this.rootElement.querySelectorAll(this.selectors.button);
         this.contentElements = this.rootElement.querySelectorAll(this.selectors.content);
-        this.cardItems = Array.from(document.querySelectorAll(this.selectors.item));
         this.state = {
             activeTabIndex: Array.from(this.buttonElements)
                 .findIndex((buttonElement) => buttonElement.classList.contains(this.stateClasses.active))
         }
         this.limitTabsIndex = this.buttonElements.length - 1;
-        this.subtitleElement = document.querySelectorAll(this.selectors.subtitle);
-        this.isInsideCoursesTabs = this.rootElement.closest('.courses__tabs.tabs') !== null;
-        this.loadButtonElement = document.querySelector(this.selectors.loadButton);
-        this.loadCardsInstance = loadCardsInstance;
         this.bindEvents();
         this.updateUI();
-        this.updateSuperscripts();
     }
 
     updateUI() {
@@ -73,71 +61,14 @@ class Tabs {
         if (!this.isInsideCoursesTabs) {
             return
         }
-        else {
-            this.filterCards();
-        }
-    }
-
-    filterCards() {        
-        const activeButton = Array.from(this.buttonElements).find(button => button.classList.contains(this.stateClasses.active));
-        const buttonText = activeButton.querySelector('span').textContent.trim();
-
-        this.cardItems.forEach(cardItem => {
-            const cardSubtitle = cardItem.querySelector(this.selectors.subtitle);
-            const subtitleText = cardSubtitle.textContent.trim();
-
-            if (buttonText === 'All') {
-                cardItem.classList.remove(this.stateClasses.hide);
-
-                this.loadCardsInstance.resetCardsShown();
-                this.loadCardsInstance.hideInitialCards();
-
-                this.loadButtonElement.classList.remove(this.stateClasses.hide);
-
-            } else if (subtitleText === buttonText) {
-                cardItem.classList.remove(this.stateClasses.hide);
-                this.loadButtonElement.classList.add(this.stateClasses.hide);
-
-            } else {
-                cardItem.classList.add(this.stateClasses.hide);
-            }
-        });
     }
 
     onButtonClick(buttonIndex) {
         this.state.activeTabIndex = buttonIndex;
         this.updateUI();
         this.focusActiveButton();
-        this.updateSuperscripts();
     }
 
-    updateSuperscripts() {
-        if (!this.isInsideCoursesTabs) {
-            return
-        }
-        else {
-            this.buttonElements.forEach(buttonElement => {
-                const buttonText = buttonElement.querySelector('span').textContent.trim();
-                let count = 0;
-
-                if (buttonText === 'All') {
-                    count = this.cardItems.length;
-                } else {
-                    this.cardItems.forEach(cardItem => {
-                        const cardSubtitle = cardItem.querySelector(this.selectors.subtitle);
-                        const subtitleText = cardSubtitle.textContent.trim();
-
-                        if (subtitleText === buttonText) {
-                            count++;
-                        }
-                    });
-                }
-
-                this.superscriptElement = buttonElement.querySelector(this.selectors.superscript);
-                this.superscriptElement.textContent = count.toString();
-            });
-        }
-    }
 
     bindEvents() {
         this.buttonElements.forEach((buttonElement, index) => {

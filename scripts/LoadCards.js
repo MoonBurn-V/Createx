@@ -21,9 +21,9 @@ class LoadCards {
 
     showMoreCards = () => {
         const increasingLimit = this.dynamicCardCourses.limitation += 9
-        this.dynamicCardCourses.addDataToList()
+        this.dynamicCardCourses.addDataToList(this.dynamicCardCourses.originCoursesCards)
 
-        if (increasingLimit >= this.dynamicCardCourses.coursesCards.length) {
+        if (increasingLimit >= this.dynamicCardCourses.originCoursesCards.length) {
             this.loadButtonElement.classList.add(this.stateClasses.hide)
             if (this.hideButtonElement) {
                 this.hideButtonElement.classList.remove(this.stateClasses.hide)
@@ -33,7 +33,7 @@ class LoadCards {
 
     hideCards = () => {
         this.dynamicCardCourses.limitation = 9
-        this.dynamicCardCourses.addDataToList()
+        this.dynamicCardCourses.addDataToList(this.dynamicCardCourses.originCoursesCards)
 
         this.loadButtonElement.classList.remove(this.stateClasses.hide)
         if (this.hideButtonElement) {

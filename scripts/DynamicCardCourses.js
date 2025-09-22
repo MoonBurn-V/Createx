@@ -1,5 +1,6 @@
 import LoadCards from "./LoadCards.js"
 import SearchCard from "./SearchCard.js"
+import CoursesTabs from "./CoursesTabs.js"
 
 const rootSelector = "[data-js-courses-root]"
 
@@ -11,15 +12,16 @@ export class DynamicCardCourses {
     constructor(rootElement) {
         this.rootElement = rootElement
         this.cardListElement = this.rootElement.querySelector(this.selectors.cardList)
-        this.coursesCards = []
+        this.originCoursesCards = []
+        this.copyCoursesCards = []
         this.limitation = 9
         this.initApp()
     }
 
-    addDataToList = () => {
+    addDataToList = (cards) => {
         this.cardListElement.innerHTML = ''
 
-        this.coursesCards.slice(0, this.limitation).forEach(courseCard => {
+        cards.slice(0, this.limitation).forEach(courseCard => {
 
             const typeColors = {
                 "Marketing": "green",
@@ -33,7 +35,7 @@ export class DynamicCardCourses {
 
             const newCard = document.createElement('li')
             newCard.classList.add('card__item')
-            newCard.innerHTML = `                                
+            newCard.innerHTML = `
                 <a class="card__body vertical" href="#">
                     <img class="card__image vertical" src="${courseCard.img}" width="390" height="240" loading="lazy" alt="">
                     <div class="card__body-inner vertical">
@@ -55,11 +57,13 @@ export class DynamicCardCourses {
         fetch('./cards/coursesCards.json')
             .then(response => response.json())
             .then(data => {
-                this.coursesCards = data
-                this.addDataToList()
+                this.originCoursesCards = data
+                this.copyCoursesCards = [...data]
+                this.addDataToList(this.copyCoursesCards)
                 this.searchCard = new SearchCard(this, this.rootElement)
                 this.loadCards = new LoadCards(this, this.rootElement)
-            });
+                this.coursesTabs = new CoursesTabs(this, this.rootElement)
+            })
     }
 }
 
