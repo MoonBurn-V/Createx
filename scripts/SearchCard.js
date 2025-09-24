@@ -23,7 +23,7 @@ class SearchCard {
 
         if(searchTerm === '') {
             this.loadButtonElement.classList.remove('hide')
-            this.dynamicCardCourses.coursesTabs.onButtonClick(0)
+            this.dynamicCardCourses.coursesTabs.onButtonClick(0, 'SearchCard')
         } else {
             this.loadButtonElement.classList.add('hide')
             this.hideButtonElement.classList.add('hide')

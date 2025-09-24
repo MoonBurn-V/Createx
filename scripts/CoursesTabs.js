@@ -32,10 +32,14 @@ class coursesTabs {
         this.rootElement.addEventListener('keydown', (event) => this.onKeyDown(event))
     }
 
-    onButtonClick(buttonIndex) {
+    onButtonClick(buttonIndex, source = null) {
         this.state.activeTabIndex = buttonIndex
         this.updateUI()
-        this.focusActiveButton()
+        if (source !== 'SearchCard') {
+            this.focusActiveButton()
+        }
+
+        this.dynamicCardCourses.searchCard.searchInput.value = ''
     }
 
     updateUI() {
