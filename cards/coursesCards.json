@@ -1,246 +1,352 @@
 [
-    {
-        "img": "img/card-speaker-1-v.svg",
-        "type": "Marketing",
-        "description": "The Ultimate Google Ads Training Course",
-        "price": "$100",
-        "coach": "by Jerome Bell"
-    },
-    {
-        "img": "img/card-speaker-2-v.svg",
-        "type": "Management",
-        "description": "Prduct Management Fundamentals",
-        "price": "$480",
-        "coach": "by Marvin McKinney"
-    },
-    {
-        "img": "img/card-speaker-3-v.svg",
-        "type": "HR & Recruting",
-        "description": "HR Management and Analytics",
-        "price": "$200",
-        "coach": "by Leslie Alexander Li"
-    },
-    {
-        "img": "img/card-speaker-4-v.svg",
-        "type": "Marketing",
-        "description": "The Ultimate Google Ads Training Course",
-        "price": "$530",
-        "coach": "by Kristin Watson"
-    },
-    {
-        "img": "img/card-speaker-5-v.svg",
-        "type": "Management",
-        "description": "Business Development Management",
-        "price": "$400",
-        "coach": "by Dianne Russell"
-    },
-    {
-        "img": "img/card-speaker-6-v.svg",
-        "type": "Design",
-        "description": "Graphic Design Basic",
-        "price": "$500",
-        "coach": "by Guy Hawkins"
-    },
-    {
-        "img": "img/card-speaker-7-v.svg",
-        "type": "Development",
-        "description": "Highload Software Architecture",
-        "price": "$600",
-        "coach": "by Brooklyn Simmons"
-    },
-    {
-        "img": "img/card-speaker-8-v.svg",
-        "type": "HR & Recruting",
-        "description": "Human Resources – Selection and Recruitment",
-        "price": "$150",
-        "coach": "by Kathryn Murphy"
-    },
-    {
-        "img": "img/card-speaker-9-v.svg",
-        "type": "Design",
-        "description": "User Experience. Human-centered Design",
-        "price": "$240",
-        "coach": "by Cody Fisher"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Design",
-        "description": "Advanced UI/UX Design",
-        "price": "$320",
-        "coach": "by Jane Cooper"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Marketing",
-        "description": "Advanced SEO Strategies",
-        "price": "$550",
-        "coach": "by Robert Fox"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Design",
-        "description": "3D Modeling and Animation",
-        "price": "$280",
-        "coach": "by Eleanor Pena"
-    },
-    {        
-        "img": "img/an-unloaded-coach.png",
-        "type": "Design",
-        "description": "Motion Graphics Design",
-        "price": "$420",
-        "coach": "by Albert Flores"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Development",
-        "description": "React.js Fundamentals",
-        "price": "$350",
-        "coach": "by Jenny Wilson"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Design",
-        "description": "Digital Painting Techniques",
-        "price": "$180",
-        "coach": "by Jacob Jones"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Marketing",
-        "description": "Affiliate Marketing Mastery",
-        "price": "$490",
-        "coach": "by Esther Howard"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Design",
-        "description": "Game Design Principles",
-        "price": "$220",
-        "coach": "by Ronald Richards"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Development",
-        "description": "Node.js and Express.js",
-        "price": "$510",
-        "coach": "by Theresa Webb"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Marketing",
-        "description": "Video Marketing for Beginners",
-        "price": "$380",
-        "coach": "by Ralph Edwards"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Design",
-        "description": "Typography and Visual Hierarchy",
-        "price": "$250",
-        "coach": "by Savannah Nguyen"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Development",
-        "description": "Data Structures and Algorithms",
-        "price": "$450",
-        "coach": "by Floyd Miles"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Design",
-        "description": "Branding and Identity Design",
-        "price": "$700",
-        "coach": "by Brandon Smith"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Marketing",
-        "description": "Growth Hacking Strategies",
-        "price": "$300",
-        "coach": "by Jenny Lawson"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Development",
-        "description": "Mobile Development with Swift",
-        "price": "$650",
-        "coach": "by Hector Sims"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "HR & Recruting",
-        "description": "Employee Onboarding Best Practices",
-        "price": "$270",
-        "coach": "by Tony Baker"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Management",
-        "description": "Agile Project Management",
-        "price": "$520",
-        "coach": "by Amy Campbell"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Marketing",
-        "description": "Email Marketing Automation",
-        "price": "$410",
-        "coach": "by Justin Gray"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Development",
-        "description": "Python for Data Science",
-        "price": "$580",
-        "coach": "by Kelly Ramirez"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Design",
-        "description": "Web Design Fundamentals",
-        "price": "$330",
-        "coach": "by Laura Evans"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Management",
-        "description": "Strategic Planning and Execution",
-        "price": "$620",
-        "coach": "by Adam Collins"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "HR & Recruting",
-        "description": "Compensation and Benefits Management",
-        "price": "$190",
-        "coach": "by Melissa Stewart"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Marketing",
-        "description": "Social Media Marketing Strategy",
-        "price": "$470","coach": "by Sean Long"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Development",
-        "description": "Java Programming Masterclass",
-        "price": "$680",
-        "coach": "by Beverly Ross"
-    },
-    {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Design",
-        "description": "Mobile App Design Principles",
-        "price": "$290",
-        "coach": "by Jesse Day"
-    },
-     {
-        "img": "img/an-unloaded-coach.png",
-        "type": "Development",
-        "description": "Cybersecurity Fundamentals",
-        "price": "$530",
-        "coach": "by Harold Bishop"
-    }
+  {
+    "id": 1,
+    "img": "img/card-speaker-1-v.svg",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Marketing",
+    "courseName": "The Ultimate Google Ads Training Course",
+    "price": "$100",
+    "coach": "by Jerome Bell",
+    "post": "Marketing Specialist"
+  },
+  {
+    "id": 2,
+    "img": "img/card-speaker-2-v.svg",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Management",
+    "courseName": "Prduct Management Fundamentals",
+    "price": "$480",
+    "coach": "by Marvin McKinne",
+    "post": "Product Manager"
+  },
+  {
+    "id": 3,
+    "img": "img/card-speaker-3-v.svg",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "HR & Recruting",
+    "courseName": "HR Management and Analytics",
+    "price": "$200",
+    "coach": "by Leslie Alexander Li",
+    "post": "HR Manager"
+  },
+  {
+    "id": 4,
+    "img": "img/card-speaker-4-v.svg",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Marketing",
+    "courseName": "The Ultimate Google Ads Training Course",
+    "price": "$530",
+    "coach": "by Kristin Watson",
+    "post": "Digital Marketing Expert"
+  },
+  {
+    "id": 5,
+    "img": "img/card-speaker-5-v.svg",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Management",
+    "courseName": "Business Development Management",
+    "price": "$400",
+    "coach": "by Dianne Russell",
+    "post": "Business Development Manager"
+  },
+  {
+    "id": 6,
+    "img": "img/card-speaker-6-v.svg",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Design",
+    "courseName": "Graphic Design Basic",
+    "price": "$500",
+    "coach": "by Guy Hawkins",
+    "post": "Graphic Designer"
+  },
+  {
+    "id": 7,
+    "img": "img/card-speaker-7-v.svg",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Development",
+    "courseName": "Highload Software Architecture",
+    "price": "$600",
+    "coach": "by Brooklyn Simmons",
+    "post": "Senior Software Architect"
+  },
+  {
+    "id": 8,
+    "img": "img/card-speaker-8-v.svg",
+    "pageImg": "img/event-speaker-image.svg",
+    "type": "HR & Recruting",
+    "courseName": "Human Resources – Selection and Recruitment",
+    "price": "$150",
+    "coach": "by Kathryn Murphy",
+    "post": "Recruitment Specialist"
+  },
+  {
+    "id": 9,
+    "img": "img/card-speaker-9-v.svg",
+    "pageImg": "img/curator-image.svg",
+    "type": "Design",
+    "courseName": "User Experience. Human-centered Design",
+    "price": "$240",
+    "coach": "by Cody Fisher",    
+    "post": "Senior UX designer in IT Product Company"
+  },
+  {
+    "id": 10,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Design",
+    "courseName": "Advanced UI/UX Design",
+    "price": "$320",
+    "coach": "by Jane Cooper",
+    "post": "UI/UX Design Lead"
+  },
+  {
+    "id": 11,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Marketing",
+    "courseName": "Advanced SEO Strategies",
+    "price": "$550",
+    "coach": "by Robert Fox",
+    "post": "SEO Specialist"
+  },
+  {
+    "id": 12,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Design",
+    "courseName": "3D Modeling and Animation",
+    "price": "$280",
+    "coach": "by Eleanor Pena",
+    "post": "3D Artist"
+  },
+  {
+    "id": 13,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Design",
+    "courseName": "Motion Graphics Design",
+    "price": "$420",
+    "coach": "by Albert Flores",
+    "post": "Motion Graphics Designer"
+  },
+  {
+    "id": 14,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Development",
+    "courseName": "React.js Fundamentals",
+    "price": "$350",
+    "coach": "by Jenny Wilson",
+    "post": "Frontend Developer"
+  },
+  {
+    "id": 15,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Design",
+    "courseName": "Digital Painting Techniques",
+    "price": "$180",
+    "coach": "by Jacob Jones",
+    "post": "Digital Artist"
+  },
+  {
+    "id": 16,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Marketing",
+    "courseName": "Affiliate Marketing Mastery",
+    "price": "$490",
+    "coach": "by Esther Howard",
+    "post": "Affiliate Marketing Manager"
+  },
+  {
+    "id": 17,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Design",
+    "courseName": "Game Design Principles",
+    "price": "$220",
+    "coach": "by Ronald Richards",
+    "post": "Game Designer"
+  },
+  {
+    "id": 18,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Development",
+    "courseName": "Node.js and Express.js",
+    "price": "$510",
+    "coach": "by Theresa Webb",
+    "post": "Backend Developer"
+  },
+  {
+    "id": 19,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Marketing",
+    "courseName": "Video Marketing for Beginners",
+    "price": "$380",
+    "coach": "by Ralph Edwards",
+    "post": "Video Marketing Specialist"
+  },
+  {
+    "id": 20,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Design",
+    "courseName": "Typography and Visual Hierarchy",
+    "price": "$250",
+    "coach": "by Savannah Nguyen",
+    "post": "Typography Expert"
+  },
+  {
+    "id": 21,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Development",
+    "courseName": "Data Structures and Algorithms",
+    "price": "$450",
+    "coach": "by Floyd Miles",
+    "post": "Software Engineer"
+  },
+  {
+    "id": 22,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Design",
+    "courseName": "Branding and Identity Design",
+    "price": "$700",
+    "coach": "by Brandon Smith",
+    "post": "Brand Strategist"
+  },
+  {
+    "id": 23,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Marketing",
+    "courseName": "Growth Hacking Strategies",
+    "price": "$300",
+    "coach": "by Jenny Lawson",
+    "post": "Growth Hacker"
+  },
+  {
+    "id": 24,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Development",
+    "courseName": "Mobile Development with Swift",
+    "price": "$650",
+    "coach": "by Hector Sims",
+    "post": "iOS Developer"
+  },
+  {
+    "id": 25,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "HR & Recruting",
+    "courseName": "Employee Onboarding Best Practices",
+    "price": "$270",
+    "coach": "by Tony Baker",
+    "post": "HR Specialist"
+  },
+  {
+    "id": 26,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Management",
+    "courseName": "Agile Project Management",
+    "price": "$520",
+    "coach": "by Amy Campbell",
+    "post": "Agile Coach"
+  },
+  {
+    "id": 27,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Marketing",
+    "courseName": "Email Marketing Automation",
+    "price": "$410",
+    "coach": "by Justin Gray",
+    "post": "Email Marketing Specialist"
+  },
+  {
+    "id": 28,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Development",
+    "courseName": "Python for Data Science",
+    "price": "$580",
+    "coach": "by Kelly Ramirez",
+    "post": "Data Scientist"
+  },
+  {
+    "id": 29,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Design",
+    "courseName": "Web Design Fundamentals",
+    "price": "$330",
+    "coach": "by Laura Evans",
+    "post": "Web Designer"
+  },
+  {
+    "id": 30,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Management",
+    "courseName": "Strategic Planning and Execution",
+    "price": "$620",
+    "coach": "by Adam Collins",
+    "post": "Strategy Consultant"
+  },
+  {
+    "id": 31,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "HR & Recruting",
+    "courseName": "Compensation and Benefits Management",
+    "price": "$190",
+    "coach": "by Melissa Stewart",
+    "post": "Compensation & Benefits Specialist"
+  },
+  {
+    "id": 32,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Marketing",
+    "courseName": "Social Media Marketing Strategy",
+    "price": "$470",
+    "coach": "by Sean Long",
+    "post": "Social Media Manager"
+  },
+  {
+    "id": 33,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Development",
+    "courseName": "Java Programming Masterclass",
+    "price": "$680",
+    "coach": "by Beverly Ross",
+    "post": "Java Developer"
+  },
+  {
+    "id": 34,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Design",
+    "courseName": "Mobile App Design Principles",
+    "price": "$290",
+    "coach": "by Jesse Day",
+    "post": "Mobile App Designer"
+  },
+  {
+    "id": 35,
+    "img": "img/an-unloaded-coach.png",
+    "pageImg": "img/an-unloaded-coach-page.png",
+    "type": "Development",
+    "courseName": "Cybersecurity Fundamentals",
+    "price": "$530",
+    "coach": "by Harold Bishop",
+    "post": "Cybersecurity Analyst"
+  }
 ]

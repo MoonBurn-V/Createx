@@ -36,11 +36,11 @@ export class DynamicCardCourses {
             const newCard = document.createElement('li')
             newCard.classList.add('card__item')
             newCard.innerHTML = `
-                <a class="card__body vertical" href="#">
+                <a class="card__body vertical" href="course.html?id=${courseCard.id}">
                     <img class="card__image vertical" src="${courseCard.img}" width="390" height="240" loading="lazy" alt="">
                     <div class="card__body-inner vertical">
                         <div class="card__subtitle ${color} vertical">${courseCard.type}</div>
-                        <div class="card__title h4 vertical">${courseCard.description}</div>
+                        <div class="card__title h4 vertical">${courseCard.courseName}</div>
                         <div class="card__info vertical">
                             <div class="card__price h5">${courseCard.price}</div>
                             <span class="card__separator">|</span>

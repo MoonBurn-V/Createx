@@ -37,13 +37,13 @@ class SearchCard {
         }
 
         return this.dynamicCardCourses.originCoursesCards.filter(courseCard => {
-            const description = courseCard.description.toLowerCase()
+            const courseName = courseCard.courseName.toLowerCase()
             const type = courseCard.type.toLowerCase()
             const coach = courseCard.coach.toLowerCase()
             const price = courseCard.price.toLowerCase()
 
             return (
-                description.includes(searchTerm) ||
+                courseName.includes(searchTerm) ||
                 type.includes(searchTerm) ||
                 coach.includes(searchTerm) ||
                 price.includes(searchTerm)
