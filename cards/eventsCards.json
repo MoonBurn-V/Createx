@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "curatorId": 8,
         "data": "05 Aug",
         "time": "11:00 – 14:00",
         "description": "Formation of the organizational structure of the company in the face of uncertainty.",
@@ -10,6 +11,7 @@
     },
     {
         "id": 2,
+        "curatorId": 7,
         "data": "24 Jul",
         "time": "11:00 – 12:30",
         "description": "Building a customer service department. Best Practices.",
@@ -19,6 +21,7 @@
     },
     {
         "id": 3,
+        "curatorId": 22,
         "data": "10 Jul",
         "time": "9:00 – 14:00",
         "description": "Find and evaluate: search and assessment tools for candidates.",
@@ -28,6 +31,7 @@
     },
     {
         "id": 4,
+        "curatorId": 3,
         "data": "16 Jul",
         "time": "10:00 – 13:00",
         "description": "How to apply methods of speculative design in practice. Worldbuilding prototyping.",
@@ -37,6 +41,7 @@
     },
     {
         "id": 5,
+        "curatorId": 28,
         "data": "27 Jun",
         "time": "15:00 – 19:00",
         "description": "Connection to Microsoft Excel and Google Sheets, Data Visualization in Power BI",
@@ -46,6 +51,7 @@
     },
     {
         "id": 6,
+        "curatorId": 11,
         "data": "15 Jun",
         "time": "11:00 – 12:00",
         "description": "Marketing or growth hacking: main differences and what business needs",
@@ -55,6 +61,7 @@
     },
     {
         "id": 7,
+        "curatorId": 33,
         "data": "02 Jul",
         "time": "11:00 – 13:00",
         "description": "How to brief a client and present your design to approve it from the first show.",
@@ -64,6 +71,7 @@
     },
     {
         "id": 8,
+        "curatorId": 18,
         "data": "29 May",
         "time": "11:00 – 12:00",
         "description": "Who is a project manager and do I want to be PM?",
@@ -73,15 +81,17 @@
     },
     {
         "id": 9,
-        "data": "18 May",
+        "curatorId": 5,
+        "data": "18 May",        
         "time": "10:00 – 12:00",
         "description": "The companies page as a tool for posting vacancies",
         "type": "Online lecture",
-        "theme": "HR & Recruting",        
+        "theme": "HR & Recruting",
         "popularity": 4
     },
     {
         "id": 10,
+        "curatorId": 31,
         "data": "12 Aug",
         "time": "14:00 – 16:00",
         "description": "Effective communication strategies for remote teams.",
@@ -91,6 +101,7 @@
     },
     {
         "id": 11,
+        "curatorId": 12,
         "data": "01 Aug",
         "time": "10:00 – 11:30",
         "description": "Introduction to Blockchain Technology and its Applications.",
@@ -100,6 +111,7 @@
     },
     {
         "id": 12,
+        "curatorId": 24,
         "data": "19 Jul",
         "time": "16:00 – 18:00",
         "description": "Developing a successful social media strategy for your business.",
@@ -109,6 +121,7 @@
     },
     {
         "id": 13,
+        "curatorId": 9,
         "data": "11 Jul",
         "time": "13:00 – 15:00",
         "description": "The art of negotiation: achieving win-win outcomes.",
@@ -118,6 +131,7 @@
     },
     {
         "id": 14,
+        "curatorId": 1,
         "data": "20 Jul",
         "time": "14:00 – 17:00",
         "description": "Advanced techniques in data analysis using Python.",
@@ -127,6 +141,7 @@
     },
     {
         "id": 15,
+        "curatorId": 17,
         "data": "29 Jun",
         "time": "10:00 – 12:00",
         "description": "Cybersecurity awareness: protecting your business from online threats.",
@@ -136,6 +151,7 @@
     },
     {
         "id": 16,
+        "curatorId": 2,
         "data": "17 Jun",
         "time": "14:00 – 16:00",
         "description": "Building a strong brand identity for your startup.",
@@ -145,6 +161,7 @@
     },
     {
         "id": 17,
+        "curatorId": 29,
         "data": "04 Jul",
         "time": "15:00 – 17:00",
         "description": "Effective time management techniques for increased productivity.",
@@ -154,6 +171,7 @@
     },
     {
         "id": 18,
+        "curatorId": 6,
         "data": "31 May",
         "time": "13:00 – 15:00",
         "description": "Introduction to Artificial Intelligence and Machine Learning.",
@@ -163,6 +181,7 @@
     },
     {
         "id": 19,
+        "curatorId": 35,
         "data": "20 May",
         "time": "11:00 – 13:00",
         "description": "Understanding and implementing SEO best practices.",
@@ -172,6 +191,7 @@
     },
     {
         "id": 20,
+        "curatorId": 13,
         "data": "07 Aug",
         "time": "10:00 – 12:00",
         "description": "Financial Planning for Small Businesses.",
@@ -181,6 +201,7 @@
     },
     {
         "id": 21,
+        "curatorId": 30,
         "data": "03 Aug",
         "time": "14:00 – 17:00",
         "description": "Advanced Google Analytics for Marketing Professionals.",
@@ -190,6 +211,7 @@
     },
     {
         "id": 22,
+        "curatorId": 4,
         "data": "26 Jul",
         "time": "10:00 – 12:00",
         "description": "Customer Relationship Management (CRM) strategies.",
@@ -199,8 +221,8 @@
     },
     {
         "id": 23,
-        "data": "13 Jul",
-        "time": "10:00 – 16:00",
+        "curatorId": 19,
+        "data": "13 Jul","time": "10:00 – 16:00",
         "description": "Design Thinking: A Practical Approach to Innovation.",
         "type": "Online workshop",
         "theme": "Design",
@@ -208,6 +230,7 @@
     },
     {
         "id": 24,
+        "curatorId": 34,
         "data": "18 Jul",
         "time": "19:00 – 20:30",
         "description": "Project Management Methodologies: Agile, Scrum, Waterfall.",
@@ -217,6 +240,7 @@
     },
     {
         "id": 25,
+        "curatorId": 21,
         "data": "01 Jul",
         "time": "13:00 – 17:00",
         "description": "Advanced SQL for Data Analysis and Reporting.",
@@ -226,6 +250,7 @@
     },
     {
         "id": 26,
+        "curatorId": 27,
         "data": "19 Jun",
         "time": "10:00 – 12:00",
         "description": "Developing a Content Marketing Strategy.",
@@ -235,6 +260,7 @@
     },
     {
         "id": 27,
+        "curatorId": 10,
         "data": "06 Jul",
         "time": "10:00 – 16:00",
         "description": "UX/UI Design Fundamentals for Web and Mobile.",
@@ -244,6 +270,7 @@
     },
     {
         "id": 28,
+        "curatorId": 14,
         "data": "01 Jun",
         "time": "14:00 – 15:00",
         "description": "Remote Team Leadership: Best Practices.",
@@ -253,6 +280,7 @@
     },
     {
         "id": 29,
+        "curatorId": 16,
         "data": "15 May",
         "time": "15:00 – 17:00",
         "description": "Introduction to No-Code Development.",
@@ -262,6 +290,7 @@
     },
     {
         "id": 30,
+        "curatorId": 23,
         "data": "22 Aug",
         "time": "13:00 – 15:00",
         "description": "Building Scalable Web Applications with Node.js.",
@@ -271,6 +300,7 @@
     },
     {
         "id": 31,
+        "curatorId": 20,
         "data": "29 Aug",
         "time": "16:00 – 17:30",
         "description": "Understanding Cloud Computing: AWS, Azure, Google Cloud.",
@@ -280,6 +310,7 @@
     },
     {
         "id": 32,
+        "curatorId": 32,
         "data": "08 Aug",
         "time": "9:00 – 12:00",
         "description": "Data Visualization with Tableau.",
@@ -289,6 +320,7 @@
     },
     {
         "id": 33,
+        "curatorId": 26,
         "data": "17 Aug",
         "time": "14:00 – 16:00",
         "description": "Email Marketing Automation Strategies.",
@@ -298,6 +330,7 @@
     },
     {
         "id": 34,
+        "curatorId": 25,
         "data": "16 Aug",
         "time": "18:00 – 20:00",
         "description": "Growth Hacking Techniques for Startups.",
@@ -307,6 +340,7 @@
     },
     {
         "id": 35,
+        "curatorId": 8,
         "data": "25 Aug",
         "time": "11:00 – 13:00",
         "description": "Mobile App Marketing: Strategies for Success.",
@@ -316,6 +350,7 @@
     },
     {
         "id": 36,
+        "curatorId": 3,
         "data": "23 Aug",
         "time": "10:00 – 16:00",
         "description": "Full-Stack Web Development with React and Python.",
@@ -325,6 +360,7 @@
     },
     {
         "id": 37,
+        "curatorId": 11,
         "data": "30 Aug",
         "time": "14:00 – 15:00",
         "description": "Personal Branding for Professionals.",
@@ -334,6 +370,7 @@
     },
     {
         "id": 38,
+        "curatorId": 17,
         "data": "31 Aug",
         "time": "13:00 – 17:00",
         "description": "Advanced Digital Marketing Strategies.",
@@ -343,6 +380,7 @@
     },
     {
         "id": 39,
+        "curatorId": 22,
         "data": "21 Aug",
         "time": "11:00 – 12:30",
         "description": "How to build an effective sales funnel.",
@@ -352,6 +390,7 @@
     },
     {
         "id": 40,
+        "curatorId": 28,
         "data": "24 Aug",
         "time": "9:00 – 14:00",
         "description": "Advanced Project Management Tools and Techniques.",
@@ -361,6 +400,7 @@
     },
     {
         "id": 41,
+        "curatorId": 35,
         "data": "15 Aug",
         "time": "10:00 – 13:00",
         "description": "Creating Engaging Video Content for Social Media.",
@@ -370,6 +410,7 @@
     },
     {
         "id": 42,
+        "curatorId": 5,
         "data": "09 Aug",
         "time": "15:00 – 19:00",
         "description": "Introduction to Machine Learning with TensorFlow.",
@@ -379,6 +420,7 @@
     },
     {
         "id": 43,
+        "curatorId": 9,
         "data": "14 Aug",
         "time": "11:00 – 12:00",
         "description": "Managing Remote Teams Effectively.",
@@ -388,6 +430,7 @@
     },
     {
         "id": 44,
+        "curatorId": 15,
         "data": "10 Aug",
         "time": "11:00 – 13:00",
         "description": "Effective Time Management for Busy Professionals.",
@@ -397,6 +440,7 @@
     },
     {
         "id": 45,
+        "curatorId": 20,
         "data": "11 Aug",
         "time": "11:00 – 12:00",
         "description": "How to be a Product Manager.",

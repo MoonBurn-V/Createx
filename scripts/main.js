@@ -12,7 +12,8 @@ import InputMaskCollection from './InputMask.js';
 import VideoPlayerCollection from './VideoPlayer.js';
 import DynamicCardEventsCollection from './DynamicCardEvents.js';
 import DynamicCardCoursesCollection from './DynamicCardCourses.js';
-import DynamicCoursePageCollection from './DynamicCoursePage.js'
+import DynamicCoursePageCollection from './DynamicCoursePage.js';
+import DynamicEventPageCollection from './DynamicEventPage.js';
 
 // const form = new LogInForm();
 // new Header(form);
@@ -30,3 +31,4 @@ new VideoPlayerCollection();
 new DynamicCardEventsCollection();
 new DynamicCardCoursesCollection();
 new DynamicCoursePageCollection();
+new DynamicEventPageCollection();

@@ -141,7 +141,7 @@ export class DynamicCardEvents {
                         <div class="team__info-type">${eventData.type}</div>
                     </div>
                 </div>
-                <a href="./event.html" class="button">View more</a>`
+                <a href="./event.html?id=${eventData.id}" class="button">View more</a>`
 
 
             this.cardListElement.appendChild(newEvent)
@@ -195,7 +195,7 @@ export class DynamicCardEvents {
                     <div class="events__info-description h4">${eventData.description}</div>
                     <div class="events__info-type">${eventData.type}</div>
                 </div>
-                <a href="./event.html" class="events__button button column--3" tabindex="0">View more</a>`
+                <a href="./event.html?id=${eventData.id}" class="events__button button column--3" tabindex="0">View more</a>`
 
             this.cardListElement.appendChild(newEvent)
         });
