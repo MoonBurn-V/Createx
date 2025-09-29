@@ -1,16 +1,8 @@
-class coursesTabs {
+import BaseTabs from './BaseTabs.js'
 
-    stateClasses = {
-        active: 'active',
-        hide: 'hide',
-    }
-
-    stateAttributs = {
-        tabIndex: 'tabindex',
-        ariaSelected: 'aria-selected',
-    }
-
+class coursesTabs extends BaseTabs {
     constructor(dynamicCardCourses, rootElement) {
+        super()
         this.dynamicCardCourses = dynamicCardCourses
         this.rootElement = rootElement
         this.tabsButtons = this.rootElement.querySelectorAll('[data-js-tabs-button]')
@@ -19,22 +11,17 @@ class coursesTabs {
                 .findIndex((buttonElement) => buttonElement.classList.contains(this.stateClasses.active))
         }
         this.limitTabsIndex = this.tabsButtons.length - 1
-        this.bindEvents()
-        this.updateUI()
+        this.bindEvents(this.tabsButtons, this.rootElement)
+        this.updateUI(this.tabsButtons)
         this.updateSuperscripts()
     }
 
-    bindEvents() {
-        this.tabsButtons.forEach((buttonElement, index) => {
-            buttonElement.addEventListener('click', () => this.onButtonClick(index))
-        })
-
-        this.rootElement.addEventListener('keydown', (event) => this.onKeyDown(event))
+    focusActiveButton() {
+        this.buttonElements[this.state.activeTabIndex].focus()
     }
 
     onButtonClick(buttonIndex, source = null) {
-        this.state.activeTabIndex = buttonIndex
-        this.updateUI()
+        super.onButtonClick(buttonIndex)
         if (source !== 'SearchCard') {
             this.focusActiveButton()
         }
@@ -42,27 +29,11 @@ class coursesTabs {
         this.dynamicCardCourses.searchCard.searchInput.value = ''
     }
 
-    updateUI() {
-        const { activeTabIndex } = this.state
-
-        this.tabsButtons.forEach((buttonElement, index) => {
-            const activeTab = index === activeTabIndex
-
-            buttonElement.classList.toggle(this.stateClasses.active, activeTab)
-            buttonElement.setAttribute(this.stateAttributs.tabIndex, activeTab ? '0' : '-1')
-            buttonElement.setAttribute(this.stateAttributs.ariaSelected, activeTab.toString())
-        });
-
-        if (activeTabIndex !== -1) {
-            this.filterCards()
-        }
-    }
-
     filterCards() {
         const activeButton = Array.from(this.tabsButtons).find(button => button.classList.contains(this.stateClasses.active))
         const buttonText = activeButton.querySelector('span').textContent.trim()
 
-        let filteredCards;
+        let filteredCards
 
         if(buttonText !== 'All') {
             filteredCards = this.dynamicCardCourses.originCoursesCards.filter(card => buttonText === card.type)
@@ -84,28 +55,11 @@ class coursesTabs {
         this.dynamicCardCourses.addDataToList(filteredCards)
     }
 
-    onKeyDown(event) {
-        let newIndex = this.state.activeTabIndex
-
-        if (event.key === 'ArrowLeft') {
-            newIndex--
-        } else if (event.key === 'ArrowRight') {
-            newIndex++
-        } else {
-            return
+    updateUI(buttonElements) {
+        super.updateUI(buttonElements)
+        if (this.state.activeTabIndex !== -1) {
+            this.filterCards()
         }
-
-        if (newIndex < 0) {
-            newIndex = this.limitTabsIndex
-        } else if (newIndex > this.limitTabsIndex) {
-            newIndex = 0
-        }
-
-        this.onButtonClick(newIndex)
-    }
-
-    focusActiveButton() {
-        this.tabsButtons[this.state.activeTabIndex].focus()
     }
 
     updateSuperscripts() {
@@ -134,7 +88,7 @@ class coursesTabs {
 
     resetActiveTab() {
         this.state.activeTabIndex = -1
-        this.updateUI()
+        this.updateUI(this.tabsButtons)
     }
 }
 

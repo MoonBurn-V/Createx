@@ -5,10 +5,10 @@ class SearchCard {
         this.searchInput = this.rootElement.querySelector('[data-js-search]')
         this.loadButtonElement = this.rootElement.querySelector('[data-js-load-btn]')
         this.hideButtonElement = this.rootElement.querySelector('[data-js-hide-btn]')
-        this.bindeEvents()
+        this.bindEvents()
     }
 
-    bindeEvents() {
+    bindEvents() {
         if (this.searchInput) {
             this.searchInput.addEventListener('input', this.handleSearch.bind(this))
         }
