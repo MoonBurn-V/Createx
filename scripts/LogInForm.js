@@ -12,10 +12,16 @@ class LogInForm {
         viewingPassword: '[data-js-viewing-password]',
         viewingConfirmPassword: '[data-js-viewing-confirm-password]',
         buttonForm: '[data-js-form-button]',
+        signInCross: '[data-js-sign-in-cross]',
+        signUpCross: '[data-js-sign-up-cross]',
+        signInLink: '[data-js-sign-in-link]',
+        signUpLink: '[data-js-sign-up-link]',
     }
 
     stateClasses = {
         activeError: 'active-error',
+        lockForm: 'lock-form',
+        isDimmed: 'dimmed',
         activeViewing: 'active-viewing',
         hide: 'hide'
     }
@@ -34,6 +40,10 @@ class LogInForm {
         this.viewingPasswordElement = this.activeFormElement.querySelector(this.selectors.viewingPassword);
         this.viewingConfirmPasswordElement = this.activeFormElement.querySelector(this.selectors.viewingConfirmPassword);
         this.buttonFormElement = this.activeFormElement.querySelector(this.selectors.buttonForm);
+        this.signInCrossElement = document.querySelector(this.selectors.signInCross);
+        this.signUpCrossElement = document.querySelector(this.selectors.signUpCross);
+        this.signInLinkElement = document.querySelector(this.selectors.signInLink);
+        this.signUpLinkElement = document.querySelector(this.selectors.signUpLink);
         this.users = []
         this.initData();
         this.bindEvents();
@@ -61,6 +71,44 @@ class LogInForm {
             this.viewingConfirmPasswordElement.addEventListener('click', this.toggleConfirmPasswordVisibility)
         }
 
+        if (this.signInCrossElement) {
+            this.signInCrossElement.addEventListener('click', this.closeForm)
+        }
+        
+        if (this.signUpCrossElement) {
+            this.signUpCrossElement.addEventListener('click', this.closeForm)
+        }
+
+        if (this.signInLinkElement) {
+            this.signInLinkElement.addEventListener('click', this.openSignIn)
+        }
+
+        if (this.signUpLinkElement) {
+            this.signUpLinkElement.addEventListener('click', this.openSignUp)
+        }
+    }
+
+    openSignIn = () => {
+        this.closeForm
+        this.header.addSignInFormElement()
+    }
+
+    openSignUp = () => {
+        this.closeForm
+        this.header.addSignUpFormElement()
+    }
+
+    closeForm = () => {
+        document.body.classList.remove(this.stateClasses.lockForm)
+
+        this.header.bodyChildren.forEach(el => {
+            if (el !== this.signRootElement) {
+                el.classList.remove(this.stateClasses.isDimmed)
+                el.inert = false
+            }
+        })
+
+        this.header.activeSignForm.closActiveForm()
     }
 
     checkingInputContents = (event) => {
@@ -139,8 +187,8 @@ class LogInForm {
                     const userResponse = confirm("Sorry you didn't register. Please complete the registration process")
 
                     if (userResponse) {
-                        this.header.toggleSignInFormElement()
-                        this.header.toggleSignUpFormElement()
+                        this.closeForm
+                        this.header.addSignUpFormElement()
                     }
 
                     event.preventDefault()

@@ -1194,17 +1194,15 @@ input[type=number]::-webkit-outer-spin-button {
   white-space: nowrap;
 }
 
-.sign-in {
-  display: none;
+.register-container {
+  display: block;
 }
-.sign-in.active-form {
+
+.sign-in {
   display: block;
 }
 
 .sign-up {
-  display: none;
-}
-.sign-up.active-form {
   display: block;
 }
 

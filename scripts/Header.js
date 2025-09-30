@@ -1,4 +1,5 @@
 import LogInForm from "./LogInForm.js";
+import ActiveSignForm from "./ActiveSignForm.js";
 
 class Header {
     selectors = {
@@ -17,8 +18,7 @@ class Header {
         signInLink: '[data-js-sign-in-link]',
         signUpLink: '[data-js-sign-up-link]',
         hero: '[data-js-hero]',
-        signInForm: '[data-js-sign-in]',
-        signUpForm: '[data-js-sign-up]',
+        signRoot: '[data-js-sign-root]',
     }
 
     stateClasses = {
@@ -50,8 +50,8 @@ class Header {
         this.heroElement = document.querySelector(this.selectors.hero);
         this.bodyChildren = Array.from(document.body.children);
 
-        this.signInFormElement = document.querySelector(this.selectors.signInForm);
-        this.signUpFormElement = document.querySelector(this.selectors.signUpForm);
+        this.signRootElement = document.querySelector(this.selectors.signRoot)
+        this.activeSignForm = new ActiveSignForm(this, this.signRootElement)
 
         this.isSmallScreen = window.innerWidth <= 830;
         this.checkLoginStatus();
@@ -89,7 +89,7 @@ class Header {
         this.signInHeaderElement.classList.add(this.stateClasses.hide)
         this.signUpHeaderElement.classList.add(this.stateClasses.hide)
         this.spanElement.classList.add(this.stateClasses.hide)
-                if(this.exitElement) {
+        if(this.exitElement) {
             this.exitElement.classList.remove(this.stateClasses.hide)
         }
     }
@@ -205,44 +205,32 @@ class Header {
         });
     }
 
-    toggleSignInFormElement = () => {
-        document.body.classList.toggle(this.stateClasses.lockForm);
+    addSignInFormElement = () => {
+        this.activeSignForm.activeSignIn()
+
+        document.body.classList.add(this.stateClasses.lockForm)
+
         this.bodyChildren.forEach(el => {
-            if (el !== this.signInFormElement && el !== this.signUpFormElement) {
-                el.classList.toggle(this.stateClasses.isDimmed);
-                el.inert = true;
+            if (el !== this.signRootElement) {
+                el.classList.add(this.stateClasses.isDimmed)
+                el.inert = true
             }
-        });
-        this.signInFormElement.classList.toggle(this.stateClasses.activeForm);
-        this.formInstance = new LogInForm(this, this.signInFormElement);
+        })
+        this.formInstance = new LogInForm(this, this.signRootElement)
     }
 
-    inertFolseSignIn = () => {
-        this.bodyChildren.forEach(el => {
-            if (el !== this.signInFormElement && el !== this.signUpFormElement) {
-                el.inert = false;
-            }
-        });
-    }
+    addSignUpFormElement = () => {
+        this.activeSignForm.activeSignUp()
 
-    toggleSignUpFormElement = () => {
-        document.body.classList.toggle(this.stateClasses.lockForm);
+        document.body.classList.add(this.stateClasses.lockForm)
         this.bodyChildren.forEach(el => {
-            if (el !== this.signInFormElement && el !== this.signUpFormElement) {
-                el.classList.toggle(this.stateClasses.isDimmed);
-                el.inert = true;
+            if (el !== this.signRootElement) {
+                el.classList.add(this.stateClasses.isDimmed)
+                el.inert = true
             }
-        });
-        this.signUpFormElement.classList.toggle(this.stateClasses.activeForm);
-        this.formInstance = new LogInForm(this, this.signUpFormElement);
-    }
+        })
 
-    inertFolseSignUp = () => {
-        this.bodyChildren.forEach(el => {
-            if (el !== this.signInFormElement && el !== this.signUpFormElement) {
-                el.inert = false;
-            }
-        });
+        this.formInstance = new LogInForm(this, this.signRootElement)
     }
 
     exitingAccount = () => {
@@ -255,34 +243,16 @@ class Header {
         document.body.addEventListener('click', this.onBodyClick);
 
         if (this.signInHeaderElement) {
-            this.signInHeaderElement.addEventListener('click', this.toggleSignInFormElement);
+            this.signInHeaderElement.addEventListener('click', this.addSignInFormElement);
             if (this.isSmallScreen) {
                 this.signInHeaderElement.addEventListener('click', this.toggleMenuState);
             }
         }
         if (this.signUpHeaderElement) {
-            this.signUpHeaderElement.addEventListener('click', this.toggleSignUpFormElement);
+            this.signUpHeaderElement.addEventListener('click', this.addSignUpFormElement);
             if (this.isSmallScreen) {
                 this.signUpHeaderElement.addEventListener('click', this.toggleMenuState);
             }
-        }
-        if (this.signInCrossElement) {
-            this.signInCrossElement.addEventListener('click', this.toggleSignInFormElement);
-            this.signInCrossElement.addEventListener('click', this.inertFolseSignIn);
-        }
-        if (this.signUpCrossElement) {
-            this.signUpCrossElement.addEventListener('click', this.toggleSignUpFormElement);
-            this.signUpCrossElement.addEventListener('click', this.inertFolseSignUp);
-        }
-
-        if (this.signUpLinkElement) {
-            this.signUpLinkElement.addEventListener('click', this.toggleSignInFormElement);
-            this.signUpLinkElement.addEventListener('click', this.toggleSignUpFormElement);
-        }
-
-        if (this.signInLinkElement) {
-            this.signInLinkElement.addEventListener('click', this.toggleSignUpFormElement);
-            this.signInLinkElement.addEventListener('click', this.toggleSignInFormElement);
         }
 
         if(this.exitElement) {
@@ -292,10 +262,10 @@ class Header {
 
     unbindEvents() {
         if (this.signInHeaderElement) {
-            this.signInHeaderElement.removeEventListener('click', this.toggleSignInFormElement);
+            this.signInHeaderElement.removeEventListener('click', this.addSignInFormElement);
         }
         if (this.signUpHeaderElement) {
-            this.signUpHeaderElement.removeEventListener('click', this.toggleSignUpFormElement);
+            this.signUpHeaderElement.removeEventListener('click', this.addSignUpFormElement);
         }
 
         window.removeEventListener('scroll', this.scrollHandler);

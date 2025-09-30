@@ -1,11 +1,8 @@
 import Header from './Header.js';
-//import LogInForm from './LogInForm.js';
 import TabsCollection from './Tabs.js';
 import Carousel from './Carousel.js';
 import Subscribe from './Subscribe.js';
 import GoToTop from './GoToTop.js';
-//import SearchCard from './SearchCard.js';
-import LoadCards from './LoadCards.js';
 import CountdownCollection from './Countdown.js';
 import JoinFormCollection from './JoinForm.js';
 import InputMaskCollection from './InputMask.js';
@@ -15,15 +12,11 @@ import DynamicCardCoursesCollection from './DynamicCardCourses.js';
 import DynamicCoursePageCollection from './DynamicCoursePage.js';
 import DynamicEventPageCollection from './DynamicEventPage.js';
 
-// const form = new LogInForm();
-// new Header(form);
 new Header();
-//const loadCardsInstance = new LoadCards();
 new TabsCollection();
 new Carousel();
 new Subscribe();
 new GoToTop();
-//new SearchCard(loadCardsInstance);
 new CountdownCollection();
 new JoinFormCollection();
 new InputMaskCollection();

@@ -185,7 +185,6 @@ class Countdown {
                 }
             }
         }
-        alert("проблема не в тиках")
     }
 
 
