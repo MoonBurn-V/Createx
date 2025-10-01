@@ -11,10 +11,33 @@ class coursesTabs extends BaseTabs {
                 .findIndex((buttonElement) => buttonElement.classList.contains(this.stateClasses.active))
         }
         this.limitTabsIndex = this.tabsButtons.length - 1
+        this.loadButtonElement = this.rootElement.querySelector('[data-js-load-btn]')
         this.bindEvents(this.tabsButtons, this.rootElement)
+
+        this.handleURLParameter()
+
         this.updateUI(this.tabsButtons)
         this.updateSuperscripts()
     }
+
+    handleURLParameter() {
+        const urlParams = new URLSearchParams(window.location.search)
+        const filterParam = urlParams.get('filter')
+
+        if (filterParam) {
+            const filterValue = decodeURIComponent(filterParam).toLowerCase()
+
+            const tabIndex = Array.from(this.tabsButtons).findIndex(buttonElement => {
+                const buttonText = buttonElement.querySelector('span').textContent.trim().toLowerCase()
+                return buttonText === filterValue
+            })
+
+            if (tabIndex !== -1) {
+                this.onButtonClick(tabIndex)
+            }
+        }
+    }
+
 
     focusActiveButton() {
         this.buttonElements[this.state.activeTabIndex].focus()
@@ -37,7 +60,6 @@ class coursesTabs extends BaseTabs {
 
         if(buttonText !== 'All') {
             filteredCards = this.dynamicCardCourses.originCoursesCards.filter(card => buttonText === card.type)
-
             this.dynamicCardCourses.loadCards.loadButtonElement.classList.add(this.stateClasses.hide)
             if(this.dynamicCardCourses.loadCards.loadButtonElement.hideButtonElement){
                 this.dynamicCardCourses.loadCards.loadButtonElement.hideButtonElement.add(this.stateClasses.hide)
@@ -59,6 +81,12 @@ class coursesTabs extends BaseTabs {
         super.updateUI(buttonElements)
         if (this.state.activeTabIndex !== -1) {
             this.filterCards()
+        }
+
+        if (this.state.activeTabIndex !== 0) {
+            this.loadButtonElement.classList.add('hide')
+        } else {
+            this.loadButtonElement.classList.remove('hide')
         }
     }
 
