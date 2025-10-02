@@ -34,10 +34,12 @@ export class DynamicCardCourses {
             let color = typeColors[courseCard.type]
 
             const newCard = document.createElement('li')
-            newCard.classList.add('card__item')
+            newCard.classList.add('card__item', 'vertical')
             newCard.innerHTML = `
                 <a class="card__body vertical" href="course.html?id=${courseCard.id}">
-                    <img class="card__image vertical" src="${courseCard.img}" width="390" height="240" loading="lazy" alt="">
+                    <div class="card__image-container"> 
+                        <img class="card__image vertical" src="${courseCard.img}" width="390" height="240" loading="lazy" alt="">
+                    </div>
                     <div class="card__body-inner vertical">
                         <div class="card__subtitle ${color} vertical">${courseCard.type}</div>
                         <div class="card__title h4 vertical">${courseCard.courseName}</div>

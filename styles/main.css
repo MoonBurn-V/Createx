@@ -1995,6 +1995,9 @@ input[type=number]::-webkit-outer-spin-button {
     row-gap: 0.625rem;
   }
 }
+.card__body {
+  overflow: hidden;
+}
 .card__body.comminr-soon {
   background-color: var(--color-gray-300);
 }
@@ -2081,6 +2084,9 @@ input[type=number]::-webkit-outer-spin-button {
     width: 18.75rem;
   }
 }
+.card__image {
+  transition: transform 0.3s ease;
+}
 @media (width <= 51.93625rem) {
   .card__image {
     width: 11.875rem;
@@ -2112,11 +2118,18 @@ input[type=number]::-webkit-outer-spin-button {
     width: 18.75rem;
   }
 }
+.card__image-container {
+  overflow: hidden;
+}
 .card__item {
   border: 0.0625rem solid var(--color-gray-300);
   border-radius: 0.25rem;
   cursor: pointer;
   box-shadow: 0 4px 4px -4px rgba(30, 33, 44, 0.03), 0 12px 10px -6px rgba(154, 156, 165, 0.04), 0 30px 24px -10px rgba(154, 156, 165, 0.05), 0 80px 80px -20px rgba(154, 156, 165, 0.08);
+  transition: box-shadow var(--transition-duration);
+}
+.card__item.vertical:hover .card__image {
+  transform: scale(1.1);
 }
 .card__item:hover {
   box-shadow: 4px 4px 4px -4px rgba(30, 33, 44, 0.05), 16px 12px 10px -6px rgba(154, 156, 165, 0.08), 40px 30px 24px -10px rgba(154, 156, 165, 0.1), 100px 80px 80px -20px rgba(154, 156, 165, 0.16);
@@ -2447,6 +2460,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: 0.0625rem solid var(--color-gray-400);
   border-radius: 0.25rem;
   box-shadow: 0 4px 4px -4px rgba(30, 33, 44, 0.03), 0 12px 10px -6px rgba(154, 156, 165, 0.04), 0 30px 24px -10px rgba(154, 156, 165, 0.05), 0 80px 80px -20px rgba(154, 156, 165, 0.08);
+  transition: box-shadow var(--transition-duration);
 }
 @media (width <= 90.06125rem) {
   .events__item {
@@ -2820,6 +2834,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: 0.0625rem solid var(--color-gray-400);
   border-radius: 0.25rem;
   box-shadow: 0 4px 4px -4px rgba(30, 33, 44, 0.03), 0 12px 10px -6px rgba(154, 156, 165, 0.04), 0 30px 24px -10px rgba(154, 156, 165, 0.05), 0 80px 80px -20px rgba(154, 156, 165, 0.08);
+  transition: box-shadow var(--transition-duration);
 }
 .team__card.event:hover {
   box-shadow: 4px 4px 4px -4px rgba(30, 33, 44, 0.05), 16px 12px 10px -6px rgba(154, 156, 165, 0.08), 40px 30px 24px -10px rgba(154, 156, 165, 0.1), 100px 80px 80px -20px rgba(154, 156, 165, 0.16);
@@ -3077,9 +3092,15 @@ input[type=number]::-webkit-outer-spin-button {
 .blog__body-item {
   position: relative;
   width: clamp(18.125rem, 16.1105371901rem + 8.2644628099vw, 24.375rem);
+  overflow: hidden;
+  transition-duration: var(--transition-duration);
 }
 .blog__body-item:last-child {
   width: clamp(18.125rem, 16.0098140496rem + 8.6776859504vw, 24.6875rem);
+}
+.blog__body-item:hover .blog__image {
+  transform: scale(1.1);
+  transition-duration: var(--transition-duration);
 }
 .blog__badge {
   position: absolute;
@@ -3139,6 +3160,21 @@ input[type=number]::-webkit-outer-spin-button {
   .blog__link.about {
     padding-left: 1.25rem;
   }
+}
+.blog__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform var(--transition-duration);
+}
+.blog__image-container {
+  width: 100%;
+  height: 57%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .subscribe {
