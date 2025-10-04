@@ -5,7 +5,7 @@ class VideoPlayer {
         root: rootSelector,
         video: '[data-js-video-player-video]',
         button: '[data-js-video-button]',
-        iocnPlay: '[data-js-video-play]',
+        iconPlay: '[data-js-video-play]',
         iconPouse: '[data-js-video-pouse]',
     }
 
@@ -17,8 +17,8 @@ class VideoPlayer {
         this.rootElement = rootElement;
         this.videoElement = this.rootElement.querySelector(this.selectors.video);
         this.buttonElement = this.rootElement.querySelector(this.selectors.button);
-        this.iocnPlayElement = this.rootElement.querySelector(this.selectors.iocnPlay);
-        this.iocnPouseElement = this.rootElement.querySelector(this.selectors.iconPouse);
+        this.iconPlayElement = this.rootElement.querySelector(this.selectors.iconPlay);
+        this.iconPouseElement = this.rootElement.querySelector(this.selectors.iconPouse);
         this.isPlaying = false;
         this.bindEvents();
     }
@@ -34,16 +34,16 @@ class VideoPlayer {
     playVideo = () => {
         this.videoElement.play();
         this.videoElement.controls = true;
-        this.iocnPlayElement.classList.add(this.stateClasses.hide);
-        this.iocnPouseElement.classList.remove(this.stateClasses.hide);
+        this.iconPlayElement.classList.add(this.stateClasses.hide);
+        this.iconPouseElement.classList.remove(this.stateClasses.hide);
         this.isPlaying = true;
     }
 
     pauseVideo = () => {
         this.videoElement.pause();
         this.videoElement.controls = false;
-        this.iocnPlayElement.classList.remove(this.stateClasses.hide);
-        this.iocnPouseElement.classList.add(this.stateClasses.hide);
+        this.iconPlayElement.classList.remove(this.stateClasses.hide);
+        this.iconPouseElement.classList.add(this.stateClasses.hide);
         this.isPlaying = false;
     }
 

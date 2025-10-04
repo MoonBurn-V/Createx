@@ -12,6 +12,15 @@
         text-align: center;
     }
 
+    &__subtitle{
+        font-weight: 700;
+    }
+
+    &__title{
+        font-size: fluid(46, 28);
+        font-weight: 900;
+    }
+
     &__button{
         border: none;
         background: none;
@@ -45,10 +54,10 @@
 
         &-inner{
             display: flex;
-            column-gap: rem(106);
+            column-gap: rem(90);
             align-items: start;
-            background: var(--color-light);
-            padding: fluid(64, 5) fluid(105, 10);
+            // background: var(--color-light);
+            // padding: fluid(64, 5) fluid(105, 10);
             width: fluid(1010, 300);
             overflow-x: scroll;
             scroll-behavior: smooth;
@@ -72,8 +81,12 @@
     &__card{
         display: flex;
         flex-shrink: 0;
-        width: fluid(800, 300);
+        //width: fluid(800, 300);
+        width: fluid(1010, 300);
+        background: var(--color-light);
+        padding: fluid(64, 5) fluid(105, 10);
         align-items: start;
+        scroll-snap-align: start;
 
         &-brace{
             @include mobile{

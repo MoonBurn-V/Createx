@@ -2131,6 +2131,9 @@ input[type=number]::-webkit-outer-spin-button {
 .card__item.vertical:hover .card__image {
   transform: scale(1.1);
 }
+.card__item.about:hover .card__image {
+  transform: scale(1.1);
+}
 .card__item:hover {
   box-shadow: 4px 4px 4px -4px rgba(30, 33, 44, 0.05), 16px 12px 10px -6px rgba(154, 156, 165, 0.08), 40px 30px 24px -10px rgba(154, 156, 165, 0.1), 100px 80px 80px -20px rgba(154, 156, 165, 0.16);
 }
@@ -2935,6 +2938,13 @@ input[type=number]::-webkit-outer-spin-button {
 .testimonials__header {
   text-align: center;
 }
+.testimonials__subtitle {
+  font-weight: 700;
+}
+.testimonials__title {
+  font-size: clamp(1.75rem, 1.3873966942rem + 1.4876033058vw, 2.875rem);
+  font-weight: 900;
+}
 .testimonials__button {
   border: none;
   background: none;
@@ -2965,10 +2975,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .testimonials__body-inner {
   display: flex;
-  column-gap: 6.625rem;
+  column-gap: 5.625rem;
   align-items: start;
-  background: var(--color-light);
-  padding: clamp(0.3125rem, -0.8760330579rem + 4.8760330579vw, 4rem) clamp(0.625rem, -1.2887396694rem + 7.8512396694vw, 6.5625rem);
   width: clamp(18.75rem, 4.4473140496rem + 58.6776859504vw, 63.125rem);
   overflow-x: scroll;
   scroll-behavior: smooth;
@@ -2990,8 +2998,11 @@ input[type=number]::-webkit-outer-spin-button {
 .testimonials__card {
   display: flex;
   flex-shrink: 0;
-  width: clamp(18.75rem, 8.6776859504rem + 41.3223140496vw, 50rem);
+  width: clamp(18.75rem, 4.4473140496rem + 58.6776859504vw, 63.125rem);
+  background: var(--color-light);
+  padding: clamp(0.3125rem, -0.8760330579rem + 4.8760330579vw, 4rem) clamp(0.625rem, -1.2887396694rem + 7.8512396694vw, 6.5625rem);
   align-items: start;
+  scroll-snap-align: start;
 }
 @media (width <= 51.93625rem) {
   .testimonials__card-brace {

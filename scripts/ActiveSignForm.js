@@ -14,18 +14,18 @@ class ActiveSignForm {
         <div class="registered">
             <form class="registered__form registered-container" action="/">
                 <button class="registered-link-cross" type="button" aria-label="close the registration window" data-js-sign-in-cross> 
-                    <div class="icon icon__sign-cross">
+                    <span class="icon icon__sign-cross">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 4.29289C4.68342 3.90237 5.31658 3.90237 5.70711 4.29289L12 10.5858L18.2929 4.29289C18.6834 3.90237 19.3166 3.90237 19.7071 4.29289C20.0976 4.68342 20.0976 5.31658 19.7071 5.70711L13.4142 12L19.7071 18.2929C20.0976 18.6834 20.0976 19.3166 19.7071 19.7071C19.3166 20.0976 18.6834 20.0976 18.2929 19.7071L12 13.4142L5.70711 19.7071C5.31658 20.0976 4.68342 20.0976 4.29289 19.7071C3.90237 19.3166 3.90237 18.6834 4.29289 18.2929L10.5858 12L4.29289 5.70711C3.90237 5.31658 3.90237 4.68342 4.29289 4.29289Z" fill="#787A80"/>
                         </svg>
-                    </div>
+                    </span>
                 </button>
                 <h3 class="registered__title">Sign in</h3>
                 <p class="registered__description">Sign in to your account using email and password provided during registration.</p>
                 <div class="registered__body">
                     <div class="registered__form-cell field" data-js-field-email>
                         <label class="field__label" for="email">Email</label>
-                        <input class="field__control" type="email" placeholder="Your working email" required aria-describedby="name-error-email" id="email" autocomplete="email" name="email" data-js-input-email>
+                        <input class="field__control" type="email" placeholder="Your working email" required aria-describedby="name-error-email" id="email" name="email" data-js-input-email>
                         <div class="field__error" id="name-error-email" role="alert">
                             <p>Incorrect email</p>
                         </div>
@@ -116,11 +116,11 @@ class ActiveSignForm {
         <div class="registered">
             <form class="registered__form registered-container">
                 <button class="registered-link-cross" type="button" aria-label="close the registration window" data-js-sign-up-cross>
-                    <div class="icon icon__sign-cross">
+                    <span class="icon icon__sign-cross">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 4.29289C4.68342 3.90237 5.31658 3.90237 5.70711 4.29289L12 10.5858L18.2929 4.29289C18.6834 3.90237 19.3166 3.90237 19.7071 4.29289C20.0976 4.68342 20.0976 5.31658 19.7071 5.70711L13.4142 12L19.7071 18.2929C20.0976 18.6834 20.0976 19.3166 19.7071 19.7071C19.3166 20.0976 18.6834 20.0976 18.2929 19.7071L12 13.4142L5.70711 19.7071C5.31658 20.0976 4.68342 20.0976 4.29289 19.7071C3.90237 19.3166 3.90237 18.6834 4.29289 18.2929L10.5858 12L4.29289 5.70711C3.90237 5.31658 3.90237 4.68342 4.29289 4.29289Z" fill="#787A80"/>
                         </svg>
-                    </div>
+                    </span>
                 </button>
                 <h3 class="registered__title">Sign up</h3>
                 <p class="registered__description">Registration takes less than a minute but gives you full control over your studying.</p>

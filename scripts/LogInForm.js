@@ -155,8 +155,9 @@ class LogInForm {
                     && this.passwordRegex.test(this.passwordContent)
                     && this.nameContent !== '') {
                     alert('Registration successful!')
-                    this.header.toggleSignUpFormElement()
-                    this.header.inertFolseSignUp()
+                    
+                    this.closeForm()
+
                     localStorage.setItem('isLoggedIn', 'true')
                     this.header.updateHeaderButtons()
                     event.preventDefault()
@@ -170,11 +171,10 @@ class LogInForm {
 
                 for (const user of this.users) {
                     const userMail = user.mail
-                    const userPasswor = user.password
+                    const userPassword = user.password
 
-                    if (this.emailContent === userMail && this.passwordContent === userPasswor) {
-                        this.header.toggleSignInFormElement();
-                        this.header.inertFolseSignIn();
+                    if (this.emailContent === userMail && this.passwordContent === userPassword) {
+                        this.closeForm()
                         localStorage.setItem('isLoggedIn', 'true');
                         this.header.updateHeaderButtons();
                         event.preventDefault();

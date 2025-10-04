@@ -210,36 +210,6 @@
 
         &-container{
             overflow: hidden;
-
-            // &.horisontal{
-            //     width: 45%;
-            //     height: 100%;
-            // }
-
-            // &.horisontal-2{
-            //     width: 38%;
-            //     height: 100%;
-            // }
-
-            // &.horisontal-3{
-            //     width: 36%;
-            //     height: 100%;
-            // }
-
-            // &.horisontal-4{
-            //     width: 46%;
-            //     height: 100%;
-            // }
-
-            // &.horisontal-5{
-            //     width: 39%;
-            //     height: 100%;
-            // }
-
-            // &.horisontal-6{
-            //     width: 36%;
-            //     height: 100%;
-            // }
         }
     }
 
@@ -260,13 +230,18 @@
             }
         }
 
+        &.about{
+            &:hover .card__image{
+                transform: scale(1.1);
+            }
+        }
+
         &:hover{
             box-shadow:
             4px 4px 4px -4px rgba(30, 33, 44, 0.05),
             16px 12px 10px -6px rgba(154, 156, 165, 0.08),
             40px 30px 24px -10px rgba(154, 156, 165, 0.1),
             100px 80px 80px -20px rgba(154, 156, 165, 0.16);
-            //transition-duration: var(--transition-duration);
         }
 
         &.hide{

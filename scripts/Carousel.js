@@ -13,13 +13,13 @@ class Carousel {
         this.carousels = [];
 
         const cardContainerElements = document.querySelectorAll(this.selectors.cardContainer);
-        const containerIndexes = Array.from(cardContainerElements).map(el => parseInt(el.getAttribute('index')));
+        const containerIndexes = Array.from(cardContainerElements).map(el => parseInt(el.getAttribute('data-index')));
         const hasCarousel0 = containerIndexes.includes(0);
         const hasCarousel1 = containerIndexes.includes(1);
 
         if (hasCarousel0 || (hasCarousel1 && !hasCarousel0)) {
             cardContainerElements.forEach((container, index) => {
-                this.carousels.push(new CarouselInstance(container, parseInt(container.getAttribute('index')), this));
+                this.carousels.push(new CarouselInstance(container, parseInt(container.getAttribute('data-index')), this));
             });
         } else if (hasCarousel1) {
             const container = document.querySelector('[data-js-card-container][index="1"]');
@@ -39,10 +39,10 @@ class CarouselInstance {
         this.container = container;
         this.index = index;
         this.carousel = carousel;
-        this.cardContainerElement = document.querySelector(`[data-js-card-container][index="${index}"]`);
+        this.cardContainerElement = document.querySelector(`[data-js-card-container][data-index="${index}"]`);
         this.cardElement = this.container.querySelector('[data-js-card]');
-        this.btnPrevElement = document.querySelector(`[data-js-btn-prev][index="${index}"]`);
-        this.btnNxtElement = document.querySelector(`[data-js-btn-nxt][index="${index}"]`);
+        this.btnPrevElement = document.querySelector(`[data-js-btn-prev][data-index="${index}"]`);
+        this.btnNxtElement = document.querySelector(`[data-js-btn-nxt][data-index="${index}"]`);
         this.headLinksElements = this.container.querySelectorAll(this.carousel.selectors.cardHeadLink);
         this.iconLinksElements = this.container.querySelectorAll(this.carousel.selectors.iconLink);
         this.padding = (index === 1) ? 105 : 0;

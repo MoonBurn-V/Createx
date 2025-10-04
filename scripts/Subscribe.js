@@ -36,10 +36,10 @@ class Subscribe {
         event.preventDefault();
 
         const button = event.target;
-        const index = parseInt(button.getAttribute('index'));
+        const index = parseInt(button.getAttribute('data-index'));
 
-        const emailInput = document.querySelector(`${this.selectors.emailInput}[index="${index}"]`);
-        const errorMessage = document.querySelector(`${this.selectors.errorMassege}[index="${index}"]`);
+        const emailInput = document.querySelector(`${this.selectors.emailInput}[data-index="${index}"]`);
+        const errorMessage = document.querySelector(`${this.selectors.errorMassege}[data-index="${index}"]`);
 
         const emailContent = emailInput ? emailInput.value : '';
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
