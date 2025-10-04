@@ -17,11 +17,6 @@
   padding-top: fluid(190, 100);
 }
 
-// .registered-container{
-//   max-width: 100%;
-//   margin-inline: auto;
-// }
-
 .visually-hidden {
   @include visually-hidden;
 }
@@ -41,48 +36,6 @@
 .section-mrgin{
   margin-bottom: fluid(180, 40);
 }
-
-// .full-vw-line {
-//   position: relative;
-
-//   &::before,
-//   &::after {
-//     position: absolute;
-//     width: calc(
-//       (var(--100vw) - var(--container-width)) / 2
-//     );
-//     height: rem(1);
-//     background-color: var(--color-dark-15);
-//   }
-
-//   &--top {
-//     &::before {
-//       content: '';
-//       bottom: 100%;
-//     }
-//   }
-
-//   &--bottom {
-//     &::after {
-//       content: '';
-//       top: 100%;
-//     }
-//   }
-
-//   &--left {
-//     &::before,
-//     &::after {
-//       right: 100%;
-//     }
-//   }
-
-//   &--right {
-//     &::before,
-//     &::after {
-//       left: 100%;
-//     }
-//   }
-// }
 
 .circle-icon {
   --circleSize: #{rem(52)};

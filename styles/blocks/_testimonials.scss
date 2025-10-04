@@ -56,8 +56,6 @@
             display: flex;
             column-gap: rem(90);
             align-items: start;
-            // background: var(--color-light);
-            // padding: fluid(64, 5) fluid(105, 10);
             width: fluid(1010, 300);
             overflow-x: scroll;
             scroll-behavior: smooth;
@@ -81,7 +79,6 @@
     &__card{
         display: flex;
         flex-shrink: 0;
-        //width: fluid(800, 300);
         width: fluid(1010, 300);
         background: var(--color-light);
         padding: fluid(64, 5) fluid(105, 10);

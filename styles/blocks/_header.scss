@@ -109,11 +109,6 @@
       column-gap: rem(40);
       padding-block: rem(13);
 
-      // &.fixed{
-      //   color: var(--color-light);
-      //   opacity: 0.6;
-      // }
-
       @include tablet{
         column-gap: rem(25)
       }

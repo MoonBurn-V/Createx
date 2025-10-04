@@ -80,9 +80,6 @@ h6, .h6 {
   @include fluid-text(16, 12);
 }
 
-// p {
-//   --paragraphMarginBottom: #{rem(24)};
-// }
 
 a,
 button,
@@ -107,7 +104,6 @@ a {
 }
 
 :focus-visible {
-  // outline: rem(2) dashed var(--color-light);
   outline: none;
   outline-offset: rem(4);
   transition-duration: 0s !important;
@@ -133,21 +129,6 @@ a, button, select, input {
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  margin: 0; /* Убираем стандартные отступы */
+  margin: 0;
   padding: 0;
 }
-
-
-// a,
-// button {
-//   &[aria-label] {
-//     position: relative;
-
-//     &::before {
-//       @include abs-center;
-//       @include square(rem(44));
-
-//       content: '';
-//     }
-//   }
-// }

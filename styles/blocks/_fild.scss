@@ -3,17 +3,10 @@
 .field {
   display: flex;
   flex-direction: column;
-  //flex-wrap: wrap;
   align-items: start;
   row-gap: rem(8);
   font-weight: 400;
   font-size: rem(14);
-
-  // &.horizontal{
-  //   flex-direction: row;
-  //   align-items: center;
-  //   column-gap: rem(16);
-  // }
 
   &__password-wrapper{
     position: relative;
@@ -23,8 +16,6 @@
   &__control {
     width: 100%;
     height: rem(44);
-    // padding-left: rem(16); --перепроверь--
-    // padding-right: rem(30);
     padding-inline: rem(16);
     border: rem(1) solid var(--color-gray-400);
     border-radius: rem(4);
@@ -38,10 +29,6 @@
       border-color: var(--color-gray-800);
       box-shadow: var(--shadow);
     }
-
-    // &:not(:placeholder-shown){
-    //   border-color: var(--color-gray-800);
-    // }
 
     &:-webkit-autofill{
       box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.12) inset !important;

@@ -11,6 +11,7 @@ import DynamicCardEventsCollection from './DynamicCardEvents.js';
 import DynamicCardCoursesCollection from './DynamicCardCourses.js';
 import DynamicCoursePageCollection from './DynamicCoursePage.js';
 import DynamicEventPageCollection from './DynamicEventPage.js';
+import HeroVideoCollection from './HeroVideo.js';
 
 new Header();
 new TabsCollection();
@@ -25,3 +26,4 @@ new DynamicCardEventsCollection();
 new DynamicCardCoursesCollection();
 new DynamicCoursePageCollection();
 new DynamicEventPageCollection();
+new HeroVideoCollection();

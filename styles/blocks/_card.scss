@@ -17,6 +17,10 @@
             row-gap: rem(15);
         }
 
+        &.about{
+            place-items: center;
+        }
+
         &.row{
             display: flex;
             flex-direction: column;
@@ -225,12 +229,28 @@
         transition: box-shadow var(--transition-duration);
 
         &.vertical{
+            @include mobile{
+                width: rem(390);
+            }
+
+            @include mobile-s{
+                width: rem(300);
+            }
+            
             &:hover .card__image{
                 transform: scale(1.1);
             }
         }
 
         &.about{
+            @include mobile{
+                width: rem(390);
+            }
+
+            @include mobile-s{
+                width: rem(300);
+            }
+
             &:hover .card__image{
                 transform: scale(1.1);
             }

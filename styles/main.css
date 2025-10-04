@@ -443,7 +443,7 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-  margin: 0; /* Убираем стандартные отступы */
+  margin: 0;
   padding: 0;
 }
 
@@ -819,7 +819,14 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-background-size: cover;
   background-size: cover;
 }
+.hero__play {
+  padding: 0;
+}
+.hero__play:hover {
+  color: var(--color-accent);
+}
 .hero__container {
+  position: relative;
   display: flex;
   flex-direction: column;
   row-gap: clamp(3.125rem, 0.3047520661rem + 11.5702479339vw, 11.875rem);
@@ -926,12 +933,12 @@ input[type=number]::-webkit-outer-spin-button {
   content: "";
   position: absolute;
   left: -40%;
-  top: 50%; /* Центрируем по вертикали */
-  transform: translateY(-50%); /* Сдвигаем точку вверх на половину её высоты */
-  width: 0.5rem; /* Ширина точки */
-  height: 0.5rem; /* Высота точки */
-  border-radius: 50%; /* Делаем точку круглой */
-  background-color: var(--color-accent); /* Цвет точки, можно изменить на нужный */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
 }
 @media (width <= 64.06125rem) {
   .hero__achievements-item::before {
@@ -960,6 +967,69 @@ input[type=number]::-webkit-outer-spin-button {
   .hero__achievements-item:nth-child(3)::before {
     content: "";
   }
+}
+.hero__video {
+  display: block;
+  position: fixed;
+  place-items: center;
+  left: 5%;
+  right: 5%;
+  z-index: 2500;
+}
+@media (width <= 51.93625rem) {
+  .hero__video {
+    top: 3%;
+    left: 8%;
+    right: 8%;
+  }
+}
+@media (width <= 30.06125rem) {
+  .hero__video {
+    top: 30%;
+  }
+}
+.hero__video-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+}
+.hero__video-panel.hide {
+  display: none;
+}
+.hero__video-video {
+  z-index: 25000;
+}
+@media (width <= 51.93625rem) {
+  .hero__video-video {
+    width: 31.25rem;
+    height: 18.75rem;
+  }
+}
+@media (width <= 30.06125rem) {
+  .hero__video-video {
+    width: auto;
+    height: auto;
+  }
+}
+.hero__video-close {
+  position: absolute;
+  top: -3.125rem;
+  right: 10%;
+  z-index: 2500;
+}
+@media (width <= 51.93625rem) {
+  .hero__video-close {
+    top: 5%;
+    right: 8%;
+  }
+}
+.hero__video.hide {
+  display: none;
 }
 
 .footer {
@@ -1924,6 +1994,9 @@ input[type=number]::-webkit-outer-spin-button {
     row-gap: 0.9375rem;
   }
 }
+.card__list.about {
+  place-items: center;
+}
 .card__list.row {
   display: flex;
   flex-direction: column;
@@ -2128,8 +2201,28 @@ input[type=number]::-webkit-outer-spin-button {
   box-shadow: 0 4px 4px -4px rgba(30, 33, 44, 0.03), 0 12px 10px -6px rgba(154, 156, 165, 0.04), 0 30px 24px -10px rgba(154, 156, 165, 0.05), 0 80px 80px -20px rgba(154, 156, 165, 0.08);
   transition: box-shadow var(--transition-duration);
 }
+@media (width <= 51.93625rem) {
+  .card__item.vertical {
+    width: 24.375rem;
+  }
+}
+@media (width <= 30.06125rem) {
+  .card__item.vertical {
+    width: 18.75rem;
+  }
+}
 .card__item.vertical:hover .card__image {
   transform: scale(1.1);
+}
+@media (width <= 51.93625rem) {
+  .card__item.about {
+    width: 24.375rem;
+  }
+}
+@media (width <= 30.06125rem) {
+  .card__item.about {
+    width: 18.75rem;
+  }
 }
 .card__item.about:hover .card__image {
   transform: scale(1.1);
@@ -2545,6 +2638,11 @@ input[type=number]::-webkit-outer-spin-button {
   .events__info-description {
     white-space: wrap;
     font-size: clamp(1rem, 0.7582644628rem + 0.9917355372vw, 1.75rem);
+  }
+}
+@media (width <= 51.93625rem) {
+  .events__info-description {
+    min-width: 37.5rem;
   }
 }
 @media (width <= 30.06125rem) {
