@@ -9,12 +9,7 @@ class HeroVideo {
     }
 
     stateClasses = {
-        isActive: 'is-active',
         isLock: 'is-lock',
-        activeForm: 'active-form',
-        lockForm: 'lock-form',
-        isDimmed: 'dimmed',
-        fixed: 'fixed',
         hide: 'hide',
     }
 

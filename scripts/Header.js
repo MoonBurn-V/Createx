@@ -243,15 +243,20 @@ class Header {
         document.body.addEventListener('click', this.onBodyClick);
 
         if (this.signInHeaderElement) {
-            this.signInHeaderElement.addEventListener('click', this.addSignInFormElement);
             if (this.isSmallScreen) {
                 this.signInHeaderElement.addEventListener('click', this.toggleMenuState);
+                this.signInHeaderElement.addEventListener('click', this.addSignInFormElement);
+            } else {
+                this.signInHeaderElement.addEventListener('click', this.addSignInFormElement);
             }
         }
+        
         if (this.signUpHeaderElement) {
-            this.signUpHeaderElement.addEventListener('click', this.addSignUpFormElement);
             if (this.isSmallScreen) {
                 this.signUpHeaderElement.addEventListener('click', this.toggleMenuState);
+                this.signUpHeaderElement.addEventListener('click', this.addSignUpFormElement);
+            } else {
+                this.signUpHeaderElement.addEventListener('click', this.addSignUpFormElement);
             }
         }
 
