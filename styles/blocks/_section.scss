@@ -4,68 +4,68 @@
     &__wrapper{
         &.about{
             width: 100%;
-            background: url('..//..//img/About-background.jpg') center no-repeat;
+            background: url('../img/About-background.jpg') center no-repeat;
             -webkit-background-size: cover;
             background-size: cover;
 
             @include mobile{
                 min-height: rem(480);
-                background: url('..//..//img/About-background-mobile.jpg') center no-repeat;
+                background: url('../img/About-background-mobile.jpg') center no-repeat;
             }
         }
 
         &.events{
-            background: url("../../img/Events-background3.svg") center no-repeat;
+            background: url("../img/Events-background3.svg") center no-repeat;
             -webkit-background-size: cover;
             background-size: cover;
         }
 
         &.carousel{
-            background: url("../../img/Team-background.jpg") center no-repeat;
+            background: url("../img/Team-background.jpg") center no-repeat;
             -webkit-background-size: cover;
             background-size: cover;
         }
 
         &.subscribe{
-            background: url("../../img/Subscribe-background.jpg") center no-repeat;
+            background: url("../img/Subscribe-background.jpg") center no-repeat;
             -webkit-background-size: cover;
             background-size: cover;
 
             @include mobile-s{
-                background: url("../../img/Subscribe-background-s2.jpg") center no-repeat;
+                background: url("../img/Subscribe-background-s2.jpg") center no-repeat;
             }
         }
 
         &.subscribe-event{
-            background: url("../../img/Subscribe-event.jpg") center no-repeat;
+            background: url("../img/Subscribe-event.jpg") center no-repeat;
 
             @include laptop-s{
-                background: url("../../img/Discount-background-1.jpg") center no-repeat;
+                background: url("../img/Discount-background-1.jpg") center no-repeat;
             }
         }
 
         &.courses{
-            background: url("../../img/Courses-background.jpg") center no-repeat;
+            background: url("../img/Courses-background.jpg") center no-repeat;
         }
 
         &.curator{
-            background: url("../../img/course-background.jpg") center no-repeat;
+            background: url("../img/course-background.jpg") center no-repeat;
         }
 
         &.discount{
-            background: url("../../img/Discount-background.jpg") center no-repeat;
+            background: url("../img/Discount-background.jpg") center no-repeat;
 
             @include laptop-s{
-                background: url("../../img/Discount-background-1.jpg") center no-repeat;
+                background: url("../img/Discount-background-1.jpg") center no-repeat;
             }
         }
 
         &.about-as{
-            background: url("../../img/AboutAs-background.jpg") center no-repeat;
+            background: url("../img/AboutAs-background.jpg") center no-repeat;
         }
 
         &.event{
-            background: url("../../img/Event-Background.jpg") center no-repeat;
+            background: url("../img/Event-Background.jpg") center no-repeat;
         }
     }
 
