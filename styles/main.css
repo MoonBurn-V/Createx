@@ -317,7 +317,7 @@ button {
   translate: 0 -50%;
   content: "";
   right: 0;
-  background: url("../icons/arrow-top-right_black.svg") center no-repeat var(--color-accent);
+  background: url("../../icons/arrow-top-right_black.svg") center no-repeat var(--color-accent);
   border-radius: 50%;
 }
 
@@ -1590,7 +1590,7 @@ input[type=number]::-webkit-outer-spin-button {
   }
 }
 .section__wrapper.courses {
-  background: url("../../img/Courses-background.jpg") center no-repeat;
+  background: url("../img/Courses-background.jpg") center no-repeat;
 }
 .section__wrapper.curator {
   background: url("../img/course-background.jpg") center no-repeat;
